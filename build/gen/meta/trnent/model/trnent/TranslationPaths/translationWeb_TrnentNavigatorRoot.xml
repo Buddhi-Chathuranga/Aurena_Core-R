@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TranslatableResources type="WEB" module="TRNENT" version="1.1" layer="Core" xmlns="types.scan.translation.fnd.ifsworld.com">
+   <TranslatableResource type="Global Data" ID="TrnentNavigatorRoot" name="TrnentNavigatorRoot">
+      <Resource subtype="Global Data" ID="TrnentNavigatorRoot.menu.GeographicDetailsNavEntry" control="menu.GeographicDetailsNavEntry">
+         <Resource subtype="Menu Item" ID="TrnentNavigatorRoot.menu.GeographicDetailsNavEntry.$this" control="$this">
+            <Text>Geographic Details</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="TrnentNavigatorRoot.menu.ManageCompanies" control="menu.ManageCompanies">
+         <Resource subtype="Menu Item" ID="TrnentNavigatorRoot.menu.ManageCompanies.$this" control="$this">
+            <Text>Manage Companies</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+   </TranslatableResource>
+   </TranslatableResources>

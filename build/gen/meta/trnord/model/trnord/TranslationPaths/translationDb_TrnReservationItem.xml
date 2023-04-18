@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TranslatableResources type="LU" module="TRNORD" version="1.0" layer="Core" xmlns="types.scan.translation.fnd.ifsworld.com">
+   <TranslatableResource type="Logical Unit" ID="TrnReservationItem" name="TrnReservationItem">
+      <Text><![CDATA[Trn Reservation Item]]></Text>
+      <Resource subtype="View" ID="TrnReservationItem.TRN_RESERVATION_ITEM" control="TRN_RESERVATION_ITEM">
+         <Text><![CDATA[Trn Reservation Item]]></Text>
+         <Resource subtype="Column" ID="TrnReservationItem.TRN_RESERVATION_ITEM.COMPANY_ID" control="COMPANY_ID">
+            <Text><![CDATA[Company ID]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnReservationItem.TRN_RESERVATION_ITEM.RESERVATION_ID" control="RESERVATION_ID">
+            <Text><![CDATA[Reservation ID]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnReservationItem.TRN_RESERVATION_ITEM.RESERVATION_ITEM_ID" control="RESERVATION_ITEM_ID">
+            <Text><![CDATA[Reservation Item ID]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnReservationItem.TRN_RESERVATION_ITEM.QUANTITY" control="QUANTITY">
+            <Text><![CDATA[Quantity]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnReservationItem.TRN_RESERVATION_ITEM.BRANCH_ID" control="BRANCH_ID">
+            <Text><![CDATA[Branch ID]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnReservationItem.TRN_RESERVATION_ITEM.INVENTORY_ID" control="INVENTORY_ID">
+            <Text><![CDATA[Inventory ID]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnReservationItem.TRN_RESERVATION_ITEM.PRODUCT_ID" control="PRODUCT_ID">
+            <Text><![CDATA[Product ID]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnReservationItem.TRN_RESERVATION_ITEM.ORDER_ID" control="ORDER_ID">
+            <Text><![CDATA[Order ID]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnReservationItem.TRN_RESERVATION_ITEM.ROW_NO" control="ROW_NO">
+            <Text><![CDATA[Row No]]></Text>
+         </Resource>
+      </Resource>
+   </TranslatableResource>
+</TranslatableResources>

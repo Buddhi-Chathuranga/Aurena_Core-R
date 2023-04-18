@@ -1,0 +1,17 @@
+-- Enter values for your parameters. Use enter to move to the next parameter
+DECLARE
+module_ VARCHAR2(50):= 'TRNENT';
+name_ VARCHAR2(50):= 'Training Inventory';
+version_ VARCHAR2(50):= '21.1.0';
+description_ VARCHAR2(50):= 'Training Inventory for version 21.1.0';
+patch_version_ VARCHAR2(50):= NULL;
+BEGIN
+Module_API.Create_And_Set_Version(module_,name_,version_,description_,patch_version_);
+Dbms_Output.Put_Line('module_= ' || module_);
+Dbms_Output.Put_Line('name_= ' || name_);
+Dbms_Output.Put_Line('version_= ' || version_);
+Dbms_Output.Put_Line('description_= ' || description_);
+Dbms_Output.Put_Line('patch_version_= ' || patch_version_);
+END;
+COMMIT;
+/

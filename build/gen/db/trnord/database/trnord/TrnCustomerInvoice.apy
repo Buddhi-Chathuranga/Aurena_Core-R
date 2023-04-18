@@ -1,0 +1,1843 @@
+-----------------------------------------------------------------------------
+--
+--  Logical unit: TrnCustomerInvoice
+--  Type:         EntityWithState
+--  Component:    TRNORD
+--
+--  Template:     3.0
+--  Built by:     IFS Developer Studio
+--
+--  NOTE! Do not edit!! This file is completely generated and will be
+--        overwritten next time the corresponding model is saved.
+-----------------------------------------------------------------------------
+
+
+-----------------------------------------------------------------------------
+-------------------- API PACKAGE IMPLEMENTATION -----------------------------
+-----------------------------------------------------------------------------
+
+PROMPT Creating Trn_Customer_Invoice_API implementation
+
+-- [IFS COMPLETE BLOCK PACKAGEBODY Trn_Customer_Invoice_API]
+CREATE OR REPLACE PACKAGE BODY Trn_Customer_Invoice_API IS
+
+-----------------------------------------------------------------------------
+-------------------- PRIVATE DECLARATIONS -----------------------------------
+-----------------------------------------------------------------------------
+
+TYPE Indicator_Rec IS RECORD
+  (company_id                     BOOLEAN := FALSE,
+   branch_id                      BOOLEAN := FALSE,
+   invoice_id                     BOOLEAN := FALSE,
+   invoice_date                   BOOLEAN := FALSE,
+   due_date                       BOOLEAN := FALSE,
+   invoice_amount                 BOOLEAN := FALSE,
+   comments                       BOOLEAN := FALSE,
+   unpaid                         BOOLEAN := FALSE,
+   payment_terms                  BOOLEAN := FALSE,
+   customer_id                    BOOLEAN := FALSE,
+   order_id                       BOOLEAN := FALSE);
+
+
+-----------------------------------------------------------------------------
+-------------------- IMPLEMENTATION METHOD DECLARATIONS ---------------------
+-----------------------------------------------------------------------------
+
+FUNCTION Key_Message___ (
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ IN NUMBER ) RETURN VARCHAR2;
+
+FUNCTION Formatted_Key___ (
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ IN NUMBER ) RETURN VARCHAR2;
+
+PROCEDURE Raise_Too_Many_Rows___ (
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ IN NUMBER,
+   methodname_ IN VARCHAR2 );
+
+PROCEDURE Raise_Record_Not_Exist___ (
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ IN NUMBER );
+
+PROCEDURE Raise_Record_Exist___ (
+   rec_ IN trn_customer_invoice_tab%ROWTYPE );
+
+PROCEDURE Raise_Constraint_Violated___ (
+   rec_ IN trn_customer_invoice_tab%ROWTYPE,
+   constraint_ IN VARCHAR2 );
+
+PROCEDURE Raise_Item_Format___ (
+   name_ IN VARCHAR2,
+   value_ IN VARCHAR2 );
+
+PROCEDURE Raise_Record_Modified___ (
+   rec_ IN trn_customer_invoice_tab%ROWTYPE );
+
+PROCEDURE Raise_Record_Locked___ (
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ IN NUMBER );
+
+PROCEDURE Raise_Record_Removed___ (
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ IN NUMBER );
+
+FUNCTION Lock_By_Id___ (
+   objid_      IN VARCHAR2,
+   objversion_ IN VARCHAR2 ) RETURN trn_customer_invoice_tab%ROWTYPE;
+
+FUNCTION Lock_By_Keys___ (
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ IN NUMBER) RETURN trn_customer_invoice_tab%ROWTYPE;
+
+FUNCTION Lock_By_Keys_Nowait___ (
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ IN NUMBER) RETURN trn_customer_invoice_tab%ROWTYPE;
+
+FUNCTION Get_Object_By_Id___ (
+   objid_ IN VARCHAR2 ) RETURN trn_customer_invoice_tab%ROWTYPE;
+
+FUNCTION Get_Object_By_Keys___ (
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ IN NUMBER ) RETURN trn_customer_invoice_tab%ROWTYPE;
+
+FUNCTION Check_Exist___ (
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ IN NUMBER ) RETURN BOOLEAN;
+
+PROCEDURE Get_Version_By_Id___ (
+   objid_      IN     VARCHAR2,
+   objversion_ IN OUT NOCOPY VARCHAR2 );
+
+PROCEDURE Get_Id_Version_By_Keys___ (
+   objid_      IN OUT NOCOPY VARCHAR2,
+   objversion_ IN OUT NOCOPY VARCHAR2,
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ IN NUMBER );
+
+PROCEDURE Unpack___ (
+   newrec_   IN OUT NOCOPY trn_customer_invoice_tab%ROWTYPE,
+   indrec_   IN OUT NOCOPY Indicator_Rec,
+   attr_     IN OUT NOCOPY VARCHAR2 );
+
+FUNCTION Pack___ (
+   rec_ IN trn_customer_invoice_tab%ROWTYPE ) RETURN VARCHAR2;
+
+FUNCTION Pack___ (
+   rec_ IN trn_customer_invoice_tab%ROWTYPE,
+   indrec_ IN Indicator_Rec ) RETURN VARCHAR2;
+
+FUNCTION Pack_Table___ (
+   rec_ IN trn_customer_invoice_tab%ROWTYPE ) RETURN VARCHAR2;
+
+FUNCTION Public_To_Table___ (
+   public_ IN Public_Rec ) RETURN trn_customer_invoice_tab%ROWTYPE;
+
+FUNCTION Table_To_Public___ (
+   rec_ IN trn_customer_invoice_tab%ROWTYPE ) RETURN Public_Rec;
+
+PROCEDURE Reset_Indicator_Rec___ (
+   indrec_ IN OUT NOCOPY Indicator_Rec );
+
+FUNCTION Get_Indicator_Rec___ (
+   rec_ IN trn_customer_invoice_tab%ROWTYPE ) RETURN Indicator_Rec;
+
+FUNCTION Get_Indicator_Rec___ (
+   oldrec_ IN trn_customer_invoice_tab%ROWTYPE,
+   newrec_ IN trn_customer_invoice_tab%ROWTYPE ) RETURN Indicator_Rec;
+
+PROCEDURE Check_Common___ (
+   oldrec_ IN     trn_customer_invoice_tab%ROWTYPE,
+   newrec_ IN OUT NOCOPY trn_customer_invoice_tab%ROWTYPE,
+   indrec_ IN OUT NOCOPY Indicator_Rec,
+   attr_   IN OUT NOCOPY VARCHAR2 );
+
+PROCEDURE Prepare_Insert___ (
+   attr_ IN OUT NOCOPY VARCHAR2 );
+
+PROCEDURE Check_Insert___ (
+   newrec_ IN OUT NOCOPY trn_customer_invoice_tab%ROWTYPE,
+   indrec_ IN OUT NOCOPY Indicator_Rec,
+   attr_   IN OUT NOCOPY VARCHAR2 );
+
+PROCEDURE Insert___ (
+   objid_      OUT    VARCHAR2,
+   objversion_ OUT    VARCHAR2,
+   newrec_     IN OUT NOCOPY trn_customer_invoice_tab%ROWTYPE,
+   attr_       IN OUT NOCOPY VARCHAR2 );
+
+PROCEDURE Prepare_New___ (
+   newrec_ IN OUT NOCOPY trn_customer_invoice_tab%ROWTYPE );
+
+PROCEDURE New___ (
+   newrec_ IN OUT NOCOPY trn_customer_invoice_tab%ROWTYPE );
+
+PROCEDURE Check_Update___ (
+   oldrec_ IN     trn_customer_invoice_tab%ROWTYPE,
+   newrec_ IN OUT NOCOPY trn_customer_invoice_tab%ROWTYPE,
+   indrec_ IN OUT NOCOPY Indicator_Rec,
+   attr_   IN OUT NOCOPY VARCHAR2 );
+
+PROCEDURE Update___ (
+   objid_      IN     VARCHAR2,
+   oldrec_     IN     trn_customer_invoice_tab%ROWTYPE,
+   newrec_     IN OUT NOCOPY trn_customer_invoice_tab%ROWTYPE,
+   attr_       IN OUT NOCOPY VARCHAR2,
+   objversion_ IN OUT NOCOPY VARCHAR2,
+   by_keys_    IN     BOOLEAN DEFAULT FALSE );
+
+PROCEDURE Modify___ (
+   newrec_         IN OUT NOCOPY trn_customer_invoice_tab%ROWTYPE,
+   lock_mode_wait_ IN     BOOLEAN DEFAULT TRUE );
+
+PROCEDURE Check_Delete___ (
+   remrec_ IN trn_customer_invoice_tab%ROWTYPE );
+
+PROCEDURE Delete___ (
+   objid_  IN VARCHAR2,
+   remrec_ IN trn_customer_invoice_tab%ROWTYPE );
+
+PROCEDURE Delete___ (
+   remrec_ IN trn_customer_invoice_tab%ROWTYPE );
+
+PROCEDURE Remove___ (
+   remrec_         IN OUT NOCOPY trn_customer_invoice_tab%ROWTYPE,
+   lock_mode_wait_ IN     BOOLEAN DEFAULT TRUE );
+
+FUNCTION Get_Db_Values___ RETURN VARCHAR2 DETERMINISTIC;
+
+FUNCTION Get_Client_Values___ RETURN VARCHAR2 DETERMINISTIC;
+
+FUNCTION Paid_In_Full___ (
+   rec_ IN trn_customer_invoice_tab%ROWTYPE ) RETURN BOOLEAN;
+
+PROCEDURE Finite_State_Set___ (
+   rec_   IN OUT NOCOPY trn_customer_invoice_tab%ROWTYPE,
+   state_ IN     VARCHAR2 );
+
+PROCEDURE Finite_State_Machine___ (
+   rec_   IN OUT NOCOPY trn_customer_invoice_tab%ROWTYPE,
+   event_ IN     VARCHAR2,
+   attr_  IN OUT NOCOPY VARCHAR2 );
+
+PROCEDURE Finite_State_Add_To_Attr___ (
+   rec_  IN     trn_customer_invoice_tab%ROWTYPE,
+   attr_ IN OUT NOCOPY VARCHAR2 );
+
+PROCEDURE Finite_State_Init___ (
+   rec_  IN OUT NOCOPY trn_customer_invoice_tab%ROWTYPE,
+   attr_ IN OUT NOCOPY VARCHAR2 );
+
+FUNCTION Get_Next_Invoice_Id___ RETURN NUMBER;
+
+PROCEDURE Validate_Customer_Invoice___ (
+   newrec_ IN trn_customer_invoice_tab%ROWTYPE );
+
+-----------------------------------------------------------------------------
+-------------------- BASE METHODS -------------------------------------------
+-----------------------------------------------------------------------------
+
+--@IgnoreMissingSysinit
+FUNCTION Get_Key_By_Rowkey (
+   rowkey_ IN VARCHAR2 ) RETURN trn_customer_invoice_tab%ROWTYPE
+IS
+   rec_ trn_customer_invoice_tab%ROWTYPE;
+BEGIN
+   IF (rowkey_ IS NULL) THEN
+      RETURN NULL;
+   END IF;
+   SELECT company_id, branch_id, invoice_id
+      INTO  rec_.company_id, rec_.branch_id, rec_.invoice_id
+      FROM  trn_customer_invoice_tab
+      WHERE rowkey = rowkey_;
+   RETURN rec_;
+EXCEPTION
+   WHEN no_data_found THEN
+      RETURN rec_;
+   WHEN too_many_rows THEN
+      Raise_Too_Many_Rows___(rec_.company_id, rec_.branch_id, rec_.invoice_id, 'Get_Key_By_Rowkey');
+END Get_Key_By_Rowkey;
+
+
+--@IgnoreMissingSysinit
+PROCEDURE Exist (
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ IN NUMBER )
+IS
+BEGIN
+   IF (NOT Check_Exist___(company_id_, branch_id_, invoice_id_)) THEN
+      Raise_Record_Not_Exist___(company_id_, branch_id_, invoice_id_);
+   END IF;
+END Exist;
+
+
+--@IgnoreMissingSysinit
+FUNCTION Exists (
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ IN NUMBER ) RETURN BOOLEAN
+IS
+BEGIN
+   RETURN Check_Exist___(company_id_, branch_id_, invoice_id_);
+END Exists;
+
+
+--@IgnoreMissingSysinit
+PROCEDURE Rowkey_Exist (
+   rowkey_ IN VARCHAR2 )
+IS
+   company_id_ trn_customer_invoice_tab.company_id%TYPE;
+   branch_id_ trn_customer_invoice_tab.branch_id%TYPE;
+   invoice_id_ trn_customer_invoice_tab.invoice_id%TYPE;
+BEGIN
+   IF (rowkey_ IS NULL) THEN
+      RAISE no_data_found;
+   END IF;
+   SELECT company_id, branch_id, invoice_id
+   INTO  company_id_, branch_id_, invoice_id_
+   FROM  trn_customer_invoice_tab
+   WHERE rowkey = rowkey_;
+EXCEPTION
+   WHEN no_data_found THEN
+      Raise_Record_Not_Exist___(company_id_, branch_id_, invoice_id_);
+   WHEN too_many_rows THEN
+      Raise_Too_Many_Rows___(company_id_, branch_id_, invoice_id_, 'Rowkey_Exist___');
+END Rowkey_Exist;
+
+
+--@IgnoreMissingSysinit
+FUNCTION Get_Payment_Terms (
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ IN NUMBER ) RETURN VARCHAR2
+IS
+   temp_ trn_customer_invoice_tab.payment_terms%TYPE;
+BEGIN
+   IF (company_id_ IS NULL OR branch_id_ IS NULL OR invoice_id_ IS NULL) THEN
+      RETURN NULL;
+   END IF;
+   SELECT payment_terms
+      INTO  temp_
+      FROM  trn_customer_invoice_tab
+      WHERE company_id = company_id_
+      AND   branch_id = branch_id_
+      AND   invoice_id = invoice_id_;
+   RETURN Trn_Invoice_Pay_Terms_API.Decode(temp_);
+EXCEPTION
+   WHEN no_data_found THEN
+      RETURN NULL;
+   WHEN too_many_rows THEN
+      Raise_Too_Many_Rows___(company_id_, branch_id_, invoice_id_, 'Get_Payment_Terms');
+END Get_Payment_Terms;
+
+
+--@IgnoreMissingSysinit
+FUNCTION Get_Payment_Terms_Db (
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ IN NUMBER ) RETURN trn_customer_invoice_tab.payment_terms%TYPE
+IS
+   temp_ trn_customer_invoice_tab.payment_terms%TYPE;
+BEGIN
+   IF (company_id_ IS NULL OR branch_id_ IS NULL OR invoice_id_ IS NULL) THEN
+      RETURN NULL;
+   END IF;
+   SELECT payment_terms
+      INTO  temp_
+      FROM  trn_customer_invoice_tab
+      WHERE company_id = company_id_
+      AND   branch_id = branch_id_
+      AND   invoice_id = invoice_id_;
+   RETURN temp_;
+EXCEPTION
+   WHEN no_data_found THEN
+      RETURN NULL;
+   WHEN too_many_rows THEN
+      Raise_Too_Many_Rows___(company_id_, branch_id_, invoice_id_, 'Get_Payment_Terms_Db');
+END Get_Payment_Terms_Db;
+
+
+--@IgnoreMissingSysinit
+FUNCTION Get_Customer_Id (
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ IN NUMBER ) RETURN NUMBER
+IS
+   temp_ trn_customer_invoice_tab.customer_id%TYPE;
+BEGIN
+   IF (company_id_ IS NULL OR branch_id_ IS NULL OR invoice_id_ IS NULL) THEN
+      RETURN NULL;
+   END IF;
+   SELECT customer_id
+      INTO  temp_
+      FROM  trn_customer_invoice_tab
+      WHERE company_id = company_id_
+      AND   branch_id = branch_id_
+      AND   invoice_id = invoice_id_;
+   RETURN temp_;
+EXCEPTION
+   WHEN no_data_found THEN
+      RETURN NULL;
+   WHEN too_many_rows THEN
+      Raise_Too_Many_Rows___(company_id_, branch_id_, invoice_id_, 'Get_Customer_Id');
+END Get_Customer_Id;
+
+
+--@IgnoreMissingSysinit
+FUNCTION Get_Order_Id (
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ IN NUMBER ) RETURN NUMBER
+IS
+   temp_ trn_customer_invoice_tab.order_id%TYPE;
+BEGIN
+   IF (company_id_ IS NULL OR branch_id_ IS NULL OR invoice_id_ IS NULL) THEN
+      RETURN NULL;
+   END IF;
+   SELECT order_id
+      INTO  temp_
+      FROM  trn_customer_invoice_tab
+      WHERE company_id = company_id_
+      AND   branch_id = branch_id_
+      AND   invoice_id = invoice_id_;
+   RETURN temp_;
+EXCEPTION
+   WHEN no_data_found THEN
+      RETURN NULL;
+   WHEN too_many_rows THEN
+      Raise_Too_Many_Rows___(company_id_, branch_id_, invoice_id_, 'Get_Order_Id');
+END Get_Order_Id;
+
+
+--@IgnoreMissingSysinit
+FUNCTION Get_State (
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ IN NUMBER ) RETURN VARCHAR2
+IS
+BEGIN
+   RETURN Finite_State_Decode__(Get_Objstate(company_id_, branch_id_, invoice_id_));
+END Get_State;
+
+
+--@IgnoreMissingSysinit
+FUNCTION Get_Objstate (
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ IN NUMBER ) RETURN VARCHAR2
+IS
+   temp_ trn_customer_invoice_tab.rowstate%TYPE;
+BEGIN
+   IF (company_id_ IS NULL OR branch_id_ IS NULL OR invoice_id_ IS NULL) THEN
+      RETURN NULL;
+   END IF;
+   SELECT rowstate
+      INTO  temp_
+      FROM  trn_customer_invoice_tab
+      WHERE company_id = company_id_
+      AND   branch_id = branch_id_
+      AND   invoice_id = invoice_id_;
+   RETURN temp_;
+EXCEPTION
+   WHEN no_data_found THEN
+      RETURN NULL;
+   WHEN too_many_rows THEN
+      Raise_Too_Many_Rows___(company_id_, branch_id_, invoice_id_, 'Get_Objstate');
+END Get_Objstate;
+
+
+--@IgnoreMissingSysinit
+FUNCTION Get_Objevents (
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ IN NUMBER ) RETURN VARCHAR2
+IS
+BEGIN
+   RETURN Finite_State_Events__(Get_Objstate(company_id_, branch_id_, invoice_id_));
+END Get_Objevents;
+
+
+--@IgnoreMissingSysinit
+FUNCTION Get_By_Rowkey (
+   rowkey_ IN VARCHAR2 ) RETURN Public_Rec
+IS
+   rowrec_ trn_customer_invoice_tab%ROWTYPE;
+BEGIN
+   rowrec_ := Get_Key_By_Rowkey(rowkey_);
+   RETURN Get(rowrec_.company_id, rowrec_.branch_id, rowrec_.invoice_id);
+END Get_By_Rowkey;
+
+
+--@IgnoreMissingSysinit
+FUNCTION Get (
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ IN NUMBER ) RETURN Public_Rec
+IS
+   temp_ Public_Rec;
+BEGIN
+   IF (company_id_ IS NULL OR branch_id_ IS NULL OR invoice_id_ IS NULL) THEN
+      RETURN NULL;
+   END IF;
+   SELECT company_id, branch_id, invoice_id, rowid, rowversion, rowkey, rowstate,
+          payment_terms, 
+          customer_id, 
+          order_id
+      INTO  temp_
+      FROM  trn_customer_invoice_tab
+      WHERE company_id = company_id_
+      AND   branch_id = branch_id_
+      AND   invoice_id = invoice_id_;
+   RETURN temp_;
+EXCEPTION
+   WHEN no_data_found THEN
+      RETURN NULL;
+   WHEN too_many_rows THEN
+      Raise_Too_Many_Rows___(company_id_, branch_id_, invoice_id_, 'Get');
+END Get;
+
+
+--@IgnoreMissingSysinit
+FUNCTION Get_Objkey (
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ IN NUMBER ) RETURN VARCHAR2
+IS
+   rowkey_ trn_customer_invoice_tab.rowkey%TYPE;
+BEGIN
+   IF (company_id_ IS NULL OR branch_id_ IS NULL OR invoice_id_ IS NULL) THEN
+      RETURN NULL;
+   END IF;
+   SELECT rowkey
+      INTO  rowkey_
+      FROM  trn_customer_invoice_tab
+      WHERE company_id = company_id_
+      AND   branch_id = branch_id_
+      AND   invoice_id = invoice_id_;
+   RETURN rowkey_;
+EXCEPTION
+   WHEN no_data_found THEN
+      RETURN NULL;
+   WHEN too_many_rows THEN
+      Raise_Too_Many_Rows___(company_id_, branch_id_, invoice_id_, 'Get_Objkey');
+END Get_Objkey;
+
+
+--@IgnoreMissingSysinit
+PROCEDURE Lock__ (
+   info_       OUT VARCHAR2,
+   objid_      IN  VARCHAR2,
+   objversion_ IN  VARCHAR2 )
+IS
+   dummy_ trn_customer_invoice_tab%ROWTYPE;
+BEGIN
+   dummy_ := Lock_By_Id___(objid_, objversion_);
+   info_ := Client_SYS.Get_All_Info;
+END Lock__;
+
+
+PROCEDURE New__ (
+   info_       OUT    VARCHAR2,
+   objid_      OUT    VARCHAR2,
+   objversion_ OUT    VARCHAR2,
+   attr_       IN OUT NOCOPY VARCHAR2,
+   action_     IN     VARCHAR2 )
+IS
+   newrec_   trn_customer_invoice_tab%ROWTYPE;
+   indrec_   Indicator_Rec;
+BEGIN
+   General_SYS.Init_Method(Trn_Customer_Invoice_API.lu_name_, 'Trn_Customer_Invoice_API', 'New__');
+   IF (action_ = 'PREPARE') THEN
+      Prepare_Insert___(attr_);
+   ELSIF (action_ = 'CHECK') THEN
+      Unpack___(newrec_, indrec_, attr_);
+      Check_Insert___(newrec_, indrec_, attr_);
+   ELSIF (action_ = 'DO') THEN
+      Unpack___(newrec_, indrec_, attr_);
+      Check_Insert___(newrec_, indrec_, attr_);
+      Insert___(objid_, objversion_, newrec_, attr_);
+   END IF;
+   info_ := Client_SYS.Get_All_Info;
+END New__;
+
+
+PROCEDURE Modify__ (
+   info_       OUT    VARCHAR2,
+   objid_      IN     VARCHAR2,
+   objversion_ IN OUT NOCOPY VARCHAR2,
+   attr_       IN OUT NOCOPY VARCHAR2,
+   action_     IN     VARCHAR2 )
+IS
+   oldrec_   trn_customer_invoice_tab%ROWTYPE;
+   newrec_   trn_customer_invoice_tab%ROWTYPE;
+   indrec_   Indicator_Rec;
+BEGIN
+   General_SYS.Init_Method(Trn_Customer_Invoice_API.lu_name_, 'Trn_Customer_Invoice_API', 'Modify__');
+   IF (action_ = 'CHECK') THEN
+      oldrec_ := Get_Object_By_Id___(objid_);
+      newrec_ := oldrec_;
+      Unpack___(newrec_, indrec_, attr_);
+      Check_Update___(oldrec_, newrec_, indrec_, attr_);
+   ELSIF (action_ = 'DO') THEN
+      oldrec_ := Lock_By_Id___(objid_, objversion_);
+      newrec_ := oldrec_;
+      Unpack___(newrec_, indrec_, attr_);
+      Check_Update___(oldrec_, newrec_, indrec_, attr_);
+      Update___(objid_, oldrec_, newrec_, attr_, objversion_);
+   END IF;
+   info_ := Client_SYS.Get_All_Info;
+END Modify__;
+
+
+PROCEDURE Remove__ (
+   info_       OUT VARCHAR2,
+   objid_      IN  VARCHAR2,
+   objversion_ IN  VARCHAR2,
+   action_     IN  VARCHAR2 )
+IS
+   remrec_ trn_customer_invoice_tab%ROWTYPE;
+BEGIN
+   General_SYS.Init_Method(Trn_Customer_Invoice_API.lu_name_, 'Trn_Customer_Invoice_API', 'Remove__');
+   IF (action_ = 'CHECK') THEN
+      remrec_ := Get_Object_By_Id___(objid_);
+      Check_Delete___(remrec_);
+   ELSIF (action_ = 'DO') THEN
+      remrec_ := Lock_By_Id___(objid_, objversion_);
+      Check_Delete___(remrec_);
+      Delete___(objid_, remrec_);
+   END IF;
+   info_ := Client_SYS.Get_All_Info;
+END Remove__;
+
+
+FUNCTION Key_Message___ (
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ IN NUMBER ) RETURN VARCHAR2
+IS
+   msg_ VARCHAR2(4000) := Message_SYS.Construct('ERROR_KEY');
+BEGIN
+   Message_SYS.Add_Attribute(msg_, 'COMPANY_ID', company_id_);
+   Message_SYS.Add_Attribute(msg_, 'BRANCH_ID', branch_id_);
+   Message_SYS.Add_Attribute(msg_, 'INVOICE_ID', invoice_id_);
+   RETURN msg_;
+END Key_Message___;
+
+
+FUNCTION Formatted_Key___ (
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ IN NUMBER ) RETURN VARCHAR2
+IS
+   formatted_key_ VARCHAR2(4000) := Language_SYS.Translate_Item_Prompt_(lu_name_, 'COMPANY_ID', Fnd_Session_API.Get_Language) || ': ' || company_id_ || ', ' ||
+                                    Language_SYS.Translate_Item_Prompt_(lu_name_, 'BRANCH_ID', Fnd_Session_API.Get_Language) || ': ' || branch_id_ || ', ' ||
+                                    Language_SYS.Translate_Item_Prompt_(lu_name_, 'INVOICE_ID', Fnd_Session_API.Get_Language) || ': ' || invoice_id_;
+BEGIN
+   RETURN formatted_key_;
+END Formatted_Key___;
+
+
+PROCEDURE Raise_Too_Many_Rows___ (
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ IN NUMBER,
+   methodname_ IN VARCHAR2 )
+IS
+BEGIN
+   Error_SYS.Set_Key_Values(Key_Message___(company_id_, branch_id_, invoice_id_),
+                            Formatted_Key___(company_id_, branch_id_, invoice_id_));
+   Error_SYS.Fnd_Too_Many_Rows(Trn_Customer_Invoice_API.lu_name_, NULL, methodname_);
+END Raise_Too_Many_Rows___;
+
+
+PROCEDURE Raise_Record_Not_Exist___ (
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ IN NUMBER )
+IS
+BEGIN
+   Error_SYS.Set_Key_Values(Key_Message___(company_id_, branch_id_, invoice_id_),
+                            Formatted_Key___(company_id_, branch_id_, invoice_id_));
+   Error_SYS.Fnd_Record_Not_Exist(Trn_Customer_Invoice_API.lu_name_);
+END Raise_Record_Not_Exist___;
+
+
+PROCEDURE Raise_Record_Exist___ (
+   rec_ IN trn_customer_invoice_tab%ROWTYPE )
+IS
+BEGIN
+   Error_SYS.Set_Key_Values(Key_Message___(rec_.company_id, rec_.branch_id, rec_.invoice_id),
+                            Formatted_Key___(rec_.company_id, rec_.branch_id, rec_.invoice_id));
+   Error_SYS.Fnd_Record_Exist(Trn_Customer_Invoice_API.lu_name_);
+END Raise_Record_Exist___;
+
+
+PROCEDURE Raise_Constraint_Violated___ (
+   rec_ IN trn_customer_invoice_tab%ROWTYPE,
+   constraint_ IN VARCHAR2 )
+IS
+BEGIN
+   Error_SYS.Fnd_Record_Exist(Trn_Customer_Invoice_API.lu_name_);
+END Raise_Constraint_Violated___;
+
+
+PROCEDURE Raise_Item_Format___ (
+   name_ IN VARCHAR2,
+   value_ IN VARCHAR2 )
+IS
+BEGIN
+   Error_SYS.Fnd_Item_Format(Trn_Customer_Invoice_API.lu_name_, name_, value_);
+END Raise_Item_Format___;
+
+
+PROCEDURE Raise_Record_Modified___ (
+   rec_ IN trn_customer_invoice_tab%ROWTYPE )
+IS
+BEGIN
+   Error_SYS.Set_Key_Values(Key_Message___(rec_.company_id, rec_.branch_id, rec_.invoice_id),
+                            Formatted_Key___(rec_.company_id, rec_.branch_id, rec_.invoice_id));
+   Error_SYS.Fnd_Record_Modified(Trn_Customer_Invoice_API.lu_name_);
+END Raise_Record_Modified___;
+
+
+PROCEDURE Raise_Record_Locked___ (
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ IN NUMBER )
+IS
+BEGIN
+   Error_SYS.Set_Key_Values(Key_Message___(company_id_, branch_id_, invoice_id_),
+                            Formatted_Key___(company_id_, branch_id_, invoice_id_));
+   Error_SYS.Fnd_Record_Locked(Trn_Customer_Invoice_API.lu_name_);
+END Raise_Record_Locked___;
+
+
+PROCEDURE Raise_Record_Removed___ (
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ IN NUMBER )
+IS
+BEGIN
+   Error_SYS.Set_Key_Values(Key_Message___(company_id_, branch_id_, invoice_id_),
+                            Formatted_Key___(company_id_, branch_id_, invoice_id_));
+   Error_SYS.Fnd_Record_Removed(Trn_Customer_Invoice_API.lu_name_);
+END Raise_Record_Removed___;
+
+
+FUNCTION Lock_By_Id___ (
+   objid_      IN VARCHAR2,
+   objversion_ IN VARCHAR2 ) RETURN trn_customer_invoice_tab%ROWTYPE
+IS
+   row_locked  EXCEPTION;
+   PRAGMA      EXCEPTION_INIT(row_locked, -0054);
+   rec_        trn_customer_invoice_tab%ROWTYPE;
+BEGIN
+   SELECT *
+      INTO  rec_
+      FROM  trn_customer_invoice_tab
+      WHERE rowid = objid_
+      AND    to_char(rowversion,'YYYYMMDDHH24MISS') = objversion_
+      FOR UPDATE NOWAIT;
+   RETURN rec_;
+EXCEPTION
+   WHEN row_locked THEN
+      Error_SYS.Fnd_Record_Locked(lu_name_);
+   WHEN too_many_rows THEN
+      Raise_Too_Many_Rows___(NULL, NULL, NULL, 'Lock_By_Id___');
+   WHEN no_data_found THEN
+      BEGIN
+         SELECT *
+            INTO  rec_
+            FROM  trn_customer_invoice_tab
+            WHERE rowid = objid_;
+         Raise_Record_Modified___(rec_);
+      EXCEPTION
+         WHEN no_data_found THEN
+            Error_SYS.Fnd_Record_Removed(lu_name_);
+         WHEN too_many_rows THEN
+            Raise_Too_Many_Rows___(NULL, NULL, NULL, 'Lock_By_Id___');
+      END;
+END Lock_By_Id___;
+
+
+FUNCTION Lock_By_Keys___ (
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ IN NUMBER) RETURN trn_customer_invoice_tab%ROWTYPE
+IS
+   rec_        trn_customer_invoice_tab%ROWTYPE;
+BEGIN
+   BEGIN
+      SELECT *
+         INTO  rec_
+         FROM  trn_customer_invoice_tab
+         WHERE company_id = company_id_
+         AND   branch_id = branch_id_
+         AND   invoice_id = invoice_id_
+         FOR UPDATE;
+      RETURN rec_;
+   EXCEPTION
+      WHEN no_data_found THEN
+         Raise_Record_Removed___(company_id_, branch_id_, invoice_id_);
+      WHEN too_many_rows THEN
+         Raise_Too_Many_Rows___(company_id_, branch_id_, invoice_id_, 'Lock_By_Keys___');
+   END;
+END Lock_By_Keys___;
+
+
+FUNCTION Lock_By_Keys_Nowait___ (
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ IN NUMBER) RETURN trn_customer_invoice_tab%ROWTYPE
+IS
+   row_locked  EXCEPTION;
+   PRAGMA      EXCEPTION_INIT(row_locked, -0054);
+   rec_        trn_customer_invoice_tab%ROWTYPE;
+BEGIN
+   BEGIN
+      SELECT *
+         INTO  rec_
+         FROM  trn_customer_invoice_tab
+         WHERE company_id = company_id_
+         AND   branch_id = branch_id_
+         AND   invoice_id = invoice_id_
+         FOR UPDATE NOWAIT;
+      RETURN rec_;
+   EXCEPTION
+      WHEN row_locked THEN
+         Raise_Record_Locked___(company_id_, branch_id_, invoice_id_);
+      WHEN too_many_rows THEN
+         Raise_Too_Many_Rows___(company_id_, branch_id_, invoice_id_, 'Lock_By_Keys___');
+      WHEN no_data_found THEN
+         Raise_Record_Removed___(company_id_, branch_id_, invoice_id_);
+   END;
+END Lock_By_Keys_Nowait___;
+
+
+FUNCTION Get_Object_By_Id___ (
+   objid_ IN VARCHAR2 ) RETURN trn_customer_invoice_tab%ROWTYPE
+IS
+   lu_rec_ trn_customer_invoice_tab%ROWTYPE;
+BEGIN
+   SELECT *
+      INTO  lu_rec_
+      FROM  trn_customer_invoice_tab
+      WHERE rowid = objid_;
+   RETURN lu_rec_;
+EXCEPTION
+   WHEN no_data_found THEN
+      Error_SYS.Fnd_Record_Removed(lu_name_);
+   WHEN too_many_rows THEN
+      Raise_Too_Many_Rows___(NULL, NULL, NULL, 'Get_Object_By_Id___');
+END Get_Object_By_Id___;
+
+
+--@IgnoreMissingSysinit
+FUNCTION Get_Object_By_Keys___ (
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ IN NUMBER ) RETURN trn_customer_invoice_tab%ROWTYPE
+IS
+   lu_rec_ trn_customer_invoice_tab%ROWTYPE;
+BEGIN
+   SELECT *
+      INTO  lu_rec_
+      FROM  trn_customer_invoice_tab
+      WHERE company_id = company_id_
+      AND   branch_id = branch_id_
+      AND   invoice_id = invoice_id_;
+   RETURN lu_rec_;
+EXCEPTION
+   WHEN no_data_found THEN
+      RETURN lu_rec_;
+   WHEN too_many_rows THEN
+      Raise_Too_Many_Rows___(company_id_, branch_id_, invoice_id_, 'Get_Object_By_Keys___');
+END Get_Object_By_Keys___;
+
+
+--@IgnoreMissingSysinit
+FUNCTION Check_Exist___ (
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ IN NUMBER ) RETURN BOOLEAN
+IS
+   dummy_ NUMBER;
+BEGIN
+   IF (company_id_ IS NULL OR branch_id_ IS NULL OR invoice_id_ IS NULL) THEN
+      RETURN FALSE;
+   END IF;
+   SELECT 1
+      INTO  dummy_
+      FROM  trn_customer_invoice_tab
+      WHERE company_id = company_id_
+      AND   branch_id = branch_id_
+      AND   invoice_id = invoice_id_;
+   RETURN TRUE;
+EXCEPTION
+   WHEN no_data_found THEN
+      RETURN FALSE;
+   WHEN too_many_rows THEN
+      Raise_Too_Many_Rows___(company_id_, branch_id_, invoice_id_, 'Check_Exist___');
+END Check_Exist___;
+
+
+PROCEDURE Get_Version_By_Id___ (
+   objid_      IN     VARCHAR2,
+   objversion_ IN OUT NOCOPY VARCHAR2 )
+IS
+BEGIN
+   SELECT to_char(rowversion,'YYYYMMDDHH24MISS')
+      INTO  objversion_
+      FROM  trn_customer_invoice_tab
+      WHERE rowid = objid_;
+EXCEPTION
+   WHEN no_data_found THEN
+      objversion_ := NULL;
+   WHEN too_many_rows THEN
+      Raise_Too_Many_Rows___(NULL, NULL, NULL, 'Get_Version_By_Id___');
+END Get_Version_By_Id___;
+
+
+PROCEDURE Get_Id_Version_By_Keys___ (
+   objid_      IN OUT NOCOPY VARCHAR2,
+   objversion_ IN OUT NOCOPY VARCHAR2,
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ IN NUMBER )
+IS
+BEGIN
+   SELECT rowid, to_char(rowversion,'YYYYMMDDHH24MISS')
+      INTO  objid_, objversion_
+      FROM  trn_customer_invoice_tab
+      WHERE company_id = company_id_
+      AND   branch_id = branch_id_
+      AND   invoice_id = invoice_id_;
+EXCEPTION
+   WHEN no_data_found THEN
+      objid_      := NULL;
+      objversion_ := NULL;
+   WHEN too_many_rows THEN
+      Raise_Too_Many_Rows___(company_id_, branch_id_, invoice_id_, 'Get_Id_Version_By_Keys___');
+END Get_Id_Version_By_Keys___;
+
+
+PROCEDURE Unpack___ (
+   newrec_   IN OUT NOCOPY trn_customer_invoice_tab%ROWTYPE,
+   indrec_   IN OUT NOCOPY Indicator_Rec,
+   attr_     IN OUT NOCOPY VARCHAR2 )
+IS
+   ptr_   NUMBER;
+   name_  VARCHAR2(30);
+   value_ VARCHAR2(32000);
+   msg_   VARCHAR2(32000);
+BEGIN
+   Reset_Indicator_Rec___(indrec_);
+   Client_SYS.Clear_Attr(msg_);
+   ptr_ := NULL;
+   WHILE (Client_SYS.Get_Next_From_Attr(attr_, ptr_, name_, value_)) LOOP
+      CASE name_
+      WHEN ('COMPANY_ID') THEN
+         newrec_.company_id := value_;
+         indrec_.company_id := TRUE;
+      WHEN ('BRANCH_ID') THEN
+         newrec_.branch_id := value_;
+         indrec_.branch_id := TRUE;
+      WHEN ('INVOICE_ID') THEN
+         newrec_.invoice_id := Client_SYS.Attr_Value_To_Number(value_);
+         indrec_.invoice_id := TRUE;
+      WHEN ('INVOICE_DATE') THEN
+         newrec_.invoice_date := Client_SYS.Attr_Value_To_Date(value_);
+         indrec_.invoice_date := TRUE;
+      WHEN ('DUE_DATE') THEN
+         newrec_.due_date := Client_SYS.Attr_Value_To_Date(value_);
+         indrec_.due_date := TRUE;
+      WHEN ('INVOICE_AMOUNT') THEN
+         newrec_.invoice_amount := Client_SYS.Attr_Value_To_Number(value_);
+         indrec_.invoice_amount := TRUE;
+      WHEN ('COMMENTS') THEN
+         newrec_.comments := value_;
+         indrec_.comments := TRUE;
+      WHEN ('UNPAID') THEN
+         newrec_.unpaid := Client_SYS.Attr_Value_To_Number(value_);
+         indrec_.unpaid := TRUE;
+      WHEN ('PAYMENT_TERMS') THEN
+         newrec_.payment_terms := Trn_Invoice_Pay_Terms_API.Encode(value_);
+         IF (value_ IS NOT NULL AND newrec_.payment_terms IS NULL) THEN
+            RAISE value_error;
+         END IF;
+         indrec_.payment_terms := TRUE;
+      WHEN ('PAYMENT_TERMS_DB') THEN
+         newrec_.payment_terms := value_;
+         indrec_.payment_terms := TRUE;
+      WHEN ('CUSTOMER_ID') THEN
+         newrec_.customer_id := Client_SYS.Attr_Value_To_Number(value_);
+         indrec_.customer_id := TRUE;
+      WHEN ('ORDER_ID') THEN
+         newrec_.order_id := Client_SYS.Attr_Value_To_Number(value_);
+         indrec_.order_id := TRUE;
+      ELSE
+         Client_SYS.Add_To_Attr(name_, value_, msg_);
+      END CASE;
+   END LOOP;
+   attr_ := msg_;
+EXCEPTION
+   WHEN value_error THEN
+      Raise_Item_Format___(name_, value_);
+END Unpack___;
+
+
+FUNCTION Pack___ (
+   rec_ IN trn_customer_invoice_tab%ROWTYPE ) RETURN VARCHAR2
+IS
+   attr_ VARCHAR2(32000);
+BEGIN
+   Client_SYS.Clear_Attr(attr_);
+   IF (rec_.company_id IS NOT NULL) THEN
+      Client_SYS.Add_To_Attr('COMPANY_ID', rec_.company_id, attr_);
+   END IF;
+   IF (rec_.branch_id IS NOT NULL) THEN
+      Client_SYS.Add_To_Attr('BRANCH_ID', rec_.branch_id, attr_);
+   END IF;
+   IF (rec_.invoice_id IS NOT NULL) THEN
+      Client_SYS.Add_To_Attr('INVOICE_ID', rec_.invoice_id, attr_);
+   END IF;
+   IF (rec_.invoice_date IS NOT NULL) THEN
+      Client_SYS.Add_To_Attr('INVOICE_DATE', rec_.invoice_date, attr_);
+   END IF;
+   IF (rec_.due_date IS NOT NULL) THEN
+      Client_SYS.Add_To_Attr('DUE_DATE', rec_.due_date, attr_);
+   END IF;
+   IF (rec_.invoice_amount IS NOT NULL) THEN
+      Client_SYS.Add_To_Attr('INVOICE_AMOUNT', rec_.invoice_amount, attr_);
+   END IF;
+   IF (rec_.comments IS NOT NULL) THEN
+      Client_SYS.Add_To_Attr('COMMENTS', rec_.comments, attr_);
+   END IF;
+   IF (rec_.unpaid IS NOT NULL) THEN
+      Client_SYS.Add_To_Attr('UNPAID', rec_.unpaid, attr_);
+   END IF;
+   IF (rec_.payment_terms IS NOT NULL) THEN
+      Client_SYS.Add_To_Attr('PAYMENT_TERMS', Trn_Invoice_Pay_Terms_API.Decode(rec_.payment_terms), attr_);
+      Client_SYS.Add_To_Attr('PAYMENT_TERMS_DB', rec_.payment_terms, attr_);
+   END IF;
+   IF (rec_.customer_id IS NOT NULL) THEN
+      Client_SYS.Add_To_Attr('CUSTOMER_ID', rec_.customer_id, attr_);
+   END IF;
+   IF (rec_.order_id IS NOT NULL) THEN
+      Client_SYS.Add_To_Attr('ORDER_ID', rec_.order_id, attr_);
+   END IF;
+   RETURN attr_;
+END Pack___;
+
+
+FUNCTION Pack___ (
+   rec_ IN trn_customer_invoice_tab%ROWTYPE,
+   indrec_ IN Indicator_Rec ) RETURN VARCHAR2
+IS
+   attr_ VARCHAR2(32000);
+BEGIN
+   Client_SYS.Clear_Attr(attr_);
+   IF (indrec_.company_id) THEN
+      Client_SYS.Add_To_Attr('COMPANY_ID', rec_.company_id, attr_);
+   END IF;
+   IF (indrec_.branch_id) THEN
+      Client_SYS.Add_To_Attr('BRANCH_ID', rec_.branch_id, attr_);
+   END IF;
+   IF (indrec_.invoice_id) THEN
+      Client_SYS.Add_To_Attr('INVOICE_ID', rec_.invoice_id, attr_);
+   END IF;
+   IF (indrec_.invoice_date) THEN
+      Client_SYS.Add_To_Attr('INVOICE_DATE', rec_.invoice_date, attr_);
+   END IF;
+   IF (indrec_.due_date) THEN
+      Client_SYS.Add_To_Attr('DUE_DATE', rec_.due_date, attr_);
+   END IF;
+   IF (indrec_.invoice_amount) THEN
+      Client_SYS.Add_To_Attr('INVOICE_AMOUNT', rec_.invoice_amount, attr_);
+   END IF;
+   IF (indrec_.comments) THEN
+      Client_SYS.Add_To_Attr('COMMENTS', rec_.comments, attr_);
+   END IF;
+   IF (indrec_.unpaid) THEN
+      Client_SYS.Add_To_Attr('UNPAID', rec_.unpaid, attr_);
+   END IF;
+   IF (indrec_.payment_terms) THEN
+      Client_SYS.Add_To_Attr('PAYMENT_TERMS', Trn_Invoice_Pay_Terms_API.Decode(rec_.payment_terms), attr_);
+      Client_SYS.Add_To_Attr('PAYMENT_TERMS_DB', rec_.payment_terms, attr_);
+   END IF;
+   IF (indrec_.customer_id) THEN
+      Client_SYS.Add_To_Attr('CUSTOMER_ID', rec_.customer_id, attr_);
+   END IF;
+   IF (indrec_.order_id) THEN
+      Client_SYS.Add_To_Attr('ORDER_ID', rec_.order_id, attr_);
+   END IF;
+   RETURN attr_;
+END Pack___;
+
+
+FUNCTION Pack_Table___ (
+   rec_ IN trn_customer_invoice_tab%ROWTYPE ) RETURN VARCHAR2
+IS
+   attr_ VARCHAR2(32000);
+BEGIN
+   Client_SYS.Clear_Attr(attr_);
+   Client_SYS.Add_To_Attr('COMPANY_ID', rec_.company_id, attr_);
+   Client_SYS.Add_To_Attr('BRANCH_ID', rec_.branch_id, attr_);
+   Client_SYS.Add_To_Attr('INVOICE_ID', rec_.invoice_id, attr_);
+   Client_SYS.Add_To_Attr('INVOICE_DATE', rec_.invoice_date, attr_);
+   Client_SYS.Add_To_Attr('DUE_DATE', rec_.due_date, attr_);
+   Client_SYS.Add_To_Attr('INVOICE_AMOUNT', rec_.invoice_amount, attr_);
+   Client_SYS.Add_To_Attr('COMMENTS', rec_.comments, attr_);
+   Client_SYS.Add_To_Attr('UNPAID', rec_.unpaid, attr_);
+   Client_SYS.Add_To_Attr('PAYMENT_TERMS', rec_.payment_terms, attr_);
+   Client_SYS.Add_To_Attr('CUSTOMER_ID', rec_.customer_id, attr_);
+   Client_SYS.Add_To_Attr('ORDER_ID', rec_.order_id, attr_);
+   Client_SYS.Add_To_Attr('ROWKEY', rec_.rowkey, attr_);
+   Client_SYS.Add_To_Attr('ROWSTATE', rec_.rowstate, attr_);
+   RETURN attr_;
+END Pack_Table___;
+
+
+FUNCTION Public_To_Table___ (
+   public_ IN Public_Rec ) RETURN trn_customer_invoice_tab%ROWTYPE
+IS
+   rec_ trn_customer_invoice_tab%ROWTYPE;
+BEGIN
+   rec_.rowversion                     := public_.rowversion;
+   rec_.rowkey                         := public_.rowkey;
+   rec_.rowstate                       := public_.rowstate;
+   rec_.company_id                     := public_.company_id;
+   rec_.branch_id                      := public_.branch_id;
+   rec_.invoice_id                     := public_.invoice_id;
+   rec_.payment_terms                  := public_.payment_terms;
+   rec_.customer_id                    := public_.customer_id;
+   rec_.order_id                       := public_.order_id;
+   RETURN rec_;
+END Public_To_Table___;
+
+
+FUNCTION Table_To_Public___ (
+   rec_ IN trn_customer_invoice_tab%ROWTYPE ) RETURN Public_Rec
+IS
+   public_ Public_Rec;
+BEGIN
+   public_.rowversion                     := rec_.rowversion;
+   public_.rowkey                         := rec_.rowkey;
+   public_.rowstate                       := rec_.rowstate;
+   public_.company_id                     := rec_.company_id;
+   public_.branch_id                      := rec_.branch_id;
+   public_.invoice_id                     := rec_.invoice_id;
+   public_.payment_terms                  := rec_.payment_terms;
+   public_.customer_id                    := rec_.customer_id;
+   public_.order_id                       := rec_.order_id;
+   RETURN public_;
+END Table_To_Public___;
+
+
+PROCEDURE Reset_Indicator_Rec___ (
+   indrec_ IN OUT NOCOPY Indicator_Rec )
+IS
+   empty_indrec_ Indicator_Rec;
+BEGIN
+   indrec_ := empty_indrec_;
+END Reset_Indicator_Rec___;
+
+
+FUNCTION Get_Indicator_Rec___ (
+   rec_ IN trn_customer_invoice_tab%ROWTYPE ) RETURN Indicator_Rec
+IS
+   indrec_ Indicator_Rec;
+BEGIN
+   indrec_.company_id := rec_.company_id IS NOT NULL;
+   indrec_.branch_id := rec_.branch_id IS NOT NULL;
+   indrec_.invoice_id := rec_.invoice_id IS NOT NULL;
+   indrec_.invoice_date := rec_.invoice_date IS NOT NULL;
+   indrec_.due_date := rec_.due_date IS NOT NULL;
+   indrec_.invoice_amount := rec_.invoice_amount IS NOT NULL;
+   indrec_.comments := rec_.comments IS NOT NULL;
+   indrec_.unpaid := rec_.unpaid IS NOT NULL;
+   indrec_.payment_terms := rec_.payment_terms IS NOT NULL;
+   indrec_.customer_id := rec_.customer_id IS NOT NULL;
+   indrec_.order_id := rec_.order_id IS NOT NULL;
+   RETURN indrec_;
+END Get_Indicator_Rec___;
+
+
+FUNCTION Get_Indicator_Rec___ (
+   oldrec_ IN trn_customer_invoice_tab%ROWTYPE,
+   newrec_ IN trn_customer_invoice_tab%ROWTYPE ) RETURN Indicator_Rec
+IS
+   indrec_ Indicator_Rec;
+BEGIN
+   indrec_.company_id := Validate_SYS.Is_Changed(oldrec_.company_id, newrec_.company_id);
+   indrec_.branch_id := Validate_SYS.Is_Changed(oldrec_.branch_id, newrec_.branch_id);
+   indrec_.invoice_id := Validate_SYS.Is_Changed(oldrec_.invoice_id, newrec_.invoice_id);
+   indrec_.invoice_date := Validate_SYS.Is_Changed(oldrec_.invoice_date, newrec_.invoice_date);
+   indrec_.due_date := Validate_SYS.Is_Changed(oldrec_.due_date, newrec_.due_date);
+   indrec_.invoice_amount := Validate_SYS.Is_Changed(oldrec_.invoice_amount, newrec_.invoice_amount);
+   indrec_.comments := Validate_SYS.Is_Changed(oldrec_.comments, newrec_.comments);
+   indrec_.unpaid := Validate_SYS.Is_Changed(oldrec_.unpaid, newrec_.unpaid);
+   indrec_.payment_terms := Validate_SYS.Is_Changed(oldrec_.payment_terms, newrec_.payment_terms);
+   indrec_.customer_id := Validate_SYS.Is_Changed(oldrec_.customer_id, newrec_.customer_id);
+   indrec_.order_id := Validate_SYS.Is_Changed(oldrec_.order_id, newrec_.order_id);
+   RETURN indrec_;
+END Get_Indicator_Rec___;
+
+
+PROCEDURE Check_Insert___ (
+   newrec_ IN OUT NOCOPY trn_customer_invoice_tab%ROWTYPE,
+   indrec_ IN OUT NOCOPY Indicator_Rec,
+   attr_   IN OUT NOCOPY VARCHAR2 )
+IS
+   oldrec_ trn_customer_invoice_tab%ROWTYPE;
+BEGIN
+   Check_Common___(oldrec_, newrec_, indrec_, attr_);
+END Check_Insert___;
+
+
+PROCEDURE Prepare_New___ (
+   newrec_ IN OUT NOCOPY trn_customer_invoice_tab%ROWTYPE )
+IS
+   attr_    VARCHAR2(32000);
+   indrec_  Indicator_Rec;
+BEGIN
+   attr_ := Pack___(newrec_);
+   Prepare_Insert___(attr_);
+   Unpack___(newrec_, indrec_, attr_);
+END Prepare_New___;
+
+
+PROCEDURE New___ (
+   newrec_ IN OUT NOCOPY trn_customer_invoice_tab%ROWTYPE )
+IS
+   objid_         VARCHAR2(20);
+   objversion_    VARCHAR2(100);
+   attr_          VARCHAR2(32000);
+   indrec_        Indicator_Rec;
+BEGIN
+   indrec_ := Get_Indicator_Rec___(newrec_);
+   Check_Insert___(newrec_, indrec_, attr_);
+   Insert___(objid_, objversion_, newrec_, attr_);
+END New___;
+
+
+PROCEDURE Check_Update___ (
+   oldrec_ IN     trn_customer_invoice_tab%ROWTYPE,
+   newrec_ IN OUT NOCOPY trn_customer_invoice_tab%ROWTYPE,
+   indrec_ IN OUT NOCOPY Indicator_Rec,
+   attr_   IN OUT NOCOPY VARCHAR2 )
+IS
+BEGIN
+   Validate_SYS.Item_Update(lu_name_, 'COMPANY_ID', indrec_.company_id);
+   Validate_SYS.Item_Update(lu_name_, 'BRANCH_ID', indrec_.branch_id);
+   Validate_SYS.Item_Update(lu_name_, 'INVOICE_ID', indrec_.invoice_id);
+   Check_Common___(oldrec_, newrec_, indrec_, attr_);
+END Check_Update___;
+
+
+PROCEDURE Update___ (
+   objid_      IN     VARCHAR2,
+   oldrec_     IN     trn_customer_invoice_tab%ROWTYPE,
+   newrec_     IN OUT NOCOPY trn_customer_invoice_tab%ROWTYPE,
+   attr_       IN OUT NOCOPY VARCHAR2,
+   objversion_ IN OUT NOCOPY VARCHAR2,
+   by_keys_    IN     BOOLEAN DEFAULT FALSE )
+IS
+   value_too_large  EXCEPTION;
+   PRAGMA           EXCEPTION_INIT(value_too_large, -12899);
+BEGIN
+   newrec_.rowversion := sysdate;
+   IF by_keys_ THEN
+      UPDATE trn_customer_invoice_tab
+         SET ROW = newrec_
+         WHERE company_id = newrec_.company_id
+         AND   branch_id = newrec_.branch_id
+         AND   invoice_id = newrec_.invoice_id;
+   ELSE
+      UPDATE trn_customer_invoice_tab
+         SET ROW = newrec_
+         WHERE rowid = objid_;
+   END IF;
+   objversion_ := to_char(newrec_.rowversion,'YYYYMMDDHH24MISS');
+EXCEPTION
+   WHEN dup_val_on_index THEN
+      DECLARE
+         constraint_ VARCHAR2(4000) := Utility_SYS.Get_Constraint_From_Error_Msg(sqlerrm);
+      BEGIN
+         IF (constraint_ = 'TRN_CUSTOMER_INVOICE_RK') THEN
+            Error_SYS.Fnd_Rowkey_Exist(Trn_Customer_Invoice_API.lu_name_, newrec_.rowkey);
+         ELSIF (constraint_ = 'TRN_CUSTOMER_INVOICE_PK') THEN
+            Raise_Record_Exist___(newrec_);
+         ELSE
+            Raise_Constraint_Violated___(newrec_, constraint_);
+         END IF;
+      END;
+   WHEN value_too_large THEN
+      Error_SYS.Fnd_Item_Length(lu_name_, sqlerrm);
+END Update___;
+
+
+PROCEDURE Modify___ (
+   newrec_         IN OUT NOCOPY trn_customer_invoice_tab%ROWTYPE,
+   lock_mode_wait_ IN     BOOLEAN DEFAULT TRUE )
+IS
+   objid_      VARCHAR2(20);
+   objversion_ VARCHAR2(100);
+   attr_       VARCHAR2(32000);
+   indrec_     Indicator_rec;
+   oldrec_     trn_customer_invoice_tab%ROWTYPE;
+BEGIN
+   IF (lock_mode_wait_) THEN
+      oldrec_ := Lock_By_Keys___(newrec_.company_id, newrec_.branch_id, newrec_.invoice_id);
+   ELSE
+      oldrec_ := Lock_By_Keys_Nowait___(newrec_.company_id, newrec_.branch_id, newrec_.invoice_id);
+   END IF;
+   indrec_ := Get_Indicator_Rec___(oldrec_, newrec_);
+   Check_Update___(oldrec_, newrec_, indrec_, attr_);
+   Update___(objid_, oldrec_, newrec_, attr_, objversion_, TRUE);
+END Modify___;
+
+
+PROCEDURE Check_Delete___ (
+   remrec_ IN trn_customer_invoice_tab%ROWTYPE )
+IS
+   key_ VARCHAR2(2000);
+BEGIN
+   key_ := remrec_.company_id||'^'||remrec_.branch_id||'^'||remrec_.invoice_id||'^';
+   Reference_SYS.Check_Restricted_Delete(lu_name_, key_);
+END Check_Delete___;
+
+
+PROCEDURE Delete___ (
+   objid_  IN VARCHAR2,
+   remrec_ IN trn_customer_invoice_tab%ROWTYPE )
+IS
+   key_ VARCHAR2(2000);
+BEGIN
+   key_ := remrec_.company_id||'^'||remrec_.branch_id||'^'||remrec_.invoice_id||'^';
+   Reference_SYS.Do_Cascade_Delete(lu_name_, key_);
+   IF (objid_ IS NOT NULL) THEN
+      DELETE
+         FROM  trn_customer_invoice_tab
+         WHERE rowid = objid_;
+   ELSE
+      DELETE
+         FROM  trn_customer_invoice_tab
+         WHERE company_id = remrec_.company_id
+         AND   branch_id = remrec_.branch_id
+         AND   invoice_id = remrec_.invoice_id;
+   END IF;
+END Delete___;
+
+
+PROCEDURE Delete___ (
+   remrec_ IN trn_customer_invoice_tab%ROWTYPE )
+IS
+BEGIN
+   Delete___(NULL, remrec_);
+END Delete___;
+
+
+PROCEDURE Remove___ (
+   remrec_         IN OUT NOCOPY trn_customer_invoice_tab%ROWTYPE,
+   lock_mode_wait_ IN     BOOLEAN DEFAULT TRUE )
+IS
+   oldrec_     trn_customer_invoice_tab%ROWTYPE;
+BEGIN
+   IF (lock_mode_wait_) THEN
+      oldrec_ := Lock_By_Keys___(remrec_.company_id, remrec_.branch_id, remrec_.invoice_id);
+   ELSE
+      oldrec_ := Lock_By_Keys_Nowait___(remrec_.company_id, remrec_.branch_id, remrec_.invoice_id);
+   END IF;
+   Check_Delete___(oldrec_);
+   Delete___(NULL, oldrec_);
+END Remove___;
+
+-----------------------------------------------------------------------------
+-------------------- LU SPECIFIC PUBLIC METHODS -----------------------------
+-----------------------------------------------------------------------------
+
+PROCEDURE Create_Invoice (
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ OUT NUMBER,
+   invoice_amount_ IN NUMBER,
+   customer_id_ IN NUMBER,
+   order_id_ IN NUMBER )
+IS
+   rec_ trn_customer_invoice_tab%ROWTYPE;
+   
+   attr_ VARCHAR2(2000);
+BEGIN
+   General_SYS.Init_Method(Trn_Customer_Invoice_API.lu_name_, 'Trn_Customer_Invoice_API', 'Create_Invoice');
+   --Create the invoice
+   Client_SYS.Clear_Attr(attr_);
+   Client_SYS.Add_To_Attr('COMPANY_ID', company_id_, attr_);
+   Client_SYS.Add_To_Attr('BRANCH_ID', branch_id_, attr_);
+   Client_SYS.Add_To_Attr('INVOICE_AMOUNT', invoice_amount_, attr_);
+   Client_SYS.Add_To_Attr('UNPAID',invoice_amount_, attr_);
+   Client_SYS.Add_To_Attr('CUSTOMER_ID', customer_id_, attr_);
+   Client_SYS.Add_To_Attr('ORDER_ID', order_id_, attr_);
+
+   New___(rec_);
+  
+
+   invoice_id_ := Client_SYS.Get_Item_Value('INVOICE_ID', attr_);
+END Create_Invoice;
+
+
+FUNCTION Calculate_Invoice_Total (
+   company_id_ IN VARCHAR2,
+   branch_id_ IN VARCHAR2,
+   invoice_id_ IN NUMBER ) RETURN NUMBER
+IS
+   CURSOR get_total IS
+      SELECT NVL(SUM(t.amount), 0)
+      FROM Trn_Customer_Invoice_Item_TAB t
+      WHERE t.company_id = company_id_
+      AND t.branch_id = branch_id_
+      AND t.invoice_id = invoice_id_;
+   temp_ NUMBER;
+BEGIN
+   General_SYS.Init_Method(Trn_Customer_Invoice_API.lu_name_, 'Trn_Customer_Invoice_API', 'Calculate_Invoice_Total');
+   OPEN get_total;
+   FETCH get_total INTO temp_;
+   CLOSE get_total;
+   RETURN temp_;
+   RETURN NULL;
+END Calculate_Invoice_Total;
+
+
+FUNCTION Paid_In_Full___ (
+   rec_ IN trn_customer_invoice_tab%ROWTYPE ) RETURN BOOLEAN
+IS
+BEGIN
+   RETURN (rec_.unpaid = 0);
+END Paid_In_Full___;
+
+
+FUNCTION Get_Next_Invoice_Id___ RETURN NUMBER
+IS
+   CURSOR get_invoice_id IS
+      SELECT Trn_Customer_Invoice_Id_SEQ.NEXTVAL
+      FROM DUAL;
+   temp_ NUMBER;
+BEGIN
+   OPEN get_invoice_id;
+   FETCH get_invoice_id INTO temp_;
+   CLOSE get_invoice_id;
+   RETURN temp_;
+END Get_Next_Invoice_Id___;
+
+
+PROCEDURE Validate_Customer_Invoice___ (
+   newrec_ IN trn_customer_invoice_tab%ROWTYPE )
+IS
+BEGIN
+   Trn_Cust_Invoice_Util_API.Check_Customer_Credit(newrec_.company_id,
+                                                    newrec_.customer_id,
+                                                    newrec_.unpaid);
+END Validate_Customer_Invoice___;
+
+-----------------------------------------------------------------------------
+-------------------- FINITE STATE MACHINE -----------------------------------
+-----------------------------------------------------------------------------
+
+PROCEDURE Finite_State_Init_ (
+   rec_  IN OUT NOCOPY trn_customer_invoice_tab%ROWTYPE,
+   attr_ IN OUT NOCOPY VARCHAR2 )
+IS
+BEGIN
+   General_SYS.Init_Method(Trn_Customer_Invoice_API.lu_name_, 'Trn_Customer_Invoice_API', 'Finite_State_Init_', server_only_ => TRUE);
+   Finite_State_Init___(rec_, attr_);
+END Finite_State_Init_;
+
+
+--@IgnoreMissingSysinit
+FUNCTION Finite_State_Decode__ (
+   db_state_ IN VARCHAR2 ) RETURN VARCHAR2
+IS
+BEGIN
+   RETURN(Domain_SYS.Decode_(Domain_SYS.Get_Translated_Values(lu_name_), Get_Db_Values___, db_state_));
+END Finite_State_Decode__;
+
+
+--@IgnoreMissingSysinit
+FUNCTION Finite_State_Encode__ (
+   client_state_ IN VARCHAR2 ) RETURN VARCHAR2
+IS
+BEGIN
+   RETURN(Domain_SYS.Encode_(Domain_SYS.Get_Translated_Values(lu_name_), Get_Db_Values___, client_state_));
+END Finite_State_Encode__;
+
+
+--@IgnoreMissingSysinit
+PROCEDURE Enumerate_States__ (
+   client_values_ OUT VARCHAR2 )
+IS
+BEGIN
+   client_values_ := Domain_SYS.Enumerate_(Domain_SYS.Get_Translated_Values(lu_name_));
+END Enumerate_States__;
+
+
+--@IgnoreMissingSysinit
+PROCEDURE Enumerate_States_Db__ (
+   db_values_ OUT VARCHAR2 )
+IS
+BEGIN
+   db_values_ := Domain_SYS.Enumerate_(Get_Db_Values___);
+END Enumerate_States_Db__;
+
+
+--@IgnoreMissingSysinit
+FUNCTION Finite_State_Events__ (
+   db_state_ IN VARCHAR2 ) RETURN VARCHAR2
+IS
+BEGIN
+   IF (db_state_ IS NULL) THEN
+      RETURN NULL;
+   ELSIF (db_state_ = 'FullyPaid') THEN
+      RETURN NULL;
+   ELSIF (db_state_ = 'PartiallyPaid') THEN
+      RETURN 'Pay^';
+   ELSIF (db_state_ = 'Unpaid') THEN
+      RETURN 'Pay^';
+   ELSE
+      RETURN NULL;
+   END IF;
+END Finite_State_Events__;
+
+
+--@IgnoreMissingSysinit
+PROCEDURE Enumerate_Events__ (
+   db_events_ OUT VARCHAR2 )
+IS
+BEGIN
+   db_events_ := 'Pay^';
+END Enumerate_Events__;
+
+
+PROCEDURE Pay__ (
+   info_       OUT    VARCHAR2,
+   objid_      IN     VARCHAR2,
+   objversion_ IN OUT NOCOPY VARCHAR2,
+   attr_       IN OUT NOCOPY VARCHAR2,
+   action_     IN     VARCHAR2 )
+IS
+   rec_ trn_customer_invoice_tab%ROWTYPE;
+BEGIN
+   General_SYS.Init_Method(Trn_Customer_Invoice_API.lu_name_, 'Trn_Customer_Invoice_API', 'Pay__');
+   IF (action_ = 'CHECK') THEN
+      NULL;
+   ELSIF (action_ = 'DO') THEN
+      rec_ := Lock_By_Id___(objid_, objversion_);
+      Finite_State_Machine___(rec_, 'Pay', attr_);
+      objversion_ := to_char(rec_.rowversion,'YYYYMMDDHH24MISS');
+      Finite_State_Add_To_Attr___(rec_, attr_);
+   END IF;
+   info_ := Client_SYS.Get_All_Info;
+END Pay__;
+
+
+FUNCTION Get_Db_Values___ RETURN VARCHAR2 DETERMINISTIC
+IS
+BEGIN
+   RETURN('PartiallyPaid^Unpaid^FullyPaid^');
+END Get_Db_Values___;
+
+
+FUNCTION Get_Client_Values___ RETURN VARCHAR2 DETERMINISTIC
+IS
+BEGIN
+   RETURN('Partially Paid^Unpaid^Fully Paid^');
+END Get_Client_Values___;
+
+
+PROCEDURE Finite_State_Set___ (
+   rec_   IN OUT NOCOPY trn_customer_invoice_tab%ROWTYPE,
+   state_ IN     VARCHAR2 )
+IS
+BEGIN
+   rec_.rowversion := sysdate;
+   UPDATE trn_customer_invoice_tab
+      SET rowstate = state_,
+          rowversion = rec_.rowversion
+      WHERE company_id = rec_.company_id
+      AND   branch_id = rec_.branch_id
+      AND   invoice_id = rec_.invoice_id;
+   rec_.rowstate := state_;
+END Finite_State_Set___;
+
+
+PROCEDURE Finite_State_Machine___ (
+   rec_   IN OUT NOCOPY trn_customer_invoice_tab%ROWTYPE,
+   event_ IN     VARCHAR2,
+   attr_  IN OUT NOCOPY VARCHAR2 )
+IS
+   state_ trn_customer_invoice_tab.rowstate%TYPE;
+BEGIN
+   state_ := rec_.rowstate;
+   IF (state_ IS NULL) THEN
+      IF (event_ IS NULL) THEN
+         Finite_State_Set___(rec_, 'Unpaid');
+      ELSE
+         Error_SYS.State_Event_Not_Handled(lu_name_, event_, Finite_State_Decode__(state_));
+      END IF;
+   ELSIF (state_ = 'FullyPaid') THEN
+      Error_SYS.State_Event_Not_Handled(lu_name_, event_, Finite_State_Decode__(state_));
+   ELSIF (state_ = 'PartiallyPaid') THEN
+      IF (event_ = 'Pay') THEN
+         IF (Paid_In_Full___(rec_)) THEN
+            Finite_State_Set___(rec_, 'FullyPaid');
+         ELSE
+            NULL;
+         END IF;
+      ELSE
+         Error_SYS.State_Event_Not_Handled(lu_name_, event_, Finite_State_Decode__(state_));
+      END IF;
+   ELSIF (state_ = 'Unpaid') THEN
+      IF (event_ = 'Pay') THEN
+         IF (NOT Paid_In_Full___(rec_)) THEN
+            Finite_State_Set___(rec_, 'PartiallyPaid');
+         ELSIF (Paid_In_Full___(rec_)) THEN
+            Finite_State_Set___(rec_, 'FullyPaid');
+         END IF;
+      ELSE
+         Error_SYS.State_Event_Not_Handled(lu_name_, event_, Finite_State_Decode__(state_));
+      END IF;
+   ELSE
+      Error_SYS.State_Not_Exist(lu_name_, Finite_State_Decode__(state_));
+   END IF;
+END Finite_State_Machine___;
+
+
+PROCEDURE Finite_State_Add_To_Attr___ (
+   rec_  IN     trn_customer_invoice_tab%ROWTYPE,
+   attr_ IN OUT NOCOPY VARCHAR2 )
+IS
+   state_ trn_customer_invoice_tab.rowstate%TYPE;
+BEGIN
+   state_ := rec_.rowstate;
+   Client_SYS.Add_To_Attr('__OBJSTATE', state_, attr_);
+   Client_SYS.Add_To_Attr('__OBJEVENTS', Finite_State_Events__(state_), attr_);
+   Client_SYS.Add_To_Attr('STATE', Finite_State_Decode__(state_), attr_);
+END Finite_State_Add_To_Attr___;
+
+
+PROCEDURE Finite_State_Init___ (
+   rec_  IN OUT NOCOPY trn_customer_invoice_tab%ROWTYPE,
+   attr_ IN OUT NOCOPY VARCHAR2 )
+IS
+BEGIN
+   Finite_State_Machine___(rec_, NULL, attr_);
+   Finite_State_Add_To_Attr___(rec_, attr_);
+END Finite_State_Init___;
+
+-----------------------------------------------------------------------------
+-------------------- LU SPECIFIC IMPLEMENTATION METHODS ---------------------
+-----------------------------------------------------------------------------
+
+PROCEDURE Check_Common___ (
+   oldrec_ IN     trn_customer_invoice_tab%ROWTYPE,
+   newrec_ IN OUT NOCOPY trn_customer_invoice_tab%ROWTYPE,
+   indrec_ IN OUT NOCOPY Indicator_Rec,
+   attr_   IN OUT NOCOPY VARCHAR2 )
+IS
+   
+   PROCEDURE Base (
+      oldrec_ IN     trn_customer_invoice_tab%ROWTYPE,
+      newrec_ IN OUT NOCOPY trn_customer_invoice_tab%ROWTYPE,
+      indrec_ IN OUT NOCOPY Indicator_Rec,
+      attr_   IN OUT NOCOPY VARCHAR2 )
+   IS
+   BEGIN
+      IF (newrec_.payment_terms IS NOT NULL)
+      AND (indrec_.payment_terms)
+      AND (Validate_SYS.Is_Changed(oldrec_.payment_terms, newrec_.payment_terms)) THEN
+         Trn_Invoice_Pay_Terms_API.Exist_Db(newrec_.payment_terms);
+      END IF;
+      IF (newrec_.company_id IS NOT NULL AND newrec_.branch_id IS NOT NULL)
+      AND (indrec_.company_id OR indrec_.branch_id)
+      AND (Validate_SYS.Is_Changed(oldrec_.company_id, newrec_.company_id)
+        OR Validate_SYS.Is_Changed(oldrec_.branch_id, newrec_.branch_id)) THEN
+         Trn_Branch_API.Exist(newrec_.company_id, newrec_.branch_id);
+      END IF;
+      IF (newrec_.company_id IS NOT NULL AND newrec_.customer_id IS NOT NULL)
+      AND (indrec_.company_id OR indrec_.customer_id)
+      AND (Validate_SYS.Is_Changed(oldrec_.company_id, newrec_.company_id)
+        OR Validate_SYS.Is_Changed(oldrec_.customer_id, newrec_.customer_id)) THEN
+         Trn_Customer_API.Exist(newrec_.company_id, newrec_.customer_id);
+      END IF;
+      IF (newrec_.company_id IS NOT NULL AND newrec_.branch_id IS NOT NULL AND newrec_.order_id IS NOT NULL)
+      AND (indrec_.company_id OR indrec_.branch_id OR indrec_.order_id)
+      AND (Validate_SYS.Is_Changed(oldrec_.company_id, newrec_.company_id)
+        OR Validate_SYS.Is_Changed(oldrec_.branch_id, newrec_.branch_id)
+        OR Validate_SYS.Is_Changed(oldrec_.order_id, newrec_.order_id)) THEN
+         Trn_Customer_Order_API.Exist(newrec_.company_id, newrec_.branch_id, newrec_.order_id);
+      END IF;
+      Error_SYS.Check_Not_Null(lu_name_, 'COMPANY_ID', newrec_.company_id);
+      Error_SYS.Check_Not_Null(lu_name_, 'BRANCH_ID', newrec_.branch_id);
+      Error_SYS.Check_Not_Null(lu_name_, 'INVOICE_ID', newrec_.invoice_id);
+      Error_SYS.Check_Not_Null(lu_name_, 'INVOICE_DATE', newrec_.invoice_date);
+      Error_SYS.Check_Not_Null(lu_name_, 'INVOICE_AMOUNT', newrec_.invoice_amount);
+      Error_SYS.Check_Not_Null(lu_name_, 'UNPAID', newrec_.unpaid);
+      Error_SYS.Check_Not_Null(lu_name_, 'CUSTOMER_ID', newrec_.customer_id);
+      Error_SYS.Check_Not_Null(lu_name_, 'ORDER_ID', newrec_.order_id);
+   END Base;
+
+   PROCEDURE Core (
+      oldrec_ IN     trn_customer_invoice_tab%ROWTYPE,
+      newrec_ IN OUT NOCOPY trn_customer_invoice_tab%ROWTYPE,
+      indrec_ IN OUT NOCOPY Indicator_Rec,
+      attr_   IN OUT NOCOPY VARCHAR2 )
+   IS
+   BEGIN
+      --Add pre-processing code here
+      Validate_Customer_Invoice___(newrec_);
+      Base(oldrec_, newrec_, indrec_, attr_);
+      --Add post-processing code here
+   END Core;
+
+BEGIN
+   Core(oldrec_, newrec_, indrec_, attr_);
+END Check_Common___;
+
+
+PROCEDURE Prepare_Insert___ (
+   attr_ IN OUT NOCOPY VARCHAR2 )
+IS
+   
+   PROCEDURE Base (
+      attr_ IN OUT NOCOPY VARCHAR2 )
+   IS
+   BEGIN
+      Client_SYS.Clear_Attr(attr_);
+   END Base;
+
+   PROCEDURE Core (
+      attr_ IN OUT NOCOPY VARCHAR2 )
+   IS
+   BEGIN
+      --Add pre-processing code here
+      Base(attr_);
+      --Add post-processing code here
+      Client_SYS.Add_To_Attr('INVOICE_AMOUNT', 0, attr_);
+      Client_SYS.Add_To_Attr('UNPAID', 0, attr_);
+   END Core;
+
+BEGIN
+   Core(attr_);
+END Prepare_Insert___;
+
+
+PROCEDURE Insert___ (
+   objid_      OUT    VARCHAR2,
+   objversion_ OUT    VARCHAR2,
+   newrec_     IN OUT NOCOPY trn_customer_invoice_tab%ROWTYPE,
+   attr_       IN OUT NOCOPY VARCHAR2 )
+IS
+   
+   PROCEDURE Base (
+      objid_      OUT    VARCHAR2,
+      objversion_ OUT    VARCHAR2,
+      newrec_     IN OUT NOCOPY trn_customer_invoice_tab%ROWTYPE,
+      attr_       IN OUT NOCOPY VARCHAR2 )
+   IS
+      value_too_large  EXCEPTION;
+      PRAGMA           EXCEPTION_INIT(value_too_large, -12899);
+   BEGIN
+      newrec_.rowversion := sysdate;
+      newrec_.rowkey := sys_guid();
+      Client_SYS.Add_To_Attr('OBJKEY', newrec_.rowkey, attr_);
+      newrec_.rowstate := '<UNDEFINED>';
+      INSERT
+         INTO trn_customer_invoice_tab
+         VALUES newrec_
+         RETURNING rowid INTO objid_;
+      newrec_.rowstate := NULL;
+      Finite_State_Init___(newrec_, attr_);
+      objversion_ := to_char(newrec_.rowversion,'YYYYMMDDHH24MISS');
+   EXCEPTION
+      WHEN dup_val_on_index THEN
+         DECLARE
+            constraint_ VARCHAR2(4000) := Utility_SYS.Get_Constraint_From_Error_Msg(sqlerrm);
+         BEGIN
+            IF (constraint_ = 'TRN_CUSTOMER_INVOICE_RK') THEN
+               Error_SYS.Fnd_Rowkey_Exist(lu_name_, newrec_.rowkey);
+            ELSIF (constraint_ = 'TRN_CUSTOMER_INVOICE_PK') THEN
+               Raise_Record_Exist___(newrec_);
+            ELSE
+               Raise_Constraint_Violated___(newrec_, constraint_);
+            END IF;
+         END;
+      WHEN value_too_large THEN
+         Error_SYS.Fnd_Item_Length(lu_name_, sqlerrm);
+   END Base;
+
+   PROCEDURE Core (
+      objid_      OUT    VARCHAR2,
+      objversion_ OUT    VARCHAR2,
+      newrec_     IN OUT NOCOPY trn_customer_invoice_tab%ROWTYPE,
+      attr_       IN OUT NOCOPY VARCHAR2 )
+   IS
+   BEGIN
+      --Add pre-processing code here
+      objversion_ := to_char(newrec_.rowversion,'YYYYMMDDHH24MISS');
+      newrec_.invoice_id := Get_Next_Invoice_Id___();
+      newrec_.invoice_date := SYSDATE;
+      newrec_.rowstate := NULL;
+      Client_SYS.Add_To_Attr('INVOICE_ID', newrec_.invoice_id, attr_);
+      Client_SYS.Add_To_Attr('INVOICE_DATE', newrec_.invoice_date, attr_);
+      Base(objid_, objversion_, newrec_, attr_);
+      --Add post-processing code here
+      Trn_Reservation_Api.Invoice_Reservation(newrec_.company_id,
+                                               newrec_.branch_id,
+                                               newrec_.order_id);
+   
+   END Core;
+
+BEGIN
+   Core(objid_, objversion_, newrec_, attr_);
+END Insert___;
+
+-----------------------------------------------------------------------------
+-------------------- FOUNDATION1 METHODS ------------------------------------
+-----------------------------------------------------------------------------
+
+
+--@IgnoreMissingSysinit
+PROCEDURE Language_Refreshed
+IS
+BEGIN
+   Domain_SYS.Language_Refreshed(lu_name_, Get_Client_Values___, Get_Db_Values___, 'STATE');
+END Language_Refreshed;
+
+
+--@IgnoreMissingSysinit
+PROCEDURE Init
+IS
+BEGIN
+   Domain_SYS.Load_State(lu_name_, Get_Client_Values___, Get_Db_Values___);
+END Init;
+
+BEGIN
+   Init;
+END Trn_Customer_Invoice_API;
+-- [END IFS COMPLETE BLOCK]
+/
+SHOW ERROR
+
+GRANT EXECUTE ON Trn_Customer_Invoice_API TO IFSSYS
+/

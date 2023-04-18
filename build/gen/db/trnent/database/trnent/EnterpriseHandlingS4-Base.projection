@@ -1,0 +1,360 @@
+projection EnterpriseHandlingS4;
+component  TRNENT;
+layer      Base;
+description "";
+
+
+entityset Reference_TrnCountryVirtual for TrnCountryVirtual;
+entityset Reference_TrnAreaVirtual for TrnAreaVirtual;
+@Abstract
+virtual TrnCountryVirtual {
+   crud = Create,Read,Update,Delete;
+   keys =  Objkey;
+   attribute Objkey Text {
+      fetch     = "objkey";
+      maxlength = 50;
+      required  = [false];
+      editable  = [false];
+      insertable = [false];
+      updatable  = [false];
+   }
+   attribute ParentObjkey Text {
+      fetch     = "parent_objkey";
+      maxlength = 50;
+      required  = [false];
+      editable  = [false];
+      insertable = [true];
+      updatable  = [false];
+   }
+   attribute Objmodified Date {
+      fetch     = "objmodified";
+      required  = [false];
+      editable  = [false];
+      insertable = [false];
+      updatable  = [false];
+   }
+   attribute ObjCreatedBy Text {
+      fetch     = "obj_created_by";
+      maxlength = 50;
+      required  = [false];
+      editable  = [false];
+      insertable = [true];
+      updatable  = [false];
+   }
+}
+@Abstract
+virtual TrnAreaVirtual {
+   crud = Create,Read,Update,Delete;
+   keys =  Objkey;
+   attribute Objkey Text {
+      fetch     = "objkey";
+      maxlength = 50;
+      required  = [false];
+      editable  = [false];
+      insertable = [false];
+      updatable  = [false];
+   }
+   attribute ParentObjkey Text {
+      fetch     = "parent_objkey";
+      maxlength = 50;
+      required  = [false];
+      editable  = [false];
+      insertable = [true];
+      updatable  = [false];
+   }
+   attribute Objmodified Date {
+      fetch     = "objmodified";
+      required  = [false];
+      editable  = [false];
+      insertable = [false];
+      updatable  = [false];
+   }
+   attribute ObjCreatedBy Text {
+      fetch     = "obj_created_by";
+      maxlength = 50;
+      required  = [false];
+      editable  = [false];
+      insertable = [true];
+      updatable  = [false];
+   }
+}
+
+entity TrnCountry {
+   crud = Create,Read,Update,Delete;
+   from = "TRN_COUNTRY";
+   exec = "Trn_Country_API";
+   basetable = "TRN_COUNTRY_TAB";
+   keys = CountryId {
+      where = "country_id = :CountryId";
+   }
+   attribute Objgrants Text {
+      fetch     = "NULL";
+      label     = "Granted access";
+      maxlength = 2000;
+      editable  = [false];
+      insertable = [false];
+      updatable  = [false];
+   }
+   attribute CountryId Text {
+      fetch      = "country_id";
+      dbcolumn = "country_id";
+      label      = "Country Id";
+      maxlength  = 10;
+      required   = [true];
+      insertable  = [true];
+      updatable   = [false];
+      editable   = [ETag = null];
+      lovcolumn        = [true];
+      implementationtype = "VARCHAR2(10)";
+   }
+   attribute Country Text {
+      fetch      = "country";
+      dbcolumn = "country";
+      label      = "Country";
+      maxlength  = 1000;
+      required   = [true];
+      insertable  = [true];
+      updatable   = [true];
+      lovcolumn        = [true];
+      implementationtype = "VARCHAR2(1000)";
+   }
+   function DefaultCopy Entity(TrnCountry) {
+      parameter CopyValues Structure(TrnCountryCopyValues);
+   }
+}
+
+structure TrnCountryCopyValues$ {
+   attribute ModifiedSource Entity(TrnCountry) {
+      implementationtype = "VARCHAR2";
+   }
+}
+
+
+entityset Reference_TrnCountry for TrnCountry;
+entity TrnArea {
+   crud = Create,Read,Update,Delete;
+   from = "TRN_AREA";
+   exec = "Trn_Area_API";
+   basetable = "TRN_AREA_TAB";
+   keys = CountryId,AreaId {
+      where = "country_id = :CountryId AND area_id = :AreaId";
+   }
+   attribute Objgrants Text {
+      fetch     = "NULL";
+      label     = "Granted access";
+      maxlength = 2000;
+      editable  = [false];
+      insertable = [false];
+      updatable  = [false];
+   }
+   attribute CountryId Text {
+      fetch      = "country_id";
+      dbcolumn = "country_id";
+      label      = "Country Id";
+      maxlength  = 10;
+      required   = [true];
+      insertable  = [true];
+      updatable   = [false];
+      editable   = [ETag = null];
+      lovcolumn        = [true];
+      implementationtype = "VARCHAR2(10)";
+   }
+   attribute AreaId Text {
+      fetch      = "area_id";
+      dbcolumn = "area_id";
+      label      = "Area Id";
+      maxlength  = 10;
+      required   = [true];
+      insertable  = [true];
+      updatable   = [false];
+      editable   = [ETag = null];
+      lovcolumn        = [true];
+      implementationtype = "VARCHAR2(10)";
+   }
+   attribute Area Text {
+      fetch      = "area";
+      dbcolumn = "area";
+      label      = "Area";
+      maxlength  = 1000;
+      required   = [true];
+      insertable  = [true];
+      updatable   = [true];
+      lovcolumn        = [true];
+      implementationtype = "VARCHAR2(1000)";
+   }
+   function DefaultCopy Entity(TrnArea) {
+      parameter CopyValues Structure(TrnAreaCopyValues);
+   }
+}
+
+structure TrnAreaCopyValues$ {
+   attribute ModifiedSource Entity(TrnArea) {
+      implementationtype = "VARCHAR2";
+   }
+}
+
+
+entityset Reference_TrnArea for TrnArea;
+entity TrnCompany {
+   crud = Create,Read,Update,Delete;
+   from = "TRN_COMPANY";
+   exec = "Trn_Company_API";
+   basetable = "TRN_COMPANY_TAB";
+   keys = CompanyId {
+      where = "company_id = :CompanyId";
+   }
+   attribute Objgrants Text {
+      fetch     = "NULL";
+      label     = "Granted access";
+      maxlength = 2000;
+      editable  = [false];
+      insertable = [false];
+      updatable  = [false];
+   }
+   attribute CompanyId Text {
+      fetch      = "company_id";
+      dbcolumn = "company_id";
+      label      = "Company Id";
+      maxlength  = 20;
+      required   = [true];
+      insertable  = [true];
+      updatable   = [false];
+      editable   = [ETag = null];
+      lovcolumn        = [true];
+      implementationtype = "VARCHAR2(20)";
+   }
+   attribute Name Text {
+      fetch      = "name";
+      dbcolumn = "name";
+      label      = "Name";
+      maxlength  = 1000;
+      required   = [true];
+      insertable  = [true];
+      updatable   = [true];
+      lovcolumn        = [true];
+      implementationtype = "VARCHAR2(1000)";
+   }
+   attribute Comments Text {
+      fetch      = "comments";
+      dbcolumn = "comments";
+      label      = "Comments";
+      maxlength  = 2000;
+      insertable  = [true];
+      updatable   = [true];
+      lovcolumn        = [true];
+      implementationtype = "VARCHAR2(2000)";
+   }
+   attribute CreationDate Date {
+      fetch      = "creation_date";
+      dbcolumn = "creation_date";
+      label      = "Creation Date";
+      required   = [true];
+      insertable  = [true];
+      updatable   = [true];
+      lovcolumn        = [true];
+      implementationtype = "DATE";
+   }
+   function DefaultCopy Entity(TrnCompany) {
+      parameter CopyValues Structure(TrnCompanyCopyValues);
+   }
+}
+
+structure TrnCompanyCopyValues$ {
+   attribute ModifiedSource Entity(TrnCompany) {
+      implementationtype = "VARCHAR2";
+   }
+}
+
+
+entityset Reference_TrnCompany for TrnCompany;
+entity TrnBranch {
+   crud = Create,Read,Update,Delete;
+   from = "TRN_BRANCH";
+   exec = "Trn_Branch_API";
+   basetable = "TRN_BRANCH_TAB";
+   keys = CompanyId,BranchId {
+      where = "company_id = :CompanyId AND branch_id = :BranchId";
+   }
+   attribute Objgrants Text {
+      fetch     = "NULL";
+      label     = "Granted access";
+      maxlength = 2000;
+      editable  = [false];
+      insertable = [false];
+      updatable  = [false];
+   }
+   attribute CompanyId Text {
+      fetch      = "company_id";
+      dbcolumn = "company_id";
+      label      = "Company Id";
+      maxlength  = 20;
+      required   = [true];
+      insertable  = [true];
+      updatable   = [false];
+      editable   = [ETag = null];
+      lovcolumn        = [true];
+      implementationtype = "VARCHAR2(20)";
+   }
+   attribute BranchId Text {
+      fetch      = "branch_id";
+      dbcolumn = "branch_id";
+      label      = "Branch Id";
+      maxlength  = 20;
+      required   = [true];
+      insertable  = [true];
+      updatable   = [false];
+      editable   = [ETag = null];
+      lovcolumn        = [true];
+      implementationtype = "VARCHAR2(20)";
+   }
+   attribute Name Text {
+      fetch      = "name";
+      dbcolumn = "name";
+      label      = "Name";
+      maxlength  = 1000;
+      required   = [true];
+      insertable  = [true];
+      updatable   = [true];
+      lovcolumn        = [true];
+      implementationtype = "VARCHAR2(1000)";
+   }
+   attribute TimeOffset Number {
+      fetch      = "time_offset";
+      dbcolumn = "time_offset";
+      label      = "Time Offset";
+      required   = [true];
+      insertable  = [true];
+      updatable   = [true];
+      implementationtype = "NUMBER";
+   }
+   attribute CountryId Text {
+      fetch      = "country_id";
+      dbcolumn = "country_id";
+      label      = "Country Id";
+      maxlength  = 10;
+      insertable  = [true];
+      updatable   = [true];
+      implementationtype = "VARCHAR2(10)";
+   }
+   attribute AreaId Text {
+      fetch      = "area_id";
+      dbcolumn = "area_id";
+      label      = "Area Id";
+      maxlength  = 10;
+      insertable  = [true];
+      updatable   = [true];
+      implementationtype = "VARCHAR2(10)";
+   }
+   function DefaultCopy Entity(TrnBranch) {
+      parameter CopyValues Structure(TrnBranchCopyValues);
+   }
+}
+
+structure TrnBranchCopyValues$ {
+   attribute ModifiedSource Entity(TrnBranch) {
+      implementationtype = "VARCHAR2";
+   }
+}
+
+
+entityset Reference_TrnBranch for TrnBranch;

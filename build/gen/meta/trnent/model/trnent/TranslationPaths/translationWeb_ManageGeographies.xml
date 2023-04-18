@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TranslatableResources type="WEB" module="TRNENT" version="1.1" layer="Core" xmlns="types.scan.translation.fnd.ifsworld.com">
+   <TranslatableResource type="Global Data" ID="ManageGeographies" name="ManageGeographies">
+      <Resource subtype="Global Data" ID="ManageGeographies.page.TrnCountryOverviewPage" control="page.TrnCountryOverviewPage">
+         <Resource subtype="Form Window" ID="ManageGeographies.page.TrnCountryOverviewPage.$this" control="$this">
+            <Text>Trn Country Overview Page</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageGeographies.list.TrnCountryList" control="list.TrnCountryList">
+         <Resource subtype="Table Window" ID="ManageGeographies.list.TrnCountryList.$this" control="$this">
+            <Text>Countries</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageGeographies.list.TrnCountryList.listcontent.field.CountryId" control="CountryId">
+            <Text>Country Id</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageGeographies.list.TrnCountryList.listcontent.field.Country" control="Country">
+            <Text>Country</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+   </TranslatableResource>
+   </TranslatableResources>

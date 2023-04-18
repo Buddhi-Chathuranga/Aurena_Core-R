@@ -1,0 +1,56 @@
+-----------------------------------------------------------------------------
+--
+--  Logical unit: TrnArea
+--  Type:         Entity
+--  Component:    TRNENT
+--
+--  Template:     3.0
+--  Built by:     IFS Developer Studio
+--
+--  NOTE! Do not edit!! This file is completely generated and will be
+--        overwritten next time the corresponding model is saved.
+-----------------------------------------------------------------------------
+
+
+-----------------------------------------------------------------------------
+-------------------- BASE VIEW DEFINITION -----------------------------------
+-----------------------------------------------------------------------------
+
+PROMPT Creating TRN_AREA view
+
+-- [IFS COMPLETE BLOCK VIEW TRN_AREA]
+CREATE OR REPLACE VIEW TRN_AREA AS
+SELECT
+       country_id                     country_id,
+       area_id                        area_id,
+       area                           area,
+       rowkey                         objkey,
+       to_char(rowversion,'YYYYMMDDHH24MISS') objversion,
+       rowid                          objid
+FROM   trn_area_tab
+WITH   READ ONLY;
+-- [END IFS COMPLETE BLOCK]
+
+COMMENT ON TABLE TRN_AREA
+   IS 'LU=TrnArea^PROMPT=Trn Area^MODULE=TRNENT^TABLE=TRN_AREA_TAB^';
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   PROCEDURE Alter_Column_Comment (
+      view_name_   IN VARCHAR2,
+      column_name_ IN VARCHAR2,
+      comment_     IN VARCHAR2)
+   IS
+      stmt_ VARCHAR2(32767) := 'COMMENT ON COLUMN ' || view_name_ || '.' || column_name_ || ' IS ''' || REPLACE(comment_, '''', '''''') || '''';
+   BEGIN
+      EXECUTE IMMEDIATE stmt_;
+   END Alter_Column_Comment;
+BEGIN
+   Alter_Column_Comment('TRN_AREA', 'country_id', 'FLAGS=PMI-L^DATATYPE=STRING(10)^PROMPT=Country Id^REF=TrnCountry^');
+   Alter_Column_Comment('TRN_AREA', 'area_id', 'FLAGS=KMI-L^DATATYPE=STRING(10)^PROMPT=Area Id^');
+   Alter_Column_Comment('TRN_AREA', 'area', 'FLAGS=AMIUL^DATATYPE=STRING(1000)^PROMPT=Area^');
+   EXECUTE IMMEDIATE 'GRANT SELECT ON TRN_AREA TO IFSSYS';
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+

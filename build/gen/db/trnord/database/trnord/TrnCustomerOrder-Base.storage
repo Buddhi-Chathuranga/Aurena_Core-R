@@ -1,0 +1,43 @@
+-----------------------------------------------------------------------------
+--
+--  Logical unit: TrnCustomerOrder
+--  Component:    TRNORD
+--
+--  Template:     3.0
+--  Built by:     IFS Developer Studio (unit-test)
+--
+--  NOTE! Do not edit!! This file is completely generated and will be
+--        overwritten next time the corresponding model is saved.
+-----------------------------------------------------------------------------
+
+
+layer Base;
+
+-------------------- TABLE DEFINITIONS --------------------------------------
+
+TABLE trn_customer_order_tab IS (
+   company_id                     VARCHAR2(20)   NOT NULL,
+   branch_id                      VARCHAR2(20)   NOT NULL,
+   order_id                       NUMBER         NOT NULL,
+   order_date                     DATE           NOT NULL,
+   delivery_date                  DATE           NOT NULL,
+   discount                       NUMBER         NOT NULL,
+   comments                       VARCHAR2(2000) NULL,
+   customer_id                    NUMBER         NOT NULL,
+   delivery_type                  VARCHAR2(20)   NOT NULL,
+   rowversion                     DATE           NOT NULL,
+   rowkey                         VARCHAR2(50)   DEFAULT sys_guid() NOT NULL,
+   rowstate                       VARCHAR2(20)   NOT NULL);
+
+
+PRIMARY KEY trn_customer_order_pk IS trn_customer_order_tab (
+   company_id,
+   branch_id,
+   order_id);
+
+
+UNIQUE CONSTRAINT trn_customer_order_rk IS trn_customer_order_tab (
+   rowkey);
+
+-------------------- OTHER DEFINITIONS --------------------------------------
+

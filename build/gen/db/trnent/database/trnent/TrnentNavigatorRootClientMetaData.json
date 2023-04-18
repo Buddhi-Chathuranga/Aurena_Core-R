@@ -1,0 +1,48 @@
+{
+    "name": "TrnentNavigatorRoot",
+    "version": "-369139426:-525526106",
+    "projection": {
+        "name": "TrnentNavigatorRoot",
+        "service": "TrnentNavigatorRoot.svc",
+        "version": "-525526106",
+        "contains": {[#[jsoncallback:Custom_Object_Proxy_Sys.Client_Entityset_Metadata:{
+        "Projection": "TrnentNavigatorRoot",
+        "Lu": [
+        ]
+    }]#]
+        },
+        "enumerations": {[#[jsoncallback:Custom_Object_Proxy_SYS.Client_Enumeration_Metadata:{
+        "Projection": "TrnentNavigatorRoot",
+        "Lu": [
+        ]
+    }]#]
+        },
+        "entities": {[#[jsoncallback:Custom_Object_Proxy_Sys.Client_Entity_Type_Metadata:{
+        "Projection": "TrnentNavigatorRoot",
+        "Lu": [
+        ]
+    }]#]
+        },
+        "structures": {
+        },
+        "actions": {[#[jsoncallback:Custom_Object_Proxy_Sys.Client_Action_Metadata:{
+        "Projection": "TrnentNavigatorRoot"
+    }]#]
+        },
+        "functions": {
+        },
+        "attachmentservices": {[#[callback:Object_Connection_Metadata_SYS.Enum_Entity_Services_:]#]
+    }
+    },
+    "component": "TRNENT",
+    "layout": {
+        "warnings": {
+            "warningsEnabled": {
+                "entities": [
+                ],
+                "actions": [
+                ]
+            }
+        }
+    }
+}

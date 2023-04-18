@@ -1,0 +1,60 @@
+{
+    "projection": {
+        "Name": "TrnentNavigatorRoot",
+        "Metadata": {
+            "Version": "[#[generate:version]#]",
+            "Description": "projection for Navigator root ",
+            "Category": [
+                "Users"
+            ]
+        },
+        "Container": {
+            "EntitySets": [
+            ],
+            "Singletons": [
+            ],
+            "Actions": [
+            ],
+            "Functions": [
+            ]
+        },
+        "Enumerations": [
+        ],
+        "Structures": [
+            {
+                "Name": "StreamInfoRec",
+                "PLSQLRecordName": "TRNENT_NAVIGATOR_ROOT_SVC.STREAM_INFO_REC",
+                "Attributes": [
+                    {
+                        "Name": "FileName",
+                        "DataType": "Text"
+                    },
+                    {
+                        "Name": "MimeType",
+                        "DataType": "Text"
+                    }
+                ]
+            },
+            {
+                "Name": "EntityDec",
+                "PLSQLRecordName": "TRNENT_NAVIGATOR_ROOT_SVC.ENTITY_DEC",
+                "Attributes": [
+                    {
+                        "Name": "ETag",
+                        "DataType": "Text"
+                    },
+                    {
+                        "Name": "Info",
+                        "DataType": "Text"
+                    },
+                    {
+                        "Name": "Attr",
+                        "DataType": "Text"
+                    }
+                ]
+            }
+        ],
+        "Entities": [
+        ]
+    }
+}

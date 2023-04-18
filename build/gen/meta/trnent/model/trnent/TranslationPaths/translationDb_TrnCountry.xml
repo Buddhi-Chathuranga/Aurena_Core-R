@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TranslatableResources type="LU" module="TRNENT" version="1.0" layer="Core" xmlns="types.scan.translation.fnd.ifsworld.com">
+   <TranslatableResource type="Logical Unit" ID="TrnCountry" name="TrnCountry">
+      <Text><![CDATA[Trn Country]]></Text>
+      <Resource subtype="Message" ID="TrnCountry.ALLEXIT" control="ALLEXIT">
+         <Text><![CDATA[The Trn Country [:p1] already exists]]></Text>
+      </Resource>
+      <Resource subtype="View" ID="TrnCountry.TRN_COUNTRY" control="TRN_COUNTRY">
+         <Text><![CDATA[Trn Country]]></Text>
+         <Resource subtype="Column" ID="TrnCountry.TRN_COUNTRY.COUNTRY_ID" control="COUNTRY_ID">
+            <Text><![CDATA[Country Id]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCountry.TRN_COUNTRY.COUNTRY" control="COUNTRY">
+            <Text><![CDATA[Country]]></Text>
+         </Resource>
+      </Resource>
+      <Resource subtype="View" ID="TrnCountry.TRN_COUNTRY_LOV" control="TRN_COUNTRY_LOV">
+         <Text><![CDATA[Trn Country Lov]]></Text>
+         <Resource subtype="Column" ID="TrnCountry.TRN_COUNTRY_LOV.COUNTRY_ID" control="COUNTRY_ID">
+            <Text><![CDATA[Country Id]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCountry.TRN_COUNTRY_LOV.COUNTRY" control="COUNTRY">
+            <Text><![CDATA[Country]]></Text>
+         </Resource>
+      </Resource>
+   </TranslatableResource>
+</TranslatableResources>

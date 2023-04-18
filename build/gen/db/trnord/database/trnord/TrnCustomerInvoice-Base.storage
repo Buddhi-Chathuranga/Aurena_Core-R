@@ -1,0 +1,45 @@
+-----------------------------------------------------------------------------
+--
+--  Logical unit: TrnCustomerInvoice
+--  Component:    TRNORD
+--
+--  Template:     3.0
+--  Built by:     IFS Developer Studio (unit-test)
+--
+--  NOTE! Do not edit!! This file is completely generated and will be
+--        overwritten next time the corresponding model is saved.
+-----------------------------------------------------------------------------
+
+
+layer Base;
+
+-------------------- TABLE DEFINITIONS --------------------------------------
+
+TABLE trn_customer_invoice_tab IS (
+   company_id                     VARCHAR2(20)   NOT NULL,
+   branch_id                      VARCHAR2(20)   NOT NULL,
+   invoice_id                     NUMBER         NOT NULL,
+   invoice_date                   DATE           NOT NULL,
+   due_date                       DATE           NULL,
+   invoice_amount                 NUMBER         NOT NULL,
+   comments                       VARCHAR2(2000) NULL,
+   unpaid                         NUMBER         NOT NULL,
+   payment_terms                  VARCHAR2(20)   NULL,
+   customer_id                    NUMBER         NOT NULL,
+   order_id                       NUMBER         NOT NULL,
+   rowversion                     DATE           NOT NULL,
+   rowkey                         VARCHAR2(50)   DEFAULT sys_guid() NOT NULL,
+   rowstate                       VARCHAR2(20)   NOT NULL);
+
+
+PRIMARY KEY trn_customer_invoice_pk IS trn_customer_invoice_tab (
+   company_id,
+   branch_id,
+   invoice_id);
+
+
+UNIQUE CONSTRAINT trn_customer_invoice_rk IS trn_customer_invoice_tab (
+   rowkey);
+
+-------------------- OTHER DEFINITIONS --------------------------------------
+

@@ -1,0 +1,38 @@
+-----------------------------------------------------------------------------
+--
+--  Logical unit: TrnBranch
+--  Component:    TRNENT
+--
+--  Template:     3.0
+--  Built by:     IFS Developer Studio (unit-test)
+--
+--  NOTE! Do not edit!! This file is completely generated and will be
+--        overwritten next time the corresponding model is saved.
+-----------------------------------------------------------------------------
+
+
+layer Base;
+
+-------------------- TABLE DEFINITIONS --------------------------------------
+
+TABLE trn_branch_tab IS (
+   company_id                     VARCHAR2(20)   NOT NULL,
+   branch_id                      VARCHAR2(20)   NOT NULL,
+   name                           VARCHAR2(1000) NOT NULL,
+   time_offset                    NUMBER         NOT NULL,
+   country_id                     VARCHAR2(10)   NULL,
+   area_id                        VARCHAR2(10)   NULL,
+   rowversion                     DATE           NOT NULL,
+   rowkey                         VARCHAR2(50)   DEFAULT sys_guid() NOT NULL);
+
+
+PRIMARY KEY trn_branch_pk IS trn_branch_tab (
+   company_id,
+   branch_id);
+
+
+UNIQUE CONSTRAINT trn_branch_rk IS trn_branch_tab (
+   rowkey);
+
+-------------------- OTHER DEFINITIONS --------------------------------------
+

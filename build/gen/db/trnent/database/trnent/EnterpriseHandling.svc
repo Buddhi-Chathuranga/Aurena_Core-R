@@ -1,0 +1,782 @@
+-----------------------------------------------------------------------------
+--
+--  Logical unit: EnterpriseHandling
+--  Type:         Entity
+--  Component:    TRNENT
+--
+--  Template:     3.0
+--  Built by:     IFS Developer Studio
+--
+--  NOTE! Do not edit!! This file is completely generated and will be
+--        overwritten next time the corresponding model is saved.
+-----------------------------------------------------------------------------
+
+
+--Storing resulting json metadata in database splitted by indivudual objects
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   projection_ VARCHAR2(250) := 'EnterpriseHandling';
+   header_     Model_Design_SYS.Fnd_Model_Design_Rec;
+   json_       VARCHAR2(32767);
+BEGIN
+   header_ := Model_Design_SYS.Prepare_Design_Data_Load('projection', projection_, Model_Design_SYS.SERVER_METADATA,
+      'Put some useful description here ...');
+   json_ := '{"projection": {"Name": "EnterpriseHandling","Metadata": {"Version": "[#[generate:version]#]","Description": "Put some useful description here ...","Category": ["Users"]},"Container": {"EntitySets": [{"Name": "TrnCountries","EntityType": "TrnCountry"}[#[jsoncallback:Custom_Object_Proxy_Sys.Server_Entityset_Metadata:{"Projection": "EnterpriseHandling","Lu": ["TrnCountry"]}]#]],"Singletons": [],"Actions": [[#[jsoncallback:Custom_Object_Proxy_Sys.Server_Action_Metadata:{"Projection":"EnterpriseHandling"}]#]],"Functions": []},"Enumerations": [[#[jsoncallback:Custom_Object_Proxy_SYS.Server_Enumeration_Metadata:{"Projection": "EnterpriseHandling","Lu": ["TrnCountry"]}]#]],"Structures": [{"Name": "TrnCountryCopyValues","PLSQLRecordName": "ENTERPRISE_HANDLING_SVC.COPY_VALUES_REC","Attributes": [{"Name": "ModifiedSource","DataType": "Entity","SubType": "TrnCountry","Collection": false,"Nullable": true,"AttrName": "MODIFIED_SOURCE","Execute": {"SQL": {"ImplementationType": "VARCHAR2"}}}]},{"Name": "StreamInfoRec","PLSQLRecordName": "ENTERPRISE_HANDLING_SVC.STREAM_INFO_REC","Attributes": [{"Name": "FileName","DataType": "Text"},{"Name": "MimeType","DataType": "Text"}]},{"Name": "EntityDec","PLSQLRecordName": "ENTERPRISE_HANDLING_SVC.ENTITY_DEC","Attributes": [{"Name": "ETag","DataType": "Text"},{"Name": "Info","DataType": "Text"},{"Name": "Attr","DataType": "Text"}]}[#[jsoncallback:Custom_Object_Proxy_Sys.Server_Structure_Metadata:{"Projection": "EnterpriseHandling","Lu": ["TrnCountry"]}]#]],"Entities": [{"Name": "TrnCountry","SupportWarnings": false,"Execute": {"SQL": {"From": "[#[callback:Custom_Object_Proxy_SYS.Server_View_Metadata:{"Projection":"EnterpriseHandling","Lu":"TrnCountry","View":"TRN_COUNTRY"}]#]"}},"Keys": ["CountryId"],"KeysWhere": "(country_id = :CountryId)","Attributes": [{"Name": "ETag","DataType": "ETag","Collection": false,"Size": 128,"Nullable": true,"Execute": {"SQL": {"Select": "''W/\"''||objid||'':''||objversion||''\"''","ImplementationType": "VARCHAR2","Alias": "etag"}}},{"Name": "luname","DataType": "Text","Collection": false,"Size": 80,"Nullable": true,"Execute": {"SQL": {"Select": "''TrnCountry''","ImplementationType": "VARCHAR2","Alias": "luname"}}},{"Name": "keyref","DataType": "Text","Collection": false,"Size": 4000,"Nullable": true,"Execute": {"SQL": {"Select": "''COUNTRY_ID=''||country_id||''^''","ImplementationType": "VARCHAR2","Alias": "keyref"}}},{"Name": "Objgrants","DataType": "';
+   json_ := json_ || 'Text","Collection": false,"Size": 2000,"Nullable": true,"Insertable": false,"Updatable": false,"AttrName": "OBJGRANTS","Keygeneration": "Server","Execute": {"SQL": {"Select": "NULL","ImplementationType": "VARCHAR2","Alias": "objgrants"}}},{"Name": "CountryId","DataType": "Text","Collection": false,"Size": 10,"Nullable": false,"Updatable": false,"AttrName": "COUNTRY_ID","Keygeneration": "User","Execute": {"SQL": {"Select": "country_id","ImplementationType": "VARCHAR2","Alias": "country_id"}}},{"Name": "Country","DataType": "Text","Collection": false,"Size": 1000,"Nullable": false,"Updatable": true,"AttrName": "COUNTRY","Keygeneration": "User","Execute": {"SQL": {"Select": "country","ImplementationType": "VARCHAR2","Alias": "country"}}}[#[jsoncallback:Custom_Object_Proxy_SYS.Server_Attribute_Metadata:{"Projection":"EnterpriseHandling","Lu":"TrnCountry","Type":"Entity","Name":"TrnCountry","View":"TRN_COUNTRY"}]#]],"Computed": [],"Annotations": [{"Name": "luname","DataType": "Text","Collection": false,"Size": 80,"Nullable": true,"Execute": {"SQL": {"Select": "''TrnCountry''","ImplementationType": "VARCHAR2","Alias": "luname"}}},{"Name": "keyref","DataType": "Text","Collection": false,"Size": 4000,"Nullable": true,"Execute": {"SQL": {"Select": "''COUNTRY_ID=''||country_id||''^''","ImplementationType": "VARCHAR2","Alias": "keyref"}}}],"Navigation": [[#[jsoncallback:Custom_Object_Proxy_Sys.Server_Entity_Nav_Metadata:{"Projection":"EnterpriseHandling","Entity":"TrnCountry","Lu":"TrnCountry","View":"TRN_COUNTRY"}]#]],"CRUD": [{"Name": "Default","DataType": "Entity","SubType": "TrnCountry","Collection": false,"CollectionBound": true,"Parameters": [],"Execute": {"SQL": {"From": "TABLE(Enterprise_Handling_SVC.CRUD_Default(:Attr, trn_country## => ''''))","Bind": [{"Kind": "ClientSYS.AttributeString","Name": "Attr","ImplementationType": "VARCHAR2"}]}}},{"Name": "DefaultCopy","DataType": "Entity","SubType": "TrnCountry","Collection": false,"CollectionBound": true,"Parameters": [{"Name": "CopyValues","DataType": "Structure","SubType": "TrnCountryCopyValues","Collection": false,"Nullable": true}],"Execute": {"PL-SQL": {"Code": ["BEGIN"," :Return_$ := Enterprise_Handling_SVC.CRUD_Default_Copy(:CopyValues, trn_country## => '''');","END;"],"Bind": [{"Kind": "Parameter","Name": "CopyValues","ImplementationType": "STRUCTURE","SubType": "ENTERPRISE_HANDLING_SVC.COPY_VALUES_REC"},{"Kind": "EntityDec$","Name": "Return_$","Implement';
+   json_ := json_ || 'ationType": "STRUCTURE","SubType": "ENTERPRISE_HANDLING_SVC.ENTITY_DEC","Direction": "OUT"}]}}},{"Name": "Create","DataType": "Structure","SubType": "EntityDec","Collection": false,"Parameters": [],"Execute": {"PL-SQL": {"Code": ["BEGIN","   :Return_$ := Enterprise_Handling_SVC.CRUD_Create(:Attr, :Action$, trn_country## => '''');","END;"],"Bind": [{"Kind": "ClientSYS.AttributeString","Name": "Attr","ImplementationType": "VARCHAR2"},{"Kind": "Action","Name": "Action$","ImplementationType": "VARCHAR2"}]}}},{"Name": "Update","DataType": "Structure","SubType": "EntityDec","Collection": false,"Parameters": [],"Execute": {"PL-SQL": {"Code": ["BEGIN","   :Return_$ := Enterprise_Handling_SVC.CRUD_Update(:ETag, :CountryId, :Attr, :Action$, trn_country## => '''');","END;"],"Bind": [{"Kind": "ETag","Name": "ETag","ImplementationType": "VARCHAR2"},{"Kind": "Attribute","Name": "CountryId","ImplementationType": "VARCHAR2"},{"Kind": "ClientSYS.AttributeString","Name": "Attr","ImplementationType": "VARCHAR2"},{"Kind": "Action","Name": "Action$","ImplementationType": "VARCHAR2"}]}}},{"Name": "Delete","DataType": "Structure","SubType": "EntityDec","Collection": false,"Parameters": [],"Execute": {"PL-SQL": {"Code": ["BEGIN","   :Return_$ := Enterprise_Handling_SVC.CRUD_Delete(:ETag, :CountryId, :Action$, trn_country## => '''');","END;"],"Bind": [{"Kind": "ETag","Name": "ETag","ImplementationType": "VARCHAR2"},{"Kind": "Attribute","Name": "CountryId","ImplementationType": "VARCHAR2"},{"Kind": "Action","Name": "Action$","ImplementationType": "VARCHAR2"}]}}}],"Actions": [],"Functions": [{"Name": "DefaultCopy","DataType": "Entity","SubType": "TrnCountry","Collection": false,"CrudOperation": true,"Parameters": [{"Name": "CopyValues","DataType": "Structure","SubType": "TrnCountryCopyValues","Collection": false,"Nullable": true}],"Execute": {"PL-SQL": {"Code": ["BEGIN"," :Return_$ := Enterprise_Handling_SVC.CRUD_Default_Copy(:ETag, :CountryId, :CopyValues, trn_country## => '''');","END;"],"Bind": [{"Kind": "ETag","Name": "ETag","ImplementationType": "VARCHAR2"},{"Kind": "Attribute","Name": "CountryId","ImplementationType": "VARCHAR2"},{"Kind": "Parameter","Name": "CopyValues","ImplementationType": "STRUCTURE","SubType": "ENTERPRISE_HANDLING_SVC.COPY_VALUES_REC"},{"Kind": "EntityDec$","Name": "Return_$","ImplementationType": "STRUCTURE","SubType": "ENTERPRISE_HANDLING_SVC.ENTITY_DEC","Direction": "OUT"}]}}}]}[#[jsoncallback:Custom_Ob';
+   json_ := json_ || 'ject_Proxy_Sys.Server_Entity_Type_Metadata:{"Projection": "EnterpriseHandling","Lu": ["TrnCountry"]}]#]]}}';
+   Model_Design_SYS.Add_Model_Design_Template(header_, json_);
+   COMMIT;
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   projection_ VARCHAR2(250) := 'EnterpriseHandling';
+   header_     Model_Design_SYS.Fnd_Model_Design_Rec;
+   json_       VARCHAR2(32767);
+BEGIN
+   header_ := Model_Design_SYS.Prepare_Design_Data_Load('projection', projection_, Model_Design_SYS.CLIENT_METADATA, '');
+   json_ := '{"name": "EnterpriseHandling","service": "EnterpriseHandling.svc","version": "2063568574","contains": {"TrnCountries": {"name": "TrnCountries","entity": "TrnCountry","array": true,"defaultfilter": false}[#[jsoncallback:Custom_Object_Proxy_Sys.Client_Entityset_Metadata:{"Projection": "EnterpriseHandling","Lu": ["TrnCountry"]}]#]},"enumerations": {[#[jsoncallback:Custom_Object_Proxy_SYS.Client_Enumeration_Metadata:{"Projection": "EnterpriseHandling","Lu": ["TrnCountry"]}]#]},"entities": {"TrnCountry": {"name": "TrnCountry","hasETag": true,"hasKeys": true,"CRUD": "Create,Read,Update,Delete","luname": "TrnCountry","ludependencies": ["TrnCountry"],"keys": ["CountryId"],"attributes": {"Objgrants": {"datatype": "Text","size": 2000,"keygeneration": "Server","required": false,"editable": false,"updatable": false,"insertable": false,"unbound": false,"multiselect": false},"CountryId": {"datatype": "Text","size": 10,"keygeneration": "User","required": true,"editable": {"==": [{"var": "record.etag"},null]},"updatable": false,"insertable": true,"unbound": false,"multiselect": false},"Country": {"datatype": "Text","size": 1000,"keygeneration": "User","required": true,"editable": true,"updatable": true,"insertable": true,"unbound": false,"multiselect": false}[#[jsoncallback:Custom_Object_Proxy_SYS.Client_Attribute_Metadata:{"Projection": "EnterpriseHandling","Lu": "TrnCountry","View": "TRN_COUNTRY"}]#]},"references": {[#[jsoncallback:Custom_Object_Proxy_Sys.Client_Entity_Nav_Metadata:{"Projection":"EnterpriseHandling","Lu":"TrnCountry"}]#]},"arrays": {[#[jsoncallback:Custom_Object_Proxy_Sys.Client_Entity_Array_Metadata:{"Projection":"EnterpriseHandling","Entity":"TrnCountry","Lu":"TrnCountry"}]#]},"actions": {},"functions": {},"defaultcopyapplicable": true}[#[jsoncallback:Custom_Object_Proxy_Sys.Client_Entity_Type_Metadata:{"Projection": "EnterpriseHandling","Lu": ["TrnCountry"]}]#]},"structures": {"TrnCountryCopyValues": {"name": "TrnCountryCopyValues","attributes": {"ModifiedSource": {"datatype": "Entity","subtype": "TrnCountry","required": false,"editable": true,"updatable": true,"insertable": true,"unbound": false,"multiselect": false}},"references": {},"arrays": {}}},"actions": {[#[jsoncallback:Custom_Object_Proxy_Sys.Client_Action_Metadata:{"Projection": "EnterpriseHandling"}]#]},"functions": {},"attachmentservices": {[#[callback:Object_Connection_Metadata_SYS.Enum_Entity_Services_:TrnCountry]#]}}';
+   Model_Design_SYS.Add_Model_Design_Template(header_, json_);
+   COMMIT;
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   projection_ VARCHAR2(250) := 'EnterpriseHandling';
+   header_     Model_Design_SYS.Fnd_Model_Api_Doc_Rec;
+   json_       VARCHAR2(32767);
+BEGIN
+   header_ := Model_Design_SYS.Prepare_Doc_Load('projection', projection_, Model_Design_SYS.SERVER_METADATA, 'Put some useful description here ...');
+   json_ := '{"projection": {"Name": "EnterpriseHandling","Metadata": {"Version": "[#[generate:version]#]","Description": "Put some useful description here ...","Category": ["Users"]},"Container": {"EntitySets": [{"Name": "TrnCountries","EntityType": "TrnCountry"}],"Singletons": [],"Actions": [],"Functions": []},"Enumerations": [],"Structures": [{"Name": "TrnCountryCopyValues","PLSQLRecordName": "ENTERPRISE_HANDLING_SVC.COPY_VALUES_REC","Attributes": [{"Name": "ModifiedSource","DataType": "Entity","SubType": "TrnCountry","Collection": false,"Nullable": true,"AttrName": "MODIFIED_SOURCE","Execute": {"SQL": {"ImplementationType": "VARCHAR2"}}}]},{"Name": "StreamInfoRec","PLSQLRecordName": "ENTERPRISE_HANDLING_SVC.STREAM_INFO_REC","Attributes": [{"Name": "FileName","DataType": "Text"},{"Name": "MimeType","DataType": "Text"}]},{"Name": "EntityDec","PLSQLRecordName": "ENTERPRISE_HANDLING_SVC.ENTITY_DEC","Attributes": [{"Name": "ETag","DataType": "Text"},{"Name": "Info","DataType": "Text"},{"Name": "Attr","DataType": "Text"}]}],"Entities": [{"Name": "TrnCountry","SupportWarnings": false,"Execute": {"SQL": {"From": "[#[callback:Custom_Object_Proxy_SYS.Server_View_Metadata:{"Projection":"EnterpriseHandling","Lu":"TrnCountry","View":"TRN_COUNTRY"}]#]"}},"Keys": ["CountryId"],"KeysWhere": "(country_id = :CountryId)","Attributes": [{"Name": "ETag","DataType": "ETag","Collection": false,"Size": 128,"Nullable": true,"Execute": {"SQL": {"Select": "''W/\"''||objid||'':''||objversion||''\"''","ImplementationType": "VARCHAR2","Alias": "etag"}}},{"Name": "luname","DataType": "Text","Collection": false,"Size": 80,"Nullable": true,"Execute": {"SQL": {"Select": "''TrnCountry''","ImplementationType": "VARCHAR2","Alias": "luname"}}},{"Name": "keyref","DataType": "Text","Collection": false,"Size": 4000,"Nullable": true,"Execute": {"SQL": {"Select": "''COUNTRY_ID=''||country_id||''^''","ImplementationType": "VARCHAR2","Alias": "keyref"}}},{"Name": "Objgrants","DataType": "Text","Collection": false,"Size": 2000,"Nullable": true,"Insertable": false,"Updatable": false,"AttrName": "OBJGRANTS","Keygeneration": "Server","Execute": {"SQL": {"Select": "NULL","ImplementationType": "VARCHAR2","Alias": "objgrants"}}},{"Name": "CountryId","DataType": "Text","Collection": false,"Size": 10,"Nullable": false,"Updatable": false,"AttrName": "COUNTRY_ID","Keygeneration": "User","Execute": {"SQL": {"Select": "country_id","ImplementationType": "VARCHAR2","Alias": ';
+   json_ := json_ || '"country_id"}}},{"Name": "Country","DataType": "Text","Collection": false,"Size": 1000,"Nullable": false,"Updatable": true,"AttrName": "COUNTRY","Keygeneration": "User","Execute": {"SQL": {"Select": "country","ImplementationType": "VARCHAR2","Alias": "country"}}}[#[jsoncallback:Custom_Object_Proxy_SYS.Server_Attribute_Metadata:{"Projection":"EnterpriseHandling","Lu":"TrnCountry","Type":"Entity","Name":"TrnCountry","View":"TRN_COUNTRY"}]#]],"Computed": [],"Annotations": [{"Name": "luname","DataType": "Text","Collection": false,"Size": 80,"Nullable": true,"Execute": {"SQL": {"Select": "''TrnCountry''","ImplementationType": "VARCHAR2","Alias": "luname"}}},{"Name": "keyref","DataType": "Text","Collection": false,"Size": 4000,"Nullable": true,"Execute": {"SQL": {"Select": "''COUNTRY_ID=''||country_id||''^''","ImplementationType": "VARCHAR2","Alias": "keyref"}}}],"Navigation": [[#[jsoncallback:Custom_Object_Proxy_Sys.Server_Entity_Nav_Metadata:{"Projection":"EnterpriseHandling","Entity":"TrnCountry","Lu":"TrnCountry","View":"TRN_COUNTRY"}]#]],"CRUD": [{"Name": "Default","DataType": "Entity","SubType": "TrnCountry","Collection": false,"CollectionBound": true,"Parameters": [],"Execute": {"SQL": {"From": "TABLE(Enterprise_Handling_SVC.CRUD_Default(:Attr, trn_country## => ''''))","Bind": [{"Kind": "ClientSYS.AttributeString","Name": "Attr","ImplementationType": "VARCHAR2"}]}}},{"Name": "DefaultCopy","DataType": "Entity","SubType": "TrnCountry","Collection": false,"CollectionBound": true,"Parameters": [{"Name": "CopyValues","DataType": "Structure","SubType": "TrnCountryCopyValues","Collection": false,"Nullable": true}],"Execute": {"PL-SQL": {"Code": ["BEGIN"," :Return_$ := Enterprise_Handling_SVC.CRUD_Default_Copy(:CopyValues, trn_country## => '''');","END;"],"Bind": [{"Kind": "Parameter","Name": "CopyValues","ImplementationType": "STRUCTURE","SubType": "ENTERPRISE_HANDLING_SVC.COPY_VALUES_REC"},{"Kind": "EntityDec$","Name": "Return_$","ImplementationType": "STRUCTURE","SubType": "ENTERPRISE_HANDLING_SVC.ENTITY_DEC","Direction": "OUT"}]}}},{"Name": "Create","DataType": "Structure","SubType": "EntityDec","Collection": false,"Parameters": [],"Execute": {"PL-SQL": {"Code": ["BEGIN","   :Return_$ := Enterprise_Handling_SVC.CRUD_Create(:Attr, :Action$, trn_country## => '''');","END;"],"Bind": [{"Kind": "ClientSYS.AttributeString","Name": "Attr","ImplementationType": "VARCHAR2"},{"Kind": "Action","Name": "Action$","Implemen';
+   json_ := json_ || 'tationType": "VARCHAR2"}]}}},{"Name": "Update","DataType": "Structure","SubType": "EntityDec","Collection": false,"Parameters": [],"Execute": {"PL-SQL": {"Code": ["BEGIN","   :Return_$ := Enterprise_Handling_SVC.CRUD_Update(:ETag, :CountryId, :Attr, :Action$, trn_country## => '''');","END;"],"Bind": [{"Kind": "ETag","Name": "ETag","ImplementationType": "VARCHAR2"},{"Kind": "Attribute","Name": "CountryId","ImplementationType": "VARCHAR2"},{"Kind": "ClientSYS.AttributeString","Name": "Attr","ImplementationType": "VARCHAR2"},{"Kind": "Action","Name": "Action$","ImplementationType": "VARCHAR2"}]}}},{"Name": "Delete","DataType": "Structure","SubType": "EntityDec","Collection": false,"Parameters": [],"Execute": {"PL-SQL": {"Code": ["BEGIN","   :Return_$ := Enterprise_Handling_SVC.CRUD_Delete(:ETag, :CountryId, :Action$, trn_country## => '''');","END;"],"Bind": [{"Kind": "ETag","Name": "ETag","ImplementationType": "VARCHAR2"},{"Kind": "Attribute","Name": "CountryId","ImplementationType": "VARCHAR2"},{"Kind": "Action","Name": "Action$","ImplementationType": "VARCHAR2"}]}}}],"Actions": [],"Functions": [{"Name": "DefaultCopy","DataType": "Entity","SubType": "TrnCountry","Collection": false,"CrudOperation": true,"Parameters": [{"Name": "CopyValues","DataType": "Structure","SubType": "TrnCountryCopyValues","Collection": false,"Nullable": true}],"Execute": {"PL-SQL": {"Code": ["BEGIN"," :Return_$ := Enterprise_Handling_SVC.CRUD_Default_Copy(:ETag, :CountryId, :CopyValues, trn_country## => '''');","END;"],"Bind": [{"Kind": "ETag","Name": "ETag","ImplementationType": "VARCHAR2"},{"Kind": "Attribute","Name": "CountryId","ImplementationType": "VARCHAR2"},{"Kind": "Parameter","Name": "CopyValues","ImplementationType": "STRUCTURE","SubType": "ENTERPRISE_HANDLING_SVC.COPY_VALUES_REC"},{"Kind": "EntityDec$","Name": "Return_$","ImplementationType": "STRUCTURE","SubType": "ENTERPRISE_HANDLING_SVC.ENTITY_DEC","Direction": "OUT"}]}}}]}]}}';
+   Model_Design_SYS.Add_Model_Api_Doc_Template(header_, json_);
+   COMMIT;
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+PROMPT Creating Enterprise_Handling_SVC specification
+
+-- [IFS COMPLETE BLOCK PACKAGE Enterprise_Handling_SVC]
+CREATE OR REPLACE PACKAGE Enterprise_Handling_SVC IS
+
+module_  CONSTANT VARCHAR2(25)  := 'TRNENT';
+lu_name_ CONSTANT VARCHAR2(250) := 'EnterpriseHandling';
+lu_type_ CONSTANT VARCHAR2(25)  := 'Projection';
+
+-----------------------------------------------------------------------------
+---------------------------- PUBLIC DECLARATIONS ----------------------------
+-----------------------------------------------------------------------------
+
+TYPE Entity_Dec IS RECORD (
+   etag                           VARCHAR2(100),
+   info                           VARCHAR2(4000),
+   attr                           VARCHAR2(32000));
+
+TYPE Entity_Small_Dec IS RECORD (
+   etag                           VARCHAR2(100),
+   info                           VARCHAR2(4000),
+   attr                           VARCHAR2(4000));
+
+TYPE Entity_Small_Drr      IS TABLE OF Entity_Small_Dec;
+
+TYPE Entity_Drr      IS TABLE OF Entity_Dec;
+
+TYPE Objid_Arr       IS TABLE OF VARCHAR2(100);
+
+TYPE Empty_Art       IS TABLE OF VARCHAR2(1);
+
+TYPE Boolean_Arr     IS TABLE OF BOOLEAN;
+
+TYPE Boolean_Art     IS TABLE OF VARCHAR2(5);
+
+TYPE Number_Arr      IS TABLE OF NUMBER;
+
+TYPE Text_Arr        IS TABLE OF VARCHAR2(4000);
+
+TYPE Stream_Data_Rec IS RECORD (
+   file_name                           VARCHAR2(100),
+   mime_type                           VARCHAR2(100),
+   stream_data                         BLOB);
+
+TYPE Stream_Data_Arr IS TABLE OF Stream_Data_Rec;
+
+TYPE Stream_Info_Rec IS RECORD (
+   file_name                           VARCHAR2(100),
+   mime_type                           VARCHAR2(100));
+
+TYPE Stream_Text_Data_Rec IS RECORD (
+   file_name                           VARCHAR2(100),
+   mime_type                           VARCHAR2(100),
+   stream_data                         CLOB);
+
+TYPE Copy_Values_Rec IS RECORD (
+   modified_source                VARCHAR2(32000));
+
+
+-----------------------------------------------------------------------------
+------------------------- METADATA PROVIDER METHODS -------------------------
+-----------------------------------------------------------------------------
+
+FUNCTION Verify_Metadata_Sql_Content_ (
+   metadata_version_ IN VARCHAR2 ) RETURN VARCHAR2;
+
+PROCEDURE Verify_Metadata_Plsql_Content_ (
+   metadata_version_ IN VARCHAR2 );
+
+FUNCTION Get_Metadata_Content_ (
+   context_ IN VARCHAR2 DEFAULT NULL ) RETURN CLOB;
+
+FUNCTION Get_Metadata_Version_ (
+   context_ IN VARCHAR2 DEFAULT NULL ) RETURN VARCHAR2;
+
+FUNCTION Get_Metadata_Category_ (
+   context_ IN VARCHAR2 DEFAULT NULL ) RETURN VARCHAR2;
+
+FUNCTION Get_Metadata_Service_Group_ (
+   context_ IN VARCHAR2 DEFAULT NULL ) RETURN VARCHAR2;
+
+-----------------------------------------------------------------------------
+------------------------------- GLOBAL METHODS ------------------------------
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+-------------------------- METHODS FOR TRN COUNTRY --------------------------
+-----------------------------------------------------------------------------
+
+
+--@PoReadOnly(CRUD_Default)
+FUNCTION CRUD_Default(attr_ IN VARCHAR2 DEFAULT NULL, trn_country## IN VARCHAR2) RETURN Entity_Small_Drr PIPELINED;
+
+--@PoReadOnly(CRUD_Default_Copy)
+FUNCTION CRUD_Default_Copy(values_ IN Copy_Values_Rec, trn_country## IN VARCHAR2) RETURN Entity_Dec;
+
+FUNCTION CRUD_Default_Copy(etag_ IN VARCHAR2, country_id_ IN VARCHAR2, values_ IN Copy_Values_Rec, trn_country## IN VARCHAR2) RETURN Entity_Dec;
+
+--@PoReadOnly(CRUD_Create)
+FUNCTION CRUD_Create(attr_ IN VARCHAR2, action_ IN VARCHAR2, trn_country## IN VARCHAR2) RETURN Entity_Dec;
+
+--@PoReadOnly(CRUD_Update)
+FUNCTION CRUD_Update(etag_ IN VARCHAR2, country_id_ IN VARCHAR2, attr_ IN VARCHAR2, action$_ IN VARCHAR2, trn_country## IN VARCHAR2) RETURN Entity_Dec;
+
+--@PoReadOnly(CRUD_Delete)
+FUNCTION CRUD_Delete(etag_ IN VARCHAR2, country_id_ IN VARCHAR2, action$_ IN VARCHAR2, trn_country## IN VARCHAR2) RETURN Entity_Dec;
+
+END Enterprise_Handling_SVC;
+-- [END IFS COMPLETE BLOCK]
+/
+SHOW ERROR
+
+PROMPT Creating Enterprise_Handling_SVC implementation
+
+-- [IFS COMPLETE BLOCK PACKAGEBODY Enterprise_Handling_SVC]
+CREATE OR REPLACE PACKAGE BODY Enterprise_Handling_SVC IS
+
+-----------------------------------------------------------------------------
+---------------------------- PRIVATE DECLARATIONS ---------------------------
+-----------------------------------------------------------------------------
+
+TYPE Trn_Country_Rec IS RECORD (
+   objid                          VARCHAR2(4000),
+   objversion                     VARCHAR2(4000),
+   objinfo                        VARCHAR2(4000),
+   objgrants                      VARCHAR2(2000),
+   country_id                     VARCHAR2(10),
+   country                        VARCHAR2(1000));
+
+TYPE Trn_Country_Default_Copy_Rec IS RECORD (
+   objgrants                      VARCHAR2(2000),
+   country_id                     VARCHAR2(10),
+   country                        VARCHAR2(1000));
+
+TYPE Trn_Country_Key IS RECORD (
+   country_id                     VARCHAR2(10));
+
+
+-----------------------------------------------------------------------------
+------------------------- METADATA PROVIDER METHODS -------------------------
+-----------------------------------------------------------------------------
+
+FUNCTION Verify_Metadata_Sql_Content_ (
+   metadata_version_ IN VARCHAR2 ) RETURN VARCHAR2
+IS
+BEGIN
+   Verify_Metadata_Plsql_Content_(metadata_version_);
+   RETURN 'OK';
+END Verify_Metadata_Sql_Content_;
+
+
+PROCEDURE Verify_Metadata_Plsql_Content_ (
+   metadata_version_ IN VARCHAR2 )
+IS
+BEGIN
+   IF (metadata_version_ != Get_Metadata_Version_) THEN
+      Raise_Application_Error(-20187, 'OLDMETA: Metadata mismatch, reload with Enterprise_Handling_SVC.Get_Metadata_Content_ and execute again.');
+   END IF;
+END Verify_Metadata_Plsql_Content_;
+
+
+FUNCTION Get_Metadata_Content_ (
+   context_ IN VARCHAR2 DEFAULT NULL ) RETURN CLOB
+IS
+BEGIN
+   IF (context_ IS NULL) THEN
+      RETURN Model_Design_SYS.Get_Data_Content_(Model_Design_SYS.SERVER_METADATA, 'projection', 'EnterpriseHandling', language_ => Fnd_Session_API.Get_Language);
+   ELSE
+      RETURN Model_Design_SYS.Get_Data_Content_(Model_Design_SYS.SERVER_METADATA, 'projection', 'EnterpriseHandling', language_ => Fnd_Session_API.Get_Language, scope_id_ => context_);
+   END IF;
+END Get_Metadata_Content_;
+
+
+FUNCTION Get_Metadata_Category_ (
+   context_ IN VARCHAR2 DEFAULT NULL ) RETURN VARCHAR2
+IS
+   projection_category_  VARCHAR2(100);
+BEGIN
+   projection_category_ := 'Users';
+   RETURN projection_category_;
+END Get_Metadata_Category_;
+
+
+FUNCTION Get_Metadata_Service_Group_ (
+   context_ IN VARCHAR2 DEFAULT NULL ) RETURN VARCHAR2
+IS
+   projection_service_group_  VARCHAR2(100);
+BEGIN
+   projection_service_group_ := 'Default';
+   RETURN projection_service_group_;
+END Get_Metadata_Service_Group_;
+
+
+FUNCTION Get_Metadata_Version_ (
+   context_ IN VARCHAR2 DEFAULT NULL ) RETURN VARCHAR2
+IS
+BEGIN
+   RETURN Model_Design_SYS.Get_Data_Version_(Model_Design_SYS.SERVER_METADATA, 'projection', 'EnterpriseHandling');
+END Get_Metadata_Version_;
+
+
+-----------------------------------------------------------------------------
+--------------------- IMPLEMENTATION METHOD DECLARATIONS --------------------
+-----------------------------------------------------------------------------
+
+FUNCTION Get_Objid_From_Etag___ (
+   etag_ IN VARCHAR2 ) RETURN VARCHAR2;
+
+FUNCTION Get_Objversion_From_Etag___ (
+   etag_ IN VARCHAR2 ) RETURN VARCHAR2;
+
+FUNCTION Get_Etag___ (
+   objid_      IN VARCHAR2,
+   objversion_ IN VARCHAR2 ) RETURN VARCHAR2;
+
+FUNCTION Combine_Value_Unit___ (
+   value_ IN VARCHAR2,
+   unit_  IN VARCHAR2 ) RETURN VARCHAR2;
+
+FUNCTION To_Boolean_Arr____ (
+   arr_ IN Text_Arr ) RETURN Boolean_Arr;
+
+PROCEDURE Add_To_Attr_From_Rec___ (
+   rec_  IN     Trn_Country_Rec,
+   attr_ IN OUT NOCOPY VARCHAR2 );
+
+PROCEDURE Add_To_Rec_From_Attr___ (
+   attr_ IN     VARCHAR2,
+   rec_  IN OUT NOCOPY Trn_Country_Rec );
+
+PROCEDURE Add_Keys_To_Rec_From_Attr___ (
+   attr_ IN  VARCHAR2,
+   rec_ IN OUT NOCOPY Trn_Country_Rec );
+
+FUNCTION Add_To_Rec_From_Default_Copy_Rec___(
+   default_copy_rec_ IN     Trn_Country_Default_Copy_Rec) RETURN Trn_Country_Rec;
+
+FUNCTION Get_Record_By_Objid___ (
+   objid_ IN VARCHAR2,
+   trn_country## IN VARCHAR2 ) RETURN Trn_Country_Rec;
+
+PROCEDURE Get_Objid_Objversion___ (
+   objid_         OUT VARCHAR2,
+   objversion_    OUT VARCHAR2,
+   key_        IN     Trn_Country_Key );
+
+PROCEDURE CRUD_Default___ (
+   key_  IN     Trn_Country_Key,
+   attr_ IN OUT NOCOPY VARCHAR2,
+   info_    OUT VARCHAR2 );
+
+PROCEDURE CRUD_Default___ (
+   rec_  IN OUT NOCOPY Trn_Country_Rec );
+
+PROCEDURE CRUD_Default_Copy___ (
+   objid_  IN     VARCHAR2,
+   key_    IN     Trn_Country_Key,
+   values_ IN     Copy_Values_Rec,
+   attr_      OUT VARCHAR2,
+   info_      OUT VARCHAR2 );
+
+PROCEDURE CRUD_Default_Copy___ (
+   rec_  IN OUT NOCOPY Trn_Country_Rec );
+
+PROCEDURE CRUD_Create___ (
+   etag_ IN OUT NOCOPY VARCHAR2,
+   key_  IN OUT NOCOPY Trn_Country_Key,
+   attr_ IN OUT NOCOPY VARCHAR2,
+   info_    OUT VARCHAR2,
+   action_ IN VARCHAR2 );
+
+PROCEDURE CRUD_Update___ (
+   etag_ IN OUT NOCOPY VARCHAR2,
+   key_  IN OUT NOCOPY Trn_Country_Key,
+   attr_ IN OUT NOCOPY VARCHAR2,
+   info_    OUT VARCHAR2,
+   action_ IN VARCHAR2 );
+
+PROCEDURE CRUD_Delete___ (
+   etag_ IN OUT NOCOPY VARCHAR2,
+   key_  IN     Trn_Country_Key,
+   info_    OUT VARCHAR2,
+   action_ IN VARCHAR2 );
+
+-----------------------------------------------------------------------------
+-------------------- PRIVATE METHODS FOR TRN COUNTRY ------------------------
+-----------------------------------------------------------------------------
+
+FUNCTION CRUD_Default(attr_ IN VARCHAR2 DEFAULT NULL, trn_country## IN VARCHAR2 ) RETURN Entity_Small_Drr PIPELINED
+IS
+   ret_ Entity_Small_Dec;
+   key_ Trn_Country_Key;
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_SVC', 'CRUD_Default');
+   ret_.attr := attr_;
+   CRUD_Default___(key_, ret_.attr, ret_.info);
+   IF Component_FNDCOB_SYS.INSTALLED THEN
+      DECLARE
+         save_info_ VARCHAR2(4000) := Client_SYS.Get_All_Info;
+         objid_     VARCHAR2(4000) := Get_Objid_From_Etag___(ret_.etag);
+         attr_cf_   VARCHAR2(4000) := attr_;
+      BEGIN
+         Custom_Object_Proxy_SYS.Cf_Crud(Trn_Country_API.lu_name_, 'CUSTOM_FIELD', save_info_, objid_, attr_cf_, '', 'PREPARE', 'P');
+         ret_.attr := ret_.attr || attr_cf_;
+         Client_SYS.Merge_Info(save_info_);
+      END;
+   END IF;
+   PIPE ROW (ret_);
+END CRUD_Default;
+
+
+
+--@IgnoreMissingSysinit
+FUNCTION CRUD_Default_Copy(values_ IN Copy_Values_Rec, trn_country## IN VARCHAR2 ) RETURN Entity_Dec
+IS
+   ret_ Entity_Dec;
+   key_ Trn_Country_Key;
+   objid_  VARCHAR2(10) := NULL;
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_SVC', 'CRUD_Default_Copy');
+   CRUD_Default_Copy___(objid_, key_, values_, ret_.attr, ret_.info);
+   RETURN ret_;
+END CRUD_Default_Copy;
+
+
+--@IgnoreMissingSysinit
+FUNCTION CRUD_Default_Copy(etag_ IN VARCHAR2, country_id_ IN VARCHAR2, values_ IN Copy_Values_Rec, trn_country## IN VARCHAR2) RETURN Entity_Dec
+IS
+   ret_ Entity_Dec;
+   key_ Trn_Country_Key;
+   objid_  VARCHAR2(2000) := Get_Objid_From_Etag___(etag_);
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_SVC', 'CRUD_Default_Copy');
+   key_.country_id := country_id_;
+   CRUD_Default_Copy___(objid_, key_, values_, ret_.attr, ret_.info);
+   IF Component_FNDCOB_SYS.INSTALLED THEN
+      DECLARE
+         save_info_ VARCHAR2(4000) := Client_SYS.Get_All_Info;
+      BEGIN
+         Custom_Object_Proxy_SYS.Cf_Crud(Trn_Country_API.lu_name_, 'CUSTOM_FIELD', save_info_, objid_, ret_.attr, '', 'COPY', 'D');
+         Client_SYS.Merge_Info(save_info_);
+      END;
+   END IF;
+   RETURN ret_;
+END CRUD_Default_Copy;
+
+
+FUNCTION CRUD_Create(attr_ IN VARCHAR2, action_ IN VARCHAR2, trn_country## IN VARCHAR2) RETURN Entity_Dec
+IS
+   ret_ Entity_Dec;
+   key_ Trn_Country_Key;
+BEGIN
+   General_SYS.Init_Projection_Method(Enterprise_Handling_SVC.lu_name_, 'Enterprise_Handling_SVC', 'CRUD_Create');
+   Log_SYS.Init_Method('Enterprise_Handling_SVC', 'CRUD_Create');
+   ret_.attr := attr_;
+   CRUD_Create___(ret_.etag, key_, ret_.attr, ret_.info, action_);
+   IF Component_FNDCOB_SYS.INSTALLED THEN
+      DECLARE
+         save_info_ VARCHAR2(4000)  := Client_SYS.Get_All_Info;
+         objid_     VARCHAR2(4000)  := Get_Objid_From_Etag___(ret_.etag);
+         attr_cf_   VARCHAR2(32000) := attr_;
+      BEGIN
+         Custom_Object_Proxy_SYS.Cf_Crud(Trn_Country_API.lu_name_, 'CUSTOM_FIELD', save_info_, objid_, attr_cf_, '', action_, 'C');
+         Client_SYS.Merge_Info(save_info_);
+      END;
+   END IF;
+   Client_SYS.Set_Item_Value('COUNTRY_ID', key_.country_id, ret_.attr);
+   return ret_;
+END CRUD_Create;
+
+
+FUNCTION CRUD_Update(etag_ IN VARCHAR2, country_id_ IN VARCHAR2, attr_ IN VARCHAR2, action$_ IN VARCHAR2, trn_country## IN VARCHAR2) RETURN Entity_Dec
+IS
+   ret_ Entity_Dec;
+   key_ Trn_Country_Key;
+BEGIN
+   General_SYS.Init_Projection_Method(Enterprise_Handling_SVC.lu_name_, 'Enterprise_Handling_SVC', 'CRUD_Update');
+   Log_SYS.Init_Method('Enterprise_Handling_SVC', 'CRUD_Update');
+   ret_.etag := etag_;
+   ret_.attr := attr_;
+   key_.country_id := country_id_;
+   CRUD_Update___(ret_.etag, key_, ret_.attr, ret_.info, action$_);
+   IF Component_FNDCOB_SYS.INSTALLED THEN
+      DECLARE
+         save_info_ VARCHAR2(4000)  := Client_SYS.Get_All_Info;
+         objid_     VARCHAR2(4000)  := Get_Objid_From_Etag___(ret_.etag);
+         attr_cf_   VARCHAR2(32000) := attr_;
+      BEGIN
+         Custom_Object_Proxy_SYS.Cf_Crud(Trn_Country_API.lu_name_, 'CUSTOM_FIELD', save_info_, objid_, attr_cf_, '', action$_, 'U');
+         Client_SYS.Merge_Info(save_info_);
+      END;
+   END IF;
+   Client_SYS.Set_Item_Value('COUNTRY_ID', key_.country_id, ret_.attr);
+   return ret_;
+END CRUD_Update;
+
+
+FUNCTION CRUD_Delete(etag_ IN VARCHAR2, country_id_ IN VARCHAR2, action$_ IN VARCHAR2, trn_country## IN VARCHAR2) RETURN Entity_Dec
+IS
+   ret_ Entity_Dec;
+   key_ Trn_Country_Key;
+BEGIN
+   General_SYS.Init_Projection_Method(Enterprise_Handling_SVC.lu_name_, 'Enterprise_Handling_SVC', 'CRUD_Delete');
+   Log_SYS.Init_Method('Enterprise_Handling_SVC', 'CRUD_Delete');
+   ret_.etag := etag_;
+   key_.country_id := country_id_;
+   CRUD_Delete___(ret_.etag, key_, ret_.info, action$_);
+   return ret_;
+END CRUD_Delete;
+
+
+PROCEDURE Add_To_Attr_From_Rec___ (
+   rec_  IN     Trn_Country_Rec,
+   attr_ IN OUT NOCOPY VARCHAR2 )
+IS
+BEGIN
+   IF (rec_.objgrants IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('OBJGRANTS', rec_.objgrants, attr_);
+   END IF;
+   IF (rec_.country_id IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('COUNTRY_ID', rec_.country_id, attr_);
+   END IF;
+   IF (rec_.country IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('COUNTRY', rec_.country, attr_);
+   END IF;
+END Add_To_Attr_From_Rec___;
+
+
+PROCEDURE Add_To_Rec_From_Attr___ (
+   attr_ IN     VARCHAR2,
+   rec_  IN OUT NOCOPY Trn_Country_Rec )
+IS
+BEGIN
+   IF (Client_SYS.Item_Exist('OBJGRANTS', attr_)) THEN
+      rec_.objgrants := Client_SYS.Get_Item_Value('OBJGRANTS', attr_);
+   END IF;
+   IF (Client_SYS.Item_Exist('COUNTRY_ID', attr_)) THEN
+      rec_.country_id := Client_SYS.Get_Item_Value('COUNTRY_ID', attr_);
+   END IF;
+   IF (Client_SYS.Item_Exist('COUNTRY', attr_)) THEN
+      rec_.country := Client_SYS.Get_Item_Value('COUNTRY', attr_);
+   END IF;
+END Add_To_Rec_From_Attr___;
+
+
+PROCEDURE Add_Keys_To_Rec_From_Attr___ (
+   attr_ IN  VARCHAR2,
+   rec_ IN OUT NOCOPY Trn_Country_Rec )
+IS
+BEGIN
+   IF (Client_SYS.Item_Exist('COUNTRY_ID', attr_)) THEN
+      rec_.country_id := Client_SYS.Get_Item_Value('COUNTRY_ID', attr_);
+   END IF;
+END Add_Keys_To_Rec_From_Attr___;
+
+
+FUNCTION Add_To_Rec_From_Default_Copy_Rec___(
+   default_copy_rec_ IN     Trn_Country_Default_Copy_Rec) RETURN Trn_Country_Rec
+IS
+   rec_ Trn_Country_Rec;
+BEGIN
+   rec_.objgrants := default_copy_rec_.objgrants;
+   rec_.country_id := default_copy_rec_.country_id;
+   rec_.country := default_copy_rec_.country;
+   RETURN rec_;
+END Add_To_Rec_From_Default_Copy_Rec___;
+
+
+FUNCTION Get_Record_By_Objid___ (
+   objid_ IN VARCHAR2,
+   trn_country## IN VARCHAR2 ) RETURN Trn_Country_Rec
+IS
+   default_copy_rec_ Trn_Country_Default_Copy_Rec;
+   rec_ Trn_Country_Rec;
+BEGIN
+   SELECT
+      NULL objgrants,
+      country_id country_id,
+      country country   INTO default_copy_rec_
+   FROM TRN_COUNTRY
+   WHERE
+    objid = objid_;
+
+   rec_ := Add_To_Rec_From_Default_Copy_Rec___(default_copy_rec_);
+   RETURN rec_;
+EXCEPTION
+   WHEN NO_DATA_FOUND THEN
+      Error_SYS.Record_Not_Exist(lu_name_);
+END Get_Record_By_Objid___;
+
+
+PROCEDURE Get_Objid_Objversion___ (
+   objid_         OUT VARCHAR2,
+   objversion_    OUT VARCHAR2,
+   key_        IN     Trn_Country_Key )
+IS
+BEGIN
+   SELECT objid, objversion
+      INTO  objid_, objversion_
+      FROM  TRN_COUNTRY
+      WHERE country_id = key_.country_id;
+EXCEPTION
+   WHEN NO_DATA_FOUND THEN
+      Error_SYS.Odp_Record_Not_Exist(Trn_Country_API.lu_name_);
+END Get_Objid_Objversion___;
+
+
+PROCEDURE CRUD_Default___ (
+   key_  IN     Trn_Country_Key,
+   attr_ IN OUT NOCOPY VARCHAR2,
+   info_    OUT VARCHAR2 )
+IS
+   rec_        Trn_Country_Rec;
+   objid_      VARCHAR2(2000);
+   objversion_ VARCHAR2(2000);
+BEGIN
+   Trn_Country_API.New__(info_, objid_, objversion_, attr_, 'PREPARE');
+   Add_To_Rec_From_Attr___(attr_, rec_);
+   CRUD_Default___(rec_);
+   Add_To_Attr_From_Rec___(rec_, attr_);
+END CRUD_Default___;
+
+
+PROCEDURE CRUD_Default___ (
+   rec_  IN OUT NOCOPY Trn_Country_Rec )
+IS
+BEGIN
+   NULL;
+END CRUD_Default___;
+
+
+--@IgnoreMissingSysinit
+PROCEDURE CRUD_Default_Copy___ (
+   objid_  IN     VARCHAR2,
+   key_    IN     Trn_Country_Key,
+   values_ IN     Copy_Values_Rec,
+   attr_      OUT VARCHAR2,
+   info_      OUT VARCHAR2 )
+IS
+   rec_            Trn_Country_Rec;
+   default_dec_    Entity_Small_Dec;
+BEGIN
+   IF objid_ IS NOT NULL THEN
+      rec_ := Get_Record_By_Objid___(objid_, trn_country## => '');
+   END IF;
+   Add_To_Rec_From_Attr___(values_.modified_source, rec_);
+   SELECT * INTO default_dec_ FROM TABLE(Enterprise_Handling_SVC.CRUD_Default('', trn_country## => ''));
+   Client_SYS.Merge_Info(default_dec_.info);
+   Add_Keys_To_Rec_From_Attr___(default_dec_.attr, rec_);
+   attr_ := default_dec_.attr;
+   CRUD_Default_Copy___(rec_);
+   Add_To_Attr_From_Rec___(rec_, attr_);
+   info_ := Client_SYS.Get_All_Info();
+END CRUD_Default_Copy___;
+
+
+PROCEDURE CRUD_Default_Copy___ (
+   rec_  IN OUT NOCOPY Trn_Country_Rec )
+IS
+BEGIN
+   NULL;
+END CRUD_Default_Copy___;
+
+
+PROCEDURE CRUD_Create___ (
+   etag_ IN OUT NOCOPY VARCHAR2,
+   key_  IN OUT NOCOPY Trn_Country_Key,
+   attr_ IN OUT NOCOPY VARCHAR2,
+   info_    OUT VARCHAR2,
+   action_ IN VARCHAR2 )
+IS
+   objid_      VARCHAR2(2000);
+   objversion_ VARCHAR2(2000);
+BEGIN
+   Trn_Country_API.New__(info_, objid_, objversion_, attr_, action_);
+   IF (action_ = 'DO') THEN
+   etag_ := Get_Etag___(objid_, objversion_);
+   SELECT country_id
+      INTO key_.country_id
+      FROM TRN_COUNTRY
+      WHERE objid = objid_;
+   END IF;
+END CRUD_Create___;
+
+
+PROCEDURE CRUD_Update___ (
+   etag_ IN OUT NOCOPY VARCHAR2,
+   key_  IN OUT NOCOPY Trn_Country_Key,
+   attr_ IN OUT NOCOPY VARCHAR2,
+   info_    OUT VARCHAR2,
+   action_ IN VARCHAR2 )
+IS
+   objid_               VARCHAR2(2000) := Get_Objid_From_Etag___(etag_);
+   objversion_          VARCHAR2(2000) := Get_Objversion_From_Etag___(etag_);
+   objid_from_key_      VARCHAR2(2000);
+   objversion_from_key_ VARCHAR2(2000);
+BEGIN
+   IF (etag_ IS NULL) THEN
+      Error_SYS.System_General('ODATA_TO_PLSQL_PROTOCOL: ETag must have a value');
+   END IF;
+   Get_Objid_Objversion___(objid_from_key_, objversion_from_key_, key_);
+   IF (etag_ = '*' ) THEN
+      objid_ := objid_from_key_;
+      objversion_ := objversion_from_key_;
+   ELSIF (objid_from_key_ != objid_) THEN
+      Error_SYS.Record_General(lu_name_,'ETAG_INCORRECT: ETag is incorrect');
+   END IF;
+   Trn_Country_API.Modify__(info_, objid_, objversion_, attr_, action_);
+   etag_ := Get_Etag___(objid_, objversion_);
+END CRUD_Update___;
+
+
+PROCEDURE CRUD_Delete___ (
+   etag_ IN OUT NOCOPY VARCHAR2,
+   key_  IN     Trn_Country_Key,
+   info_    OUT VARCHAR2,
+   action_ IN VARCHAR2 )
+IS
+   objid_               VARCHAR2(2000) := Get_Objid_From_Etag___(etag_);
+   objversion_          VARCHAR2(2000) := Get_Objversion_From_Etag___(etag_);
+   objid_from_key_      VARCHAR2(2000);
+   objversion_from_key_ VARCHAR2(2000);
+BEGIN
+   IF (etag_ IS NULL) THEN
+      Error_SYS.System_General('ODATA_TO_PLSQL_PROTOCOL: ETag must have a value');
+   END IF;
+   Get_Objid_Objversion___(objid_from_key_, objversion_from_key_, key_);
+   IF (etag_ = '*' ) THEN
+      objid_ := objid_from_key_;
+      objversion_ := objversion_from_key_;
+   ELSIF (objid_from_key_ != objid_) THEN
+      Error_SYS.Record_General(lu_name_,'ETAG_INCORRECT: ETag is incorrect');
+   END IF;
+   Trn_Country_API.Remove__(info_, objid_, objversion_, action_);
+   etag_ := NULL;
+END CRUD_Delete___;
+
+-----------------------------------------------------------------------------
+-------------------- HELPER METHODS -----------------------------------------
+-----------------------------------------------------------------------------
+
+FUNCTION Get_Objid_From_Etag___ (
+   etag_ IN VARCHAR2 ) RETURN VARCHAR2
+IS
+   delim_pos_ INTEGER := instr(etag_, ':');
+BEGIN
+   RETURN substr(etag_, 4, delim_pos_-4);
+END Get_Objid_From_Etag___;
+
+
+FUNCTION Get_Objversion_From_Etag___ (
+   etag_ IN VARCHAR2 ) RETURN VARCHAR2
+IS
+   delim_pos_ INTEGER := instr(etag_, ':');
+BEGIN
+   RETURN substr(etag_, delim_pos_+1, length(etag_)-delim_pos_-1);
+END Get_Objversion_From_Etag___;
+
+
+FUNCTION Get_Etag___ (
+   objid_      IN VARCHAR2,
+   objversion_ IN VARCHAR2 ) RETURN VARCHAR2
+IS
+BEGIN
+   RETURN 'W/"'||objid_||':'||objversion_||'"';
+END Get_Etag___;
+
+
+FUNCTION Combine_Value_Unit___ (
+   value_ IN VARCHAR2,
+   unit_  IN VARCHAR2 ) RETURN VARCHAR2
+IS
+BEGIN
+   IF (value_ IS NULL) THEN
+      RETURN NULL;
+   ELSE
+      RETURN value_||'|'||unit_;
+   END IF;
+END Combine_Value_Unit___;
+
+-----------------------------------------------------------------------------
+-------------------- CONVERSION METHODS -------------------------------------
+-----------------------------------------------------------------------------
+
+FUNCTION To_Boolean_Arr____ (
+   arr_ IN Text_Arr ) RETURN Boolean_Arr
+IS
+   ret_ Boolean_Arr := Boolean_Arr();
+BEGIN
+   IF (arr_.count > 0) THEN
+      FOR i IN arr_.first .. arr_.last LOOP
+      ret_.extend;
+      ret_(ret_.last) := Fndcg_Projection_Svc_Util_API.To_Boolean(arr_(i));
+      END LOOP;
+   END IF;
+   RETURN ret_;
+END To_Boolean_Arr____;
+
+END Enterprise_Handling_SVC;
+-- [END IFS COMPLETE BLOCK]
+/
+SHOW ERROR
+
+GRANT EXECUTE ON Enterprise_Handling_SVC TO IFSSYS
+/
+
+-- [IFS COMPLETE BLOCK BEGINEND]
+DECLARE
+   projection_ VARCHAR2(250) := 'EnterpriseHandling';
+BEGIN
+   Fnd_Projection_API.Create_Or_Replace(projection_, description_ => 'Put some useful description here ...', categories_ => 'Users', component_ => 'TRNENT', layer_  => 'Core', plsql_package_ => 'ENTERPRISE_HANDLING_SVC', api_class_ => 'Standard', deprecated_ => 'FALSE');
+   Fnd_Proj_Entity_API.Create_Or_Replace(projection_, 'TrnCountry', 'CRUD', 'TRN_COUNTRY', 'TrnCountry', 'Main', 'FALSE');
+   Fnd_Proj_Entityset_API.Create_Or_Replace(projection_, 'TrnCountries', 'Entity', 'TrnCountry');
+   Fnd_Proj_Large_Attr_Supp_Api.Set_Lob_Max_Size_Modifiable(projection_, false);
+
+   COMMIT;
+END;
+-- [END IFS COMPLETE BLOCK]
+/

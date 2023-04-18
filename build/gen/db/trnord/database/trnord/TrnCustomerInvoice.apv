@@ -1,0 +1,78 @@
+-----------------------------------------------------------------------------
+--
+--  Logical unit: TrnCustomerInvoice
+--  Type:         EntityWithState
+--  Component:    TRNORD
+--
+--  Template:     3.0
+--  Built by:     IFS Developer Studio
+--
+--  NOTE! Do not edit!! This file is completely generated and will be
+--        overwritten next time the corresponding model is saved.
+-----------------------------------------------------------------------------
+
+
+-----------------------------------------------------------------------------
+-------------------- BASE VIEW DEFINITION -----------------------------------
+-----------------------------------------------------------------------------
+
+PROMPT Creating TRN_CUSTOMER_INVOICE view
+
+-- [IFS COMPLETE BLOCK VIEW TRN_CUSTOMER_INVOICE]
+CREATE OR REPLACE VIEW TRN_CUSTOMER_INVOICE AS
+SELECT
+       company_id                     company_id,
+       branch_id                      branch_id,
+       invoice_id                     invoice_id,
+       invoice_date                   invoice_date,
+       due_date                       due_date,
+       invoice_amount                 invoice_amount,
+       comments                       comments,
+       unpaid                         unpaid,
+       Trn_Invoice_Pay_Terms_API.Decode(payment_terms) payment_terms,
+       payment_terms                  payment_terms_db,
+       customer_id                    customer_id,
+       order_id                       order_id,
+       rowstate                       objstate,
+       Trn_Customer_Invoice_API.Finite_State_Events__(rowstate)                     objevents,
+       Trn_Customer_Invoice_API.Finite_State_Decode__(rowstate)                         state,
+       rowkey                         objkey,
+       to_char(rowversion,'YYYYMMDDHH24MISS') objversion,
+       rowid                          objid
+FROM   trn_customer_invoice_tab
+WITH   READ ONLY;
+-- [END IFS COMPLETE BLOCK]
+
+COMMENT ON TABLE TRN_CUSTOMER_INVOICE
+   IS 'LU=TrnCustomerInvoice^PROMPT=Trn Customer Invoice^MODULE=TRNORD^TABLE=TRN_CUSTOMER_INVOICE_TAB^';
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   PROCEDURE Alter_Column_Comment (
+      view_name_   IN VARCHAR2,
+      column_name_ IN VARCHAR2,
+      comment_     IN VARCHAR2)
+   IS
+      stmt_ VARCHAR2(32767) := 'COMMENT ON COLUMN ' || view_name_ || '.' || column_name_ || ' IS ''' || REPLACE(comment_, '''', '''''') || '''';
+   BEGIN
+      EXECUTE IMMEDIATE stmt_;
+   END Alter_Column_Comment;
+BEGIN
+   Alter_Column_Comment('TRN_CUSTOMER_INVOICE', 'company_id', 'FLAGS=PMI--^DATATYPE=STRING(20)^PROMPT=Company ID^');
+   Alter_Column_Comment('TRN_CUSTOMER_INVOICE', 'branch_id', 'FLAGS=PMI--^DATATYPE=STRING(20)^PROMPT=Branch ID^REF=TrnBranch(company_id)^');
+   Alter_Column_Comment('TRN_CUSTOMER_INVOICE', 'invoice_id', 'FLAGS=KMI-L^DATATYPE=NUMBER^PROMPT=Invoice ID^');
+   Alter_Column_Comment('TRN_CUSTOMER_INVOICE', 'invoice_date', 'FLAGS=AMIUL^DATATYPE=DATE/DATE^PROMPT=Invoice Date^');
+   Alter_Column_Comment('TRN_CUSTOMER_INVOICE', 'due_date', 'FLAGS=A-IU-^DATATYPE=DATE/DATE^PROMPT=Due Date^');
+   Alter_Column_Comment('TRN_CUSTOMER_INVOICE', 'invoice_amount', 'FLAGS=AMIU-^DATATYPE=NUMBER^PROMPT=Invoice Amount^');
+   Alter_Column_Comment('TRN_CUSTOMER_INVOICE', 'comments', 'FLAGS=A-IU-^DATATYPE=STRING(2000)^PROMPT=Comments^');
+   Alter_Column_Comment('TRN_CUSTOMER_INVOICE', 'unpaid', 'FLAGS=AMIU-^DATATYPE=NUMBER^PROMPT=Unpaid^');
+   Alter_Column_Comment('TRN_CUSTOMER_INVOICE', 'payment_terms', 'FLAGS=A-IUL^DATATYPE=STRING(200)^ENUMERATION=TrnInvoicePayTerms^PROMPT=Payment Terms^');
+   Alter_Column_Comment('TRN_CUSTOMER_INVOICE', 'payment_terms_db', 'FLAGS=A----^DATATYPE=STRING(20)^PROMPT=Payment Terms^');
+   Alter_Column_Comment('TRN_CUSTOMER_INVOICE', 'customer_id', 'FLAGS=AMIU-^DATATYPE=NUMBER^PROMPT=Customer ID^REF=TrnCustomer(company_id)^');
+   Alter_Column_Comment('TRN_CUSTOMER_INVOICE', 'order_id', 'FLAGS=AMIU-^DATATYPE=NUMBER^PROMPT=Order ID^REF=TrnCustomerOrder(company_id,branch_id)^');
+   Alter_Column_Comment('TRN_CUSTOMER_INVOICE', 'state', 'FLAGS=A---L^DATATYPE=STRING(20)^PROMPT=State^');
+   EXECUTE IMMEDIATE 'GRANT SELECT ON TRN_CUSTOMER_INVOICE TO IFSSYS';
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+

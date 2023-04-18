@@ -1,0 +1,58 @@
+-----------------------------------------------------------------------------
+--
+--  Logical unit: TrnReservation
+--  Type:         Entity
+--  Component:    TRNORD
+--
+--  Template:     3.0
+--  Built by:     IFS Developer Studio
+--
+--  NOTE! Do not edit!! This file is completely generated and will be
+--        overwritten next time the corresponding model is saved.
+-----------------------------------------------------------------------------
+
+
+-----------------------------------------------------------------------------
+-------------------- BASE VIEW DEFINITION -----------------------------------
+-----------------------------------------------------------------------------
+
+PROMPT Creating TRN_RESERVATION view
+
+-- [IFS COMPLETE BLOCK VIEW TRN_RESERVATION]
+CREATE OR REPLACE VIEW TRN_RESERVATION AS
+SELECT
+       company_id                     company_id,
+       reservation_id                 reservation_id,
+       branch_id                      branch_id,
+       order_id                       order_id,
+       rowkey                         objkey,
+       to_char(rowversion,'YYYYMMDDHH24MISS') objversion,
+       rowid                          objid
+FROM   trn_reservation_tab
+WITH   READ ONLY;
+-- [END IFS COMPLETE BLOCK]
+
+COMMENT ON TABLE TRN_RESERVATION
+   IS 'LU=TrnReservation^PROMPT=Trn Reservation^MODULE=TRNORD^TABLE=TRN_RESERVATION_TAB^';
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   PROCEDURE Alter_Column_Comment (
+      view_name_   IN VARCHAR2,
+      column_name_ IN VARCHAR2,
+      comment_     IN VARCHAR2)
+   IS
+      stmt_ VARCHAR2(32767) := 'COMMENT ON COLUMN ' || view_name_ || '.' || column_name_ || ' IS ''' || REPLACE(comment_, '''', '''''') || '''';
+   BEGIN
+      EXECUTE IMMEDIATE stmt_;
+   END Alter_Column_Comment;
+BEGIN
+   Alter_Column_Comment('TRN_RESERVATION', 'company_id', 'FLAGS=PMI--^DATATYPE=STRING(20)^PROMPT=Company ID^REF=TrnCompany^');
+   Alter_Column_Comment('TRN_RESERVATION', 'reservation_id', 'FLAGS=KMI-L^DATATYPE=NUMBER^PROMPT=Reservation ID^');
+   Alter_Column_Comment('TRN_RESERVATION', 'branch_id', 'FLAGS=AMIU-^DATATYPE=STRING(20)^PROMPT=Branch ID^');
+   Alter_Column_Comment('TRN_RESERVATION', 'order_id', 'FLAGS=AMIU-^DATATYPE=NUMBER^PROMPT=Order ID^REF=TrnCustomerOrder(company_id,branch_id)^');
+   EXECUTE IMMEDIATE 'GRANT SELECT ON TRN_RESERVATION TO IFSSYS';
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+

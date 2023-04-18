@@ -1,0 +1,42 @@
+-----------------------------------------------------------------------------
+--
+--  Logical unit: TrnReservationItem
+--  Component:    TRNORD
+--
+--  Template:     3.0
+--  Built by:     IFS Developer Studio (unit-test)
+--
+--  NOTE! Do not edit!! This file is completely generated and will be
+--        overwritten next time the corresponding model is saved.
+-----------------------------------------------------------------------------
+
+
+layer Base;
+
+-------------------- TABLE DEFINITIONS --------------------------------------
+
+TABLE trn_reservation_item_tab IS (
+   company_id                     VARCHAR2(20)   NOT NULL,
+   reservation_id                 NUMBER         NOT NULL,
+   reservation_item_id            NUMBER         NOT NULL,
+   quantity                       NUMBER         NOT NULL,
+   branch_id                      VARCHAR2(20)   NOT NULL,
+   inventory_id                   NUMBER         NOT NULL,
+   product_id                     NUMBER         NOT NULL,
+   order_id                       NUMBER         NOT NULL,
+   row_no                         NUMBER         NOT NULL,
+   rowversion                     DATE           NOT NULL,
+   rowkey                         VARCHAR2(50)   DEFAULT sys_guid() NOT NULL);
+
+
+PRIMARY KEY trn_reservation_item_pk IS trn_reservation_item_tab (
+   company_id,
+   reservation_id,
+   reservation_item_id);
+
+
+UNIQUE CONSTRAINT trn_reservation_item_rk IS trn_reservation_item_tab (
+   rowkey);
+
+-------------------- OTHER DEFINITIONS --------------------------------------
+

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TranslatableResources type="LU" module="TRNORD" version="1.0" layer="Core" xmlns="types.scan.translation.fnd.ifsworld.com">
+   <TranslatableResource type="Logical Unit" ID="TrnCustomerCommType" name="TrnCustomerCommType">
+      <Text><![CDATA[Trn Customer Comm Type]]></Text>
+      <Resource subtype="Iid Element" ID="TrnCustomerCommType.PHONE" control="PHONE">
+         <Position>1</Position>
+         <Text><![CDATA[Phone]]></Text>
+      </Resource>
+      <Resource subtype="Iid Element" ID="TrnCustomerCommType.FAX" control="FAX">
+         <Position>2</Position>
+         <Text><![CDATA[Fax]]></Text>
+      </Resource>
+      <Resource subtype="Iid Element" ID="TrnCustomerCommType.EMAIL" control="EMAIL">
+         <Position>3</Position>
+         <Text><![CDATA[Email]]></Text>
+      </Resource>
+      <Resource subtype="Iid Element" ID="TrnCustomerCommType.POSTAL" control="POSTAL">
+         <Position>4</Position>
+         <Text><![CDATA[Postal]]></Text>
+      </Resource>
+   </TranslatableResource>
+</TranslatableResources>

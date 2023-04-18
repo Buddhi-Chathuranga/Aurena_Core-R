@@ -1,0 +1,43 @@
+-----------------------------------------------------------------------------
+--
+--  Logical unit: TrnCustomerInvoiceItem
+--  Component:    TRNORD
+--
+--  Template:     3.0
+--  Built by:     IFS Developer Studio (unit-test)
+--
+--  NOTE! Do not edit!! This file is completely generated and will be
+--        overwritten next time the corresponding model is saved.
+-----------------------------------------------------------------------------
+
+
+layer Base;
+
+-------------------- TABLE DEFINITIONS --------------------------------------
+
+TABLE trn_customer_invoice_item_tab IS (
+   company_id                     VARCHAR2(20)   NOT NULL,
+   branch_id                      VARCHAR2(20)   NOT NULL,
+   invoice_id                     NUMBER         NOT NULL,
+   item_no                        NUMBER         NOT NULL,
+   description                    VARCHAR2(1000) NULL,
+   price                          NUMBER         NOT NULL,
+   quantity                       NUMBER         NOT NULL,
+   amount                         NUMBER         NULL,
+   product_id                     NUMBER         NOT NULL,
+   rowversion                     DATE           NOT NULL,
+   rowkey                         VARCHAR2(50)   DEFAULT sys_guid() NOT NULL);
+
+
+PRIMARY KEY trn_customer_invoice_item_pk IS trn_customer_invoice_item_tab (
+   company_id,
+   branch_id,
+   invoice_id,
+   item_no);
+
+
+UNIQUE CONSTRAINT trn_customer_invoice_item_rk IS trn_customer_invoice_item_tab (
+   rowkey);
+
+-------------------- OTHER DEFINITIONS --------------------------------------
+

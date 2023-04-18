@@ -1,0 +1,85 @@
+projection EnterpriseHandlingS4;
+component TRNENT;
+layer Core;
+description "used for training enterprise Services";
+category Users;
+
+--------------------------------- FRAGMENTS ---------------------------------
+
+----------------------------- MAIN ENTRY POINTS -----------------------------
+entityset TrnCountrySet for TrnCountry;
+entityset TrnAreaSet for TrnArea;
+entityset TrnCompanySet for TrnCompany;
+entityset TrnBranchSet for TrnBranch;
+
+entityset TrnCountryVirtualSet for TrnCountryVirtual;
+entityset TrnAreaVirtualSet for TrnAreaVirtual;
+
+
+@Override
+entity TrnCountry {
+   array AreaArry(CountryId) to TrnArea(CountryId);
+}
+@Override
+entity TrnCompany {
+   array BranchArry(CompanyId) to TrnBranch(CompanyId);
+}
+
+@Override
+entity TrnBranch {
+   reference AreaRef(CountryId, AreaId) to TrnArea(CountryId, AreaId);
+   reference CountryRef(CountryId) to TrnCountry(CountryId);
+   reference CompanyRef(CompanyId) to TrnCompany(CompanyId);
+
+}
+
+
+
+
+
+------------------------------ ENTITY DETAILS -------------------------------
+
+
+
+
+
+------------------------------- ENUMERATIONS --------------------------------
+
+
+---------------------------------- QUERIES ----------------------------------
+
+
+---------------------------------- ACTIONS ----------------------------------
+
+
+
+--------------------------------- FUNCTIONS ---------------------------------
+
+
+-------------------------------- STRUCTURES ---------------------------------
+
+
+--------------------------------- VIRTUALS ----------------------------------
+virtual TrnCountryVirtual {
+   attribute CountryId Text;
+   attribute Country Text;
+
+   array Areas(CountryId) to TrnAreaVirtual(CountryId);
+   action CreateCountriesAreas {
+
+   }
+
+
+}
+virtual TrnAreaVirtual {
+   attribute CountryId Text;
+   attribute AreaId Text;
+   attribute Area Text;
+}
+
+
+
+--------------------------------- SUMMARIES ---------------------------------
+
+
+-------------------------------- SINGLETONS ---------------------------------

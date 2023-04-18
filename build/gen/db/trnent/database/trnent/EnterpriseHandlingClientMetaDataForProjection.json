@@ -1,0 +1,129 @@
+{
+    "name": "EnterpriseHandling",
+    "service": "EnterpriseHandling.svc",
+    "version": "2063568574",
+    "contains": {
+        "TrnCountries": {
+            "name": "TrnCountries",
+            "entity": "TrnCountry",
+            "array": true,
+            "defaultfilter": false
+        }[#[jsoncallback:Custom_Object_Proxy_Sys.Client_Entityset_Metadata:{
+    "Projection": "EnterpriseHandling",
+    "Lu": [
+        "TrnCountry"
+    ]
+}]#]
+    },
+    "enumerations": {[#[jsoncallback:Custom_Object_Proxy_SYS.Client_Enumeration_Metadata:{
+    "Projection": "EnterpriseHandling",
+    "Lu": [
+        "TrnCountry"
+    ]
+}]#]
+    },
+    "entities": {
+        "TrnCountry": {
+            "name": "TrnCountry",
+            "hasETag": true,
+            "hasKeys": true,
+            "CRUD": "Create,Read,Update,Delete",
+            "luname": "TrnCountry",
+            "ludependencies": [
+                "TrnCountry"
+            ],
+            "keys": [
+                "CountryId"
+            ],
+            "attributes": {
+                "Objgrants": {
+                    "datatype": "Text",
+                    "size": 2000,
+                    "keygeneration": "Server",
+                    "required": false,
+                    "editable": false,
+                    "updatable": false,
+                    "insertable": false,
+                    "unbound": false,
+                    "multiselect": false
+                },
+                "CountryId": {
+                    "datatype": "Text",
+                    "size": 10,
+                    "keygeneration": "User",
+                    "required": true,
+                    "editable": {
+    "==": [
+        {
+            "var": "record.etag"
+        },
+        null
+    ]
+},
+                    "updatable": false,
+                    "insertable": true,
+                    "unbound": false,
+                    "multiselect": false
+                },
+                "Country": {
+                    "datatype": "Text",
+                    "size": 1000,
+                    "keygeneration": "User",
+                    "required": true,
+                    "editable": true,
+                    "updatable": true,
+                    "insertable": true,
+                    "unbound": false,
+                    "multiselect": false
+                }[#[jsoncallback:Custom_Object_Proxy_SYS.Client_Attribute_Metadata:{
+    "Projection": "EnterpriseHandling",
+    "Lu": "TrnCountry",
+    "View": "TRN_COUNTRY"
+}]#]
+            },
+            "references": {[#[jsoncallback:Custom_Object_Proxy_Sys.Client_Entity_Nav_Metadata:{"Projection":"EnterpriseHandling","Lu":"TrnCountry"}]#]
+            },
+            "arrays": {[#[jsoncallback:Custom_Object_Proxy_Sys.Client_Entity_Array_Metadata:{"Projection":"EnterpriseHandling","Entity":"TrnCountry","Lu":"TrnCountry"}]#]
+            },
+            "actions": {
+            },
+            "functions": {
+            },
+            "defaultcopyapplicable": true
+        }[#[jsoncallback:Custom_Object_Proxy_Sys.Client_Entity_Type_Metadata:{
+    "Projection": "EnterpriseHandling",
+    "Lu": [
+        "TrnCountry"
+    ]
+}]#]
+    },
+    "structures": {
+        "TrnCountryCopyValues": {
+            "name": "TrnCountryCopyValues",
+            "attributes": {
+                "ModifiedSource": {
+                    "datatype": "Entity",
+                    "subtype": "TrnCountry",
+                    "required": false,
+                    "editable": true,
+                    "updatable": true,
+                    "insertable": true,
+                    "unbound": false,
+                    "multiselect": false
+                }
+            },
+            "references": {
+            },
+            "arrays": {
+            }
+        }
+    },
+    "actions": {[#[jsoncallback:Custom_Object_Proxy_Sys.Client_Action_Metadata:{
+    "Projection": "EnterpriseHandling"
+}]#]
+    },
+    "functions": {
+    },
+    "attachmentservices": {[#[callback:Object_Connection_Metadata_SYS.Enum_Entity_Services_:TrnCountry]#]
+}
+}

@@ -1,0 +1,62 @@
+-----------------------------------------------------------------------------
+--
+--  Logical unit: TrnBranch
+--  Type:         Entity
+--  Component:    TRNENT
+--
+--  Template:     3.0
+--  Built by:     IFS Developer Studio
+--
+--  NOTE! Do not edit!! This file is completely generated and will be
+--        overwritten next time the corresponding model is saved.
+-----------------------------------------------------------------------------
+
+
+-----------------------------------------------------------------------------
+-------------------- BASE VIEW DEFINITION -----------------------------------
+-----------------------------------------------------------------------------
+
+PROMPT Creating TRN_BRANCH view
+
+-- [IFS COMPLETE BLOCK VIEW TRN_BRANCH]
+CREATE OR REPLACE VIEW TRN_BRANCH AS
+SELECT
+       company_id                     company_id,
+       branch_id                      branch_id,
+       name                           name,
+       time_offset                    time_offset,
+       country_id                     country_id,
+       area_id                        area_id,
+       rowkey                         objkey,
+       to_char(rowversion,'YYYYMMDDHH24MISS') objversion,
+       rowid                          objid
+FROM   trn_branch_tab
+WITH   READ ONLY;
+-- [END IFS COMPLETE BLOCK]
+
+COMMENT ON TABLE TRN_BRANCH
+   IS 'LU=TrnBranch^PROMPT=Trn Branch^MODULE=TRNENT^TABLE=TRN_BRANCH_TAB^';
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   PROCEDURE Alter_Column_Comment (
+      view_name_   IN VARCHAR2,
+      column_name_ IN VARCHAR2,
+      comment_     IN VARCHAR2)
+   IS
+      stmt_ VARCHAR2(32767) := 'COMMENT ON COLUMN ' || view_name_ || '.' || column_name_ || ' IS ''' || REPLACE(comment_, '''', '''''') || '''';
+   BEGIN
+      EXECUTE IMMEDIATE stmt_;
+   END Alter_Column_Comment;
+BEGIN
+   Alter_Column_Comment('TRN_BRANCH', 'company_id', 'FLAGS=PMI-L^DATATYPE=STRING(20)^PROMPT=Company Id^REF=TrnCompany^');
+   Alter_Column_Comment('TRN_BRANCH', 'branch_id', 'FLAGS=KMI-L^DATATYPE=STRING(20)^PROMPT=Branch Id^');
+   Alter_Column_Comment('TRN_BRANCH', 'name', 'FLAGS=AMIUL^DATATYPE=STRING(1000)^PROMPT=Name^');
+   Alter_Column_Comment('TRN_BRANCH', 'time_offset', 'FLAGS=AMIU-^DATATYPE=NUMBER^PROMPT=Time Offset^');
+   Alter_Column_Comment('TRN_BRANCH', 'country_id', 'FLAGS=A-IU-^DATATYPE=STRING(10)^PROMPT=Country Id^');
+   Alter_Column_Comment('TRN_BRANCH', 'area_id', 'FLAGS=A-IU-^DATATYPE=STRING(10)^PROMPT=Area Id^REF=TrnArea(country_id)^');
+   EXECUTE IMMEDIATE 'GRANT SELECT ON TRN_BRANCH TO IFSSYS';
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+

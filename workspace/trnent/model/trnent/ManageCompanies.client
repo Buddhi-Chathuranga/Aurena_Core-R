@@ -1,0 +1,193 @@
+client ManageCompanies;
+component TRNENT;
+layer Core;
+projection EnterpriseHandlingS4;
+
+description "Put some useful description here ...";
+
+--------------------------------- FRAGMENTS ---------------------------------
+
+----------------------------- NAVIGATOR ENTRIES -----------------------------
+navigator {
+
+   entry CompaniesOverview parent TrnentNavigatorRoot.ManageCompanies at index 0 {
+      label = "Companies";
+
+      page TrnCompanyOverview;
+   }
+
+   entry BrachOverview parent TrnentNavigatorRoot.ManageCompanies at index 1 {
+      label = "Branches";
+
+      page TrnBranchDetails;
+   }
+
+   entry CompanyBranchOverview parent TrnentNavigatorRoot.ManageCompanies at index 2 {
+      label = "Company Branch Details";
+
+      page TrnCompanyDetails;
+
+   }
+
+   entry BranchOverview parent TrnentNavigatorRoot.ManageCompanies at index 3 {
+      label = "Branch Details";
+      page TrnBranchOverviewPage;
+
+   }
+
+
+}
+
+-------------------------------- MAIN PAGES ---------------------------------
+page TrnCompanyOverview using TrnCompanySet {
+   label = "Companies";
+
+   list TrnCompanyList;
+
+}
+
+page TrnBranchDetails using TrnBranchSet {
+   label = "Branch Details";
+   selector TrnBranchSelector;
+   group TrnBranchGroup bind TrnBranchSelector;
+
+}
+
+page TrnCompanyDetails using TrnCompanySet {
+   label = "Company Overview";
+   selector TrnCompanySelector;
+   group  TrnCompanyGroup bind TrnCompanySelector;
+   list TrnBranchList(BranchArry) bind TrnCompanySelector;
+
+}
+-------
+page TrnBranchOverviewPage using TrnBranchSet {
+   label = "Branches";
+   list  TrnBranchCardList;
+
+
+
+}
+
+
+
+
+--------------------------------- COMMANDS ----------------------------------
+
+
+--------------------------------- SELECTORS ---------------------------------
+
+
+---------------------------------- GROUPS -----------------------------------
+group TrnCompanyGroup for TrnCompany {
+   label = "";
+   field CompanyId;
+   field Name;
+   field Comments;
+   field CreationDate;
+}
+
+group TrnBranchGroup for TrnBranch {
+   label = "${BranchId}";
+   field CompanyId;
+   field BranchId;
+   field Name;
+   field TimeOffset;
+   field CountryId;
+   field AreaId;
+   field AreaRef {
+      label = "AreaID";
+
+   }
+   field AreaRef.Area;
+   field CountryRef.Country;
+   field CompanyRef.Name;
+}
+
+
+----------------------------------- LISTS -----------------------------------
+list TrnCompanyList for TrnCompany {
+   label = "";
+   field CompanyId;
+   field Name;
+   field Comments;
+   field CreationDate;
+}
+
+
+
+list TrnBranchList for TrnBranch {
+   label = "${BranchId}";
+   field CompanyId;
+   field BranchId;
+   field Name;
+   field TimeOffset;
+   field CountryId;
+   field AreaId;
+
+}
+
+list TrnBranchCardList for TrnBranch {
+
+   card TrnBranchCard;
+
+   field CompanyId;
+   field BranchId;
+   field Name;
+   field TimeOffset;
+   field CountryId;
+   field AreaId;
+   field AreaRef {
+      label = "AreaID";
+
+   }
+   field AreaRef.Area;
+   field CountryRef.Country;
+   field CompanyRef.Name;
+
+}
+
+
+----------------------------------- CARDS -----------------------------------
+card TrnBranchCard for TrnBranch {
+   field CompanyId;
+   field BranchId;
+   field Name;
+   field TimeOffset;
+   field CountryId;
+   field AreaId;
+   field AreaRef {
+      label = "AreaID";
+
+   }
+   field AreaRef.Area;
+   field CountryRef.Country;
+   field CompanyRef.Name;
+}
+
+
+---------------------------------- DIALOGS ----------------------------------
+
+
+-------------------------------- SINGLETONS ---------------------------------
+
+
+---------------------------------- CHARTS -----------------------------------
+
+
+--------------------------------- CALENDERS ---------------------------------
+
+
+---------------------------------- SHEETS -----------------------------------
+
+
+----------------------------- STATE INDICATORS ------------------------------
+
+
+----------------------------------- TREES -----------------------------------
+
+
+---------------------------------- PLUGINS ----------------------------------
+
+
+------------------------------- IMAGE VIEWERS -------------------------------

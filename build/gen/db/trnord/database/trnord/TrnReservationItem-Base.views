@@ -1,0 +1,79 @@
+-----------------------------------------------------------------------------
+--
+--  Logical unit: TrnReservationItem
+--  Component:    TRNORD
+--
+--  Template:     3.0
+--  Built by:     IFS Developer Studio (unit-test)
+--
+--  NOTE! Do not edit!! This file is completely generated and will be
+--        overwritten next time the corresponding model is saved.
+-----------------------------------------------------------------------------
+
+
+layer Base;
+
+-------------------- COMMON COLUMN DEFINITIONS ------------------------------
+
+COLUMN Company_Id IS
+   Flags      = 'PMI--'
+   Datatype   = 'STRING(20)'
+   Prompt     = 'Company ID';
+COLUMN Reservation_Id IS
+   Flags      = 'PMI--'
+   Datatype   = 'NUMBER'
+   Prompt     = 'Reservation ID'
+   Ref        = 'TrnReservation(company_id)';
+COLUMN Reservation_Item_Id IS
+   Flags      = 'KMI-L'
+   Datatype   = 'NUMBER'
+   Prompt     = 'Reservation Item ID';
+COLUMN Quantity IS
+   Flags      = 'AMIU-'
+   Datatype   = 'NUMBER'
+   Prompt     = 'Quantity';
+COLUMN Branch_Id IS
+   Flags      = 'AMIU-'
+   Datatype   = 'STRING(20)'
+   Prompt     = 'Branch ID';
+COLUMN Inventory_Id IS
+   Flags      = 'AMIU-'
+   Datatype   = 'NUMBER'
+   Prompt     = 'Inventory ID';
+COLUMN Product_Id IS
+   Flags      = 'AMIU-'
+   Datatype   = 'NUMBER'
+   Prompt     = 'Product ID'
+   Ref        = 'TrnInventoryProduct(company_id,branch_id,inventory_id)';
+COLUMN Order_Id IS
+   Flags      = 'AMIU-'
+   Datatype   = 'NUMBER'
+   Prompt     = 'Order ID';
+COLUMN Row_No IS
+   Flags      = 'AMIU-'
+   Datatype   = 'NUMBER'
+   Prompt     = 'Row No'
+   Ref        = 'TrnCustomerOrderItem(company_id,branch_id,order_id)';
+
+-------------------- PUBLIC VIEW DEFINITIONS --------------------------------
+
+
+-------------------- PRIVATE VIEW DEFINITIONS -------------------------------
+
+VIEW Trn_Reservation_Item IS
+   Prompt     = 'Trn Reservation Item'
+   Table      = 'TRN_RESERVATION_ITEM_TAB'
+SELECT
+       company_id                     company_id,
+       reservation_id                 reservation_id,
+       reservation_item_id            reservation_item_id,
+       quantity                       quantity,
+       branch_id                      branch_id,
+       inventory_id                   inventory_id,
+       product_id                     product_id,
+       order_id                       order_id,
+       row_no                         row_no,
+       rowkey                         objkey,
+       to_char(rowversion,'YYYYMMDDHH24MISS') objversion,
+       rowid                          objid
+FROM   trn_reservation_item_tab;

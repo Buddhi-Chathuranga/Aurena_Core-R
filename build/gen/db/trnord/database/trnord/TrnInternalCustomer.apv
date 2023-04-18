@@ -1,0 +1,72 @@
+-----------------------------------------------------------------------------
+--
+--  Logical unit: TrnInternalCustomer
+--  Type:         Entity
+--  Component:    TRNORD
+--
+--  Template:     3.0
+--  Built by:     IFS Developer Studio
+--
+--  NOTE! Do not edit!! This file is completely generated and will be
+--        overwritten next time the corresponding model is saved.
+-----------------------------------------------------------------------------
+
+
+-----------------------------------------------------------------------------
+-------------------- BASE VIEW DEFINITION -----------------------------------
+-----------------------------------------------------------------------------
+
+PROMPT Creating TRN_INTERNAL_CUSTOMER view
+
+-- [IFS COMPLETE BLOCK VIEW TRN_INTERNAL_CUSTOMER]
+CREATE OR REPLACE VIEW TRN_INTERNAL_CUSTOMER AS
+SELECT
+       company_id                     company_id,
+       customer_id                    customer_id,
+       name                           name,
+       credit_limit                   credit_limit,
+       discount                       discount,
+       Fnd_Boolean_API.Decode(active) active,
+       active                         active_db,
+       comments                       comments,
+       branch_id                      branch_id,
+       inventory_id                   inventory_id,
+       rowkey                         objkey,
+       rowtype                        objtype,
+       to_char(rowversion,'YYYYMMDDHH24MISS') objversion,
+       rowid                          objid
+FROM   trn_customer_tab
+WHERE  rowtype LIKE '%TrnInternalCustomer'
+WITH   READ ONLY;
+-- [END IFS COMPLETE BLOCK]
+
+COMMENT ON TABLE TRN_INTERNAL_CUSTOMER
+   IS 'LU=TrnInternalCustomer^PROMPT=Trn Internal Customer^MODULE=TRNORD^TABLE=TRN_CUSTOMER_TAB^BASEDON=TrnCustomer^BASEDONFILTER=(rowtype LIKE ''%TrnInternalCustomer'')^';
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   PROCEDURE Alter_Column_Comment (
+      view_name_   IN VARCHAR2,
+      column_name_ IN VARCHAR2,
+      comment_     IN VARCHAR2)
+   IS
+      stmt_ VARCHAR2(32767) := 'COMMENT ON COLUMN ' || view_name_ || '.' || column_name_ || ' IS ''' || REPLACE(comment_, '''', '''''') || '''';
+   BEGIN
+      EXECUTE IMMEDIATE stmt_;
+   END Alter_Column_Comment;
+BEGIN
+   Alter_Column_Comment('TRN_INTERNAL_CUSTOMER', 'company_id', 'FLAGS=PMI--^DATATYPE=STRING(20)^PROMPT=Company ID^REF=TrnCompany^');
+   Alter_Column_Comment('TRN_INTERNAL_CUSTOMER', 'customer_id', 'FLAGS=KMI-L^DATATYPE=NUMBER^PROMPT=Customer ID^');
+   Alter_Column_Comment('TRN_INTERNAL_CUSTOMER', 'name', 'FLAGS=AMIUL^DATATYPE=STRING(1000)^PROMPT=Name^');
+   Alter_Column_Comment('TRN_INTERNAL_CUSTOMER', 'credit_limit', 'FLAGS=AMIUL^DATATYPE=NUMBER^PROMPT=Credit Limit^');
+   Alter_Column_Comment('TRN_INTERNAL_CUSTOMER', 'discount', 'FLAGS=AMIUL^DATATYPE=NUMBER^PROMPT=Discount^');
+   Alter_Column_Comment('TRN_INTERNAL_CUSTOMER', 'active', 'FLAGS=AMIUL^DATATYPE=STRING(200)^ENUMERATION=FndBoolean^PROMPT=Active^');
+   Alter_Column_Comment('TRN_INTERNAL_CUSTOMER', 'active_db', 'FLAGS=A----^DATATYPE=STRING(20)^PROMPT=Active^');
+   Alter_Column_Comment('TRN_INTERNAL_CUSTOMER', 'comments', 'FLAGS=A-IU-^DATATYPE=STRING(2000)^PROMPT=Comments^');
+   Alter_Column_Comment('TRN_INTERNAL_CUSTOMER', 'branch_id', 'FLAGS=A-IUL^DATATYPE=STRING(20)^PROMPT=Branch Id^');
+   Alter_Column_Comment('TRN_INTERNAL_CUSTOMER', 'inventory_id', 'FLAGS=A-IUL^DATATYPE=NUMBER^PROMPT=Inventory Id^REF=TrnInventory(company_id,branch_id)^');
+   EXECUTE IMMEDIATE 'GRANT SELECT ON TRN_INTERNAL_CUSTOMER TO IFSSYS';
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+

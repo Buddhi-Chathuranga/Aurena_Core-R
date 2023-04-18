@@ -1,0 +1,57 @@
+projection EnterpriseHandling;
+component  TRNENT;
+layer      Base;
+description "";
+
+
+
+entity TrnCountry {
+   crud = Create,Read,Update,Delete;
+   from = "TRN_COUNTRY";
+   exec = "Trn_Country_API";
+   basetable = "TRN_COUNTRY_TAB";
+   keys = CountryId {
+      where = "country_id = :CountryId";
+   }
+   attribute Objgrants Text {
+      fetch     = "NULL";
+      label     = "Granted access";
+      maxlength = 2000;
+      editable  = [false];
+      insertable = [false];
+      updatable  = [false];
+   }
+   attribute CountryId Text {
+      fetch      = "country_id";
+      dbcolumn = "country_id";
+      label      = "Country Id";
+      maxlength  = 10;
+      required   = [true];
+      insertable  = [true];
+      updatable   = [false];
+      editable   = [ETag = null];
+      lovcolumn        = [true];
+      implementationtype = "VARCHAR2(10)";
+   }
+   attribute Country Text {
+      fetch      = "country";
+      dbcolumn = "country";
+      label      = "Country";
+      maxlength  = 1000;
+      required   = [true];
+      insertable  = [true];
+      updatable   = [true];
+      lovcolumn        = [true];
+      implementationtype = "VARCHAR2(1000)";
+   }
+   function DefaultCopy Entity(TrnCountry) {
+      parameter CopyValues Structure(TrnCountryCopyValues);
+   }
+}
+
+structure TrnCountryCopyValues$ {
+   attribute ModifiedSource Entity(TrnCountry) {
+      implementationtype = "VARCHAR2";
+   }
+}
+

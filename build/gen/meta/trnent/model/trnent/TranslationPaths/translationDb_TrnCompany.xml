@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TranslatableResources type="LU" module="TRNENT" version="1.0" layer="Core" xmlns="types.scan.translation.fnd.ifsworld.com">
+   <TranslatableResource type="Logical Unit" ID="TrnCompany" name="TrnCompany">
+      <Text><![CDATA[Trn Company]]></Text>
+      <Resource subtype="View" ID="TrnCompany.TRN_COMPANY" control="TRN_COMPANY">
+         <Text><![CDATA[Trn Company]]></Text>
+         <Resource subtype="Column" ID="TrnCompany.TRN_COMPANY.COMPANY_ID" control="COMPANY_ID">
+            <Text><![CDATA[Company Id]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCompany.TRN_COMPANY.NAME" control="NAME">
+            <Text><![CDATA[Name]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCompany.TRN_COMPANY.COMMENTS" control="COMMENTS">
+            <Text><![CDATA[Comments]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCompany.TRN_COMPANY.CREATION_DATE" control="CREATION_DATE">
+            <Text><![CDATA[Creation Date]]></Text>
+         </Resource>
+      </Resource>
+   </TranslatableResource>
+</TranslatableResources>

@@ -1,0 +1,43 @@
+-----------------------------------------------------------------------------
+--
+--  Logical unit: EnterpriseHandlingS4
+--  Component:    TRNENT
+--
+--  IFS Developer Studio Template Version 3.0
+--
+--  Date    Sign    History
+--  ------  ------  ---------------------------------------------------------
+-----------------------------------------------------------------------------
+
+layer Core;
+
+
+
+
+PROCEDURE Create_Countries_Areas___ (
+   key_ IN Trn_Country_Virtual_Key)
+IS
+   attr_        VARCHAR2(2000);
+   country_rec_ Trn_Country_Virtual_Rec;
+BEGIN
+	 --Call Trn Country API . new Save Countries in the Temp Table to Original Table
+   country_rec_ :=  Get_Record___(key_);
+   
+   Client_SYS.Clear_Attr(attr_);
+   
+   Client_SYS.Add_To_Attr('COUNTRY_ID', country_rec_.country_id, attr_);
+   Client_SYS.Add_To_Attr('COUNTRY', country_rec_.country, attr_);
+   
+   Trn_Country_API.New(attr_);   
+      --Call Trn Area API . new Save area in the Temp Table to Original Table
+      
+   FOR area_rec_ IN Get_Areas___(key_) LOOP
+      Client_SYS.Clear_Attr(attr_);
+      
+   Client_SYS.Add_To_Attr('COUNTRY_ID', area_rec_.country_id, attr_);
+   Client_SYS.Add_To_Attr('AREA_ID', area_rec_.area_id, attr_);
+   Client_SYS.Add_To_Attr('AREA', area_rec_.area, attr_);
+   
+      Trn_Area_API.New(attr_); 
+   END LOOP;   
+END Create_Countries_Areas___;

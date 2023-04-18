@@ -1,0 +1,92 @@
+-----------------------------------------------------------------------------
+--
+--  Logical unit: TrnCountry
+--  Type:         Entity
+--  Component:    TRNENT
+--
+--  Template:     3.0
+--  Built by:     IFS Developer Studio
+--
+--  NOTE! Do not edit!! This file is completely generated and will be
+--        overwritten next time the corresponding model is saved.
+-----------------------------------------------------------------------------
+
+
+-----------------------------------------------------------------------------
+-------------------- BASE VIEW DEFINITION -----------------------------------
+-----------------------------------------------------------------------------
+
+PROMPT Creating TRN_COUNTRY view
+
+-- [IFS COMPLETE BLOCK VIEW TRN_COUNTRY]
+CREATE OR REPLACE VIEW TRN_COUNTRY AS
+SELECT
+       country_id                     country_id,
+       country                        country,
+       rowkey                         objkey,
+       to_char(rowversion,'YYYYMMDDHH24MISS') objversion,
+       rowid                          objid
+FROM   trn_country_tab
+WITH   READ ONLY;
+-- [END IFS COMPLETE BLOCK]
+
+COMMENT ON TABLE TRN_COUNTRY
+   IS 'LU=TrnCountry^PROMPT=Trn Country^MODULE=TRNENT^TABLE=TRN_COUNTRY_TAB^';
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   PROCEDURE Alter_Column_Comment (
+      view_name_   IN VARCHAR2,
+      column_name_ IN VARCHAR2,
+      comment_     IN VARCHAR2)
+   IS
+      stmt_ VARCHAR2(32767) := 'COMMENT ON COLUMN ' || view_name_ || '.' || column_name_ || ' IS ''' || REPLACE(comment_, '''', '''''') || '''';
+   BEGIN
+      EXECUTE IMMEDIATE stmt_;
+   END Alter_Column_Comment;
+BEGIN
+   Alter_Column_Comment('TRN_COUNTRY', 'country_id', 'FLAGS=KMI-L^DATATYPE=STRING(10)^PROMPT=Country Id^');
+   Alter_Column_Comment('TRN_COUNTRY', 'country', 'FLAGS=AMIUL^DATATYPE=STRING(1000)^PROMPT=Country^');
+   EXECUTE IMMEDIATE 'GRANT SELECT ON TRN_COUNTRY TO IFSSYS';
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+
+-----------------------------------------------------------------------------
+-------------------- PRIVATE VIEW DEFINITIONS -------------------------------
+-----------------------------------------------------------------------------
+
+PROMPT Creating TRN_COUNTRY_LOV view
+
+-- [IFS COMPLETE BLOCK VIEW TRN_COUNTRY_LOV]
+CREATE OR REPLACE VIEW TRN_COUNTRY_LOV AS
+SELECT
+       country_id                     country_id,
+       country                        country
+FROM   trn_country_tab
+WITH   READ ONLY;
+-- [END IFS COMPLETE BLOCK]
+
+COMMENT ON TABLE TRN_COUNTRY_LOV
+   IS 'LU=TrnCountry^PROMPT=Trn Country Lov^MODULE=TRNENT^TABLE=TRN_COUNTRY_TAB^';
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   PROCEDURE Alter_Column_Comment (
+      view_name_   IN VARCHAR2,
+      column_name_ IN VARCHAR2,
+      comment_     IN VARCHAR2)
+   IS
+      stmt_ VARCHAR2(32767) := 'COMMENT ON COLUMN ' || view_name_ || '.' || column_name_ || ' IS ''' || REPLACE(comment_, '''', '''''') || '''';
+   BEGIN
+      EXECUTE IMMEDIATE stmt_;
+   END Alter_Column_Comment;
+BEGIN
+   Alter_Column_Comment('TRN_COUNTRY_LOV', 'country_id', 'FLAGS=KMI-L^DATATYPE=STRING(10)^PROMPT=Country Id^');
+   Alter_Column_Comment('TRN_COUNTRY_LOV', 'country', 'FLAGS=AMIUL^DATATYPE=STRING(1000)^PROMPT=Country^');
+   EXECUTE IMMEDIATE 'GRANT SELECT ON TRN_COUNTRY_LOV TO IFSSYS';
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+

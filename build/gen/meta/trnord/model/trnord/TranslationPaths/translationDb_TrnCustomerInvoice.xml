@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TranslatableResources type="LU" module="TRNORD" version="1.0" layer="Core" xmlns="types.scan.translation.fnd.ifsworld.com">
+   <TranslatableResource type="Logical Unit" ID="TrnCustomerInvoice" name="TrnCustomerInvoice">
+      <Text><![CDATA[Trn Customer Invoice]]></Text>
+      <Resource subtype="View" ID="TrnCustomerInvoice.TRN_CUSTOMER_INVOICE" control="TRN_CUSTOMER_INVOICE">
+         <Text><![CDATA[Trn Customer Invoice]]></Text>
+         <Resource subtype="Column" ID="TrnCustomerInvoice.TRN_CUSTOMER_INVOICE.COMPANY_ID" control="COMPANY_ID">
+            <Text><![CDATA[Company ID]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCustomerInvoice.TRN_CUSTOMER_INVOICE.BRANCH_ID" control="BRANCH_ID">
+            <Text><![CDATA[Branch ID]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCustomerInvoice.TRN_CUSTOMER_INVOICE.INVOICE_ID" control="INVOICE_ID">
+            <Text><![CDATA[Invoice ID]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCustomerInvoice.TRN_CUSTOMER_INVOICE.INVOICE_DATE" control="INVOICE_DATE">
+            <Text><![CDATA[Invoice Date]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCustomerInvoice.TRN_CUSTOMER_INVOICE.DUE_DATE" control="DUE_DATE">
+            <Text><![CDATA[Due Date]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCustomerInvoice.TRN_CUSTOMER_INVOICE.INVOICE_AMOUNT" control="INVOICE_AMOUNT">
+            <Text><![CDATA[Invoice Amount]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCustomerInvoice.TRN_CUSTOMER_INVOICE.COMMENTS" control="COMMENTS">
+            <Text><![CDATA[Comments]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCustomerInvoice.TRN_CUSTOMER_INVOICE.UNPAID" control="UNPAID">
+            <Text><![CDATA[Unpaid]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCustomerInvoice.TRN_CUSTOMER_INVOICE.PAYMENT_TERMS" control="PAYMENT_TERMS">
+            <Text><![CDATA[Payment Terms]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCustomerInvoice.TRN_CUSTOMER_INVOICE.PAYMENT_TERMS_DB" control="PAYMENT_TERMS_DB">
+            <Text><![CDATA[Payment Terms]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCustomerInvoice.TRN_CUSTOMER_INVOICE.CUSTOMER_ID" control="CUSTOMER_ID">
+            <Text><![CDATA[Customer ID]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCustomerInvoice.TRN_CUSTOMER_INVOICE.ORDER_ID" control="ORDER_ID">
+            <Text><![CDATA[Order ID]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCustomerInvoice.TRN_CUSTOMER_INVOICE.STATE" control="STATE">
+            <Text><![CDATA[State]]></Text>
+         </Resource>
+      </Resource>
+      <Resource subtype="State" ID="TrnCustomerInvoice.PartiallyPaid" control="PartiallyPaid">
+         <Position>1</Position>
+         <Text><![CDATA[Partially Paid]]></Text>
+      </Resource>
+      <Resource subtype="State" ID="TrnCustomerInvoice.Unpaid" control="Unpaid">
+         <Position>2</Position>
+         <Text><![CDATA[Unpaid]]></Text>
+      </Resource>
+      <Resource subtype="State" ID="TrnCustomerInvoice.FullyPaid" control="FullyPaid">
+         <Position>3</Position>
+         <Text><![CDATA[Fully Paid]]></Text>
+      </Resource>
+   </TranslatableResource>
+</TranslatableResources>

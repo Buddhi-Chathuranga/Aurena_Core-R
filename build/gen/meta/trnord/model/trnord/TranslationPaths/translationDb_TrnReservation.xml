@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TranslatableResources type="LU" module="TRNORD" version="1.0" layer="Core" xmlns="types.scan.translation.fnd.ifsworld.com">
+   <TranslatableResource type="Logical Unit" ID="TrnReservation" name="TrnReservation">
+      <Text><![CDATA[Trn Reservation]]></Text>
+      <Resource subtype="View" ID="TrnReservation.TRN_RESERVATION" control="TRN_RESERVATION">
+         <Text><![CDATA[Trn Reservation]]></Text>
+         <Resource subtype="Column" ID="TrnReservation.TRN_RESERVATION.COMPANY_ID" control="COMPANY_ID">
+            <Text><![CDATA[Company ID]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnReservation.TRN_RESERVATION.RESERVATION_ID" control="RESERVATION_ID">
+            <Text><![CDATA[Reservation ID]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnReservation.TRN_RESERVATION.BRANCH_ID" control="BRANCH_ID">
+            <Text><![CDATA[Branch ID]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnReservation.TRN_RESERVATION.ORDER_ID" control="ORDER_ID">
+            <Text><![CDATA[Order ID]]></Text>
+         </Resource>
+      </Resource>
+   </TranslatableResource>
+</TranslatableResources>

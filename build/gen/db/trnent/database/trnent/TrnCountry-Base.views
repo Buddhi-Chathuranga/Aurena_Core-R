@@ -1,0 +1,41 @@
+-----------------------------------------------------------------------------
+--
+--  Logical unit: TrnCountry
+--  Component:    TRNENT
+--
+--  Template:     3.0
+--  Built by:     IFS Developer Studio (unit-test)
+--
+--  NOTE! Do not edit!! This file is completely generated and will be
+--        overwritten next time the corresponding model is saved.
+-----------------------------------------------------------------------------
+
+
+layer Base;
+
+-------------------- COMMON COLUMN DEFINITIONS ------------------------------
+
+COLUMN Country_Id IS
+   Flags      = 'KMI-L'
+   Datatype   = 'STRING(10)'
+   Prompt     = 'Country Id';
+COLUMN Country IS
+   Flags      = 'AMIUL'
+   Datatype   = 'STRING(1000)'
+   Prompt     = 'Country';
+
+-------------------- PUBLIC VIEW DEFINITIONS --------------------------------
+
+
+-------------------- PRIVATE VIEW DEFINITIONS -------------------------------
+
+VIEW Trn_Country IS
+   Prompt     = 'Trn Country'
+   Table      = 'TRN_COUNTRY_TAB'
+SELECT
+       country_id                     country_id,
+       country                        country,
+       rowkey                         objkey,
+       to_char(rowversion,'YYYYMMDDHH24MISS') objversion,
+       rowid                          objid
+FROM   trn_country_tab;

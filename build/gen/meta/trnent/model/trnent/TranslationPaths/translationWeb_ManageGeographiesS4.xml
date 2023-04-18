@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TranslatableResources type="WEB" module="TRNENT" version="1.1" layer="Core" xmlns="types.scan.translation.fnd.ifsworld.com">
+   <TranslatableResource type="Global Data" ID="ManageGeographiesS4" name="ManageGeographiesS4">
+      <Resource subtype="Global Data" ID="ManageGeographiesS4.menu.GeographicDetailsNavEntry" control="menu.GeographicDetailsNavEntry">
+         <Resource subtype="Menu Item" ID="ManageGeographiesS4.menu.GeographicDetailsNavEntry.$this" control="$this">
+            <Text>Geographic Details</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageGeographiesS4.menu.CountryOverviewNavEntry" control="menu.CountryOverviewNavEntry">
+         <Resource subtype="Menu Item" ID="ManageGeographiesS4.menu.CountryOverviewNavEntry.$this" control="$this">
+            <Text>Country Overview</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageGeographiesS4.menu.CountryDetailsNavEntry" control="menu.CountryDetailsNavEntry">
+         <Resource subtype="Menu Item" ID="ManageGeographiesS4.menu.CountryDetailsNavEntry.$this" control="$this">
+            <Text>Country Details</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageGeographiesS4.menu.AreaDetailsNavEntry" control="menu.AreaDetailsNavEntry">
+         <Resource subtype="Menu Item" ID="ManageGeographiesS4.menu.AreaDetailsNavEntry.$this" control="$this">
+            <Text>Area Details</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageGeographiesS4.menu.CreateCountryAssistanNavEntry" control="menu.CreateCountryAssistanNavEntry">
+         <Resource subtype="Menu Item" ID="ManageGeographiesS4.menu.CreateCountryAssistanNavEntry.$this" control="$this">
+            <Text>Create Country Assistan</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageGeographiesS4.selector.ReferenceTrnAreaSelector" control="selector.ReferenceTrnAreaSelector">
+         <Resource subtype="Data Field" ID="ManageGeographiesS4.selector.ReferenceTrnAreaSelector.selectorcontent.static.AreaId" control="AreaId">
+            <Text>Area Id</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageGeographiesS4.selector.ReferenceTrnAreaSelector.selectorcontent.static.Area" control="Area">
+            <Text>Area</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageGeographiesS4.selector.ReferenceTrnCountrySelector" control="selector.ReferenceTrnCountrySelector">
+         <Resource subtype="Data Field" ID="ManageGeographiesS4.selector.ReferenceTrnCountrySelector.selectorcontent.static.CountryId" control="CountryId">
+            <Text>Country Id</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageGeographiesS4.selector.ReferenceTrnCountrySelector.selectorcontent.static.Country" control="Country">
+            <Text>Country</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageGeographiesS4.selector.ReferenceTrnCompanySelector" control="selector.ReferenceTrnCompanySelector">
+         <Resource subtype="Data Field" ID="ManageGeographiesS4.selector.ReferenceTrnCompanySelector.selectorcontent.static.CompanyId" control="CompanyId">
+            <Text>Company Id</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageGeographiesS4.selector.ReferenceTrnCompanySelector.selectorcontent.static.Name" control="Name">
+            <Text>Name</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageGeographiesS4.selector.ReferenceTrnCompanySelector.selectorcontent.static.Comments" control="Comments">
+            <Text>Comments</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageGeographiesS4.selector.ReferenceTrnCompanySelector.selectorcontent.static.CreationDate" control="CreationDate">
+            <Text>Creation Date</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageGeographiesS4.selector.TrnCountryS4selector" control="selector.TrnCountryS4selector">
+         <Resource subtype="Data Field" ID="ManageGeographiesS4.selector.TrnCountryS4selector.selectorcontent.static.CountryId" control="CountryId">
+            <Text>Country Id</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageGeographiesS4.selector.TrnCountryS4selector.selectorcontent.static.Country" control="Country">
+            <Text>Country</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageGeographiesS4.list.TrnCountryLovList" control="list.TrnCountryLovList">
+         <Resource subtype="Data Field" ID="ManageGeographiesS4.list.TrnCountryLovList.listcontent.static.CountryId" control="CountryId">
+            <Text>Country Id</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageGeographiesS4.list.TrnCountryLovList.listcontent.static.Country" control="Country">
+            <Text>Country</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageGeographiesS4.list.TrnAreaLovList" control="list.TrnAreaLovList">
+         <Resource subtype="Data Field" ID="ManageGeographiesS4.list.TrnAreaLovList.listcontent.static.CountryId" control="CountryId">
+            <Text>Country Id</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageGeographiesS4.list.TrnAreaLovList.listcontent.static.AreaId" control="AreaId">
+            <Text>Area Id</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageGeographiesS4.list.TrnAreaLovList.listcontent.static.Area" control="Area">
+            <Text>Area</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageGeographiesS4.list.TrnCompanyLovList" control="list.TrnCompanyLovList">
+         <Resource subtype="Data Field" ID="ManageGeographiesS4.list.TrnCompanyLovList.listcontent.static.CompanyId" control="CompanyId">
+            <Text>Company Id</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageGeographiesS4.list.TrnCompanyLovList.listcontent.static.Name" control="Name">
+            <Text>Name</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageGeographiesS4.list.TrnCompanyLovList.listcontent.static.Comments" control="Comments">
+            <Text>Comments</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageGeographiesS4.list.TrnCompanyLovList.listcontent.static.CreationDate" control="CreationDate">
+            <Text>Creation Date</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageGeographiesS4.list.TrnBranchLovList" control="list.TrnBranchLovList">
+         <Resource subtype="Data Field" ID="ManageGeographiesS4.list.TrnBranchLovList.listcontent.static.CompanyId" control="CompanyId">
+            <Text>Company Id</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageGeographiesS4.list.TrnBranchLovList.listcontent.static.BranchId" control="BranchId">
+            <Text>Branch Id</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageGeographiesS4.list.TrnBranchLovList.listcontent.static.Name" control="Name">
+            <Text>Name</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageGeographiesS4.list.TrnAreaVirtualLovList" control="list.TrnAreaVirtualLovList">
+         <Resource subtype="Data Field" ID="ManageGeographiesS4.list.TrnAreaVirtualLovList.listcontent.static.Objkey" control="Objkey">
+            <Text>Objkey</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageGeographiesS4.list.TrnCountryList" control="list.TrnCountryList">
+         <Resource subtype="Table Window" ID="ManageGeographiesS4.list.TrnCountryList.$this" control="$this">
+            <Text>Countries</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageGeographiesS4.list.TrnCountryList.listcontent.field.CountryId" control="CountryId">
+            <Text>Country Id</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageGeographiesS4.list.TrnCountryList.listcontent.field.Country" control="Country">
+            <Text>Country Name</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageGeographiesS4.list.TrnAreaList" control="list.TrnAreaList">
+         <Resource subtype="Table Window" ID="ManageGeographiesS4.list.TrnAreaList.$this" control="$this">
+            <Text>Areas-${parent.CountryId}-${parent.Country}</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageGeographiesS4.list.TrnAreaList.listcontent.field.AreaId" control="AreaId">
+            <Text>Area Id</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageGeographiesS4.list.TrnAreaList.listcontent.field.Area" control="Area">
+            <Text>Area</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageGeographiesS4.list.TrnAreaVirtualList" control="list.TrnAreaVirtualList">
+         <Resource subtype="Table Window" ID="ManageGeographiesS4.list.TrnAreaVirtualList.$this" control="$this">
+            <Text>Area List</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageGeographiesS4.list.TrnAreaVirtualList.listcontent.field.CountryId" control="CountryId">
+            <Text>Country Id</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageGeographiesS4.list.TrnAreaVirtualList.listcontent.field.AreaId" control="AreaId">
+            <Text>Area Id</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageGeographiesS4.list.TrnAreaVirtualList.listcontent.field.Area" control="Area">
+            <Text>Area</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageGeographiesS4.page.TrnCountryOverview" control="page.TrnCountryOverview">
+         <Resource subtype="Form Window" ID="ManageGeographiesS4.page.TrnCountryOverview.$this" control="$this">
+            <Text>Country Overview</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageGeographiesS4.page.TrnCountryDetails" control="page.TrnCountryDetails">
+         <Resource subtype="Form Window" ID="ManageGeographiesS4.page.TrnCountryDetails.$this" control="$this">
+            <Text>Trn Country Details</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageGeographiesS4.page.TrnAreaDetails" control="page.TrnAreaDetails">
+         <Resource subtype="Form Window" ID="ManageGeographiesS4.page.TrnAreaDetails.$this" control="$this">
+            <Text>Trn Area Details</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageGeographiesS4.assistant.CreateCountryAssistant" control="assistant.CreateCountryAssistant">
+         <Resource subtype="Wizard Step" ID="ManageGeographiesS4.assistant.CreateCountryAssistant.$this" control="$this">
+            <Text>Ceate Country Assistant</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Wizard Step" ID="ManageGeographiesS4.assistant.CreateCountryAssistant.assistantsteps.assistantstep.-228979787" control="assistantstep">
+            <Text>Step 01</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Wizard Step" ID="ManageGeographiesS4.assistant.CreateCountryAssistant.assistantsteps.assistantstep.-228979786" control="assistantstep">
+            <Text>Step 02</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Wizard Step" ID="ManageGeographiesS4.assistant.CreateCountryAssistant.assistantsteps.assistantfinalstep" control="assistantfinalstep">
+            <Text>Final Step</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageGeographiesS4.group.TrnCountryGroup" control="group.TrnCountryGroup">
+         <Resource subtype="Data Field" ID="ManageGeographiesS4.group.TrnCountryGroup.groupcontent.field.CountryId" control="CountryId">
+            <Text>Country Id</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageGeographiesS4.group.TrnCountryGroup.groupcontent.field.Country" control="Country">
+            <Text>Country</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageGeographiesS4.group.TrnCountryVirtualGroup" control="group.TrnCountryVirtualGroup">
+         <Resource subtype="Data Field" ID="ManageGeographiesS4.group.TrnCountryVirtualGroup.groupcontent.field.CountryId" control="CountryId">
+            <Text>Country Id</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageGeographiesS4.group.TrnCountryVirtualGroup.groupcontent.field.Country" control="Country">
+            <Text>Country</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+   </TranslatableResource>
+   </TranslatableResources>

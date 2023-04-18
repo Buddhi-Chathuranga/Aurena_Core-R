@@ -1,0 +1,76 @@
+-----------------------------------------------------------------------------
+--
+--  Logical unit: TrnCustomerOrder
+--  Type:         EntityWithState
+--  Component:    TRNORD
+--
+--  Template:     3.0
+--  Built by:     IFS Developer Studio
+--
+--  NOTE! Do not edit!! This file is completely generated and will be
+--        overwritten next time the corresponding model is saved.
+-----------------------------------------------------------------------------
+
+
+-----------------------------------------------------------------------------
+-------------------- BASE VIEW DEFINITION -----------------------------------
+-----------------------------------------------------------------------------
+
+PROMPT Creating TRN_CUSTOMER_ORDER view
+
+-- [IFS COMPLETE BLOCK VIEW TRN_CUSTOMER_ORDER]
+CREATE OR REPLACE VIEW TRN_CUSTOMER_ORDER AS
+SELECT
+       company_id                     company_id,
+       branch_id                      branch_id,
+       order_id                       order_id,
+       order_date                     order_date,
+       delivery_date                  delivery_date,
+       discount                       discount,
+       comments                       comments,
+       customer_id                    customer_id,
+       NULL                           order_total,
+       Trn_Order_Del_Type_API.Decode(delivery_type) delivery_type,
+       delivery_type                  delivery_type_db,
+       rowstate                       objstate,
+       Trn_Customer_Order_API.Finite_State_Events__(rowstate)                     objevents,
+       Trn_Customer_Order_API.Finite_State_Decode__(rowstate)                         state,
+       rowkey                         objkey,
+       to_char(rowversion,'YYYYMMDDHH24MISS') objversion,
+       rowid                          objid
+FROM   trn_customer_order_tab
+WITH   READ ONLY;
+-- [END IFS COMPLETE BLOCK]
+
+COMMENT ON TABLE TRN_CUSTOMER_ORDER
+   IS 'LU=TrnCustomerOrder^PROMPT=Trn Customer Order^MODULE=TRNORD^TABLE=TRN_CUSTOMER_ORDER_TAB^';
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   PROCEDURE Alter_Column_Comment (
+      view_name_   IN VARCHAR2,
+      column_name_ IN VARCHAR2,
+      comment_     IN VARCHAR2)
+   IS
+      stmt_ VARCHAR2(32767) := 'COMMENT ON COLUMN ' || view_name_ || '.' || column_name_ || ' IS ''' || REPLACE(comment_, '''', '''''') || '''';
+   BEGIN
+      EXECUTE IMMEDIATE stmt_;
+   END Alter_Column_Comment;
+BEGIN
+   Alter_Column_Comment('TRN_CUSTOMER_ORDER', 'company_id', 'FLAGS=PMI--^DATATYPE=STRING(20)^PROMPT=Company ID^');
+   Alter_Column_Comment('TRN_CUSTOMER_ORDER', 'branch_id', 'FLAGS=PMI--^DATATYPE=STRING(20)^PROMPT=Branch ID^REF=TrnBranch(company_id)^');
+   Alter_Column_Comment('TRN_CUSTOMER_ORDER', 'order_id', 'FLAGS=KMI-L^DATATYPE=NUMBER^PROMPT=Order ID^');
+   Alter_Column_Comment('TRN_CUSTOMER_ORDER', 'order_date', 'FLAGS=AMI--^DATATYPE=DATE/DATE^PROMPT=Order Date^');
+   Alter_Column_Comment('TRN_CUSTOMER_ORDER', 'delivery_date', 'FLAGS=AMIU-^DATATYPE=DATE/DATE^PROMPT=Delivery Date^');
+   Alter_Column_Comment('TRN_CUSTOMER_ORDER', 'discount', 'FLAGS=AMIU-^DATATYPE=NUMBER^PROMPT=Discount^');
+   Alter_Column_Comment('TRN_CUSTOMER_ORDER', 'comments', 'FLAGS=A-IU-^DATATYPE=STRING(2000)^PROMPT=Comments^');
+   Alter_Column_Comment('TRN_CUSTOMER_ORDER', 'customer_id', 'FLAGS=AMI-L^DATATYPE=NUMBER^PROMPT=Customer ID^REF=TrnCustomer(company_id)^');
+   Alter_Column_Comment('TRN_CUSTOMER_ORDER', 'order_total', 'FLAGS=A----^DATATYPE=NUMBER^PROMPT=Order Total^');
+   Alter_Column_Comment('TRN_CUSTOMER_ORDER', 'delivery_type', 'FLAGS=AMIUL^DATATYPE=STRING(200)^ENUMERATION=TrnOrderDelType^PROMPT=Delivery Type^');
+   Alter_Column_Comment('TRN_CUSTOMER_ORDER', 'delivery_type_db', 'FLAGS=A----^DATATYPE=STRING(20)^PROMPT=Delivery Type^');
+   Alter_Column_Comment('TRN_CUSTOMER_ORDER', 'state', 'FLAGS=A---L^DATATYPE=STRING(20)^PROMPT=State^');
+   EXECUTE IMMEDIATE 'GRANT SELECT ON TRN_CUSTOMER_ORDER TO IFSSYS';
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+

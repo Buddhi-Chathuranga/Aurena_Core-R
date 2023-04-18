@@ -1,0 +1,1617 @@
+{
+    "name": "ManageGeographiesS4",
+    "version": "-223462441:33738107",
+    "projection": {
+        "name": "EnterpriseHandlingS4",
+        "service": "EnterpriseHandlingS4.svc",
+        "version": "33738107",
+        "contains": {
+            "Reference_TrnCountryVirtual": {
+                "name": "Reference_TrnCountryVirtual",
+                "entity": "TrnCountryVirtual",
+                "array": true,
+                "defaultfilter": false
+            },
+            "Reference_TrnAreaVirtual": {
+                "name": "Reference_TrnAreaVirtual",
+                "entity": "TrnAreaVirtual",
+                "array": true,
+                "defaultfilter": false
+            },
+            "Reference_TrnCountry": {
+                "name": "Reference_TrnCountry",
+                "entity": "TrnCountry",
+                "array": true,
+                "defaultfilter": false
+            },
+            "Reference_TrnArea": {
+                "name": "Reference_TrnArea",
+                "entity": "TrnArea",
+                "array": true,
+                "defaultfilter": false
+            },
+            "Reference_TrnCompany": {
+                "name": "Reference_TrnCompany",
+                "entity": "TrnCompany",
+                "array": true,
+                "defaultfilter": false
+            },
+            "Reference_TrnBranch": {
+                "name": "Reference_TrnBranch",
+                "entity": "TrnBranch",
+                "array": true,
+                "defaultfilter": false
+            },
+            "TrnCountrySet": {
+                "name": "TrnCountrySet",
+                "entity": "TrnCountry",
+                "array": true,
+                "defaultfilter": false
+            },
+            "TrnAreaSet": {
+                "name": "TrnAreaSet",
+                "entity": "TrnArea",
+                "array": true,
+                "defaultfilter": false
+            },
+            "TrnCompanySet": {
+                "name": "TrnCompanySet",
+                "entity": "TrnCompany",
+                "array": true,
+                "defaultfilter": false
+            },
+            "TrnBranchSet": {
+                "name": "TrnBranchSet",
+                "entity": "TrnBranch",
+                "array": true,
+                "defaultfilter": false
+            },
+            "TrnCountryVirtualSet": {
+                "name": "TrnCountryVirtualSet",
+                "entity": "TrnCountryVirtual",
+                "array": true,
+                "defaultfilter": false
+            },
+            "TrnAreaVirtualSet": {
+                "name": "TrnAreaVirtualSet",
+                "entity": "TrnAreaVirtual",
+                "array": true,
+                "defaultfilter": false
+            }[#[jsoncallback:Custom_Object_Proxy_Sys.Client_Entityset_Metadata:{
+        "Projection": "EnterpriseHandlingS4",
+        "Lu": [
+            "TrnCountry",
+            "TrnBranch",
+            "TrnArea",
+            "TrnCompany"
+        ]
+    }]#]
+        },
+        "enumerations": {[#[jsoncallback:Custom_Object_Proxy_SYS.Client_Enumeration_Metadata:{
+        "Projection": "EnterpriseHandlingS4",
+        "Lu": [
+            "TrnCountry",
+            "TrnBranch",
+            "TrnArea",
+            "TrnCompany"
+        ]
+    }]#]
+        },
+        "entities": {
+            "TrnCountry": {
+                "name": "TrnCountry",
+                "hasETag": true,
+                "hasKeys": true,
+                "CRUD": "Create,Read,Update,Delete",
+                "luname": "TrnCountry",
+                "ludependencies": [
+                    "TrnCountry"
+                ],
+                "keys": [
+                    "CountryId"
+                ],
+                "attributes": {
+                    "Objgrants": {
+                        "datatype": "Text",
+                        "size": 2000,
+                        "keygeneration": "Server",
+                        "required": false,
+                        "editable": false,
+                        "updatable": false,
+                        "insertable": false,
+                        "unbound": false,
+                        "multiselect": false
+                    },
+                    "CountryId": {
+                        "datatype": "Text",
+                        "size": 10,
+                        "keygeneration": "User",
+                        "required": true,
+                        "editable": {
+        "==": [
+            {
+                "var": "record.etag"
+            },
+            null
+        ]
+    },
+                        "updatable": false,
+                        "insertable": true,
+                        "unbound": false,
+                        "multiselect": false
+                    },
+                    "Country": {
+                        "datatype": "Text",
+                        "size": 1000,
+                        "keygeneration": "User",
+                        "required": true,
+                        "editable": true,
+                        "updatable": true,
+                        "insertable": true,
+                        "unbound": false,
+                        "multiselect": false
+                    }[#[jsoncallback:Custom_Object_Proxy_SYS.Client_Attribute_Metadata:{
+        "Projection": "EnterpriseHandlingS4",
+        "Lu": "TrnCountry",
+        "View": "TRN_COUNTRY"
+    }]#]
+                },
+                "references": {[#[jsoncallback:Custom_Object_Proxy_Sys.Client_Entity_Nav_Metadata:{"Projection":"EnterpriseHandlingS4","Lu":"TrnCountry"}]#]
+                },
+                "arrays": {
+                    "AreaArry": {
+                        "target": "TrnArea",
+                        "datasource": null,
+                        "mapping": {
+                            "CountryId": "CountryId"
+                        }
+                    }[#[jsoncallback:Custom_Object_Proxy_Sys.Client_Entity_Array_Metadata:{"Projection":"EnterpriseHandlingS4","Entity":"TrnCountry","Lu":"TrnCountry"}]#]
+                },
+                "actions": {
+                },
+                "functions": {
+                },
+                "defaultcopyapplicable": true
+            },
+            "TrnArea": {
+                "name": "TrnArea",
+                "hasETag": true,
+                "hasKeys": true,
+                "CRUD": "Create,Read,Update,Delete",
+                "luname": "TrnArea",
+                "ludependencies": [
+                    "TrnArea"
+                ],
+                "keys": [
+                    "CountryId",
+                    "AreaId"
+                ],
+                "attributes": {
+                    "Objgrants": {
+                        "datatype": "Text",
+                        "size": 2000,
+                        "keygeneration": "Server",
+                        "required": false,
+                        "editable": false,
+                        "updatable": false,
+                        "insertable": false,
+                        "unbound": false,
+                        "multiselect": false
+                    },
+                    "CountryId": {
+                        "datatype": "Text",
+                        "size": 10,
+                        "keygeneration": "User",
+                        "required": true,
+                        "editable": {
+        "==": [
+            {
+                "var": "record.etag"
+            },
+            null
+        ]
+    },
+                        "updatable": false,
+                        "insertable": true,
+                        "unbound": false,
+                        "multiselect": false
+                    },
+                    "AreaId": {
+                        "datatype": "Text",
+                        "size": 10,
+                        "keygeneration": "User",
+                        "required": true,
+                        "editable": {
+        "==": [
+            {
+                "var": "record.etag"
+            },
+            null
+        ]
+    },
+                        "updatable": false,
+                        "insertable": true,
+                        "unbound": false,
+                        "multiselect": false
+                    },
+                    "Area": {
+                        "datatype": "Text",
+                        "size": 1000,
+                        "keygeneration": "User",
+                        "required": true,
+                        "editable": true,
+                        "updatable": true,
+                        "insertable": true,
+                        "unbound": false,
+                        "multiselect": false
+                    }[#[jsoncallback:Custom_Object_Proxy_SYS.Client_Attribute_Metadata:{
+        "Projection": "EnterpriseHandlingS4",
+        "Lu": "TrnArea",
+        "View": "TRN_AREA"
+    }]#]
+                },
+                "references": {[#[jsoncallback:Custom_Object_Proxy_Sys.Client_Entity_Nav_Metadata:{"Projection":"EnterpriseHandlingS4","Lu":"TrnArea"}]#]
+                },
+                "arrays": {[#[jsoncallback:Custom_Object_Proxy_Sys.Client_Entity_Array_Metadata:{"Projection":"EnterpriseHandlingS4","Entity":"TrnArea","Lu":"TrnArea"}]#]
+                },
+                "actions": {
+                },
+                "functions": {
+                },
+                "defaultcopyapplicable": true
+            },
+            "TrnCompany": {
+                "name": "TrnCompany",
+                "hasETag": true,
+                "hasKeys": true,
+                "CRUD": "Create,Read,Update,Delete",
+                "luname": "TrnCompany",
+                "ludependencies": [
+                    "TrnCompany"
+                ],
+                "keys": [
+                    "CompanyId"
+                ],
+                "attributes": {
+                    "Objgrants": {
+                        "datatype": "Text",
+                        "size": 2000,
+                        "keygeneration": "Server",
+                        "required": false,
+                        "editable": false,
+                        "updatable": false,
+                        "insertable": false,
+                        "unbound": false,
+                        "multiselect": false
+                    },
+                    "CompanyId": {
+                        "datatype": "Text",
+                        "size": 20,
+                        "keygeneration": "User",
+                        "required": true,
+                        "editable": {
+        "==": [
+            {
+                "var": "record.etag"
+            },
+            null
+        ]
+    },
+                        "updatable": false,
+                        "insertable": true,
+                        "unbound": false,
+                        "multiselect": false
+                    },
+                    "Name": {
+                        "datatype": "Text",
+                        "size": 1000,
+                        "keygeneration": "User",
+                        "required": true,
+                        "editable": true,
+                        "updatable": true,
+                        "insertable": true,
+                        "unbound": false,
+                        "multiselect": false
+                    },
+                    "Comments": {
+                        "datatype": "Text",
+                        "size": 2000,
+                        "keygeneration": "User",
+                        "required": false,
+                        "editable": true,
+                        "updatable": true,
+                        "insertable": true,
+                        "unbound": false,
+                        "multiselect": false
+                    },
+                    "CreationDate": {
+                        "datatype": "Date",
+                        "keygeneration": "User",
+                        "required": true,
+                        "editable": true,
+                        "updatable": true,
+                        "insertable": true,
+                        "unbound": false,
+                        "multiselect": false
+                    }[#[jsoncallback:Custom_Object_Proxy_SYS.Client_Attribute_Metadata:{
+        "Projection": "EnterpriseHandlingS4",
+        "Lu": "TrnCompany",
+        "View": "TRN_COMPANY"
+    }]#]
+                },
+                "references": {[#[jsoncallback:Custom_Object_Proxy_Sys.Client_Entity_Nav_Metadata:{"Projection":"EnterpriseHandlingS4","Lu":"TrnCompany"}]#]
+                },
+                "arrays": {
+                    "BranchArry": {
+                        "target": "TrnBranch",
+                        "datasource": null,
+                        "mapping": {
+                            "CompanyId": "CompanyId"
+                        }
+                    }[#[jsoncallback:Custom_Object_Proxy_Sys.Client_Entity_Array_Metadata:{"Projection":"EnterpriseHandlingS4","Entity":"TrnCompany","Lu":"TrnCompany"}]#]
+                },
+                "actions": {
+                },
+                "functions": {
+                },
+                "defaultcopyapplicable": true
+            },
+            "TrnBranch": {
+                "name": "TrnBranch",
+                "hasETag": true,
+                "hasKeys": true,
+                "CRUD": "Create,Read,Update,Delete",
+                "luname": "TrnBranch",
+                "ludependencies": [
+                    "TrnBranch"
+                ],
+                "keys": [
+                    "CompanyId",
+                    "BranchId"
+                ],
+                "attributes": {
+                    "Objgrants": {
+                        "datatype": "Text",
+                        "size": 2000,
+                        "keygeneration": "Server",
+                        "required": false,
+                        "editable": false,
+                        "updatable": false,
+                        "insertable": false,
+                        "unbound": false,
+                        "multiselect": false
+                    },
+                    "CompanyId": {
+                        "datatype": "Text",
+                        "size": 20,
+                        "keygeneration": "User",
+                        "required": true,
+                        "editable": {
+        "==": [
+            {
+                "var": "record.etag"
+            },
+            null
+        ]
+    },
+                        "updatable": false,
+                        "insertable": true,
+                        "unbound": false,
+                        "multiselect": false
+                    },
+                    "BranchId": {
+                        "datatype": "Text",
+                        "size": 20,
+                        "keygeneration": "User",
+                        "required": true,
+                        "editable": {
+        "==": [
+            {
+                "var": "record.etag"
+            },
+            null
+        ]
+    },
+                        "updatable": false,
+                        "insertable": true,
+                        "unbound": false,
+                        "multiselect": false
+                    },
+                    "Name": {
+                        "datatype": "Text",
+                        "size": 1000,
+                        "keygeneration": "User",
+                        "required": true,
+                        "editable": true,
+                        "updatable": true,
+                        "insertable": true,
+                        "unbound": false,
+                        "multiselect": false
+                    },
+                    "TimeOffset": {
+                        "datatype": "Number",
+                        "keygeneration": "User",
+                        "required": true,
+                        "editable": true,
+                        "updatable": true,
+                        "insertable": true,
+                        "unbound": false,
+                        "multiselect": false
+                    },
+                    "CountryId": {
+                        "datatype": "Text",
+                        "size": 10,
+                        "keygeneration": "User",
+                        "required": false,
+                        "editable": true,
+                        "updatable": true,
+                        "insertable": true,
+                        "unbound": false,
+                        "multiselect": false
+                    },
+                    "AreaId": {
+                        "datatype": "Text",
+                        "size": 10,
+                        "keygeneration": "User",
+                        "required": false,
+                        "editable": true,
+                        "updatable": true,
+                        "insertable": true,
+                        "unbound": false,
+                        "multiselect": false
+                    }[#[jsoncallback:Custom_Object_Proxy_SYS.Client_Attribute_Metadata:{
+        "Projection": "EnterpriseHandlingS4",
+        "Lu": "TrnBranch",
+        "View": "TRN_BRANCH"
+    }]#]
+                },
+                "references": {
+                    "AreaRef": {
+                        "target": "TrnArea",
+                        "datasource": "EnterpriseHandlingS4.svc/Reference_TrnArea?$filter=CountryId eq $[CountryId] and AreaId eq $[AreaId]",
+                        "mapping": {
+                            "CountryId": "CountryId",
+                            "AreaId": "AreaId"
+                        }
+                    },
+                    "CountryRef": {
+                        "target": "TrnCountry",
+                        "datasource": "EnterpriseHandlingS4.svc/Reference_TrnCountry?$filter=CountryId eq $[CountryId]",
+                        "mapping": {
+                            "CountryId": "CountryId"
+                        }
+                    },
+                    "CompanyRef": {
+                        "target": "TrnCompany",
+                        "datasource": "EnterpriseHandlingS4.svc/Reference_TrnCompany?$filter=CompanyId eq $[CompanyId]",
+                        "mapping": {
+                            "CompanyId": "CompanyId"
+                        }
+                    }[#[jsoncallback:Custom_Object_Proxy_Sys.Client_Entity_Nav_Metadata:{"Projection":"EnterpriseHandlingS4","Lu":"TrnBranch"}]#]
+                },
+                "arrays": {[#[jsoncallback:Custom_Object_Proxy_Sys.Client_Entity_Array_Metadata:{"Projection":"EnterpriseHandlingS4","Entity":"TrnBranch","Lu":"TrnBranch"}]#]
+                },
+                "actions": {
+                },
+                "functions": {
+                },
+                "defaultcopyapplicable": true
+            },
+            "TrnCountryVirtual": {
+                "name": "TrnCountryVirtual",
+                "hasETag": true,
+                "hasKeys": true,
+                "entitytype": "Virtual",
+                "CRUD": "Create,Read,Update,Delete",
+                "luname": "TrnCountryVirtual",
+                "ludependencies": [
+                    "TrnCountryVirtual"
+                ],
+                "keys": [
+                    "Objkey"
+                ],
+                "attributes": {
+                    "Objkey": {
+                        "datatype": "Text",
+                        "size": 50,
+                        "keygeneration": "Server",
+                        "required": false,
+                        "editable": false,
+                        "updatable": false,
+                        "insertable": false,
+                        "unbound": false,
+                        "multiselect": false
+                    },
+                    "ParentObjkey": {
+                        "datatype": "Text",
+                        "size": 50,
+                        "keygeneration": "Server",
+                        "required": false,
+                        "editable": false,
+                        "updatable": false,
+                        "insertable": true,
+                        "unbound": false,
+                        "multiselect": false
+                    },
+                    "Objmodified": {
+                        "datatype": "Date",
+                        "keygeneration": "Server",
+                        "required": false,
+                        "editable": false,
+                        "updatable": false,
+                        "insertable": false,
+                        "unbound": false,
+                        "multiselect": false
+                    },
+                    "ObjCreatedBy": {
+                        "datatype": "Text",
+                        "size": 50,
+                        "keygeneration": "Server",
+                        "required": false,
+                        "editable": false,
+                        "updatable": false,
+                        "insertable": true,
+                        "unbound": false,
+                        "multiselect": false
+                    },
+                    "CountryId": {
+                        "datatype": "Text",
+                        "keygeneration": "User",
+                        "required": false,
+                        "editable": true,
+                        "updatable": true,
+                        "insertable": true,
+                        "unbound": false,
+                        "multiselect": false
+                    },
+                    "Country": {
+                        "datatype": "Text",
+                        "keygeneration": "User",
+                        "required": false,
+                        "editable": true,
+                        "updatable": true,
+                        "insertable": true,
+                        "unbound": false,
+                        "multiselect": false
+                    }
+                },
+                "references": {
+                },
+                "arrays": {
+                    "Areas": {
+                        "target": "TrnAreaVirtual",
+                        "datasource": null,
+                        "mapping": {
+                            "Objkey": "ParentObjkey",
+                            "CountryId": "CountryId"
+                        }
+                    }[#[jsoncallback:Custom_Object_Proxy_Sys.Client_Entity_Array_Metadata:{"Projection":"EnterpriseHandlingS4","Entity":"TrnCountryVirtual","Lu":null}]#]
+                },
+                "actions": {
+                    "CreateCountriesAreas": {
+                        "name": "CreateCountriesAreas",
+                        "ludependencies": [
+                        ]
+                    }
+                },
+                "functions": {
+                }
+            },
+            "TrnAreaVirtual": {
+                "name": "TrnAreaVirtual",
+                "hasETag": true,
+                "hasKeys": true,
+                "entitytype": "Virtual",
+                "CRUD": "Create,Read,Update,Delete",
+                "luname": "TrnAreaVirtual",
+                "ludependencies": [
+                    "TrnAreaVirtual"
+                ],
+                "keys": [
+                    "Objkey"
+                ],
+                "attributes": {
+                    "Objkey": {
+                        "datatype": "Text",
+                        "size": 50,
+                        "keygeneration": "Server",
+                        "required": false,
+                        "editable": false,
+                        "updatable": false,
+                        "insertable": false,
+                        "unbound": false,
+                        "multiselect": false
+                    },
+                    "ParentObjkey": {
+                        "datatype": "Text",
+                        "size": 50,
+                        "keygeneration": "Server",
+                        "required": false,
+                        "editable": false,
+                        "updatable": false,
+                        "insertable": true,
+                        "unbound": false,
+                        "multiselect": false
+                    },
+                    "Objmodified": {
+                        "datatype": "Date",
+                        "keygeneration": "Server",
+                        "required": false,
+                        "editable": false,
+                        "updatable": false,
+                        "insertable": false,
+                        "unbound": false,
+                        "multiselect": false
+                    },
+                    "ObjCreatedBy": {
+                        "datatype": "Text",
+                        "size": 50,
+                        "keygeneration": "Server",
+                        "required": false,
+                        "editable": false,
+                        "updatable": false,
+                        "insertable": true,
+                        "unbound": false,
+                        "multiselect": false
+                    },
+                    "CountryId": {
+                        "datatype": "Text",
+                        "keygeneration": "User",
+                        "required": false,
+                        "editable": true,
+                        "updatable": true,
+                        "insertable": true,
+                        "unbound": false,
+                        "multiselect": false
+                    },
+                    "AreaId": {
+                        "datatype": "Text",
+                        "keygeneration": "User",
+                        "required": false,
+                        "editable": true,
+                        "updatable": true,
+                        "insertable": true,
+                        "unbound": false,
+                        "multiselect": false
+                    },
+                    "Area": {
+                        "datatype": "Text",
+                        "keygeneration": "User",
+                        "required": false,
+                        "editable": true,
+                        "updatable": true,
+                        "insertable": true,
+                        "unbound": false,
+                        "multiselect": false
+                    }
+                },
+                "references": {
+                },
+                "arrays": {[#[jsoncallback:Custom_Object_Proxy_Sys.Client_Entity_Array_Metadata:{"Projection":"EnterpriseHandlingS4","Entity":"TrnAreaVirtual","Lu":null}]#]
+                },
+                "actions": {
+                },
+                "functions": {
+                }
+            }[#[jsoncallback:Custom_Object_Proxy_Sys.Client_Entity_Type_Metadata:{
+        "Projection": "EnterpriseHandlingS4",
+        "Lu": [
+            "TrnCountry",
+            "TrnBranch",
+            "TrnArea",
+            "TrnCompany"
+        ]
+    }]#]
+        },
+        "structures": {
+            "TrnCountryCopyValues$": {
+                "name": "TrnCountryCopyValues$",
+                "attributes": {
+                    "ModifiedSource": {
+                        "datatype": "Entity",
+                        "subtype": "TrnCountry",
+                        "required": false,
+                        "editable": true,
+                        "updatable": true,
+                        "insertable": true,
+                        "unbound": false,
+                        "multiselect": false
+                    }
+                },
+                "references": {
+                },
+                "arrays": {
+                }
+            },
+            "TrnAreaCopyValues$": {
+                "name": "TrnAreaCopyValues$",
+                "attributes": {
+                    "ModifiedSource": {
+                        "datatype": "Entity",
+                        "subtype": "TrnArea",
+                        "required": false,
+                        "editable": true,
+                        "updatable": true,
+                        "insertable": true,
+                        "unbound": false,
+                        "multiselect": false
+                    }
+                },
+                "references": {
+                },
+                "arrays": {
+                }
+            },
+            "TrnCompanyCopyValues$": {
+                "name": "TrnCompanyCopyValues$",
+                "attributes": {
+                    "ModifiedSource": {
+                        "datatype": "Entity",
+                        "subtype": "TrnCompany",
+                        "required": false,
+                        "editable": true,
+                        "updatable": true,
+                        "insertable": true,
+                        "unbound": false,
+                        "multiselect": false
+                    }
+                },
+                "references": {
+                },
+                "arrays": {
+                }
+            },
+            "TrnBranchCopyValues$": {
+                "name": "TrnBranchCopyValues$",
+                "attributes": {
+                    "ModifiedSource": {
+                        "datatype": "Entity",
+                        "subtype": "TrnBranch",
+                        "required": false,
+                        "editable": true,
+                        "updatable": true,
+                        "insertable": true,
+                        "unbound": false,
+                        "multiselect": false
+                    }
+                },
+                "references": {
+                },
+                "arrays": {
+                }
+            }
+        },
+        "actions": {[#[jsoncallback:Custom_Object_Proxy_Sys.Client_Action_Metadata:{
+        "Projection": "EnterpriseHandlingS4"
+    }]#]
+        },
+        "functions": {
+        },
+        "attachmentservices": {[#[callback:Object_Connection_Metadata_SYS.Enum_Entity_Services_:TrnArea,TrnBranch,TrnCompany,TrnCountry]#]
+    }
+    },
+    "component": "TRNENT",
+    "layout": {
+        "assistants": {
+            "CreateCountryAssistant": {
+                "name": "CreateCountryAssistant",
+                "label": "[#[translatesys:Wizard Step:ManageGeographiesS4.assistant.CreateCountryAssistant.$this:$this:WEB:Ceate Country Assistant]#]",
+                "datasourceProjection": "EnterpriseHandlingS4",
+                "datasourceEntitySet": "TrnCountryVirtualSet",
+                "entity": "TrnCountryVirtual",
+                "steps": [
+                    {
+                        "label": "[#[translatesys:Wizard Step:ManageGeographiesS4.assistant.CreateCountryAssistant.assistantsteps.assistantstep.-228979787:assistantstep:WEB:Step 01]#]",
+                        "name": "Step1",
+                        "content": [
+                            {
+                                "elementType": "group",
+                                "isReference": true,
+                                "group": "TrnCountryVirtualGroup",
+                                "id": "TrnCountryVirtualGroup"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "[#[translatesys:Wizard Step:ManageGeographiesS4.assistant.CreateCountryAssistant.assistantsteps.assistantstep.-228979786:assistantstep:WEB:Step 02]#]",
+                        "name": "Step2",
+                        "content": [
+                            {
+                                "elementType": "list",
+                                "isReference": true,
+                                "list": "TrnAreaVirtualList",
+                                "id": "TrnAreaVirtualList",
+                                "binding": {
+                                    "property": "Areas"
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "final": {
+                    "label": "[#[translatesys:Wizard Step:ManageGeographiesS4.assistant.CreateCountryAssistant.assistantsteps.assistantfinalstep:assistantfinalstep:WEB:Final Step]#]",
+                    "content": [
+                    ]
+                },
+                "finishCommand": {
+                    "name": "finishCommand",
+                    "entity": "TrnCountryVirtual",
+                    "grants": {
+                        "or": [
+                            {
+                                "==": [
+                                    {
+                                        "var": "record.Objgrants"
+                                    },
+                                    null
+                                ]
+                            },
+                            {
+                                "method": [
+                                    "api.contains",
+                                    [
+                                        "CreateCountriesAreas",
+                                        {
+                                            "var": "record.Objgrants"
+                                        }
+                                    ]
+                                ]
+                            }
+                        ]
+                    },
+                    "enabled": true,
+                    "vars": {
+                    },
+                    "execute": [
+                        {
+                            "call": {
+                                "method": "action",
+                                "args": {
+                                    "name": "IfsApp.EnterpriseHandlingS4.TrnCountryVirtual.CreateCountriesAreas",
+                                    "projection": "EnterpriseHandlingS4",
+                                    "bound": true,
+                                    "params": {
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "groups": {
+            "TrnCountryGroup": {
+                "name": "TrnCountryGroup",
+                "label": "",
+                "entity": "TrnCountry",
+                "content": [
+                    {
+                        "elementType": "field",
+                        "field": {
+                            "name": "CountryId",
+                            "attribute": "CountryId",
+                            "control": "field",
+                            "entity": "TrnCountry",
+                            "label": "[#[translatesys:Data Field:ManageGeographiesS4.group.TrnCountryGroup.groupcontent.field.CountryId:CountryId:WEB:Country Id]#]",
+                            "translationKey": "ManageGeographiesS4.group.TrnCountryGroup.groupcontent.field.CountryId",
+                            "datatype": "Text",
+                            "array": false,
+                            "maxlength": 10,
+                            "editable": {
+                                "==": [
+                                    {
+                                        "var": "record.etag"
+                                    },
+                                    null
+                                ]
+                            },
+                            "required": true
+                        }
+                    },
+                    {
+                        "elementType": "field",
+                        "field": {
+                            "name": "Country",
+                            "attribute": "Country",
+                            "control": "field",
+                            "entity": "TrnCountry",
+                            "label": "[#[translatesys:Data Field:ManageGeographiesS4.group.TrnCountryGroup.groupcontent.field.Country:Country:WEB:Country]#]",
+                            "translationKey": "ManageGeographiesS4.group.TrnCountryGroup.groupcontent.field.Country",
+                            "datatype": "Text",
+                            "array": false,
+                            "maxlength": 1000,
+                            "editable": true,
+                            "required": true
+                        }
+                    }
+                ]
+            },
+            "TrnCountryVirtualGroup": {
+                "name": "TrnCountryVirtualGroup",
+                "label": "",
+                "entity": "TrnCountryVirtual",
+                "content": [
+                    {
+                        "elementType": "field",
+                        "field": {
+                            "name": "CountryId",
+                            "attribute": "CountryId",
+                            "control": "field",
+                            "entity": "TrnCountryVirtual",
+                            "label": "[#[translatesys:Data Field:ManageGeographiesS4.group.TrnCountryVirtualGroup.groupcontent.field.CountryId:CountryId:WEB:Country Id]#]",
+                            "translationKey": "ManageGeographiesS4.group.TrnCountryVirtualGroup.groupcontent.field.CountryId",
+                            "datatype": "Text",
+                            "array": false,
+                            "editable": true,
+                            "required": false
+                        }
+                    },
+                    {
+                        "elementType": "field",
+                        "field": {
+                            "name": "Country",
+                            "attribute": "Country",
+                            "control": "field",
+                            "entity": "TrnCountryVirtual",
+                            "label": "[#[translatesys:Data Field:ManageGeographiesS4.group.TrnCountryVirtualGroup.groupcontent.field.Country:Country:WEB:Country]#]",
+                            "translationKey": "ManageGeographiesS4.group.TrnCountryVirtualGroup.groupcontent.field.Country",
+                            "datatype": "Text",
+                            "array": false,
+                            "editable": true,
+                            "required": false
+                        }
+                    }
+                ]
+            }
+        },
+        "lists": {
+            "TrnCountryLovList": {
+                "name": "TrnCountryLovList",
+                "label": "",
+                "entity": "TrnCountry",
+                "content": [
+                    {
+                        "elementType": "field",
+                        "field": {
+                            "name": "CountryId",
+                            "attribute": "CountryId",
+                            "control": "static",
+                            "entity": "TrnCountry",
+                            "label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnCountryLovList.listcontent.static.CountryId:CountryId:WEB:Country Id]#]",
+                            "translationKey": "ManageGeographiesS4.list.TrnCountryLovList.listcontent.static.CountryId",
+                            "datatype": "Text",
+                            "array": false,
+                            "maxlength": 10,
+                            "editable": false,
+                            "required": false
+                        }
+                    },
+                    {
+                        "elementType": "field",
+                        "field": {
+                            "name": "Country",
+                            "attribute": "Country",
+                            "control": "static",
+                            "entity": "TrnCountry",
+                            "label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnCountryLovList.listcontent.static.Country:Country:WEB:Country]#]",
+                            "translationKey": "ManageGeographiesS4.list.TrnCountryLovList.listcontent.static.Country",
+                            "datatype": "Text",
+                            "array": false,
+                            "maxlength": 1000,
+                            "editable": false,
+                            "required": false
+                        }
+                    }
+                ]
+            },
+            "TrnAreaLovList": {
+                "name": "TrnAreaLovList",
+                "label": "",
+                "entity": "TrnArea",
+                "content": [
+                    {
+                        "elementType": "field",
+                        "field": {
+                            "name": "CountryId",
+                            "attribute": "CountryId",
+                            "control": "static",
+                            "entity": "TrnArea",
+                            "label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnAreaLovList.listcontent.static.CountryId:CountryId:WEB:Country Id]#]",
+                            "translationKey": "ManageGeographiesS4.list.TrnAreaLovList.listcontent.static.CountryId",
+                            "datatype": "Text",
+                            "array": false,
+                            "maxlength": 10,
+                            "editable": false,
+                            "required": false
+                        }
+                    },
+                    {
+                        "elementType": "field",
+                        "field": {
+                            "name": "AreaId",
+                            "attribute": "AreaId",
+                            "control": "static",
+                            "entity": "TrnArea",
+                            "label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnAreaLovList.listcontent.static.AreaId:AreaId:WEB:Area Id]#]",
+                            "translationKey": "ManageGeographiesS4.list.TrnAreaLovList.listcontent.static.AreaId",
+                            "datatype": "Text",
+                            "array": false,
+                            "maxlength": 10,
+                            "editable": false,
+                            "required": false
+                        }
+                    },
+                    {
+                        "elementType": "field",
+                        "field": {
+                            "name": "Area",
+                            "attribute": "Area",
+                            "control": "static",
+                            "entity": "TrnArea",
+                            "label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnAreaLovList.listcontent.static.Area:Area:WEB:Area]#]",
+                            "translationKey": "ManageGeographiesS4.list.TrnAreaLovList.listcontent.static.Area",
+                            "datatype": "Text",
+                            "array": false,
+                            "maxlength": 1000,
+                            "editable": false,
+                            "required": false
+                        }
+                    }
+                ]
+            },
+            "TrnCompanyLovList": {
+                "name": "TrnCompanyLovList",
+                "label": "",
+                "entity": "TrnCompany",
+                "content": [
+                    {
+                        "elementType": "field",
+                        "field": {
+                            "name": "CompanyId",
+                            "attribute": "CompanyId",
+                            "control": "static",
+                            "entity": "TrnCompany",
+                            "label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnCompanyLovList.listcontent.static.CompanyId:CompanyId:WEB:Company Id]#]",
+                            "translationKey": "ManageGeographiesS4.list.TrnCompanyLovList.listcontent.static.CompanyId",
+                            "datatype": "Text",
+                            "array": false,
+                            "maxlength": 20,
+                            "editable": false,
+                            "required": false
+                        }
+                    },
+                    {
+                        "elementType": "field",
+                        "field": {
+                            "name": "Name",
+                            "attribute": "Name",
+                            "control": "static",
+                            "entity": "TrnCompany",
+                            "label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnCompanyLovList.listcontent.static.Name:Name:WEB:Name]#]",
+                            "translationKey": "ManageGeographiesS4.list.TrnCompanyLovList.listcontent.static.Name",
+                            "datatype": "Text",
+                            "array": false,
+                            "maxlength": 1000,
+                            "editable": false,
+                            "required": false
+                        }
+                    },
+                    {
+                        "elementType": "field",
+                        "field": {
+                            "name": "Comments",
+                            "attribute": "Comments",
+                            "control": "static",
+                            "entity": "TrnCompany",
+                            "label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnCompanyLovList.listcontent.static.Comments:Comments:WEB:Comments]#]",
+                            "translationKey": "ManageGeographiesS4.list.TrnCompanyLovList.listcontent.static.Comments",
+                            "datatype": "Text",
+                            "array": false,
+                            "maxlength": 2000,
+                            "editable": false,
+                            "required": false
+                        }
+                    },
+                    {
+                        "elementType": "field",
+                        "field": {
+                            "name": "CreationDate",
+                            "attribute": "CreationDate",
+                            "control": "static",
+                            "entity": "TrnCompany",
+                            "label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnCompanyLovList.listcontent.static.CreationDate:CreationDate:WEB:Creation Date]#]",
+                            "translationKey": "ManageGeographiesS4.list.TrnCompanyLovList.listcontent.static.CreationDate",
+                            "datatype": "Date",
+                            "array": false,
+                            "editable": false,
+                            "required": false
+                        }
+                    }
+                ]
+            },
+            "TrnBranchLovList": {
+                "name": "TrnBranchLovList",
+                "label": "",
+                "entity": "TrnBranch",
+                "content": [
+                    {
+                        "elementType": "field",
+                        "field": {
+                            "name": "CompanyId",
+                            "attribute": "CompanyId",
+                            "control": "static",
+                            "entity": "TrnBranch",
+                            "label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnBranchLovList.listcontent.static.CompanyId:CompanyId:WEB:Company Id]#]",
+                            "translationKey": "ManageGeographiesS4.list.TrnBranchLovList.listcontent.static.CompanyId",
+                            "datatype": "Text",
+                            "array": false,
+                            "maxlength": 20,
+                            "editable": false,
+                            "required": false
+                        }
+                    },
+                    {
+                        "elementType": "field",
+                        "field": {
+                            "name": "BranchId",
+                            "attribute": "BranchId",
+                            "control": "static",
+                            "entity": "TrnBranch",
+                            "label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnBranchLovList.listcontent.static.BranchId:BranchId:WEB:Branch Id]#]",
+                            "translationKey": "ManageGeographiesS4.list.TrnBranchLovList.listcontent.static.BranchId",
+                            "datatype": "Text",
+                            "array": false,
+                            "maxlength": 20,
+                            "editable": false,
+                            "required": false
+                        }
+                    },
+                    {
+                        "elementType": "field",
+                        "field": {
+                            "name": "Name",
+                            "attribute": "Name",
+                            "control": "static",
+                            "entity": "TrnBranch",
+                            "label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnBranchLovList.listcontent.static.Name:Name:WEB:Name]#]",
+                            "translationKey": "ManageGeographiesS4.list.TrnBranchLovList.listcontent.static.Name",
+                            "datatype": "Text",
+                            "array": false,
+                            "maxlength": 1000,
+                            "editable": false,
+                            "required": false
+                        }
+                    }
+                ]
+            },
+            "TrnAreaVirtualLovList": {
+                "name": "TrnAreaVirtualLovList",
+                "label": "",
+                "entity": "TrnAreaVirtual",
+                "content": [
+                    {
+                        "elementType": "field",
+                        "field": {
+                            "name": "Objkey",
+                            "attribute": "Objkey",
+                            "control": "static",
+                            "label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnAreaVirtualLovList.listcontent.static.Objkey:Objkey:WEB:Objkey]#]",
+                            "translationKey": "ManageGeographiesS4.list.TrnAreaVirtualLovList.listcontent.static.Objkey",
+                            "datatype": "Text",
+                            "array": false,
+                            "editable": false,
+                            "required": false
+                        }
+                    }
+                ]
+            },
+            "TrnCountryList": {
+                "name": "TrnCountryList",
+                "label": "[#[translatesys:Table Window:ManageGeographiesS4.list.TrnCountryList.$this:$this:WEB:Countries]#]",
+                "entity": "TrnCountry",
+                "content": [
+                    {
+                        "elementType": "field",
+                        "field": {
+                            "name": "CountryId",
+                            "attribute": "CountryId",
+                            "control": "field",
+                            "entity": "TrnCountry",
+                            "label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnCountryList.listcontent.field.CountryId:CountryId:WEB:Country Id]#]",
+                            "translationKey": "ManageGeographiesS4.list.TrnCountryList.listcontent.field.CountryId",
+                            "datatype": "Text",
+                            "array": false,
+                            "maxlength": 10,
+                            "editable": {
+                                "==": [
+                                    {
+                                        "var": "record.etag"
+                                    },
+                                    null
+                                ]
+                            },
+                            "required": true
+                        }
+                    },
+                    {
+                        "elementType": "field",
+                        "field": {
+                            "name": "Country",
+                            "attribute": "Country",
+                            "control": "field",
+                            "entity": "TrnCountry",
+                            "label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnCountryList.listcontent.field.Country:Country:WEB:Country Name]#]",
+                            "translationKey": "ManageGeographiesS4.list.TrnCountryList.listcontent.field.Country",
+                            "datatype": "Text",
+                            "array": false,
+                            "maxlength": 1000,
+                            "editable": true,
+                            "required": true
+                        }
+                    }
+                ]
+            },
+            "TrnAreaList": {
+                "name": "TrnAreaList",
+                "selectAttributes": [
+                    "parent.Country",
+                    "parent.CountryId"
+                ],
+                "label": "[#[translatesys:Table Window:ManageGeographiesS4.list.TrnAreaList.$this:$this:WEB:Areas-${parent.CountryId}-${parent.Country}]#]",
+                "entity": "TrnArea",
+                "content": [
+                    {
+                        "elementType": "field",
+                        "field": {
+                            "name": "AreaId",
+                            "attribute": "AreaId",
+                            "control": "field",
+                            "entity": "TrnArea",
+                            "label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnAreaList.listcontent.field.AreaId:AreaId:WEB:Area Id]#]",
+                            "translationKey": "ManageGeographiesS4.list.TrnAreaList.listcontent.field.AreaId",
+                            "datatype": "Text",
+                            "array": false,
+                            "maxlength": 10,
+                            "editable": {
+                                "==": [
+                                    {
+                                        "var": "record.etag"
+                                    },
+                                    null
+                                ]
+                            },
+                            "required": true
+                        }
+                    },
+                    {
+                        "elementType": "field",
+                        "field": {
+                            "name": "Area",
+                            "attribute": "Area",
+                            "control": "field",
+                            "entity": "TrnArea",
+                            "label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnAreaList.listcontent.field.Area:Area:WEB:Area]#]",
+                            "translationKey": "ManageGeographiesS4.list.TrnAreaList.listcontent.field.Area",
+                            "datatype": "Text",
+                            "array": false,
+                            "maxlength": 1000,
+                            "editable": true,
+                            "required": true
+                        }
+                    }
+                ]
+            },
+            "TrnAreaVirtualList": {
+                "name": "TrnAreaVirtualList",
+                "label": "[#[translatesys:Table Window:ManageGeographiesS4.list.TrnAreaVirtualList.$this:$this:WEB:Area List]#]",
+                "entity": "TrnAreaVirtual",
+                "content": [
+                    {
+                        "elementType": "field",
+                        "field": {
+                            "name": "CountryId",
+                            "attribute": "CountryId",
+                            "control": "field",
+                            "entity": "TrnAreaVirtual",
+                            "label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnAreaVirtualList.listcontent.field.CountryId:CountryId:WEB:Country Id]#]",
+                            "translationKey": "ManageGeographiesS4.list.TrnAreaVirtualList.listcontent.field.CountryId",
+                            "datatype": "Text",
+                            "array": false,
+                            "editable": true,
+                            "required": false
+                        }
+                    },
+                    {
+                        "elementType": "field",
+                        "field": {
+                            "name": "AreaId",
+                            "attribute": "AreaId",
+                            "control": "field",
+                            "entity": "TrnAreaVirtual",
+                            "label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnAreaVirtualList.listcontent.field.AreaId:AreaId:WEB:Area Id]#]",
+                            "translationKey": "ManageGeographiesS4.list.TrnAreaVirtualList.listcontent.field.AreaId",
+                            "datatype": "Text",
+                            "array": false,
+                            "editable": true,
+                            "required": false
+                        }
+                    },
+                    {
+                        "elementType": "field",
+                        "field": {
+                            "name": "Area",
+                            "attribute": "Area",
+                            "control": "field",
+                            "entity": "TrnAreaVirtual",
+                            "label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnAreaVirtualList.listcontent.field.Area:Area:WEB:Area]#]",
+                            "translationKey": "ManageGeographiesS4.list.TrnAreaVirtualList.listcontent.field.Area",
+                            "datatype": "Text",
+                            "array": false,
+                            "editable": true,
+                            "required": false
+                        }
+                    }
+                ]
+            }
+        },
+        "pages": {
+            "TrnCountryOverview": {
+                "name": "TrnCountryOverview",
+                "label": "[#[translatesys:Form Window:ManageGeographiesS4.page.TrnCountryOverview.$this:$this:WEB:Country Overview]#]",
+                "datasourceProjection": "EnterpriseHandlingS4",
+                "datasourceEntitySet": "TrnCountrySet",
+                "entity": "TrnCountry",
+                "content": [
+                    {
+                        "elementType": "list",
+                        "isReference": true,
+                        "list": "TrnCountryList",
+                        "id": "TrnCountryList"
+                    }
+                ]
+            },
+            "TrnCountryDetails": {
+                "name": "TrnCountryDetails",
+                "label": "[#[translatesys:Form Window:ManageGeographiesS4.page.TrnCountryDetails.$this:$this:WEB:Trn Country Details]#]",
+                "datasourceProjection": "EnterpriseHandlingS4",
+                "datasourceEntitySet": "TrnCountrySet",
+                "entity": "TrnCountry",
+                "content": [
+                    {
+                        "elementType": "selector",
+                        "isReference": true,
+                        "selector": "TrnCountryS4selector",
+                        "id": "TrnCountryS4selector"
+                    },
+                    {
+                        "elementType": "group",
+                        "isReference": true,
+                        "group": "TrnCountryGroup",
+                        "id": "TrnCountryGroup",
+                        "binding": {
+                            "bindname": "TrnCountryS4selector"
+                        }
+                    },
+                    {
+                        "elementType": "list",
+                        "isReference": true,
+                        "list": "TrnAreaList",
+                        "id": "TrnAreaList",
+                        "binding": {
+                            "bindname": "TrnCountryS4selector",
+                            "property": "AreaArry"
+                        },
+                        "lazyload": false
+                    }
+                ]
+            },
+            "TrnAreaDetails": {
+                "name": "TrnAreaDetails",
+                "label": "[#[translatesys:Form Window:ManageGeographiesS4.page.TrnAreaDetails.$this:$this:WEB:Trn Area Details]#]",
+                "datasourceProjection": "EnterpriseHandlingS4",
+                "datasourceEntitySet": "TrnAreaSet",
+                "entity": "TrnArea",
+                "content": [
+                    {
+                        "elementType": "list",
+                        "isReference": true,
+                        "list": "TrnAreaList",
+                        "id": "TrnAreaList",
+                        "lazyload": false
+                    }
+                ]
+            }
+        },
+        "selectors": {
+            "ReferenceTrnAreaSelector": {
+                "name": "ReferenceTrnAreaSelector",
+                "label": "",
+                "entity": "TrnArea",
+                "content": [
+                    {
+                        "elementType": "field",
+                        "field": {
+                            "name": "AreaId",
+                            "attribute": "AreaId",
+                            "control": "static",
+                            "entity": "TrnArea",
+                            "label": "[#[translatesys:Data Field:ManageGeographiesS4.selector.ReferenceTrnAreaSelector.selectorcontent.static.AreaId:AreaId:WEB:Area Id]#]",
+                            "datatype": "Text",
+                            "array": false,
+                            "maxlength": 10,
+                            "editable": false,
+                            "required": false
+                        }
+                    },
+                    {
+                        "elementType": "field",
+                        "field": {
+                            "name": "Area",
+                            "attribute": "Area",
+                            "control": "static",
+                            "entity": "TrnArea",
+                            "label": "[#[translatesys:Data Field:ManageGeographiesS4.selector.ReferenceTrnAreaSelector.selectorcontent.static.Area:Area:WEB:Area]#]",
+                            "datatype": "Text",
+                            "array": false,
+                            "maxlength": 1000,
+                            "editable": false,
+                            "required": false
+                        }
+                    }
+                ]
+            },
+            "ReferenceTrnCountrySelector": {
+                "name": "ReferenceTrnCountrySelector",
+                "label": "",
+                "entity": "TrnCountry",
+                "content": [
+                    {
+                        "elementType": "field",
+                        "field": {
+                            "name": "CountryId",
+                            "attribute": "CountryId",
+                            "control": "static",
+                            "entity": "TrnCountry",
+                            "label": "[#[translatesys:Data Field:ManageGeographiesS4.selector.ReferenceTrnCountrySelector.selectorcontent.static.CountryId:CountryId:WEB:Country Id]#]",
+                            "datatype": "Text",
+                            "array": false,
+                            "maxlength": 10,
+                            "editable": false,
+                            "required": false
+                        }
+                    },
+                    {
+                        "elementType": "field",
+                        "field": {
+                            "name": "Country",
+                            "attribute": "Country",
+                            "control": "static",
+                            "entity": "TrnCountry",
+                            "label": "[#[translatesys:Data Field:ManageGeographiesS4.selector.ReferenceTrnCountrySelector.selectorcontent.static.Country:Country:WEB:Country]#]",
+                            "datatype": "Text",
+                            "array": false,
+                            "maxlength": 1000,
+                            "editable": false,
+                            "required": false
+                        }
+                    }
+                ]
+            },
+            "ReferenceTrnCompanySelector": {
+                "name": "ReferenceTrnCompanySelector",
+                "label": "",
+                "entity": "TrnCompany",
+                "content": [
+                    {
+                        "elementType": "field",
+                        "field": {
+                            "name": "CompanyId",
+                            "attribute": "CompanyId",
+                            "control": "static",
+                            "entity": "TrnCompany",
+                            "label": "[#[translatesys:Data Field:ManageGeographiesS4.selector.ReferenceTrnCompanySelector.selectorcontent.static.CompanyId:CompanyId:WEB:Company Id]#]",
+                            "datatype": "Text",
+                            "array": false,
+                            "maxlength": 20,
+                            "editable": false,
+                            "required": false
+                        }
+                    },
+                    {
+                        "elementType": "field",
+                        "field": {
+                            "name": "Name",
+                            "attribute": "Name",
+                            "control": "static",
+                            "entity": "TrnCompany",
+                            "label": "[#[translatesys:Data Field:ManageGeographiesS4.selector.ReferenceTrnCompanySelector.selectorcontent.static.Name:Name:WEB:Name]#]",
+                            "datatype": "Text",
+                            "array": false,
+                            "maxlength": 1000,
+                            "editable": false,
+                            "required": false
+                        }
+                    },
+                    {
+                        "elementType": "field",
+                        "field": {
+                            "name": "Comments",
+                            "attribute": "Comments",
+                            "control": "static",
+                            "entity": "TrnCompany",
+                            "label": "[#[translatesys:Data Field:ManageGeographiesS4.selector.ReferenceTrnCompanySelector.selectorcontent.static.Comments:Comments:WEB:Comments]#]",
+                            "datatype": "Text",
+                            "array": false,
+                            "maxlength": 2000,
+                            "editable": false,
+                            "required": false
+                        }
+                    },
+                    {
+                        "elementType": "field",
+                        "field": {
+                            "name": "CreationDate",
+                            "attribute": "CreationDate",
+                            "control": "static",
+                            "entity": "TrnCompany",
+                            "label": "[#[translatesys:Data Field:ManageGeographiesS4.selector.ReferenceTrnCompanySelector.selectorcontent.static.CreationDate:CreationDate:WEB:Creation Date]#]",
+                            "datatype": "Date",
+                            "array": false,
+                            "editable": false,
+                            "required": false
+                        }
+                    }
+                ]
+            },
+            "TrnCountryS4selector": {
+                "name": "TrnCountryS4selector",
+                "selectAttributes": [
+                    "Country",
+                    "CountryId"
+                ],
+                "label": "${Country}-${CountryId}",
+                "entity": "TrnCountry",
+                "content": [
+                    {
+                        "elementType": "field",
+                        "field": {
+                            "name": "CountryId",
+                            "attribute": "CountryId",
+                            "control": "static",
+                            "entity": "TrnCountry",
+                            "label": "[#[translatesys:Data Field:ManageGeographiesS4.selector.TrnCountryS4selector.selectorcontent.static.CountryId:CountryId:WEB:Country Id]#]",
+                            "datatype": "Text",
+                            "array": false,
+                            "maxlength": 10,
+                            "editable": false,
+                            "required": false
+                        }
+                    },
+                    {
+                        "elementType": "field",
+                        "field": {
+                            "name": "Country",
+                            "attribute": "Country",
+                            "control": "static",
+                            "entity": "TrnCountry",
+                            "label": "[#[translatesys:Data Field:ManageGeographiesS4.selector.TrnCountryS4selector.selectorcontent.static.Country:Country:WEB:Country]#]",
+                            "datatype": "Text",
+                            "array": false,
+                            "maxlength": 1000,
+                            "editable": false,
+                            "required": false
+                        }
+                    }
+                ]
+            }
+        },
+        "warnings": {
+            "warningsEnabled": {
+                "entities": [
+                ],
+                "actions": [
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,182 @@
+client ManageGeographiesS4;
+component TRNENT;
+layer Core;
+projection EnterpriseHandlingS4;
+description "Client Information for Training Enterprise";
+
+--------------------------------- FRAGMENTS ---------------------------------
+
+----------------------------- NAVIGATOR ENTRIES -----------------------------
+
+navigator {
+
+   entry GeographicDetailsNavEntry toplevel at index 1 {
+      label = "Geographic Details";
+
+      page TrnCountryOverview;
+
+   }
+   entry CountryOverviewNavEntry parent TrnentNavigatorRoot.GeographicDetailsNavEntry at index 0 {
+      label = "Country Overview";
+
+      page TrnCountryOverview;
+   }
+
+   entry CountryDetailsNavEntry parent TrnentNavigatorRoot.GeographicDetailsNavEntry at index 1 {
+      label = "Country Details";
+
+      page TrnCountryDetails;
+   }
+   entry AreaDetailsNavEntry parent TrnentNavigatorRoot.GeographicDetailsNavEntry at index 2 {
+      label = "Area Details";
+
+      page TrnAreaDetails;
+   }
+   entry CreateCountryAssistanNavEntry parent TrnentNavigatorRoot.GeographicDetailsNavEntry at index 3 {
+      label = "Create Country Assistan";
+      assistant CreateCountryAssistant;
+
+
+   }
+}
+
+-------------------------------- MAIN PAGES ---------------------------------
+page TrnCountryOverview using TrnCountrySet {
+
+   label = "Country Overview";
+   list TrnCountryList;
+}
+
+page TrnCountryDetails using TrnCountrySet {
+   selector TrnCountryS4selector;
+   group  TrnCountryGroup bind TrnCountryS4selector;
+//   selector TrnCountrySelector;
+//
+//   group TrnCountryGroup;
+   list TrnAreaList(AreaArry) bind TrnCountryS4selector;
+   //list TrnAreaList using TrnAreaSet;
+}
+
+page TrnAreaDetails using TrnAreaSet {
+   list TrnAreaList;
+}
+
+assistant CreateCountryAssistant using TrnCountryVirtualSet {
+   label = "Ceate Country Assistant";
+   steps {
+      step {
+         label = "Step 01";
+         group TrnCountryVirtualGroup;
+      }
+      step {
+         label = "Step 02";
+         list TrnAreaVirtualList(Areas);
+      }
+      final step {
+         label = "Final Step";
+      }
+   }
+   finish command {
+      execute {
+         call CreateCountriesAreas();
+      }
+   }
+}
+
+
+
+
+
+
+--------------------------------- COMMANDS ----------------------------------
+
+
+--------------------------------- SELECTORS ---------------------------------
+selector TrnCountryS4selector for TrnCountry {
+   label = "${Country}-${CountryId}";
+
+   static CountryId;
+   static Country;
+
+}
+
+
+---------------------------------- GROUPS -----------------------------------
+group TrnCountryGroup for TrnCountry {
+   label = "";
+
+   field CountryId;
+   field Country;
+}
+
+group TrnCountryVirtualGroup for TrnCountryVirtual {
+   label = "";
+
+   field CountryId;
+   field Country;
+}
+
+
+
+
+
+
+----------------------------------- LISTS -----------------------------------
+list TrnCountryList for TrnCountry {
+
+   label = "Countries";
+   field CountryId;
+   field Country {
+      label = "Country Name";
+   }
+}
+
+list TrnAreaList for TrnArea {
+   label = "Areas-${parent.CountryId}-${parent.Country}";
+
+
+   field AreaId;
+   field Area;
+
+}
+
+list TrnAreaVirtualList for TrnAreaVirtual {
+   label = "Area List";
+
+
+   field CountryId;
+   field AreaId;
+   field Area;
+
+}
+
+
+
+
+
+
+---------------------------------- DIALOGS ----------------------------------
+
+
+-------------------------------- SINGLETONS ---------------------------------
+
+
+---------------------------------- CHARTS -----------------------------------
+
+
+--------------------------------- CALENDERS ---------------------------------
+
+
+---------------------------------- SHEETS -----------------------------------
+
+
+----------------------------- STATE INDICATORS ------------------------------
+
+
+----------------------------------- TREES -----------------------------------
+
+
+---------------------------------- PLUGINS ----------------------------------
+
+
+------------------------------- IMAGE VIEWERS -------------------------------

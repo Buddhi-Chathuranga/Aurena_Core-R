@@ -1,0 +1,53 @@
+-----------------------------------------------------------------------------
+--
+--  Logical unit: TrnReservation
+--  Component:    TRNORD
+--
+--  Template:     3.0
+--  Built by:     IFS Developer Studio (unit-test)
+--
+--  NOTE! Do not edit!! This file is completely generated and will be
+--        overwritten next time the corresponding model is saved.
+-----------------------------------------------------------------------------
+
+
+layer Base;
+
+-------------------- COMMON COLUMN DEFINITIONS ------------------------------
+
+COLUMN Company_Id IS
+   Flags      = 'PMI--'
+   Datatype   = 'STRING(20)'
+   Prompt     = 'Company ID'
+   Ref        = 'TrnCompany';
+COLUMN Reservation_Id IS
+   Flags      = 'KMI-L'
+   Datatype   = 'NUMBER'
+   Prompt     = 'Reservation ID';
+COLUMN Branch_Id IS
+   Flags      = 'AMIU-'
+   Datatype   = 'STRING(20)'
+   Prompt     = 'Branch ID';
+COLUMN Order_Id IS
+   Flags      = 'AMIU-'
+   Datatype   = 'NUMBER'
+   Prompt     = 'Order ID'
+   Ref        = 'TrnCustomerOrder(company_id,branch_id)';
+
+-------------------- PUBLIC VIEW DEFINITIONS --------------------------------
+
+
+-------------------- PRIVATE VIEW DEFINITIONS -------------------------------
+
+VIEW Trn_Reservation IS
+   Prompt     = 'Trn Reservation'
+   Table      = 'TRN_RESERVATION_TAB'
+SELECT
+       company_id                     company_id,
+       reservation_id                 reservation_id,
+       branch_id                      branch_id,
+       order_id                       order_id,
+       rowkey                         objkey,
+       to_char(rowversion,'YYYYMMDDHH24MISS') objversion,
+       rowid                          objid
+FROM   trn_reservation_tab;

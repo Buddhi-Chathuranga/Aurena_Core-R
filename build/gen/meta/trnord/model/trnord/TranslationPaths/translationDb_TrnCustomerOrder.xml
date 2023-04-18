@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TranslatableResources type="LU" module="TRNORD" version="1.0" layer="Core" xmlns="types.scan.translation.fnd.ifsworld.com">
+   <TranslatableResource type="Logical Unit" ID="TrnCustomerOrder" name="TrnCustomerOrder">
+      <Text><![CDATA[Trn Customer Order]]></Text>
+      <Resource subtype="Message" ID="TrnCustomerOrder.NOTVALIDINSERT" control="NOTVALIDINSERT">
+         <Text><![CDATA[Insert is not allowed because customer :P1 is not valid. You may change customer status in customer general data form.]]></Text>
+      </Resource>
+      <Resource subtype="Message" ID="TrnCustomerOrder.CANNOTUPDATE" control="CANNOTUPDATE">
+         <Text><![CDATA[Cannot perform any modifications at :P1 stage]]></Text>
+      </Resource>
+      <Resource subtype="Message" ID="TrnCustomerOrder.INVALIDDELDATE" control="INVALIDDELDATE">
+         <Text><![CDATA[Delivery date must be after the order date.]]></Text>
+      </Resource>
+      <Resource subtype="Message" ID="TrnCustomerOrder.INVALIDDISCOUNT" control="INVALIDDISCOUNT">
+         <Text><![CDATA[Discount percentage for the order cannot exceed the discount percentage for the customer.]]></Text>
+      </Resource>
+      <Resource subtype="View" ID="TrnCustomerOrder.TRN_CUSTOMER_ORDER" control="TRN_CUSTOMER_ORDER">
+         <Text><![CDATA[Trn Customer Order]]></Text>
+         <Resource subtype="Column" ID="TrnCustomerOrder.TRN_CUSTOMER_ORDER.COMPANY_ID" control="COMPANY_ID">
+            <Text><![CDATA[Company ID]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCustomerOrder.TRN_CUSTOMER_ORDER.BRANCH_ID" control="BRANCH_ID">
+            <Text><![CDATA[Branch ID]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCustomerOrder.TRN_CUSTOMER_ORDER.ORDER_ID" control="ORDER_ID">
+            <Text><![CDATA[Order ID]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCustomerOrder.TRN_CUSTOMER_ORDER.ORDER_DATE" control="ORDER_DATE">
+            <Text><![CDATA[Order Date]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCustomerOrder.TRN_CUSTOMER_ORDER.DELIVERY_DATE" control="DELIVERY_DATE">
+            <Text><![CDATA[Delivery Date]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCustomerOrder.TRN_CUSTOMER_ORDER.DISCOUNT" control="DISCOUNT">
+            <Text><![CDATA[Discount]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCustomerOrder.TRN_CUSTOMER_ORDER.COMMENTS" control="COMMENTS">
+            <Text><![CDATA[Comments]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCustomerOrder.TRN_CUSTOMER_ORDER.CUSTOMER_ID" control="CUSTOMER_ID">
+            <Text><![CDATA[Customer ID]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCustomerOrder.TRN_CUSTOMER_ORDER.ORDER_TOTAL" control="ORDER_TOTAL">
+            <Text><![CDATA[Order Total]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCustomerOrder.TRN_CUSTOMER_ORDER.DELIVERY_TYPE" control="DELIVERY_TYPE">
+            <Text><![CDATA[Delivery Type]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCustomerOrder.TRN_CUSTOMER_ORDER.DELIVERY_TYPE_DB" control="DELIVERY_TYPE_DB">
+            <Text><![CDATA[Delivery Type]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCustomerOrder.TRN_CUSTOMER_ORDER.STATE" control="STATE">
+            <Text><![CDATA[State]]></Text>
+         </Resource>
+      </Resource>
+      <Resource subtype="State" ID="TrnCustomerOrder.Opened" control="Opened">
+         <Position>1</Position>
+         <Text><![CDATA[Opened]]></Text>
+      </Resource>
+      <Resource subtype="State" ID="TrnCustomerOrder.Closed" control="Closed">
+         <Position>2</Position>
+         <Text><![CDATA[Closed]]></Text>
+      </Resource>
+      <Resource subtype="State" ID="TrnCustomerOrder.Invoiced" control="Invoiced">
+         <Position>3</Position>
+         <Text><![CDATA[Invoiced]]></Text>
+      </Resource>
+      <Resource subtype="State" ID="TrnCustomerOrder.Cancelled" control="Cancelled">
+         <Position>4</Position>
+         <Text><![CDATA[Cancelled]]></Text>
+      </Resource>
+   </TranslatableResource>
+</TranslatableResources>

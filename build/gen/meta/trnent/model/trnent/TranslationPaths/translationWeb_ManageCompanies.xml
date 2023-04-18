@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TranslatableResources type="WEB" module="TRNENT" version="1.1" layer="Core" xmlns="types.scan.translation.fnd.ifsworld.com">
+   <TranslatableResource type="Global Data" ID="ManageCompanies" name="ManageCompanies">
+      <Resource subtype="Global Data" ID="ManageCompanies.menu.CompaniesOverview" control="menu.CompaniesOverview">
+         <Resource subtype="Menu Item" ID="ManageCompanies.menu.CompaniesOverview.$this" control="$this">
+            <Text>Companies</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageCompanies.menu.BrachOverview" control="menu.BrachOverview">
+         <Resource subtype="Menu Item" ID="ManageCompanies.menu.BrachOverview.$this" control="$this">
+            <Text>Branches</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageCompanies.menu.CompanyBranchOverview" control="menu.CompanyBranchOverview">
+         <Resource subtype="Menu Item" ID="ManageCompanies.menu.CompanyBranchOverview.$this" control="$this">
+            <Text>Company Branch Details</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageCompanies.menu.BranchOverview" control="menu.BranchOverview">
+         <Resource subtype="Menu Item" ID="ManageCompanies.menu.BranchOverview.$this" control="$this">
+            <Text>Branch Details</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageCompanies.selector.TrnCompanySelector" control="selector.TrnCompanySelector">
+         <Resource subtype="Data Field" ID="ManageCompanies.selector.TrnCompanySelector.selectorcontent.static.CompanyId" control="CompanyId">
+            <Text>Company Id</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageCompanies.selector.TrnBranchSelector" control="selector.TrnBranchSelector">
+         <Resource subtype="Data Field" ID="ManageCompanies.selector.TrnBranchSelector.selectorcontent.static.CompanyId" control="CompanyId">
+            <Text>Company Id</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.selector.TrnBranchSelector.selectorcontent.static.BranchId" control="BranchId">
+            <Text>Branch Id</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageCompanies.selector.ReferenceTrnAreaSelector" control="selector.ReferenceTrnAreaSelector">
+         <Resource subtype="Data Field" ID="ManageCompanies.selector.ReferenceTrnAreaSelector.selectorcontent.static.AreaId" control="AreaId">
+            <Text>Area Id</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.selector.ReferenceTrnAreaSelector.selectorcontent.static.Area" control="Area">
+            <Text>Area</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageCompanies.selector.ReferenceTrnCountrySelector" control="selector.ReferenceTrnCountrySelector">
+         <Resource subtype="Data Field" ID="ManageCompanies.selector.ReferenceTrnCountrySelector.selectorcontent.static.CountryId" control="CountryId">
+            <Text>Country Id</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.selector.ReferenceTrnCountrySelector.selectorcontent.static.Country" control="Country">
+            <Text>Country</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageCompanies.selector.ReferenceTrnCompanySelector" control="selector.ReferenceTrnCompanySelector">
+         <Resource subtype="Data Field" ID="ManageCompanies.selector.ReferenceTrnCompanySelector.selectorcontent.static.CompanyId" control="CompanyId">
+            <Text>Company Id</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.selector.ReferenceTrnCompanySelector.selectorcontent.static.Name" control="Name">
+            <Text>Name</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.selector.ReferenceTrnCompanySelector.selectorcontent.static.Comments" control="Comments">
+            <Text>Comments</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.selector.ReferenceTrnCompanySelector.selectorcontent.static.CreationDate" control="CreationDate">
+            <Text>Creation Date</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageCompanies.list.TrnCountryLovList" control="list.TrnCountryLovList">
+         <Resource subtype="Data Field" ID="ManageCompanies.list.TrnCountryLovList.listcontent.static.CountryId" control="CountryId">
+            <Text>Country Id</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.list.TrnCountryLovList.listcontent.static.Country" control="Country">
+            <Text>Country</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageCompanies.list.TrnAreaLovList" control="list.TrnAreaLovList">
+         <Resource subtype="Data Field" ID="ManageCompanies.list.TrnAreaLovList.listcontent.static.CountryId" control="CountryId">
+            <Text>Country Id</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.list.TrnAreaLovList.listcontent.static.AreaId" control="AreaId">
+            <Text>Area Id</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.list.TrnAreaLovList.listcontent.static.Area" control="Area">
+            <Text>Area</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageCompanies.list.TrnCompanyLovList" control="list.TrnCompanyLovList">
+         <Resource subtype="Data Field" ID="ManageCompanies.list.TrnCompanyLovList.listcontent.static.CompanyId" control="CompanyId">
+            <Text>Company Id</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.list.TrnCompanyLovList.listcontent.static.Name" control="Name">
+            <Text>Name</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.list.TrnCompanyLovList.listcontent.static.Comments" control="Comments">
+            <Text>Comments</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.list.TrnCompanyLovList.listcontent.static.CreationDate" control="CreationDate">
+            <Text>Creation Date</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageCompanies.list.TrnBranchLovList" control="list.TrnBranchLovList">
+         <Resource subtype="Data Field" ID="ManageCompanies.list.TrnBranchLovList.listcontent.static.CompanyId" control="CompanyId">
+            <Text>Company Id</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.list.TrnBranchLovList.listcontent.static.BranchId" control="BranchId">
+            <Text>Branch Id</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.list.TrnBranchLovList.listcontent.static.Name" control="Name">
+            <Text>Name</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageCompanies.list.TrnAreaVirtualLovList" control="list.TrnAreaVirtualLovList">
+         <Resource subtype="Data Field" ID="ManageCompanies.list.TrnAreaVirtualLovList.listcontent.static.Objkey" control="Objkey">
+            <Text>Objkey</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageCompanies.list.TrnCompanyList" control="list.TrnCompanyList">
+         <Resource subtype="Data Field" ID="ManageCompanies.list.TrnCompanyList.listcontent.field.CompanyId" control="CompanyId">
+            <Text>Company Id</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.list.TrnCompanyList.listcontent.field.Name" control="Name">
+            <Text>Name</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.list.TrnCompanyList.listcontent.field.Comments" control="Comments">
+            <Text>Comments</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.list.TrnCompanyList.listcontent.field.CreationDate" control="CreationDate">
+            <Text>Creation Date</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageCompanies.list.TrnBranchList" control="list.TrnBranchList">
+         <Resource subtype="Data Field" ID="ManageCompanies.list.TrnBranchList.listcontent.field.CompanyId" control="CompanyId">
+            <Text>Company Id</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.list.TrnBranchList.listcontent.field.BranchId" control="BranchId">
+            <Text>Branch Id</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.list.TrnBranchList.listcontent.field.Name" control="Name">
+            <Text>Name</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.list.TrnBranchList.listcontent.field.TimeOffset" control="TimeOffset">
+            <Text>Time Offset</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.list.TrnBranchList.listcontent.field.CountryId" control="CountryId">
+            <Text>Country Id</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.list.TrnBranchList.listcontent.field.AreaId" control="AreaId">
+            <Text>Area Id</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageCompanies.list.TrnBranchCardList" control="list.TrnBranchCardList">
+         <Resource subtype="Table Window" ID="ManageCompanies.list.TrnBranchCardList.$this" control="$this">
+            <Text>Trn Branch Card List</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.list.TrnBranchCardList.listcontent.field.CompanyId" control="CompanyId">
+            <Text>Company Id</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.list.TrnBranchCardList.listcontent.field.BranchId" control="BranchId">
+            <Text>Branch Id</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.list.TrnBranchCardList.listcontent.field.Name" control="Name">
+            <Text>Name</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.list.TrnBranchCardList.listcontent.field.TimeOffset" control="TimeOffset">
+            <Text>Time Offset</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.list.TrnBranchCardList.listcontent.field.CountryId" control="CountryId">
+            <Text>Country Id</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.list.TrnBranchCardList.listcontent.field.AreaId" control="AreaId">
+            <Text>Area Id</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.list.TrnBranchCardList.listcontent.field.AreaRef" control="AreaRef">
+            <Text>AreaID</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.list.TrnBranchCardList.listcontent.field.AreaRef$Area" control="AreaRef$Area">
+            <Text>Area</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.list.TrnBranchCardList.listcontent.field.CountryRef$Country" control="CountryRef$Country">
+            <Text>Country</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.list.TrnBranchCardList.listcontent.field.CompanyRef$Name" control="CompanyRef$Name">
+            <Text>Name</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageCompanies.page.TrnCompanyOverview" control="page.TrnCompanyOverview">
+         <Resource subtype="Form Window" ID="ManageCompanies.page.TrnCompanyOverview.$this" control="$this">
+            <Text>Companies</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageCompanies.page.TrnBranchDetails" control="page.TrnBranchDetails">
+         <Resource subtype="Form Window" ID="ManageCompanies.page.TrnBranchDetails.$this" control="$this">
+            <Text>Branch Details</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageCompanies.page.TrnCompanyDetails" control="page.TrnCompanyDetails">
+         <Resource subtype="Form Window" ID="ManageCompanies.page.TrnCompanyDetails.$this" control="$this">
+            <Text>Company Overview</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageCompanies.page.TrnBranchOverviewPage" control="page.TrnBranchOverviewPage">
+         <Resource subtype="Form Window" ID="ManageCompanies.page.TrnBranchOverviewPage.$this" control="$this">
+            <Text>Branches</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageCompanies.group.TrnCompanyGroup" control="group.TrnCompanyGroup">
+         <Resource subtype="Data Field" ID="ManageCompanies.group.TrnCompanyGroup.groupcontent.field.CompanyId" control="CompanyId">
+            <Text>Company Id</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.group.TrnCompanyGroup.groupcontent.field.Name" control="Name">
+            <Text>Name</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.group.TrnCompanyGroup.groupcontent.field.Comments" control="Comments">
+            <Text>Comments</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.group.TrnCompanyGroup.groupcontent.field.CreationDate" control="CreationDate">
+            <Text>Creation Date</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageCompanies.group.TrnBranchGroup" control="group.TrnBranchGroup">
+         <Resource subtype="Data Field" ID="ManageCompanies.group.TrnBranchGroup.groupcontent.field.CompanyId" control="CompanyId">
+            <Text>Company Id</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.group.TrnBranchGroup.groupcontent.field.BranchId" control="BranchId">
+            <Text>Branch Id</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.group.TrnBranchGroup.groupcontent.field.Name" control="Name">
+            <Text>Name</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.group.TrnBranchGroup.groupcontent.field.TimeOffset" control="TimeOffset">
+            <Text>Time Offset</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.group.TrnBranchGroup.groupcontent.field.CountryId" control="CountryId">
+            <Text>Country Id</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.group.TrnBranchGroup.groupcontent.field.AreaId" control="AreaId">
+            <Text>Area Id</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.group.TrnBranchGroup.groupcontent.field.AreaRef" control="AreaRef">
+            <Text>AreaID</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.group.TrnBranchGroup.groupcontent.field.AreaRef$Area" control="AreaRef$Area">
+            <Text>Area</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.group.TrnBranchGroup.groupcontent.field.CountryRef$Country" control="CountryRef$Country">
+            <Text>Country</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.group.TrnBranchGroup.groupcontent.field.CompanyRef$Name" control="CompanyRef$Name">
+            <Text>Name</Text>
+            <FieldDescription>True</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+      <Resource subtype="Global Data" ID="ManageCompanies.card.TrnBranchCard" control="card.TrnBranchCard">
+         <Resource subtype="Group Box" ID="ManageCompanies.card.TrnBranchCard.$this" control="$this">
+            <Text>Trn Branch Card</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.card.TrnBranchCard.cardcontent.field.CompanyId" control="CompanyId">
+            <Text>Company Id</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.card.TrnBranchCard.cardcontent.field.BranchId" control="BranchId">
+            <Text>Branch Id</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.card.TrnBranchCard.cardcontent.field.Name" control="Name">
+            <Text>Name</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.card.TrnBranchCard.cardcontent.field.TimeOffset" control="TimeOffset">
+            <Text>Time Offset</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.card.TrnBranchCard.cardcontent.field.CountryId" control="CountryId">
+            <Text>Country Id</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.card.TrnBranchCard.cardcontent.field.AreaId" control="AreaId">
+            <Text>Area Id</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.card.TrnBranchCard.cardcontent.field.AreaRef" control="AreaRef">
+            <Text>AreaID</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.card.TrnBranchCard.cardcontent.field.AreaRef$Area" control="AreaRef$Area">
+            <Text>Area</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.card.TrnBranchCard.cardcontent.field.CountryRef$Country" control="CountryRef$Country">
+            <Text>Country</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+         <Resource subtype="Data Field" ID="ManageCompanies.card.TrnBranchCard.cardcontent.field.CompanyRef$Name" control="CompanyRef$Name">
+            <Text>Name</Text>
+            <FieldDescription>False</FieldDescription>
+            <LongProgText />
+         </Resource>
+      </Resource>
+   </TranslatableResource>
+   </TranslatableResources>

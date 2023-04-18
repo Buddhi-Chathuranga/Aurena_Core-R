@@ -1,0 +1,2288 @@
+-----------------------------------------------------------------------------
+--
+--  Logical unit: EnterpriseHandlingS4
+--  Type:         Entity
+--  Component:    TRNENT
+--
+--  Template:     3.0
+--  Built by:     IFS Developer Studio
+--
+--  Purpose:      Projection facing PL/SQL Base document
+--
+--  NOTE! Do not edit!! This file is completely generated and will be
+--        overwritten next time the corresponding model is saved.
+-----------------------------------------------------------------------------
+
+layer Base;
+
+-------------------- PUBLIC DECLARATIONS ------------------------------------
+
+TYPE Entity_Dec IS RECORD (
+   etag                           VARCHAR2(100),
+   info                           VARCHAR2(4000),
+   attr                           VARCHAR2(32000));
+
+TYPE Entity_Small_Dec IS RECORD (
+   etag                           VARCHAR2(100),
+   info                           VARCHAR2(4000),
+   attr                           VARCHAR2(4000));
+
+TYPE Entity_Small_Drr      IS TABLE OF Entity_Small_Dec;
+TYPE Entity_Drr      IS TABLE OF Entity_Dec;
+TYPE Objid_Arr       IS TABLE OF VARCHAR2(100);
+TYPE Empty_Art       IS TABLE OF VARCHAR2(1);
+
+TYPE Boolean_Arr     IS TABLE OF BOOLEAN;
+TYPE Boolean_Art     IS TABLE OF VARCHAR2(5);
+TYPE Number_Arr      IS TABLE OF NUMBER;
+TYPE Text_Arr        IS TABLE OF VARCHAR2(4000);
+
+TYPE Stream_Data_Rec IS RECORD (
+   file_name                           VARCHAR2(100),
+   mime_type                           VARCHAR2(100),
+   stream_data                         BLOB);
+
+TYPE Stream_Data_Arr IS TABLE OF Stream_Data_Rec;
+
+TYPE Stream_Info_Rec IS RECORD (
+   file_name                           VARCHAR2(100),
+   mime_type                           VARCHAR2(100));
+
+TYPE Stream_Text_Data_Rec IS RECORD (
+   file_name                           VARCHAR2(100),
+   mime_type                           VARCHAR2(100),
+   stream_data                         CLOB);
+
+
+TYPE Copy_Values_Rec IS RECORD (
+   modified_source                VARCHAR2(32000));
+
+-------------------- PRIVATE DECLARATIONS -----------------------------------
+
+TYPE Trn_Country_Rec IS RECORD (
+   objid                          VARCHAR2(4000),
+   objversion                     VARCHAR2(4000),
+   objinfo                        VARCHAR2(4000),
+   objgrants                      VARCHAR2(2000),
+   country_id                     VARCHAR2(10),
+   country                        VARCHAR2(1000));
+
+TYPE Trn_Country_Default_Copy_Rec IS RECORD (
+   objgrants                      VARCHAR2(2000),
+   country_id                     VARCHAR2(10),
+   country                        VARCHAR2(1000));
+
+TYPE Trn_Country_Key IS RECORD (
+   country_id                     VARCHAR2(10));
+
+TYPE Trn_Area_Rec IS RECORD (
+   objid                          VARCHAR2(4000),
+   objversion                     VARCHAR2(4000),
+   objinfo                        VARCHAR2(4000),
+   objgrants                      VARCHAR2(2000),
+   country_id                     VARCHAR2(10),
+   area_id                        VARCHAR2(10),
+   area                           VARCHAR2(1000));
+
+TYPE Trn_Area_Default_Copy_Rec IS RECORD (
+   objgrants                      VARCHAR2(2000),
+   country_id                     VARCHAR2(10),
+   area_id                        VARCHAR2(10),
+   area                           VARCHAR2(1000));
+
+TYPE Trn_Area_Key IS RECORD (
+   country_id                     VARCHAR2(10),
+   area_id                        VARCHAR2(10));
+
+TYPE Trn_Company_Rec IS RECORD (
+   objid                          VARCHAR2(4000),
+   objversion                     VARCHAR2(4000),
+   objinfo                        VARCHAR2(4000),
+   objgrants                      VARCHAR2(2000),
+   company_id                     VARCHAR2(20),
+   name                           VARCHAR2(1000),
+   comments                       VARCHAR2(2000),
+   creation_date                  DATE);
+
+TYPE Trn_Company_Default_Copy_Rec IS RECORD (
+   objgrants                      VARCHAR2(2000),
+   company_id                     VARCHAR2(20),
+   name                           VARCHAR2(1000),
+   comments                       VARCHAR2(2000),
+   creation_date                  DATE);
+
+TYPE Trn_Company_Key IS RECORD (
+   company_id                     VARCHAR2(20));
+
+TYPE Trn_Branch_Rec IS RECORD (
+   objid                          VARCHAR2(4000),
+   objversion                     VARCHAR2(4000),
+   objinfo                        VARCHAR2(4000),
+   objgrants                      VARCHAR2(2000),
+   company_id                     VARCHAR2(20),
+   branch_id                      VARCHAR2(20),
+   name                           VARCHAR2(1000),
+   time_offset                    NUMBER,
+   country_id                     VARCHAR2(10),
+   area_id                        VARCHAR2(10));
+
+TYPE Trn_Branch_Default_Copy_Rec IS RECORD (
+   objgrants                      VARCHAR2(2000),
+   company_id                     VARCHAR2(20),
+   branch_id                      VARCHAR2(20),
+   name                           VARCHAR2(1000),
+   time_offset                    NUMBER,
+   country_id                     VARCHAR2(10),
+   area_id                        VARCHAR2(10));
+
+TYPE Trn_Branch_Key IS RECORD (
+   company_id                     VARCHAR2(20),
+   branch_id                      VARCHAR2(20));
+
+TYPE Trn_Country_Virtual_Rec IS RECORD (
+   objid                          VARCHAR2(4000),
+   objversion                     VARCHAR2(4000),
+   objinfo                        VARCHAR2(4000),
+   objkey                         VARCHAR2(50),
+   parent_objkey                  VARCHAR2(50),
+   objmodified                    DATE,
+   obj_created_by                 VARCHAR2(50),
+   country_id                     VARCHAR2(4000),
+   country                        VARCHAR2(4000));
+
+TYPE Trn_Country_Virtual_Default_Copy_Rec IS RECORD (
+   objkey                         VARCHAR2(50),
+   parent_objkey                  VARCHAR2(50),
+   objmodified                    DATE,
+   obj_created_by                 VARCHAR2(50),
+   country_id                     VARCHAR2(4000),
+   country                        VARCHAR2(4000));
+
+TYPE Trn_Country_Virtual_Key IS RECORD (
+   objkey                         VARCHAR2(50));
+
+TYPE Trn_Area_Virtual_Rec IS RECORD (
+   objid                          VARCHAR2(4000),
+   objversion                     VARCHAR2(4000),
+   objinfo                        VARCHAR2(4000),
+   objkey                         VARCHAR2(50),
+   parent_objkey                  VARCHAR2(50),
+   objmodified                    DATE,
+   obj_created_by                 VARCHAR2(50),
+   country_id                     VARCHAR2(4000),
+   area_id                        VARCHAR2(4000),
+   area                           VARCHAR2(4000));
+
+TYPE Trn_Area_Virtual_Default_Copy_Rec IS RECORD (
+   objkey                         VARCHAR2(50),
+   parent_objkey                  VARCHAR2(50),
+   objmodified                    DATE,
+   obj_created_by                 VARCHAR2(50),
+   country_id                     VARCHAR2(4000),
+   area_id                        VARCHAR2(4000),
+   area                           VARCHAR2(4000));
+
+TYPE Trn_Area_Virtual_Key IS RECORD (
+   objkey                         VARCHAR2(50));
+
+
+
+-------------------- HELPER METHODS -----------------------------------------
+
+@Final
+FUNCTION Get_Objid_From_Etag___ (
+   etag_ IN VARCHAR2 ) RETURN VARCHAR2
+IS
+   delim_pos_ INTEGER := instr(etag_, ':');
+BEGIN
+   RETURN substr(etag_, 4, delim_pos_-4);
+END Get_Objid_From_Etag___;
+
+
+@Final
+FUNCTION Get_Objversion_From_Etag___ (
+   etag_ IN VARCHAR2 ) RETURN VARCHAR2
+IS
+   delim_pos_ INTEGER := instr(etag_, ':');
+BEGIN
+   RETURN substr(etag_, delim_pos_+1, length(etag_)-delim_pos_-1);
+END Get_Objversion_From_Etag___;
+
+
+@Final
+FUNCTION Get_Etag___ (
+   objid_      IN VARCHAR2,
+   objversion_ IN VARCHAR2 ) RETURN VARCHAR2
+IS
+BEGIN
+   RETURN 'W/"'||objid_||':'||objversion_||'"';
+END Get_Etag___;
+
+
+@Final
+FUNCTION Combine_Value_Unit___ (
+   value_ IN VARCHAR2,
+   unit_  IN VARCHAR2 ) RETURN VARCHAR2
+IS
+BEGIN
+   IF (value_ IS NULL) THEN
+      RETURN NULL;
+   ELSE
+      RETURN value_||'|'||unit_;
+   END IF;
+END Combine_Value_Unit___;
+
+
+-------------------- CONVERSION METHODS -------------------------------------
+@Final
+FUNCTION To_Boolean_Arr____ (
+   arr_ IN Text_Arr ) RETURN Boolean_Arr
+IS
+   ret_ Boolean_Arr := Boolean_Arr();
+BEGIN
+   IF (arr_.count > 0) THEN
+      FOR i IN arr_.first .. arr_.last LOOP
+      ret_.extend;
+      ret_(ret_.last) := Fndcg_Projection_Svc_Util_API.To_Boolean(arr_(i));
+      END LOOP;
+   END IF;
+   RETURN ret_;
+END To_Boolean_Arr____;
+
+
+-------------------- GLOBAL METHODS -----------------------------------------
+
+
+-------------------- PRIVATE METHODS FOR TRN COUNTRY ------------------------
+
+PROCEDURE Add_To_Attr_From_Rec___ (
+   rec_  IN     Trn_Country_Rec,
+   attr_ IN OUT VARCHAR2 )
+IS
+BEGIN
+   IF (rec_.objgrants IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('OBJGRANTS', rec_.objgrants, attr_);
+   END IF;
+   IF (rec_.country_id IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('COUNTRY_ID', rec_.country_id, attr_);
+   END IF;
+   IF (rec_.country IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('COUNTRY', rec_.country, attr_);
+   END IF;
+END Add_To_Attr_From_Rec___;
+
+PROCEDURE Add_To_Rec_From_Attr___ (
+   attr_ IN     VARCHAR2,
+   rec_  IN OUT Trn_Country_Rec )
+IS
+BEGIN
+   IF (Client_SYS.Item_Exist('OBJGRANTS', attr_)) THEN
+      rec_.objgrants := Client_SYS.Get_Item_Value('OBJGRANTS', attr_);
+   END IF;
+   IF (Client_SYS.Item_Exist('COUNTRY_ID', attr_)) THEN
+      rec_.country_id := Client_SYS.Get_Item_Value('COUNTRY_ID', attr_);
+   END IF;
+   IF (Client_SYS.Item_Exist('COUNTRY', attr_)) THEN
+      rec_.country := Client_SYS.Get_Item_Value('COUNTRY', attr_);
+   END IF;
+END Add_To_Rec_From_Attr___;
+
+@Final
+PROCEDURE Add_Keys_To_Rec_From_Attr___ (
+   attr_ IN  VARCHAR2,
+   rec_ IN OUT Trn_Country_Rec )
+IS
+BEGIN
+   IF (Client_SYS.Item_Exist('COUNTRY_ID', attr_)) THEN
+      rec_.country_id := Client_SYS.Get_Item_Value('COUNTRY_ID', attr_);
+   END IF;
+END Add_Keys_To_Rec_From_Attr___;
+
+@Final
+FUNCTION Add_To_Rec_From_Default_Copy_Rec___(
+   default_copy_rec_ IN     Trn_Country_Default_Copy_Rec) RETURN Trn_Country_Rec
+IS
+   rec_ Trn_Country_Rec;
+BEGIN
+   rec_.objgrants := default_copy_rec_.objgrants;
+   rec_.country_id := default_copy_rec_.country_id;
+   rec_.country := default_copy_rec_.country;
+   RETURN rec_;
+END Add_To_Rec_From_Default_Copy_Rec___;
+
+
+@Final
+FUNCTION Get_Record_By_Objid___ (
+   objid_ IN VARCHAR2,
+   trn_country## IN VARCHAR2 ) RETURN Trn_Country_Rec
+IS
+   default_copy_rec_ Trn_Country_Default_Copy_Rec;
+   rec_ Trn_Country_Rec;
+BEGIN
+   SELECT
+      NULL objgrants,
+      country_id country_id,
+      country country   INTO default_copy_rec_
+   FROM TRN_COUNTRY
+   WHERE
+    objid = objid_;
+
+   rec_ := Add_To_Rec_From_Default_Copy_Rec___(default_copy_rec_);
+   RETURN rec_;
+EXCEPTION
+   WHEN NO_DATA_FOUND THEN
+      Error_SYS.Record_Not_Exist(lu_name_);
+END Get_Record_By_Objid___;
+
+PROCEDURE Get_Objid_Objversion___ (
+   objid_         OUT VARCHAR2,
+   objversion_    OUT VARCHAR2,
+   key_        IN     Trn_Country_Key )
+IS
+BEGIN
+   SELECT objid, objversion
+      INTO  objid_, objversion_
+      FROM  TRN_COUNTRY
+      WHERE country_id = key_.country_id;
+EXCEPTION
+   WHEN NO_DATA_FOUND THEN
+      Error_SYS.Odp_Record_Not_Exist(Trn_Country_API.lu_name_);
+END Get_Objid_Objversion___;
+
+
+
+@Final
+@UncheckedAccess
+FUNCTION CRUD_Default(attr_ IN VARCHAR2 DEFAULT NULL, trn_country## IN VARCHAR2 ) RETURN Entity_Small_Drr PIPELINED
+IS
+   ret_ Entity_Small_Dec;
+   key_ Trn_Country_Key;
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_S4_SVC', 'CRUD_Default');
+   ret_.attr := attr_;
+   CRUD_Default___(key_, ret_.attr, ret_.info);
+   IF Component_FNDCOB_SYS.INSTALLED THEN
+      DECLARE
+         save_info_ VARCHAR2(4000) := Client_SYS.Get_All_Info;
+         objid_     VARCHAR2(4000) := Get_Objid_From_Etag___(ret_.etag);
+         attr_cf_   VARCHAR2(4000) := attr_;
+      BEGIN
+         Custom_Object_Proxy_SYS.Cf_Crud(Trn_Country_API.lu_name_, 'CUSTOM_FIELD', save_info_, objid_, attr_cf_, '', 'PREPARE', 'P');
+         ret_.attr := ret_.attr || attr_cf_;
+         Client_SYS.Merge_Info(save_info_);
+      END;
+   END IF;
+   PIPE ROW (ret_);
+END CRUD_Default;
+
+
+PROCEDURE CRUD_Default___ (
+   key_  IN     Trn_Country_Key,
+   attr_ IN OUT VARCHAR2,
+   info_    OUT VARCHAR2 )
+IS
+   rec_        Trn_Country_Rec;
+   objid_      VARCHAR2(2000);
+   objversion_ VARCHAR2(2000);
+BEGIN
+   Trn_Country_API.New__(info_, objid_, objversion_, attr_, 'PREPARE');
+   Add_To_Rec_From_Attr___(attr_, rec_);
+   CRUD_Default___(rec_);
+   Add_To_Attr_From_Rec___(rec_, attr_);
+END CRUD_Default___;
+
+
+PROCEDURE CRUD_Default___ (
+   rec_  IN OUT Trn_Country_Rec )
+IS
+BEGIN
+    NULL;
+END CRUD_Default___;
+
+@Final
+@UncheckedAccess
+FUNCTION CRUD_Default_Copy(values_ IN Copy_Values_Rec, trn_country## IN VARCHAR2 ) RETURN Entity_Dec
+IS
+   ret_ Entity_Dec;
+   key_ Trn_Country_Key;
+   objid_  VARCHAR2(10) := NULL;
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_S4_SVC', 'CRUD_Default_Copy');
+   CRUD_Default_Copy___(objid_, key_, values_, ret_.attr, ret_.info);
+   RETURN ret_;
+END CRUD_Default_Copy;
+
+@Final
+@UncheckedAccess
+FUNCTION CRUD_Default_Copy(etag_ IN VARCHAR2, country_id_ IN VARCHAR2, values_ IN Copy_Values_Rec, trn_country## IN VARCHAR2) RETURN Entity_Dec
+IS
+   ret_ Entity_Dec;
+   key_ Trn_Country_Key;
+   objid_  VARCHAR2(2000) := Get_Objid_From_Etag___(etag_);
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_S4_SVC', 'CRUD_Default_Copy');
+   key_.country_id := country_id_;
+   CRUD_Default_Copy___(objid_, key_, values_, ret_.attr, ret_.info);
+   IF Component_FNDCOB_SYS.INSTALLED THEN
+      DECLARE
+         save_info_ VARCHAR2(4000) := Client_SYS.Get_All_Info;
+      BEGIN
+         Custom_Object_Proxy_SYS.Cf_Crud(Trn_Country_API.lu_name_, 'CUSTOM_FIELD', save_info_, objid_, ret_.attr, '', 'COPY', 'D');
+         Client_SYS.Merge_Info(save_info_);
+      END;
+   END IF;
+   RETURN ret_;
+END CRUD_Default_Copy;
+
+@UncheckedAccess
+PROCEDURE CRUD_Default_Copy___ (
+   objid_  IN     VARCHAR2,
+   key_    IN     Trn_Country_Key,
+   values_ IN     Copy_Values_Rec,
+   attr_      OUT VARCHAR2,
+   info_      OUT VARCHAR2 )
+IS
+   rec_            Trn_Country_Rec;
+   default_dec_    Entity_Small_Dec;
+BEGIN
+   IF objid_ IS NOT NULL THEN
+      rec_ := Get_Record_By_Objid___(objid_, trn_country## => '');
+   END IF;
+   Add_To_Rec_From_Attr___(values_.modified_source, rec_);
+   SELECT * INTO default_dec_ FROM TABLE(Enterprise_Handling_S4_SVC.CRUD_Default('', trn_country## => ''));
+   Client_SYS.Merge_Info(default_dec_.info);
+   Add_Keys_To_Rec_From_Attr___(default_dec_.attr, rec_);
+   attr_ := default_dec_.attr;
+   CRUD_Default_Copy___(rec_);
+   Add_To_Attr_From_Rec___(rec_, attr_);
+   info_ := Client_SYS.Get_All_Info();
+END CRUD_Default_Copy___;
+
+PROCEDURE CRUD_Default_Copy___ (
+   rec_  IN OUT Trn_Country_Rec )
+IS
+BEGIN
+    NULL;
+END CRUD_Default_Copy___;
+
+@Final
+@ProjectionCheckedAccess
+FUNCTION CRUD_Create(attr_ IN VARCHAR2, action_ IN VARCHAR2, trn_country## IN VARCHAR2) RETURN Entity_Dec
+IS
+   ret_ Entity_Dec;
+   key_ Trn_Country_Key;
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_S4_SVC', 'CRUD_Create');
+   ret_.attr := attr_;
+   CRUD_Create___(ret_.etag, key_, ret_.attr, ret_.info, action_);
+   IF Component_FNDCOB_SYS.INSTALLED THEN
+      DECLARE
+         save_info_ VARCHAR2(4000)  := Client_SYS.Get_All_Info;
+         objid_     VARCHAR2(4000)  := Get_Objid_From_Etag___(ret_.etag);
+         attr_cf_   VARCHAR2(32000) := attr_;
+      BEGIN
+         Custom_Object_Proxy_SYS.Cf_Crud(Trn_Country_API.lu_name_, 'CUSTOM_FIELD', save_info_, objid_, attr_cf_, '', action_, 'C');
+         Client_SYS.Merge_Info(save_info_);
+      END;
+   END IF;
+   Client_SYS.Set_Item_Value('COUNTRY_ID', key_.country_id, ret_.attr);
+   return ret_;
+END CRUD_Create;
+
+
+PROCEDURE CRUD_Create___ (
+   etag_ IN OUT VARCHAR2,
+   key_  IN OUT Trn_Country_Key,
+   attr_ IN OUT VARCHAR2,
+   info_    OUT VARCHAR2,
+   action_ IN VARCHAR2 )
+IS
+   objid_      VARCHAR2(2000);
+   objversion_ VARCHAR2(2000);
+BEGIN
+   Trn_Country_API.New__(info_, objid_, objversion_, attr_, action_);
+   IF (action_ = 'DO') THEN
+   etag_ := Get_Etag___(objid_, objversion_);
+   SELECT country_id
+      INTO key_.country_id
+      FROM TRN_COUNTRY
+      WHERE objid = objid_;
+   END IF;
+END CRUD_Create___;
+
+
+
+
+@Final
+@ProjectionCheckedAccess
+FUNCTION CRUD_Update(etag_ IN VARCHAR2, country_id_ IN VARCHAR2, attr_ IN VARCHAR2, action$_ IN VARCHAR2, trn_country## IN VARCHAR2) RETURN Entity_Dec
+IS
+   ret_ Entity_Dec;
+   key_ Trn_Country_Key;
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_S4_SVC', 'CRUD_Update');
+   ret_.etag := etag_;
+   ret_.attr := attr_;
+   key_.country_id := country_id_;
+   CRUD_Update___(ret_.etag, key_, ret_.attr, ret_.info, action$_);
+   IF Component_FNDCOB_SYS.INSTALLED THEN
+      DECLARE
+         save_info_ VARCHAR2(4000)  := Client_SYS.Get_All_Info;
+         objid_     VARCHAR2(4000)  := Get_Objid_From_Etag___(ret_.etag);
+         attr_cf_   VARCHAR2(32000) := attr_;
+      BEGIN
+         Custom_Object_Proxy_SYS.Cf_Crud(Trn_Country_API.lu_name_, 'CUSTOM_FIELD', save_info_, objid_, attr_cf_, '', action$_, 'U');
+         Client_SYS.Merge_Info(save_info_);
+      END;
+   END IF;
+   Client_SYS.Set_Item_Value('COUNTRY_ID', key_.country_id, ret_.attr);
+   return ret_;
+END CRUD_Update;
+
+
+PROCEDURE CRUD_Update___ (
+   etag_ IN OUT VARCHAR2,
+   key_  IN OUT Trn_Country_Key,
+   attr_ IN OUT VARCHAR2,
+   info_    OUT VARCHAR2,
+   action_ IN VARCHAR2 )
+IS
+   objid_               VARCHAR2(2000) := Get_Objid_From_Etag___(etag_);
+   objversion_          VARCHAR2(2000) := Get_Objversion_From_Etag___(etag_);
+   objid_from_key_      VARCHAR2(2000);
+   objversion_from_key_ VARCHAR2(2000);
+BEGIN
+   IF (etag_ IS NULL) THEN
+      Error_SYS.System_General('ODATA_TO_PLSQL_PROTOCOL: ETag must have a value');
+   END IF;
+   Get_Objid_Objversion___(objid_from_key_, objversion_from_key_, key_);
+   IF (etag_ = '*' ) THEN
+      objid_ := objid_from_key_;
+      objversion_ := objversion_from_key_;
+   ELSIF (objid_from_key_ != objid_) THEN
+      Error_SYS.Record_General(lu_name_,'ETAG_INCORRECT: ETag is incorrect');
+   END IF;
+   Trn_Country_API.Modify__(info_, objid_, objversion_, attr_, action_);
+   etag_ := Get_Etag___(objid_, objversion_);
+END CRUD_Update___;
+
+
+
+
+@Final
+@ProjectionCheckedAccess
+FUNCTION CRUD_Delete(etag_ IN VARCHAR2, country_id_ IN VARCHAR2, action$_ IN VARCHAR2, trn_country## IN VARCHAR2) RETURN Entity_Dec
+IS
+   ret_ Entity_Dec;
+   key_ Trn_Country_Key;
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_S4_SVC', 'CRUD_Delete');
+   ret_.etag := etag_;
+   key_.country_id := country_id_;
+   CRUD_Delete___(ret_.etag, key_, ret_.info, action$_);
+   return ret_;
+END CRUD_Delete;
+
+
+PROCEDURE CRUD_Delete___ (
+   etag_ IN OUT VARCHAR2,
+   key_  IN     Trn_Country_Key,
+   info_    OUT VARCHAR2,
+   action_ IN VARCHAR2 )
+IS
+   objid_               VARCHAR2(2000) := Get_Objid_From_Etag___(etag_);
+   objversion_          VARCHAR2(2000) := Get_Objversion_From_Etag___(etag_);
+   objid_from_key_      VARCHAR2(2000);
+   objversion_from_key_ VARCHAR2(2000);
+BEGIN
+   IF (etag_ IS NULL) THEN
+      Error_SYS.System_General('ODATA_TO_PLSQL_PROTOCOL: ETag must have a value');
+   END IF;
+   Get_Objid_Objversion___(objid_from_key_, objversion_from_key_, key_);
+   IF (etag_ = '*' ) THEN
+      objid_ := objid_from_key_;
+      objversion_ := objversion_from_key_;
+   ELSIF (objid_from_key_ != objid_) THEN
+      Error_SYS.Record_General(lu_name_,'ETAG_INCORRECT: ETag is incorrect');
+   END IF;
+   Trn_Country_API.Remove__(info_, objid_, objversion_, action_);
+   etag_ := NULL;
+END CRUD_Delete___;
+
+
+-------------------- PRIVATE METHODS FOR TRN AREA ---------------------------
+
+PROCEDURE Add_To_Attr_From_Rec___ (
+   rec_  IN     Trn_Area_Rec,
+   attr_ IN OUT VARCHAR2 )
+IS
+BEGIN
+   IF (rec_.objgrants IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('OBJGRANTS', rec_.objgrants, attr_);
+   END IF;
+   IF (rec_.country_id IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('COUNTRY_ID', rec_.country_id, attr_);
+   END IF;
+   IF (rec_.area_id IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('AREA_ID', rec_.area_id, attr_);
+   END IF;
+   IF (rec_.area IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('AREA', rec_.area, attr_);
+   END IF;
+END Add_To_Attr_From_Rec___;
+
+PROCEDURE Add_To_Rec_From_Attr___ (
+   attr_ IN     VARCHAR2,
+   rec_  IN OUT Trn_Area_Rec )
+IS
+BEGIN
+   IF (Client_SYS.Item_Exist('OBJGRANTS', attr_)) THEN
+      rec_.objgrants := Client_SYS.Get_Item_Value('OBJGRANTS', attr_);
+   END IF;
+   IF (Client_SYS.Item_Exist('COUNTRY_ID', attr_)) THEN
+      rec_.country_id := Client_SYS.Get_Item_Value('COUNTRY_ID', attr_);
+   END IF;
+   IF (Client_SYS.Item_Exist('AREA_ID', attr_)) THEN
+      rec_.area_id := Client_SYS.Get_Item_Value('AREA_ID', attr_);
+   END IF;
+   IF (Client_SYS.Item_Exist('AREA', attr_)) THEN
+      rec_.area := Client_SYS.Get_Item_Value('AREA', attr_);
+   END IF;
+END Add_To_Rec_From_Attr___;
+
+@Final
+PROCEDURE Add_Keys_To_Rec_From_Attr___ (
+   attr_ IN  VARCHAR2,
+   rec_ IN OUT Trn_Area_Rec )
+IS
+BEGIN
+   IF (Client_SYS.Item_Exist('COUNTRY_ID', attr_)) THEN
+      rec_.country_id := Client_SYS.Get_Item_Value('COUNTRY_ID', attr_);
+   END IF;
+   IF (Client_SYS.Item_Exist('AREA_ID', attr_)) THEN
+      rec_.area_id := Client_SYS.Get_Item_Value('AREA_ID', attr_);
+   END IF;
+END Add_Keys_To_Rec_From_Attr___;
+
+@Final
+FUNCTION Add_To_Rec_From_Default_Copy_Rec___(
+   default_copy_rec_ IN     Trn_Area_Default_Copy_Rec) RETURN Trn_Area_Rec
+IS
+   rec_ Trn_Area_Rec;
+BEGIN
+   rec_.objgrants := default_copy_rec_.objgrants;
+   rec_.country_id := default_copy_rec_.country_id;
+   rec_.area_id := default_copy_rec_.area_id;
+   rec_.area := default_copy_rec_.area;
+   RETURN rec_;
+END Add_To_Rec_From_Default_Copy_Rec___;
+
+
+@Final
+FUNCTION Get_Record_By_Objid___ (
+   objid_ IN VARCHAR2,
+   trn_area## IN VARCHAR2 ) RETURN Trn_Area_Rec
+IS
+   default_copy_rec_ Trn_Area_Default_Copy_Rec;
+   rec_ Trn_Area_Rec;
+BEGIN
+   SELECT
+      NULL objgrants,
+      country_id country_id,
+      area_id area_id,
+      area area   INTO default_copy_rec_
+   FROM TRN_AREA
+   WHERE
+    objid = objid_;
+
+   rec_ := Add_To_Rec_From_Default_Copy_Rec___(default_copy_rec_);
+   RETURN rec_;
+EXCEPTION
+   WHEN NO_DATA_FOUND THEN
+      Error_SYS.Record_Not_Exist(lu_name_);
+END Get_Record_By_Objid___;
+
+PROCEDURE Get_Objid_Objversion___ (
+   objid_         OUT VARCHAR2,
+   objversion_    OUT VARCHAR2,
+   key_        IN     Trn_Area_Key )
+IS
+BEGIN
+   SELECT objid, objversion
+      INTO  objid_, objversion_
+      FROM  TRN_AREA
+      WHERE country_id = key_.country_id
+      AND   area_id = key_.area_id;
+EXCEPTION
+   WHEN NO_DATA_FOUND THEN
+      Error_SYS.Odp_Record_Not_Exist(Trn_Area_API.lu_name_);
+END Get_Objid_Objversion___;
+
+
+
+@Final
+@UncheckedAccess
+FUNCTION CRUD_Default(attr_ IN VARCHAR2 DEFAULT NULL, trn_area## IN VARCHAR2 ) RETURN Entity_Small_Drr PIPELINED
+IS
+   ret_ Entity_Small_Dec;
+   key_ Trn_Area_Key;
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_S4_SVC', 'CRUD_Default');
+   ret_.attr := attr_;
+   CRUD_Default___(key_, ret_.attr, ret_.info);
+   IF Component_FNDCOB_SYS.INSTALLED THEN
+      DECLARE
+         save_info_ VARCHAR2(4000) := Client_SYS.Get_All_Info;
+         objid_     VARCHAR2(4000) := Get_Objid_From_Etag___(ret_.etag);
+         attr_cf_   VARCHAR2(4000) := attr_;
+      BEGIN
+         Custom_Object_Proxy_SYS.Cf_Crud(Trn_Area_API.lu_name_, 'CUSTOM_FIELD', save_info_, objid_, attr_cf_, '', 'PREPARE', 'P');
+         ret_.attr := ret_.attr || attr_cf_;
+         Client_SYS.Merge_Info(save_info_);
+      END;
+   END IF;
+   PIPE ROW (ret_);
+END CRUD_Default;
+
+
+PROCEDURE CRUD_Default___ (
+   key_  IN     Trn_Area_Key,
+   attr_ IN OUT VARCHAR2,
+   info_    OUT VARCHAR2 )
+IS
+   rec_        Trn_Area_Rec;
+   objid_      VARCHAR2(2000);
+   objversion_ VARCHAR2(2000);
+BEGIN
+   Trn_Area_API.New__(info_, objid_, objversion_, attr_, 'PREPARE');
+   Add_To_Rec_From_Attr___(attr_, rec_);
+   CRUD_Default___(rec_);
+   Add_To_Attr_From_Rec___(rec_, attr_);
+END CRUD_Default___;
+
+
+PROCEDURE CRUD_Default___ (
+   rec_  IN OUT Trn_Area_Rec )
+IS
+BEGIN
+    NULL;
+END CRUD_Default___;
+
+@Final
+@UncheckedAccess
+FUNCTION CRUD_Default_Copy(values_ IN Copy_Values_Rec, trn_area## IN VARCHAR2 ) RETURN Entity_Dec
+IS
+   ret_ Entity_Dec;
+   key_ Trn_Area_Key;
+   objid_  VARCHAR2(10) := NULL;
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_S4_SVC', 'CRUD_Default_Copy');
+   CRUD_Default_Copy___(objid_, key_, values_, ret_.attr, ret_.info);
+   RETURN ret_;
+END CRUD_Default_Copy;
+
+@Final
+@UncheckedAccess
+FUNCTION CRUD_Default_Copy(etag_ IN VARCHAR2, country_id_ IN VARCHAR2, area_id_ IN VARCHAR2, values_ IN Copy_Values_Rec, trn_area## IN VARCHAR2) RETURN Entity_Dec
+IS
+   ret_ Entity_Dec;
+   key_ Trn_Area_Key;
+   objid_  VARCHAR2(2000) := Get_Objid_From_Etag___(etag_);
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_S4_SVC', 'CRUD_Default_Copy');
+   key_.country_id := country_id_;
+   key_.area_id := area_id_;
+   CRUD_Default_Copy___(objid_, key_, values_, ret_.attr, ret_.info);
+   IF Component_FNDCOB_SYS.INSTALLED THEN
+      DECLARE
+         save_info_ VARCHAR2(4000) := Client_SYS.Get_All_Info;
+      BEGIN
+         Custom_Object_Proxy_SYS.Cf_Crud(Trn_Area_API.lu_name_, 'CUSTOM_FIELD', save_info_, objid_, ret_.attr, '', 'COPY', 'D');
+         Client_SYS.Merge_Info(save_info_);
+      END;
+   END IF;
+   RETURN ret_;
+END CRUD_Default_Copy;
+
+@UncheckedAccess
+PROCEDURE CRUD_Default_Copy___ (
+   objid_  IN     VARCHAR2,
+   key_    IN     Trn_Area_Key,
+   values_ IN     Copy_Values_Rec,
+   attr_      OUT VARCHAR2,
+   info_      OUT VARCHAR2 )
+IS
+   rec_            Trn_Area_Rec;
+   default_dec_    Entity_Small_Dec;
+BEGIN
+   IF objid_ IS NOT NULL THEN
+      rec_ := Get_Record_By_Objid___(objid_, trn_area## => '');
+   END IF;
+   Add_To_Rec_From_Attr___(values_.modified_source, rec_);
+   SELECT * INTO default_dec_ FROM TABLE(Enterprise_Handling_S4_SVC.CRUD_Default('', trn_area## => ''));
+   Client_SYS.Merge_Info(default_dec_.info);
+   Add_Keys_To_Rec_From_Attr___(default_dec_.attr, rec_);
+   attr_ := default_dec_.attr;
+   CRUD_Default_Copy___(rec_);
+   Add_To_Attr_From_Rec___(rec_, attr_);
+   info_ := Client_SYS.Get_All_Info();
+END CRUD_Default_Copy___;
+
+PROCEDURE CRUD_Default_Copy___ (
+   rec_  IN OUT Trn_Area_Rec )
+IS
+BEGIN
+    NULL;
+END CRUD_Default_Copy___;
+
+@Final
+@ProjectionCheckedAccess
+FUNCTION CRUD_Create(attr_ IN VARCHAR2, action_ IN VARCHAR2, trn_area## IN VARCHAR2) RETURN Entity_Dec
+IS
+   ret_ Entity_Dec;
+   key_ Trn_Area_Key;
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_S4_SVC', 'CRUD_Create');
+   ret_.attr := attr_;
+   CRUD_Create___(ret_.etag, key_, ret_.attr, ret_.info, action_);
+   IF Component_FNDCOB_SYS.INSTALLED THEN
+      DECLARE
+         save_info_ VARCHAR2(4000)  := Client_SYS.Get_All_Info;
+         objid_     VARCHAR2(4000)  := Get_Objid_From_Etag___(ret_.etag);
+         attr_cf_   VARCHAR2(32000) := attr_;
+      BEGIN
+         Custom_Object_Proxy_SYS.Cf_Crud(Trn_Area_API.lu_name_, 'CUSTOM_FIELD', save_info_, objid_, attr_cf_, '', action_, 'C');
+         Client_SYS.Merge_Info(save_info_);
+      END;
+   END IF;
+   Client_SYS.Set_Item_Value('COUNTRY_ID', key_.country_id, ret_.attr);
+   Client_SYS.Set_Item_Value('AREA_ID', key_.area_id, ret_.attr);
+   return ret_;
+END CRUD_Create;
+
+
+PROCEDURE CRUD_Create___ (
+   etag_ IN OUT VARCHAR2,
+   key_  IN OUT Trn_Area_Key,
+   attr_ IN OUT VARCHAR2,
+   info_    OUT VARCHAR2,
+   action_ IN VARCHAR2 )
+IS
+   objid_      VARCHAR2(2000);
+   objversion_ VARCHAR2(2000);
+BEGIN
+   Trn_Area_API.New__(info_, objid_, objversion_, attr_, action_);
+   IF (action_ = 'DO') THEN
+   etag_ := Get_Etag___(objid_, objversion_);
+   SELECT country_id, area_id
+      INTO key_.country_id, key_.area_id
+      FROM TRN_AREA
+      WHERE objid = objid_;
+   END IF;
+END CRUD_Create___;
+
+
+
+
+@Final
+@ProjectionCheckedAccess
+FUNCTION CRUD_Update(etag_ IN VARCHAR2, country_id_ IN VARCHAR2, area_id_ IN VARCHAR2, attr_ IN VARCHAR2, action$_ IN VARCHAR2, trn_area## IN VARCHAR2) RETURN Entity_Dec
+IS
+   ret_ Entity_Dec;
+   key_ Trn_Area_Key;
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_S4_SVC', 'CRUD_Update');
+   ret_.etag := etag_;
+   ret_.attr := attr_;
+   key_.country_id := country_id_;
+   key_.area_id := area_id_;
+   CRUD_Update___(ret_.etag, key_, ret_.attr, ret_.info, action$_);
+   IF Component_FNDCOB_SYS.INSTALLED THEN
+      DECLARE
+         save_info_ VARCHAR2(4000)  := Client_SYS.Get_All_Info;
+         objid_     VARCHAR2(4000)  := Get_Objid_From_Etag___(ret_.etag);
+         attr_cf_   VARCHAR2(32000) := attr_;
+      BEGIN
+         Custom_Object_Proxy_SYS.Cf_Crud(Trn_Area_API.lu_name_, 'CUSTOM_FIELD', save_info_, objid_, attr_cf_, '', action$_, 'U');
+         Client_SYS.Merge_Info(save_info_);
+      END;
+   END IF;
+   Client_SYS.Set_Item_Value('COUNTRY_ID', key_.country_id, ret_.attr);
+   Client_SYS.Set_Item_Value('AREA_ID', key_.area_id, ret_.attr);
+   return ret_;
+END CRUD_Update;
+
+
+PROCEDURE CRUD_Update___ (
+   etag_ IN OUT VARCHAR2,
+   key_  IN OUT Trn_Area_Key,
+   attr_ IN OUT VARCHAR2,
+   info_    OUT VARCHAR2,
+   action_ IN VARCHAR2 )
+IS
+   objid_               VARCHAR2(2000) := Get_Objid_From_Etag___(etag_);
+   objversion_          VARCHAR2(2000) := Get_Objversion_From_Etag___(etag_);
+   objid_from_key_      VARCHAR2(2000);
+   objversion_from_key_ VARCHAR2(2000);
+BEGIN
+   IF (etag_ IS NULL) THEN
+      Error_SYS.System_General('ODATA_TO_PLSQL_PROTOCOL: ETag must have a value');
+   END IF;
+   Get_Objid_Objversion___(objid_from_key_, objversion_from_key_, key_);
+   IF (etag_ = '*' ) THEN
+      objid_ := objid_from_key_;
+      objversion_ := objversion_from_key_;
+   ELSIF (objid_from_key_ != objid_) THEN
+      Error_SYS.Record_General(lu_name_,'ETAG_INCORRECT: ETag is incorrect');
+   END IF;
+   Trn_Area_API.Modify__(info_, objid_, objversion_, attr_, action_);
+   etag_ := Get_Etag___(objid_, objversion_);
+END CRUD_Update___;
+
+
+
+
+@Final
+@ProjectionCheckedAccess
+FUNCTION CRUD_Delete(etag_ IN VARCHAR2, country_id_ IN VARCHAR2, area_id_ IN VARCHAR2, action$_ IN VARCHAR2, trn_area## IN VARCHAR2) RETURN Entity_Dec
+IS
+   ret_ Entity_Dec;
+   key_ Trn_Area_Key;
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_S4_SVC', 'CRUD_Delete');
+   ret_.etag := etag_;
+   key_.country_id := country_id_;
+   key_.area_id := area_id_;
+   CRUD_Delete___(ret_.etag, key_, ret_.info, action$_);
+   return ret_;
+END CRUD_Delete;
+
+
+PROCEDURE CRUD_Delete___ (
+   etag_ IN OUT VARCHAR2,
+   key_  IN     Trn_Area_Key,
+   info_    OUT VARCHAR2,
+   action_ IN VARCHAR2 )
+IS
+   objid_               VARCHAR2(2000) := Get_Objid_From_Etag___(etag_);
+   objversion_          VARCHAR2(2000) := Get_Objversion_From_Etag___(etag_);
+   objid_from_key_      VARCHAR2(2000);
+   objversion_from_key_ VARCHAR2(2000);
+BEGIN
+   IF (etag_ IS NULL) THEN
+      Error_SYS.System_General('ODATA_TO_PLSQL_PROTOCOL: ETag must have a value');
+   END IF;
+   Get_Objid_Objversion___(objid_from_key_, objversion_from_key_, key_);
+   IF (etag_ = '*' ) THEN
+      objid_ := objid_from_key_;
+      objversion_ := objversion_from_key_;
+   ELSIF (objid_from_key_ != objid_) THEN
+      Error_SYS.Record_General(lu_name_,'ETAG_INCORRECT: ETag is incorrect');
+   END IF;
+   Trn_Area_API.Remove__(info_, objid_, objversion_, action_);
+   etag_ := NULL;
+END CRUD_Delete___;
+
+
+-------------------- PRIVATE METHODS FOR TRN COMPANY ------------------------
+
+PROCEDURE Add_To_Attr_From_Rec___ (
+   rec_  IN     Trn_Company_Rec,
+   attr_ IN OUT VARCHAR2 )
+IS
+BEGIN
+   IF (rec_.objgrants IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('OBJGRANTS', rec_.objgrants, attr_);
+   END IF;
+   IF (rec_.company_id IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('COMPANY_ID', rec_.company_id, attr_);
+   END IF;
+   IF (rec_.name IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('NAME', rec_.name, attr_);
+   END IF;
+   IF (rec_.comments IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('COMMENTS', rec_.comments, attr_);
+   END IF;
+   IF (rec_.creation_date IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('CREATION_DATE', rec_.creation_date, attr_);
+   END IF;
+END Add_To_Attr_From_Rec___;
+
+PROCEDURE Add_To_Rec_From_Attr___ (
+   attr_ IN     VARCHAR2,
+   rec_  IN OUT Trn_Company_Rec )
+IS
+BEGIN
+   IF (Client_SYS.Item_Exist('OBJGRANTS', attr_)) THEN
+      rec_.objgrants := Client_SYS.Get_Item_Value('OBJGRANTS', attr_);
+   END IF;
+   IF (Client_SYS.Item_Exist('COMPANY_ID', attr_)) THEN
+      rec_.company_id := Client_SYS.Get_Item_Value('COMPANY_ID', attr_);
+   END IF;
+   IF (Client_SYS.Item_Exist('NAME', attr_)) THEN
+      rec_.name := Client_SYS.Get_Item_Value('NAME', attr_);
+   END IF;
+   IF (Client_SYS.Item_Exist('COMMENTS', attr_)) THEN
+      rec_.comments := Client_SYS.Get_Item_Value('COMMENTS', attr_);
+   END IF;
+   IF (Client_SYS.Item_Exist('CREATION_DATE', attr_)) THEN
+      rec_.creation_date := Client_SYS.Get_Item_Value_To_Date('CREATION_DATE', attr_, lu_name_);
+   END IF;
+END Add_To_Rec_From_Attr___;
+
+@Final
+PROCEDURE Add_Keys_To_Rec_From_Attr___ (
+   attr_ IN  VARCHAR2,
+   rec_ IN OUT Trn_Company_Rec )
+IS
+BEGIN
+   IF (Client_SYS.Item_Exist('COMPANY_ID', attr_)) THEN
+      rec_.company_id := Client_SYS.Get_Item_Value('COMPANY_ID', attr_);
+   END IF;
+END Add_Keys_To_Rec_From_Attr___;
+
+@Final
+FUNCTION Add_To_Rec_From_Default_Copy_Rec___(
+   default_copy_rec_ IN     Trn_Company_Default_Copy_Rec) RETURN Trn_Company_Rec
+IS
+   rec_ Trn_Company_Rec;
+BEGIN
+   rec_.objgrants := default_copy_rec_.objgrants;
+   rec_.company_id := default_copy_rec_.company_id;
+   rec_.name := default_copy_rec_.name;
+   rec_.comments := default_copy_rec_.comments;
+   rec_.creation_date := default_copy_rec_.creation_date;
+   RETURN rec_;
+END Add_To_Rec_From_Default_Copy_Rec___;
+
+
+@Final
+FUNCTION Get_Record_By_Objid___ (
+   objid_ IN VARCHAR2,
+   trn_company## IN VARCHAR2 ) RETURN Trn_Company_Rec
+IS
+   default_copy_rec_ Trn_Company_Default_Copy_Rec;
+   rec_ Trn_Company_Rec;
+BEGIN
+   SELECT
+      NULL objgrants,
+      company_id company_id,
+      name name,
+      comments comments,
+      creation_date creation_date   INTO default_copy_rec_
+   FROM TRN_COMPANY
+   WHERE
+    objid = objid_;
+
+   rec_ := Add_To_Rec_From_Default_Copy_Rec___(default_copy_rec_);
+   RETURN rec_;
+EXCEPTION
+   WHEN NO_DATA_FOUND THEN
+      Error_SYS.Record_Not_Exist(lu_name_);
+END Get_Record_By_Objid___;
+
+PROCEDURE Get_Objid_Objversion___ (
+   objid_         OUT VARCHAR2,
+   objversion_    OUT VARCHAR2,
+   key_        IN     Trn_Company_Key )
+IS
+BEGIN
+   SELECT objid, objversion
+      INTO  objid_, objversion_
+      FROM  TRN_COMPANY
+      WHERE company_id = key_.company_id;
+EXCEPTION
+   WHEN NO_DATA_FOUND THEN
+      Error_SYS.Odp_Record_Not_Exist(Trn_Company_API.lu_name_);
+END Get_Objid_Objversion___;
+
+
+
+@Final
+@UncheckedAccess
+FUNCTION CRUD_Default(attr_ IN VARCHAR2 DEFAULT NULL, trn_company## IN VARCHAR2 ) RETURN Entity_Small_Drr PIPELINED
+IS
+   ret_ Entity_Small_Dec;
+   key_ Trn_Company_Key;
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_S4_SVC', 'CRUD_Default');
+   ret_.attr := attr_;
+   CRUD_Default___(key_, ret_.attr, ret_.info);
+   IF Component_FNDCOB_SYS.INSTALLED THEN
+      DECLARE
+         save_info_ VARCHAR2(4000) := Client_SYS.Get_All_Info;
+         objid_     VARCHAR2(4000) := Get_Objid_From_Etag___(ret_.etag);
+         attr_cf_   VARCHAR2(4000) := attr_;
+      BEGIN
+         Custom_Object_Proxy_SYS.Cf_Crud(Trn_Company_API.lu_name_, 'CUSTOM_FIELD', save_info_, objid_, attr_cf_, '', 'PREPARE', 'P');
+         ret_.attr := ret_.attr || attr_cf_;
+         Client_SYS.Merge_Info(save_info_);
+      END;
+   END IF;
+   PIPE ROW (ret_);
+END CRUD_Default;
+
+
+PROCEDURE CRUD_Default___ (
+   key_  IN     Trn_Company_Key,
+   attr_ IN OUT VARCHAR2,
+   info_    OUT VARCHAR2 )
+IS
+   rec_        Trn_Company_Rec;
+   objid_      VARCHAR2(2000);
+   objversion_ VARCHAR2(2000);
+BEGIN
+   Trn_Company_API.New__(info_, objid_, objversion_, attr_, 'PREPARE');
+   Add_To_Rec_From_Attr___(attr_, rec_);
+   CRUD_Default___(rec_);
+   Add_To_Attr_From_Rec___(rec_, attr_);
+END CRUD_Default___;
+
+
+PROCEDURE CRUD_Default___ (
+   rec_  IN OUT Trn_Company_Rec )
+IS
+BEGIN
+    NULL;
+END CRUD_Default___;
+
+@Final
+@UncheckedAccess
+FUNCTION CRUD_Default_Copy(values_ IN Copy_Values_Rec, trn_company## IN VARCHAR2 ) RETURN Entity_Dec
+IS
+   ret_ Entity_Dec;
+   key_ Trn_Company_Key;
+   objid_  VARCHAR2(10) := NULL;
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_S4_SVC', 'CRUD_Default_Copy');
+   CRUD_Default_Copy___(objid_, key_, values_, ret_.attr, ret_.info);
+   RETURN ret_;
+END CRUD_Default_Copy;
+
+@Final
+@UncheckedAccess
+FUNCTION CRUD_Default_Copy(etag_ IN VARCHAR2, company_id_ IN VARCHAR2, values_ IN Copy_Values_Rec, trn_company## IN VARCHAR2) RETURN Entity_Dec
+IS
+   ret_ Entity_Dec;
+   key_ Trn_Company_Key;
+   objid_  VARCHAR2(2000) := Get_Objid_From_Etag___(etag_);
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_S4_SVC', 'CRUD_Default_Copy');
+   key_.company_id := company_id_;
+   CRUD_Default_Copy___(objid_, key_, values_, ret_.attr, ret_.info);
+   IF Component_FNDCOB_SYS.INSTALLED THEN
+      DECLARE
+         save_info_ VARCHAR2(4000) := Client_SYS.Get_All_Info;
+      BEGIN
+         Custom_Object_Proxy_SYS.Cf_Crud(Trn_Company_API.lu_name_, 'CUSTOM_FIELD', save_info_, objid_, ret_.attr, '', 'COPY', 'D');
+         Client_SYS.Merge_Info(save_info_);
+      END;
+   END IF;
+   RETURN ret_;
+END CRUD_Default_Copy;
+
+@UncheckedAccess
+PROCEDURE CRUD_Default_Copy___ (
+   objid_  IN     VARCHAR2,
+   key_    IN     Trn_Company_Key,
+   values_ IN     Copy_Values_Rec,
+   attr_      OUT VARCHAR2,
+   info_      OUT VARCHAR2 )
+IS
+   rec_            Trn_Company_Rec;
+   default_dec_    Entity_Small_Dec;
+BEGIN
+   IF objid_ IS NOT NULL THEN
+      rec_ := Get_Record_By_Objid___(objid_, trn_company## => '');
+   END IF;
+   Add_To_Rec_From_Attr___(values_.modified_source, rec_);
+   SELECT * INTO default_dec_ FROM TABLE(Enterprise_Handling_S4_SVC.CRUD_Default('', trn_company## => ''));
+   Client_SYS.Merge_Info(default_dec_.info);
+   Add_Keys_To_Rec_From_Attr___(default_dec_.attr, rec_);
+   attr_ := default_dec_.attr;
+   CRUD_Default_Copy___(rec_);
+   Add_To_Attr_From_Rec___(rec_, attr_);
+   info_ := Client_SYS.Get_All_Info();
+END CRUD_Default_Copy___;
+
+PROCEDURE CRUD_Default_Copy___ (
+   rec_  IN OUT Trn_Company_Rec )
+IS
+BEGIN
+    NULL;
+END CRUD_Default_Copy___;
+
+@Final
+@ProjectionCheckedAccess
+FUNCTION CRUD_Create(attr_ IN VARCHAR2, action_ IN VARCHAR2, trn_company## IN VARCHAR2) RETURN Entity_Dec
+IS
+   ret_ Entity_Dec;
+   key_ Trn_Company_Key;
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_S4_SVC', 'CRUD_Create');
+   ret_.attr := attr_;
+   CRUD_Create___(ret_.etag, key_, ret_.attr, ret_.info, action_);
+   IF Component_FNDCOB_SYS.INSTALLED THEN
+      DECLARE
+         save_info_ VARCHAR2(4000)  := Client_SYS.Get_All_Info;
+         objid_     VARCHAR2(4000)  := Get_Objid_From_Etag___(ret_.etag);
+         attr_cf_   VARCHAR2(32000) := attr_;
+      BEGIN
+         Custom_Object_Proxy_SYS.Cf_Crud(Trn_Company_API.lu_name_, 'CUSTOM_FIELD', save_info_, objid_, attr_cf_, '', action_, 'C');
+         Client_SYS.Merge_Info(save_info_);
+      END;
+   END IF;
+   Client_SYS.Set_Item_Value('COMPANY_ID', key_.company_id, ret_.attr);
+   return ret_;
+END CRUD_Create;
+
+
+PROCEDURE CRUD_Create___ (
+   etag_ IN OUT VARCHAR2,
+   key_  IN OUT Trn_Company_Key,
+   attr_ IN OUT VARCHAR2,
+   info_    OUT VARCHAR2,
+   action_ IN VARCHAR2 )
+IS
+   objid_      VARCHAR2(2000);
+   objversion_ VARCHAR2(2000);
+BEGIN
+   Trn_Company_API.New__(info_, objid_, objversion_, attr_, action_);
+   IF (action_ = 'DO') THEN
+   etag_ := Get_Etag___(objid_, objversion_);
+   SELECT company_id
+      INTO key_.company_id
+      FROM TRN_COMPANY
+      WHERE objid = objid_;
+   END IF;
+END CRUD_Create___;
+
+
+
+
+@Final
+@ProjectionCheckedAccess
+FUNCTION CRUD_Update(etag_ IN VARCHAR2, company_id_ IN VARCHAR2, attr_ IN VARCHAR2, action$_ IN VARCHAR2, trn_company## IN VARCHAR2) RETURN Entity_Dec
+IS
+   ret_ Entity_Dec;
+   key_ Trn_Company_Key;
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_S4_SVC', 'CRUD_Update');
+   ret_.etag := etag_;
+   ret_.attr := attr_;
+   key_.company_id := company_id_;
+   CRUD_Update___(ret_.etag, key_, ret_.attr, ret_.info, action$_);
+   IF Component_FNDCOB_SYS.INSTALLED THEN
+      DECLARE
+         save_info_ VARCHAR2(4000)  := Client_SYS.Get_All_Info;
+         objid_     VARCHAR2(4000)  := Get_Objid_From_Etag___(ret_.etag);
+         attr_cf_   VARCHAR2(32000) := attr_;
+      BEGIN
+         Custom_Object_Proxy_SYS.Cf_Crud(Trn_Company_API.lu_name_, 'CUSTOM_FIELD', save_info_, objid_, attr_cf_, '', action$_, 'U');
+         Client_SYS.Merge_Info(save_info_);
+      END;
+   END IF;
+   Client_SYS.Set_Item_Value('COMPANY_ID', key_.company_id, ret_.attr);
+   return ret_;
+END CRUD_Update;
+
+
+PROCEDURE CRUD_Update___ (
+   etag_ IN OUT VARCHAR2,
+   key_  IN OUT Trn_Company_Key,
+   attr_ IN OUT VARCHAR2,
+   info_    OUT VARCHAR2,
+   action_ IN VARCHAR2 )
+IS
+   objid_               VARCHAR2(2000) := Get_Objid_From_Etag___(etag_);
+   objversion_          VARCHAR2(2000) := Get_Objversion_From_Etag___(etag_);
+   objid_from_key_      VARCHAR2(2000);
+   objversion_from_key_ VARCHAR2(2000);
+BEGIN
+   IF (etag_ IS NULL) THEN
+      Error_SYS.System_General('ODATA_TO_PLSQL_PROTOCOL: ETag must have a value');
+   END IF;
+   Get_Objid_Objversion___(objid_from_key_, objversion_from_key_, key_);
+   IF (etag_ = '*' ) THEN
+      objid_ := objid_from_key_;
+      objversion_ := objversion_from_key_;
+   ELSIF (objid_from_key_ != objid_) THEN
+      Error_SYS.Record_General(lu_name_,'ETAG_INCORRECT: ETag is incorrect');
+   END IF;
+   Trn_Company_API.Modify__(info_, objid_, objversion_, attr_, action_);
+   etag_ := Get_Etag___(objid_, objversion_);
+END CRUD_Update___;
+
+
+
+
+@Final
+@ProjectionCheckedAccess
+FUNCTION CRUD_Delete(etag_ IN VARCHAR2, company_id_ IN VARCHAR2, action$_ IN VARCHAR2, trn_company## IN VARCHAR2) RETURN Entity_Dec
+IS
+   ret_ Entity_Dec;
+   key_ Trn_Company_Key;
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_S4_SVC', 'CRUD_Delete');
+   ret_.etag := etag_;
+   key_.company_id := company_id_;
+   CRUD_Delete___(ret_.etag, key_, ret_.info, action$_);
+   return ret_;
+END CRUD_Delete;
+
+
+PROCEDURE CRUD_Delete___ (
+   etag_ IN OUT VARCHAR2,
+   key_  IN     Trn_Company_Key,
+   info_    OUT VARCHAR2,
+   action_ IN VARCHAR2 )
+IS
+   objid_               VARCHAR2(2000) := Get_Objid_From_Etag___(etag_);
+   objversion_          VARCHAR2(2000) := Get_Objversion_From_Etag___(etag_);
+   objid_from_key_      VARCHAR2(2000);
+   objversion_from_key_ VARCHAR2(2000);
+BEGIN
+   IF (etag_ IS NULL) THEN
+      Error_SYS.System_General('ODATA_TO_PLSQL_PROTOCOL: ETag must have a value');
+   END IF;
+   Get_Objid_Objversion___(objid_from_key_, objversion_from_key_, key_);
+   IF (etag_ = '*' ) THEN
+      objid_ := objid_from_key_;
+      objversion_ := objversion_from_key_;
+   ELSIF (objid_from_key_ != objid_) THEN
+      Error_SYS.Record_General(lu_name_,'ETAG_INCORRECT: ETag is incorrect');
+   END IF;
+   Trn_Company_API.Remove__(info_, objid_, objversion_, action_);
+   etag_ := NULL;
+END CRUD_Delete___;
+
+
+-------------------- PRIVATE METHODS FOR TRN BRANCH -------------------------
+
+PROCEDURE Add_To_Attr_From_Rec___ (
+   rec_  IN     Trn_Branch_Rec,
+   attr_ IN OUT VARCHAR2 )
+IS
+BEGIN
+   IF (rec_.objgrants IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('OBJGRANTS', rec_.objgrants, attr_);
+   END IF;
+   IF (rec_.company_id IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('COMPANY_ID', rec_.company_id, attr_);
+   END IF;
+   IF (rec_.branch_id IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('BRANCH_ID', rec_.branch_id, attr_);
+   END IF;
+   IF (rec_.name IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('NAME', rec_.name, attr_);
+   END IF;
+   IF (rec_.time_offset IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('TIME_OFFSET', rec_.time_offset, attr_);
+   END IF;
+   IF (rec_.country_id IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('COUNTRY_ID', rec_.country_id, attr_);
+   END IF;
+   IF (rec_.area_id IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('AREA_ID', rec_.area_id, attr_);
+   END IF;
+END Add_To_Attr_From_Rec___;
+
+PROCEDURE Add_To_Rec_From_Attr___ (
+   attr_ IN     VARCHAR2,
+   rec_  IN OUT Trn_Branch_Rec )
+IS
+BEGIN
+   IF (Client_SYS.Item_Exist('OBJGRANTS', attr_)) THEN
+      rec_.objgrants := Client_SYS.Get_Item_Value('OBJGRANTS', attr_);
+   END IF;
+   IF (Client_SYS.Item_Exist('COMPANY_ID', attr_)) THEN
+      rec_.company_id := Client_SYS.Get_Item_Value('COMPANY_ID', attr_);
+   END IF;
+   IF (Client_SYS.Item_Exist('BRANCH_ID', attr_)) THEN
+      rec_.branch_id := Client_SYS.Get_Item_Value('BRANCH_ID', attr_);
+   END IF;
+   IF (Client_SYS.Item_Exist('NAME', attr_)) THEN
+      rec_.name := Client_SYS.Get_Item_Value('NAME', attr_);
+   END IF;
+   IF (Client_SYS.Item_Exist('TIME_OFFSET', attr_)) THEN
+      rec_.time_offset := Client_SYS.Get_Item_Value('TIME_OFFSET', attr_);
+   END IF;
+   IF (Client_SYS.Item_Exist('COUNTRY_ID', attr_)) THEN
+      rec_.country_id := Client_SYS.Get_Item_Value('COUNTRY_ID', attr_);
+   END IF;
+   IF (Client_SYS.Item_Exist('AREA_ID', attr_)) THEN
+      rec_.area_id := Client_SYS.Get_Item_Value('AREA_ID', attr_);
+   END IF;
+END Add_To_Rec_From_Attr___;
+
+@Final
+PROCEDURE Add_Keys_To_Rec_From_Attr___ (
+   attr_ IN  VARCHAR2,
+   rec_ IN OUT Trn_Branch_Rec )
+IS
+BEGIN
+   IF (Client_SYS.Item_Exist('COMPANY_ID', attr_)) THEN
+      rec_.company_id := Client_SYS.Get_Item_Value('COMPANY_ID', attr_);
+   END IF;
+   IF (Client_SYS.Item_Exist('BRANCH_ID', attr_)) THEN
+      rec_.branch_id := Client_SYS.Get_Item_Value('BRANCH_ID', attr_);
+   END IF;
+END Add_Keys_To_Rec_From_Attr___;
+
+@Final
+FUNCTION Add_To_Rec_From_Default_Copy_Rec___(
+   default_copy_rec_ IN     Trn_Branch_Default_Copy_Rec) RETURN Trn_Branch_Rec
+IS
+   rec_ Trn_Branch_Rec;
+BEGIN
+   rec_.objgrants := default_copy_rec_.objgrants;
+   rec_.company_id := default_copy_rec_.company_id;
+   rec_.branch_id := default_copy_rec_.branch_id;
+   rec_.name := default_copy_rec_.name;
+   rec_.time_offset := default_copy_rec_.time_offset;
+   rec_.country_id := default_copy_rec_.country_id;
+   rec_.area_id := default_copy_rec_.area_id;
+   RETURN rec_;
+END Add_To_Rec_From_Default_Copy_Rec___;
+
+
+@Final
+FUNCTION Get_Record_By_Objid___ (
+   objid_ IN VARCHAR2,
+   trn_branch## IN VARCHAR2 ) RETURN Trn_Branch_Rec
+IS
+   default_copy_rec_ Trn_Branch_Default_Copy_Rec;
+   rec_ Trn_Branch_Rec;
+BEGIN
+   SELECT
+      NULL objgrants,
+      company_id company_id,
+      branch_id branch_id,
+      name name,
+      time_offset time_offset,
+      country_id country_id,
+      area_id area_id   INTO default_copy_rec_
+   FROM TRN_BRANCH
+   WHERE
+    objid = objid_;
+
+   rec_ := Add_To_Rec_From_Default_Copy_Rec___(default_copy_rec_);
+   RETURN rec_;
+EXCEPTION
+   WHEN NO_DATA_FOUND THEN
+      Error_SYS.Record_Not_Exist(lu_name_);
+END Get_Record_By_Objid___;
+
+PROCEDURE Get_Objid_Objversion___ (
+   objid_         OUT VARCHAR2,
+   objversion_    OUT VARCHAR2,
+   key_        IN     Trn_Branch_Key )
+IS
+BEGIN
+   SELECT objid, objversion
+      INTO  objid_, objversion_
+      FROM  TRN_BRANCH
+      WHERE company_id = key_.company_id
+      AND   branch_id = key_.branch_id;
+EXCEPTION
+   WHEN NO_DATA_FOUND THEN
+      Error_SYS.Odp_Record_Not_Exist(Trn_Branch_API.lu_name_);
+END Get_Objid_Objversion___;
+
+
+
+@Final
+@UncheckedAccess
+FUNCTION CRUD_Default(attr_ IN VARCHAR2 DEFAULT NULL, trn_branch## IN VARCHAR2 ) RETURN Entity_Small_Drr PIPELINED
+IS
+   ret_ Entity_Small_Dec;
+   key_ Trn_Branch_Key;
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_S4_SVC', 'CRUD_Default');
+   ret_.attr := attr_;
+   CRUD_Default___(key_, ret_.attr, ret_.info);
+   IF Component_FNDCOB_SYS.INSTALLED THEN
+      DECLARE
+         save_info_ VARCHAR2(4000) := Client_SYS.Get_All_Info;
+         objid_     VARCHAR2(4000) := Get_Objid_From_Etag___(ret_.etag);
+         attr_cf_   VARCHAR2(4000) := attr_;
+      BEGIN
+         Custom_Object_Proxy_SYS.Cf_Crud(Trn_Branch_API.lu_name_, 'CUSTOM_FIELD', save_info_, objid_, attr_cf_, '', 'PREPARE', 'P');
+         ret_.attr := ret_.attr || attr_cf_;
+         Client_SYS.Merge_Info(save_info_);
+      END;
+   END IF;
+   PIPE ROW (ret_);
+END CRUD_Default;
+
+
+PROCEDURE CRUD_Default___ (
+   key_  IN     Trn_Branch_Key,
+   attr_ IN OUT VARCHAR2,
+   info_    OUT VARCHAR2 )
+IS
+   rec_        Trn_Branch_Rec;
+   objid_      VARCHAR2(2000);
+   objversion_ VARCHAR2(2000);
+BEGIN
+   Trn_Branch_API.New__(info_, objid_, objversion_, attr_, 'PREPARE');
+   Add_To_Rec_From_Attr___(attr_, rec_);
+   CRUD_Default___(rec_);
+   Add_To_Attr_From_Rec___(rec_, attr_);
+END CRUD_Default___;
+
+
+PROCEDURE CRUD_Default___ (
+   rec_  IN OUT Trn_Branch_Rec )
+IS
+BEGIN
+    NULL;
+END CRUD_Default___;
+
+@Final
+@UncheckedAccess
+FUNCTION CRUD_Default_Copy(values_ IN Copy_Values_Rec, trn_branch## IN VARCHAR2 ) RETURN Entity_Dec
+IS
+   ret_ Entity_Dec;
+   key_ Trn_Branch_Key;
+   objid_  VARCHAR2(10) := NULL;
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_S4_SVC', 'CRUD_Default_Copy');
+   CRUD_Default_Copy___(objid_, key_, values_, ret_.attr, ret_.info);
+   RETURN ret_;
+END CRUD_Default_Copy;
+
+@Final
+@UncheckedAccess
+FUNCTION CRUD_Default_Copy(etag_ IN VARCHAR2, company_id_ IN VARCHAR2, branch_id_ IN VARCHAR2, values_ IN Copy_Values_Rec, trn_branch## IN VARCHAR2) RETURN Entity_Dec
+IS
+   ret_ Entity_Dec;
+   key_ Trn_Branch_Key;
+   objid_  VARCHAR2(2000) := Get_Objid_From_Etag___(etag_);
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_S4_SVC', 'CRUD_Default_Copy');
+   key_.company_id := company_id_;
+   key_.branch_id := branch_id_;
+   CRUD_Default_Copy___(objid_, key_, values_, ret_.attr, ret_.info);
+   IF Component_FNDCOB_SYS.INSTALLED THEN
+      DECLARE
+         save_info_ VARCHAR2(4000) := Client_SYS.Get_All_Info;
+      BEGIN
+         Custom_Object_Proxy_SYS.Cf_Crud(Trn_Branch_API.lu_name_, 'CUSTOM_FIELD', save_info_, objid_, ret_.attr, '', 'COPY', 'D');
+         Client_SYS.Merge_Info(save_info_);
+      END;
+   END IF;
+   RETURN ret_;
+END CRUD_Default_Copy;
+
+@UncheckedAccess
+PROCEDURE CRUD_Default_Copy___ (
+   objid_  IN     VARCHAR2,
+   key_    IN     Trn_Branch_Key,
+   values_ IN     Copy_Values_Rec,
+   attr_      OUT VARCHAR2,
+   info_      OUT VARCHAR2 )
+IS
+   rec_            Trn_Branch_Rec;
+   default_dec_    Entity_Small_Dec;
+BEGIN
+   IF objid_ IS NOT NULL THEN
+      rec_ := Get_Record_By_Objid___(objid_, trn_branch## => '');
+   END IF;
+   Add_To_Rec_From_Attr___(values_.modified_source, rec_);
+   SELECT * INTO default_dec_ FROM TABLE(Enterprise_Handling_S4_SVC.CRUD_Default('', trn_branch## => ''));
+   Client_SYS.Merge_Info(default_dec_.info);
+   Add_Keys_To_Rec_From_Attr___(default_dec_.attr, rec_);
+   attr_ := default_dec_.attr;
+   CRUD_Default_Copy___(rec_);
+   Add_To_Attr_From_Rec___(rec_, attr_);
+   info_ := Client_SYS.Get_All_Info();
+END CRUD_Default_Copy___;
+
+PROCEDURE CRUD_Default_Copy___ (
+   rec_  IN OUT Trn_Branch_Rec )
+IS
+BEGIN
+    NULL;
+END CRUD_Default_Copy___;
+
+@Final
+@ProjectionCheckedAccess
+FUNCTION CRUD_Create(attr_ IN VARCHAR2, action_ IN VARCHAR2, trn_branch## IN VARCHAR2) RETURN Entity_Dec
+IS
+   ret_ Entity_Dec;
+   key_ Trn_Branch_Key;
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_S4_SVC', 'CRUD_Create');
+   ret_.attr := attr_;
+   CRUD_Create___(ret_.etag, key_, ret_.attr, ret_.info, action_);
+   IF Component_FNDCOB_SYS.INSTALLED THEN
+      DECLARE
+         save_info_ VARCHAR2(4000)  := Client_SYS.Get_All_Info;
+         objid_     VARCHAR2(4000)  := Get_Objid_From_Etag___(ret_.etag);
+         attr_cf_   VARCHAR2(32000) := attr_;
+      BEGIN
+         Custom_Object_Proxy_SYS.Cf_Crud(Trn_Branch_API.lu_name_, 'CUSTOM_FIELD', save_info_, objid_, attr_cf_, '', action_, 'C');
+         Client_SYS.Merge_Info(save_info_);
+      END;
+   END IF;
+   Client_SYS.Set_Item_Value('COMPANY_ID', key_.company_id, ret_.attr);
+   Client_SYS.Set_Item_Value('BRANCH_ID', key_.branch_id, ret_.attr);
+   return ret_;
+END CRUD_Create;
+
+
+PROCEDURE CRUD_Create___ (
+   etag_ IN OUT VARCHAR2,
+   key_  IN OUT Trn_Branch_Key,
+   attr_ IN OUT VARCHAR2,
+   info_    OUT VARCHAR2,
+   action_ IN VARCHAR2 )
+IS
+   objid_      VARCHAR2(2000);
+   objversion_ VARCHAR2(2000);
+BEGIN
+   Trn_Branch_API.New__(info_, objid_, objversion_, attr_, action_);
+   IF (action_ = 'DO') THEN
+   etag_ := Get_Etag___(objid_, objversion_);
+   SELECT company_id, branch_id
+      INTO key_.company_id, key_.branch_id
+      FROM TRN_BRANCH
+      WHERE objid = objid_;
+   END IF;
+END CRUD_Create___;
+
+
+
+
+@Final
+@ProjectionCheckedAccess
+FUNCTION CRUD_Update(etag_ IN VARCHAR2, company_id_ IN VARCHAR2, branch_id_ IN VARCHAR2, attr_ IN VARCHAR2, action$_ IN VARCHAR2, trn_branch## IN VARCHAR2) RETURN Entity_Dec
+IS
+   ret_ Entity_Dec;
+   key_ Trn_Branch_Key;
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_S4_SVC', 'CRUD_Update');
+   ret_.etag := etag_;
+   ret_.attr := attr_;
+   key_.company_id := company_id_;
+   key_.branch_id := branch_id_;
+   CRUD_Update___(ret_.etag, key_, ret_.attr, ret_.info, action$_);
+   IF Component_FNDCOB_SYS.INSTALLED THEN
+      DECLARE
+         save_info_ VARCHAR2(4000)  := Client_SYS.Get_All_Info;
+         objid_     VARCHAR2(4000)  := Get_Objid_From_Etag___(ret_.etag);
+         attr_cf_   VARCHAR2(32000) := attr_;
+      BEGIN
+         Custom_Object_Proxy_SYS.Cf_Crud(Trn_Branch_API.lu_name_, 'CUSTOM_FIELD', save_info_, objid_, attr_cf_, '', action$_, 'U');
+         Client_SYS.Merge_Info(save_info_);
+      END;
+   END IF;
+   Client_SYS.Set_Item_Value('COMPANY_ID', key_.company_id, ret_.attr);
+   Client_SYS.Set_Item_Value('BRANCH_ID', key_.branch_id, ret_.attr);
+   return ret_;
+END CRUD_Update;
+
+
+PROCEDURE CRUD_Update___ (
+   etag_ IN OUT VARCHAR2,
+   key_  IN OUT Trn_Branch_Key,
+   attr_ IN OUT VARCHAR2,
+   info_    OUT VARCHAR2,
+   action_ IN VARCHAR2 )
+IS
+   objid_               VARCHAR2(2000) := Get_Objid_From_Etag___(etag_);
+   objversion_          VARCHAR2(2000) := Get_Objversion_From_Etag___(etag_);
+   objid_from_key_      VARCHAR2(2000);
+   objversion_from_key_ VARCHAR2(2000);
+BEGIN
+   IF (etag_ IS NULL) THEN
+      Error_SYS.System_General('ODATA_TO_PLSQL_PROTOCOL: ETag must have a value');
+   END IF;
+   Get_Objid_Objversion___(objid_from_key_, objversion_from_key_, key_);
+   IF (etag_ = '*' ) THEN
+      objid_ := objid_from_key_;
+      objversion_ := objversion_from_key_;
+   ELSIF (objid_from_key_ != objid_) THEN
+      Error_SYS.Record_General(lu_name_,'ETAG_INCORRECT: ETag is incorrect');
+   END IF;
+   Trn_Branch_API.Modify__(info_, objid_, objversion_, attr_, action_);
+   etag_ := Get_Etag___(objid_, objversion_);
+END CRUD_Update___;
+
+
+
+
+@Final
+@ProjectionCheckedAccess
+FUNCTION CRUD_Delete(etag_ IN VARCHAR2, company_id_ IN VARCHAR2, branch_id_ IN VARCHAR2, action$_ IN VARCHAR2, trn_branch## IN VARCHAR2) RETURN Entity_Dec
+IS
+   ret_ Entity_Dec;
+   key_ Trn_Branch_Key;
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_S4_SVC', 'CRUD_Delete');
+   ret_.etag := etag_;
+   key_.company_id := company_id_;
+   key_.branch_id := branch_id_;
+   CRUD_Delete___(ret_.etag, key_, ret_.info, action$_);
+   return ret_;
+END CRUD_Delete;
+
+
+PROCEDURE CRUD_Delete___ (
+   etag_ IN OUT VARCHAR2,
+   key_  IN     Trn_Branch_Key,
+   info_    OUT VARCHAR2,
+   action_ IN VARCHAR2 )
+IS
+   objid_               VARCHAR2(2000) := Get_Objid_From_Etag___(etag_);
+   objversion_          VARCHAR2(2000) := Get_Objversion_From_Etag___(etag_);
+   objid_from_key_      VARCHAR2(2000);
+   objversion_from_key_ VARCHAR2(2000);
+BEGIN
+   IF (etag_ IS NULL) THEN
+      Error_SYS.System_General('ODATA_TO_PLSQL_PROTOCOL: ETag must have a value');
+   END IF;
+   Get_Objid_Objversion___(objid_from_key_, objversion_from_key_, key_);
+   IF (etag_ = '*' ) THEN
+      objid_ := objid_from_key_;
+      objversion_ := objversion_from_key_;
+   ELSIF (objid_from_key_ != objid_) THEN
+      Error_SYS.Record_General(lu_name_,'ETAG_INCORRECT: ETag is incorrect');
+   END IF;
+   Trn_Branch_API.Remove__(info_, objid_, objversion_, action_);
+   etag_ := NULL;
+END CRUD_Delete___;
+
+
+-------------------- PRIVATE METHODS FOR TRN COUNTRY VIRTUAL ----------------
+
+PROCEDURE Add_To_Attr_From_Rec___ (
+   rec_  IN     Trn_Country_Virtual_Rec,
+   attr_ IN OUT VARCHAR2 )
+IS
+BEGIN
+   IF (rec_.objkey IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('OBJKEY', rec_.objkey, attr_);
+   END IF;
+   IF (rec_.objkey IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('OBJKEY', rec_.objkey, attr_);
+   END IF;
+   IF (rec_.parent_objkey IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('PARENT_OBJKEY', rec_.parent_objkey, attr_);
+   END IF;
+   IF (rec_.objmodified IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('OBJMODIFIED', rec_.objmodified, attr_);
+   END IF;
+   IF (rec_.obj_created_by IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('OBJ_CREATED_BY', rec_.obj_created_by, attr_);
+   END IF;
+   IF (rec_.country_id IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('COUNTRY_ID', rec_.country_id, attr_);
+   END IF;
+   IF (rec_.country IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('COUNTRY', rec_.country, attr_);
+   END IF;
+END Add_To_Attr_From_Rec___;
+
+PROCEDURE Add_To_Rec_From_Attr___ (
+   attr_ IN     VARCHAR2,
+   rec_  IN OUT Trn_Country_Virtual_Rec )
+IS
+BEGIN
+   IF (Client_SYS.Item_Exist('PARENT_OBJKEY', attr_)) THEN
+      rec_.parent_objkey := Client_SYS.Get_Item_Value('PARENT_OBJKEY', attr_);
+   END IF;
+   IF (Client_SYS.Item_Exist('OBJKEY', attr_)) THEN
+      rec_.objkey := Client_SYS.Get_Item_Value('OBJKEY', attr_);
+   END IF;
+   IF (Client_SYS.Item_Exist('PARENT_OBJKEY', attr_)) THEN
+      rec_.parent_objkey := Client_SYS.Get_Item_Value('PARENT_OBJKEY', attr_);
+   END IF;
+   IF (Client_SYS.Item_Exist('OBJMODIFIED', attr_)) THEN
+      rec_.objmodified := Client_SYS.Get_Item_Value_To_Date('OBJMODIFIED', attr_, lu_name_);
+   END IF;
+   IF (Client_SYS.Item_Exist('OBJ_CREATED_BY', attr_)) THEN
+      rec_.obj_created_by := Client_SYS.Get_Item_Value('OBJ_CREATED_BY', attr_);
+   END IF;
+   IF (Client_SYS.Item_Exist('COUNTRY_ID', attr_)) THEN
+      rec_.country_id := Client_SYS.Get_Item_Value('COUNTRY_ID', attr_);
+   END IF;
+   IF (Client_SYS.Item_Exist('COUNTRY', attr_)) THEN
+      rec_.country := Client_SYS.Get_Item_Value('COUNTRY', attr_);
+   END IF;
+END Add_To_Rec_From_Attr___;
+
+@Final
+FUNCTION Get_Record___ (
+   key_  IN Trn_Country_Virtual_Key ) RETURN Trn_Country_Virtual_Rec
+IS
+   rec_ Trn_Country_Virtual_Rec;
+   tab_ ENTERPRISE_HANDLING_S4_TRN_COUNTRY_VIRTUAL_VRT%ROWTYPE;
+BEGIN
+   SELECT * INTO tab_ FROM ENTERPRISE_HANDLING_S4_TRN_COUNTRY_VIRTUAL_VRT WHERE objkey = key_.objkey;
+   rec_.objkey                         := tab_.objkey;
+   rec_.parent_objkey                  := tab_.parent_objkey;
+   rec_.objmodified                    := tab_.objmodified;
+   rec_.obj_created_by                 := tab_.obj_created_by;
+   rec_.country_id                     := tab_.country_id;
+   rec_.country                        := tab_.country;
+   RETURN rec_;
+END Get_Record___;
+
+
+@Final
+FUNCTION Get_Key___ (
+   rec_  IN Trn_Country_Virtual_Rec ) RETURN Trn_Country_Virtual_Key
+IS
+   key_ Trn_Country_Virtual_Key;
+BEGIN
+   key_.objkey := rec_.objkey;
+   RETURN key_;
+END Get_Key___;
+
+PROCEDURE New_Detail___ (
+   master_ IN Trn_Country_Virtual_Key,
+   detail_ IN OUT Trn_Area_Virtual_Rec )
+IS
+   rec_ Trn_Area_Virtual_Rec := detail_;
+   tab_ ENTERPRISE_HANDLING_S4_TRN_AREA_VIRTUAL_VRT%ROWTYPE;
+   obj_created_by_ VARCHAR2(100);
+BEGIN
+   rec_.objkey := sys_guid();
+   detail_.objkey := rec_.objkey;
+   rec_.parent_objkey := master_.objkey;
+   IF rec_.obj_created_by IS NULL THEN
+     obj_created_by_ := Fnd_Session_API.Get_Fnd_User();
+   ELSE
+     obj_created_by_ := rec_.obj_created_by;
+   END IF;
+   tab_.objkey                         := rec_.objkey;
+   tab_.parent_objkey                  := rec_.parent_objkey;
+   tab_.objmodified                    := rec_.objmodified;
+   tab_.obj_created_by                 := obj_created_by_;
+   tab_.country_id                     := rec_.country_id;
+   tab_.area_id                        := rec_.area_id;
+   tab_.area                           := rec_.area;
+   INSERT INTO ENTERPRISE_HANDLING_S4_TRN_AREA_VIRTUAL_VRT VALUES tab_;
+END New_Detail___;
+
+CURSOR Get_Areas___ (master_ IN Trn_Country_Virtual_Key) IS
+   SELECT * FROM ENTERPRISE_HANDLING_S4_TRN_AREA_VIRTUAL_VRT WHERE parent_objkey = master_.objkey;
+
+
+@Final
+@UncheckedAccess
+FUNCTION CRUD_Default(attr_ IN VARCHAR2 DEFAULT NULL, trn_country_virtual## IN VARCHAR2) RETURN Entity_Small_Drr PIPELINED
+IS
+   PRAGMA AUTONOMOUS_TRANSACTION;
+   ret_ Entity_Small_Dec;
+   rec_ Trn_Country_Virtual_Rec;
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_S4_SVC', 'CRUD_Default');
+   Add_To_Rec_From_Attr___(attr_, rec_);
+   CRUD_Default___(rec_);
+   Client_SYS.Clear_Attr(ret_.attr);
+   Add_To_Attr_From_Rec___(rec_, ret_.attr);
+   @ApproveTransactionStatement(2016-01-01,generated)
+   COMMIT;
+   PIPE ROW (ret_);
+END CRUD_Default;
+
+
+PROCEDURE CRUD_Default___ (
+   rec_  IN OUT Trn_Country_Virtual_Rec )
+IS
+BEGIN
+    NULL;
+END CRUD_Default___;
+
+
+@Final
+@ProjectionCheckedAccess
+FUNCTION CRUD_Create(attr_ IN VARCHAR2, action_ IN VARCHAR2, trn_country_virtual## IN VARCHAR2) RETURN Entity_Dec
+IS
+   ret_ Entity_Dec;
+   rec_ Trn_Country_Virtual_Rec;
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_S4_SVC', 'CRUD_Create');
+   Add_To_Rec_From_Attr___(attr_, rec_);
+   rec_.objkey := sys_guid();
+   rec_.obj_created_by := Fnd_Session_API.Get_Fnd_User();
+   CRUD_Create___(rec_);
+   ret_.etag := rec_.objkey;
+   ret_.info := Client_Sys.Get_All_Info;
+   Client_SYS.Clear_Attr(ret_.attr);
+   Client_SYS.Add_To_Attr('OBJKEY', rec_.objkey, ret_.attr);
+   return ret_;
+END CRUD_Create;
+
+
+PROCEDURE CRUD_Create___(
+   rec_ IN Trn_Country_Virtual_Rec )
+IS
+   tab_ ENTERPRISE_HANDLING_S4_TRN_COUNTRY_VIRTUAL_VRT%ROWTYPE;
+   obj_created_by_ VARCHAR2(100);
+BEGIN
+   IF rec_.obj_created_by IS NULL THEN
+     obj_created_by_ := Fnd_Session_API.Get_Fnd_User();
+   ELSE
+     obj_created_by_ := rec_.obj_created_by;
+   END IF;
+   tab_.objkey                         := rec_.objkey;
+   tab_.parent_objkey                  := rec_.parent_objkey;
+   tab_.objmodified                    := rec_.objmodified;
+   tab_.obj_created_by                 := obj_created_by_;
+   tab_.country_id                     := rec_.country_id;
+   tab_.country                        := rec_.country;
+   INSERT INTO ENTERPRISE_HANDLING_S4_TRN_COUNTRY_VIRTUAL_VRT VALUES tab_;
+END CRUD_Create___;
+
+
+@Final
+@ProjectionCheckedAccess
+FUNCTION CRUD_Update(etag_ IN VARCHAR2, objkey_ IN VARCHAR2, attr_ IN VARCHAR2, action$_ IN VARCHAR2, trn_country_virtual## IN VARCHAR2) RETURN Entity_Dec
+IS
+   ret_ Entity_Dec;
+   old_ Trn_Country_Virtual_Rec;
+   new_ Trn_Country_Virtual_Rec;
+   tab_ ENTERPRISE_HANDLING_S4_TRN_COUNTRY_VIRTUAL_VRT%ROWTYPE;
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_S4_SVC', 'CRUD_Update');
+   ret_.etag := etag_;
+   SELECT * INTO tab_ FROM ENTERPRISE_HANDLING_S4_TRN_COUNTRY_VIRTUAL_VRT WHERE objkey = objkey_;
+   old_.objkey                         := tab_.objkey;
+   old_.parent_objkey                  := tab_.parent_objkey;
+   old_.objmodified                    := tab_.objmodified;
+   old_.obj_created_by                 := tab_.obj_created_by;
+   old_.country_id                     := tab_.country_id;
+   old_.country                        := tab_.country;
+   new_ := old_;
+   Add_To_Rec_From_Attr___(attr_, new_);
+   CRUD_Update___(old_, new_);
+   ret_.info := Client_Sys.Get_All_Info;
+   Client_SYS.Clear_Attr(ret_.attr);
+   Add_To_Attr_From_Rec___(new_, ret_.attr);
+   return ret_;
+END CRUD_Update;
+
+
+PROCEDURE CRUD_Update___(
+   old_ IN Trn_Country_Virtual_Rec,
+   new_ IN Trn_Country_Virtual_Rec )
+IS
+   tab_ ENTERPRISE_HANDLING_S4_TRN_COUNTRY_VIRTUAL_VRT%ROWTYPE;
+   obj_created_by_ VARCHAR2(100);
+BEGIN
+   IF new_.obj_created_by IS NULL THEN
+     obj_created_by_ := Fnd_Session_API.Get_Fnd_User();
+   ELSE
+     obj_created_by_ := new_.obj_created_by;
+   END IF;
+   tab_.objkey                         := new_.objkey;
+   tab_.parent_objkey                  := new_.parent_objkey;
+   tab_.objmodified                    := sysdate;
+   tab_.obj_created_by                 := obj_created_by_;
+   tab_.country_id                     := new_.country_id;
+   tab_.country                        := new_.country;
+   UPDATE ENTERPRISE_HANDLING_S4_TRN_COUNTRY_VIRTUAL_VRT SET ROW = tab_ WHERE objkey = tab_.objkey;
+END CRUD_Update___;
+
+
+
+@Final
+@ProjectionCheckedAccess
+FUNCTION CRUD_Delete(etag_ IN VARCHAR2, objkey_ IN VARCHAR2, action$_ IN VARCHAR2, trn_country_virtual## IN VARCHAR2) RETURN Entity_Dec
+IS
+   rec_ Trn_Country_Virtual_Rec;
+   ret_ Entity_Dec;
+   tab_ ENTERPRISE_HANDLING_S4_TRN_COUNTRY_VIRTUAL_VRT%ROWTYPE;
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_S4_SVC', 'CRUD_Delete');
+   ret_.etag := etag_;
+   SELECT * INTO tab_ FROM ENTERPRISE_HANDLING_S4_TRN_COUNTRY_VIRTUAL_VRT WHERE objkey = objkey_;
+   rec_.objkey                         := tab_.objkey;
+   rec_.parent_objkey                  := tab_.parent_objkey;
+   rec_.objmodified                    := tab_.objmodified;
+   rec_.obj_created_by                 := tab_.obj_created_by;
+   rec_.country_id                     := tab_.country_id;
+   rec_.country                        := tab_.country;
+   CRUD_Delete___(rec_);
+   ret_.info := Client_Sys.Get_All_Info;
+   return ret_;
+END CRUD_Delete;
+
+
+PROCEDURE CRUD_Delete___(
+   rec_ IN Trn_Country_Virtual_Rec )
+IS
+BEGIN
+   DELETE FROM ENTERPRISE_HANDLING_S4_TRN_COUNTRY_VIRTUAL_VRT WHERE objkey = rec_.objkey;
+END CRUD_Delete___;
+
+
+
+@Final
+PROCEDURE Do_Create_Countries_Areas(objkey_ IN VARCHAR2, trn_country_virtual## IN VARCHAR2)
+IS
+   key_ Trn_Country_Virtual_Key;
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_S4_SVC', 'Do_Create_Countries_Areas');
+   key_.objkey := objkey_;
+   Create_Countries_Areas___(key_);
+END Do_Create_Countries_Areas;
+
+
+PROCEDURE Create_Countries_Areas___ (
+   key_ IN Trn_Country_Virtual_Key ) ;
+
+-------------------- PRIVATE METHODS FOR TRN AREA VIRTUAL -------------------
+
+PROCEDURE Add_To_Attr_From_Rec___ (
+   rec_  IN     Trn_Area_Virtual_Rec,
+   attr_ IN OUT VARCHAR2 )
+IS
+BEGIN
+   IF (rec_.objkey IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('OBJKEY', rec_.objkey, attr_);
+   END IF;
+   IF (rec_.objkey IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('OBJKEY', rec_.objkey, attr_);
+   END IF;
+   IF (rec_.parent_objkey IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('PARENT_OBJKEY', rec_.parent_objkey, attr_);
+   END IF;
+   IF (rec_.objmodified IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('OBJMODIFIED', rec_.objmodified, attr_);
+   END IF;
+   IF (rec_.obj_created_by IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('OBJ_CREATED_BY', rec_.obj_created_by, attr_);
+   END IF;
+   IF (rec_.country_id IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('COUNTRY_ID', rec_.country_id, attr_);
+   END IF;
+   IF (rec_.area_id IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('AREA_ID', rec_.area_id, attr_);
+   END IF;
+   IF (rec_.area IS NOT NULL) THEN
+      Client_SYS.Set_Item_Value('AREA', rec_.area, attr_);
+   END IF;
+END Add_To_Attr_From_Rec___;
+
+PROCEDURE Add_To_Rec_From_Attr___ (
+   attr_ IN     VARCHAR2,
+   rec_  IN OUT Trn_Area_Virtual_Rec )
+IS
+BEGIN
+   IF (Client_SYS.Item_Exist('PARENT_OBJKEY', attr_)) THEN
+      rec_.parent_objkey := Client_SYS.Get_Item_Value('PARENT_OBJKEY', attr_);
+   END IF;
+   IF (Client_SYS.Item_Exist('OBJKEY', attr_)) THEN
+      rec_.objkey := Client_SYS.Get_Item_Value('OBJKEY', attr_);
+   END IF;
+   IF (Client_SYS.Item_Exist('PARENT_OBJKEY', attr_)) THEN
+      rec_.parent_objkey := Client_SYS.Get_Item_Value('PARENT_OBJKEY', attr_);
+   END IF;
+   IF (Client_SYS.Item_Exist('OBJMODIFIED', attr_)) THEN
+      rec_.objmodified := Client_SYS.Get_Item_Value_To_Date('OBJMODIFIED', attr_, lu_name_);
+   END IF;
+   IF (Client_SYS.Item_Exist('OBJ_CREATED_BY', attr_)) THEN
+      rec_.obj_created_by := Client_SYS.Get_Item_Value('OBJ_CREATED_BY', attr_);
+   END IF;
+   IF (Client_SYS.Item_Exist('COUNTRY_ID', attr_)) THEN
+      rec_.country_id := Client_SYS.Get_Item_Value('COUNTRY_ID', attr_);
+   END IF;
+   IF (Client_SYS.Item_Exist('AREA_ID', attr_)) THEN
+      rec_.area_id := Client_SYS.Get_Item_Value('AREA_ID', attr_);
+   END IF;
+   IF (Client_SYS.Item_Exist('AREA', attr_)) THEN
+      rec_.area := Client_SYS.Get_Item_Value('AREA', attr_);
+   END IF;
+END Add_To_Rec_From_Attr___;
+
+@Final
+FUNCTION Get_Record___ (
+   key_  IN Trn_Area_Virtual_Key ) RETURN Trn_Area_Virtual_Rec
+IS
+   rec_ Trn_Area_Virtual_Rec;
+   tab_ ENTERPRISE_HANDLING_S4_TRN_AREA_VIRTUAL_VRT%ROWTYPE;
+BEGIN
+   SELECT * INTO tab_ FROM ENTERPRISE_HANDLING_S4_TRN_AREA_VIRTUAL_VRT WHERE objkey = key_.objkey;
+   rec_.objkey                         := tab_.objkey;
+   rec_.parent_objkey                  := tab_.parent_objkey;
+   rec_.objmodified                    := tab_.objmodified;
+   rec_.obj_created_by                 := tab_.obj_created_by;
+   rec_.country_id                     := tab_.country_id;
+   rec_.area_id                        := tab_.area_id;
+   rec_.area                           := tab_.area;
+   RETURN rec_;
+END Get_Record___;
+
+
+@Final
+FUNCTION Get_Key___ (
+   rec_  IN Trn_Area_Virtual_Rec ) RETURN Trn_Area_Virtual_Key
+IS
+   key_ Trn_Area_Virtual_Key;
+BEGIN
+   key_.objkey := rec_.objkey;
+   RETURN key_;
+END Get_Key___;
+
+@Final
+@UncheckedAccess
+FUNCTION CRUD_Default(attr_ IN VARCHAR2 DEFAULT NULL, trn_area_virtual## IN VARCHAR2) RETURN Entity_Small_Drr PIPELINED
+IS
+   PRAGMA AUTONOMOUS_TRANSACTION;
+   ret_ Entity_Small_Dec;
+   rec_ Trn_Area_Virtual_Rec;
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_S4_SVC', 'CRUD_Default');
+   Add_To_Rec_From_Attr___(attr_, rec_);
+   CRUD_Default___(rec_);
+   Client_SYS.Clear_Attr(ret_.attr);
+   Add_To_Attr_From_Rec___(rec_, ret_.attr);
+   @ApproveTransactionStatement(2016-01-01,generated)
+   COMMIT;
+   PIPE ROW (ret_);
+END CRUD_Default;
+
+
+PROCEDURE CRUD_Default___ (
+   rec_  IN OUT Trn_Area_Virtual_Rec )
+IS
+BEGIN
+    NULL;
+END CRUD_Default___;
+
+
+@Final
+@ProjectionCheckedAccess
+FUNCTION CRUD_Create(attr_ IN VARCHAR2, action_ IN VARCHAR2, trn_area_virtual## IN VARCHAR2) RETURN Entity_Dec
+IS
+   ret_ Entity_Dec;
+   rec_ Trn_Area_Virtual_Rec;
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_S4_SVC', 'CRUD_Create');
+   Add_To_Rec_From_Attr___(attr_, rec_);
+   rec_.objkey := sys_guid();
+   rec_.obj_created_by := Fnd_Session_API.Get_Fnd_User();
+   CRUD_Create___(rec_);
+   ret_.etag := rec_.objkey;
+   ret_.info := Client_Sys.Get_All_Info;
+   Client_SYS.Clear_Attr(ret_.attr);
+   Client_SYS.Add_To_Attr('OBJKEY', rec_.objkey, ret_.attr);
+   return ret_;
+END CRUD_Create;
+
+
+PROCEDURE CRUD_Create___(
+   rec_ IN Trn_Area_Virtual_Rec )
+IS
+   tab_ ENTERPRISE_HANDLING_S4_TRN_AREA_VIRTUAL_VRT%ROWTYPE;
+   obj_created_by_ VARCHAR2(100);
+BEGIN
+   IF rec_.obj_created_by IS NULL THEN
+     obj_created_by_ := Fnd_Session_API.Get_Fnd_User();
+   ELSE
+     obj_created_by_ := rec_.obj_created_by;
+   END IF;
+   tab_.objkey                         := rec_.objkey;
+   tab_.parent_objkey                  := rec_.parent_objkey;
+   tab_.objmodified                    := rec_.objmodified;
+   tab_.obj_created_by                 := obj_created_by_;
+   tab_.country_id                     := rec_.country_id;
+   tab_.area_id                        := rec_.area_id;
+   tab_.area                           := rec_.area;
+   INSERT INTO ENTERPRISE_HANDLING_S4_TRN_AREA_VIRTUAL_VRT VALUES tab_;
+END CRUD_Create___;
+
+
+@Final
+@ProjectionCheckedAccess
+FUNCTION CRUD_Update(etag_ IN VARCHAR2, objkey_ IN VARCHAR2, attr_ IN VARCHAR2, action$_ IN VARCHAR2, trn_area_virtual## IN VARCHAR2) RETURN Entity_Dec
+IS
+   ret_ Entity_Dec;
+   old_ Trn_Area_Virtual_Rec;
+   new_ Trn_Area_Virtual_Rec;
+   tab_ ENTERPRISE_HANDLING_S4_TRN_AREA_VIRTUAL_VRT%ROWTYPE;
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_S4_SVC', 'CRUD_Update');
+   ret_.etag := etag_;
+   SELECT * INTO tab_ FROM ENTERPRISE_HANDLING_S4_TRN_AREA_VIRTUAL_VRT WHERE objkey = objkey_;
+   old_.objkey                         := tab_.objkey;
+   old_.parent_objkey                  := tab_.parent_objkey;
+   old_.objmodified                    := tab_.objmodified;
+   old_.obj_created_by                 := tab_.obj_created_by;
+   old_.country_id                     := tab_.country_id;
+   old_.area_id                        := tab_.area_id;
+   old_.area                           := tab_.area;
+   new_ := old_;
+   Add_To_Rec_From_Attr___(attr_, new_);
+   CRUD_Update___(old_, new_);
+   ret_.info := Client_Sys.Get_All_Info;
+   Client_SYS.Clear_Attr(ret_.attr);
+   Add_To_Attr_From_Rec___(new_, ret_.attr);
+   return ret_;
+END CRUD_Update;
+
+
+PROCEDURE CRUD_Update___(
+   old_ IN Trn_Area_Virtual_Rec,
+   new_ IN Trn_Area_Virtual_Rec )
+IS
+   tab_ ENTERPRISE_HANDLING_S4_TRN_AREA_VIRTUAL_VRT%ROWTYPE;
+   obj_created_by_ VARCHAR2(100);
+BEGIN
+   IF new_.obj_created_by IS NULL THEN
+     obj_created_by_ := Fnd_Session_API.Get_Fnd_User();
+   ELSE
+     obj_created_by_ := new_.obj_created_by;
+   END IF;
+   tab_.objkey                         := new_.objkey;
+   tab_.parent_objkey                  := new_.parent_objkey;
+   tab_.objmodified                    := sysdate;
+   tab_.obj_created_by                 := obj_created_by_;
+   tab_.country_id                     := new_.country_id;
+   tab_.area_id                        := new_.area_id;
+   tab_.area                           := new_.area;
+   UPDATE ENTERPRISE_HANDLING_S4_TRN_AREA_VIRTUAL_VRT SET ROW = tab_ WHERE objkey = tab_.objkey;
+END CRUD_Update___;
+
+
+
+@Final
+@ProjectionCheckedAccess
+FUNCTION CRUD_Delete(etag_ IN VARCHAR2, objkey_ IN VARCHAR2, action$_ IN VARCHAR2, trn_area_virtual## IN VARCHAR2) RETURN Entity_Dec
+IS
+   rec_ Trn_Area_Virtual_Rec;
+   ret_ Entity_Dec;
+   tab_ ENTERPRISE_HANDLING_S4_TRN_AREA_VIRTUAL_VRT%ROWTYPE;
+BEGIN
+   Log_SYS.Init_Method('Enterprise_Handling_S4_SVC', 'CRUD_Delete');
+   ret_.etag := etag_;
+   SELECT * INTO tab_ FROM ENTERPRISE_HANDLING_S4_TRN_AREA_VIRTUAL_VRT WHERE objkey = objkey_;
+   rec_.objkey                         := tab_.objkey;
+   rec_.parent_objkey                  := tab_.parent_objkey;
+   rec_.objmodified                    := tab_.objmodified;
+   rec_.obj_created_by                 := tab_.obj_created_by;
+   rec_.country_id                     := tab_.country_id;
+   rec_.area_id                        := tab_.area_id;
+   rec_.area                           := tab_.area;
+   CRUD_Delete___(rec_);
+   ret_.info := Client_Sys.Get_All_Info;
+   return ret_;
+END CRUD_Delete;
+
+
+PROCEDURE CRUD_Delete___(
+   rec_ IN Trn_Area_Virtual_Rec )
+IS
+BEGIN
+   DELETE FROM ENTERPRISE_HANDLING_S4_TRN_AREA_VIRTUAL_VRT WHERE objkey = rec_.objkey;
+END CRUD_Delete___;
+
+
+
+
+-------------------- COMPLEX STRUCTURE METHODS ------------------------------------

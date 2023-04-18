@@ -1,0 +1,85 @@
+-----------------------------------------------------------------------------
+--
+--  Logical unit: TrnCustomerOrderItem
+--  Component:    TRNORD
+--
+--  Template:     3.0
+--  Built by:     IFS Developer Studio (unit-test)
+--
+--  NOTE! Do not edit!! This file is completely generated and will be
+--        overwritten next time the corresponding model is saved.
+-----------------------------------------------------------------------------
+
+
+layer Base;
+
+-------------------- COMMON COLUMN DEFINITIONS ------------------------------
+
+COLUMN Company_Id IS
+   Flags      = 'PMI--'
+   Datatype   = 'STRING(20)'
+   Prompt     = 'Company ID';
+COLUMN Branch_Id IS
+   Flags      = 'PMI--'
+   Datatype   = 'STRING(20)'
+   Prompt     = 'Branch ID';
+COLUMN Order_Id IS
+   Flags      = 'PMI--'
+   Datatype   = 'NUMBER'
+   Prompt     = 'Order ID'
+   Ref        = 'TrnCustomerOrder(company_id,branch_id)';
+COLUMN Row_No IS
+   Flags      = 'KMI-L'
+   Datatype   = 'NUMBER'
+   Prompt     = 'Row No';
+COLUMN Description IS
+   Flags      = 'A-IU-'
+   Datatype   = 'STRING(1000)'
+   Prompt     = 'Description';
+COLUMN Price IS
+   Flags      = 'AMIU-'
+   Datatype   = 'NUMBER'
+   Prompt     = 'Price';
+COLUMN Quantity IS
+   Flags      = 'AMIU-'
+   Datatype   = 'NUMBER'
+   Prompt     = 'Quantity';
+COLUMN Amount IS
+   Flags      = 'A----'
+   Datatype   = 'NUMBER'
+   Prompt     = 'Amount';
+COLUMN Product_Id IS
+   Flags      = 'AMIU-'
+   Datatype   = 'NUMBER'
+   Prompt     = 'Product ID'
+   Ref        = 'TrnProduct(company_id)';
+COLUMN State IS
+   Flags      = 'A---L'
+   Datatype   = 'STRING(20)'
+   Prompt     = 'State';
+
+-------------------- PUBLIC VIEW DEFINITIONS --------------------------------
+
+
+-------------------- PRIVATE VIEW DEFINITIONS -------------------------------
+
+VIEW Trn_Customer_Order_Item IS
+   Prompt     = 'Trn Customer Order Item'
+   Table      = 'TRN_CUSTOMER_ORDER_ITEM_TAB'
+SELECT
+       company_id                     company_id,
+       branch_id                      branch_id,
+       order_id                       order_id,
+       row_no                         row_no,
+       description                    description,
+       price                          price,
+       quantity                       quantity,
+       amount                         amount,
+       product_id                     product_id,
+       rowstate                       objstate,
+       Trn_Customer_Order_Item_API.Finite_State_Events__(rowstate)                     objevents,
+       Trn_Customer_Order_Item_API.Finite_State_Decode__(rowstate)                         state,
+       rowkey                         objkey,
+       to_char(rowversion,'YYYYMMDDHH24MISS') objversion,
+       rowid                          objid
+FROM   trn_customer_order_item_tab;

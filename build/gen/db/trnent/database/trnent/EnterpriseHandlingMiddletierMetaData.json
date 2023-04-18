@@ -1,0 +1,465 @@
+{
+    "projection": {
+        "Name": "EnterpriseHandling",
+        "Metadata": {
+            "Version": "[#[generate:version]#]",
+            "Description": "Put some useful description here ...",
+            "Category": [
+                "Users"
+            ]
+        },
+        "Container": {
+            "EntitySets": [
+                {
+                    "Name": "TrnCountries",
+                    "EntityType": "TrnCountry"
+                }[#[jsoncallback:Custom_Object_Proxy_Sys.Server_Entityset_Metadata:{
+    "Projection": "EnterpriseHandling",
+    "Lu": [
+        "TrnCountry"
+    ]
+}]#]
+            ],
+            "Singletons": [
+            ],
+            "Actions": [[#[jsoncallback:Custom_Object_Proxy_Sys.Server_Action_Metadata:{"Projection":"EnterpriseHandling"}]#]
+            ],
+            "Functions": [
+            ]
+        },
+        "Enumerations": [[#[jsoncallback:Custom_Object_Proxy_SYS.Server_Enumeration_Metadata:{
+    "Projection": "EnterpriseHandling",
+    "Lu": [
+        "TrnCountry"
+    ]
+}]#]
+        ],
+        "Structures": [
+            {
+                "Name": "TrnCountryCopyValues",
+                "PLSQLRecordName": "ENTERPRISE_HANDLING_SVC.COPY_VALUES_REC",
+                "Attributes": [
+                    {
+                        "Name": "ModifiedSource",
+                        "DataType": "Entity",
+                        "SubType": "TrnCountry",
+                        "Collection": false,
+                        "Nullable": true,
+                        "AttrName": "MODIFIED_SOURCE",
+                        "Execute": {
+                            "SQL": {
+                                "ImplementationType": "VARCHAR2"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "Name": "StreamInfoRec",
+                "PLSQLRecordName": "ENTERPRISE_HANDLING_SVC.STREAM_INFO_REC",
+                "Attributes": [
+                    {
+                        "Name": "FileName",
+                        "DataType": "Text"
+                    },
+                    {
+                        "Name": "MimeType",
+                        "DataType": "Text"
+                    }
+                ]
+            },
+            {
+                "Name": "EntityDec",
+                "PLSQLRecordName": "ENTERPRISE_HANDLING_SVC.ENTITY_DEC",
+                "Attributes": [
+                    {
+                        "Name": "ETag",
+                        "DataType": "Text"
+                    },
+                    {
+                        "Name": "Info",
+                        "DataType": "Text"
+                    },
+                    {
+                        "Name": "Attr",
+                        "DataType": "Text"
+                    }
+                ]
+            }[#[jsoncallback:Custom_Object_Proxy_Sys.Server_Structure_Metadata:{
+    "Projection": "EnterpriseHandling",
+    "Lu": [
+        "TrnCountry"
+    ]
+}]#]
+        ],
+        "Entities": [
+            {
+                "Name": "TrnCountry",
+                "SupportWarnings": false,
+                "Execute": {
+                    "SQL": {
+                        "From": "[#[callback:Custom_Object_Proxy_SYS.Server_View_Metadata:{"Projection":"EnterpriseHandling","Lu":"TrnCountry","View":"TRN_COUNTRY"}]#]"
+                    }
+                },
+                "Keys": [
+                    "CountryId"
+                ],
+                "KeysWhere": "(country_id = :CountryId)",
+                "Attributes": [
+                    {
+                        "Name": "ETag",
+                        "DataType": "ETag",
+                        "Collection": false,
+                        "Size": 128,
+                        "Nullable": true,
+                        "Execute": {
+                            "SQL": {
+                                "Select": "'W/\"'||objid||':'||objversion||'\"'",
+                                "ImplementationType": "VARCHAR2",
+                                "Alias": "etag"
+                            }
+                        }
+                    },
+                    {
+                        "Name": "luname",
+                        "DataType": "Text",
+                        "Collection": false,
+                        "Size": 80,
+                        "Nullable": true,
+                        "Execute": {
+                            "SQL": {
+                                "Select": "'TrnCountry'",
+                                "ImplementationType": "VARCHAR2",
+                                "Alias": "luname"
+                            }
+                        }
+                    },
+                    {
+                        "Name": "keyref",
+                        "DataType": "Text",
+                        "Collection": false,
+                        "Size": 4000,
+                        "Nullable": true,
+                        "Execute": {
+                            "SQL": {
+                                "Select": "'COUNTRY_ID='||country_id||'^'",
+                                "ImplementationType": "VARCHAR2",
+                                "Alias": "keyref"
+                            }
+                        }
+                    },
+                    {
+                        "Name": "Objgrants",
+                        "DataType": "Text",
+                        "Collection": false,
+                        "Size": 2000,
+                        "Nullable": true,
+                        "Insertable": false,
+                        "Updatable": false,
+                        "AttrName": "OBJGRANTS",
+                        "Keygeneration": "Server",
+                        "Execute": {
+                            "SQL": {
+                                "Select": "NULL",
+                                "ImplementationType": "VARCHAR2",
+                                "Alias": "objgrants"
+                            }
+                        }
+                    },
+                    {
+                        "Name": "CountryId",
+                        "DataType": "Text",
+                        "Collection": false,
+                        "Size": 10,
+                        "Nullable": false,
+                        "Updatable": false,
+                        "AttrName": "COUNTRY_ID",
+                        "Keygeneration": "User",
+                        "Execute": {
+                            "SQL": {
+                                "Select": "country_id",
+                                "ImplementationType": "VARCHAR2",
+                                "Alias": "country_id"
+                            }
+                        }
+                    },
+                    {
+                        "Name": "Country",
+                        "DataType": "Text",
+                        "Collection": false,
+                        "Size": 1000,
+                        "Nullable": false,
+                        "Updatable": true,
+                        "AttrName": "COUNTRY",
+                        "Keygeneration": "User",
+                        "Execute": {
+                            "SQL": {
+                                "Select": "country",
+                                "ImplementationType": "VARCHAR2",
+                                "Alias": "country"
+                            }
+                        }
+                    }[#[jsoncallback:Custom_Object_Proxy_SYS.Server_Attribute_Metadata:{"Projection":"EnterpriseHandling","Lu":"TrnCountry","Type":"Entity","Name":"TrnCountry","View":"TRN_COUNTRY"}]#]
+                ],
+                "Computed": [
+                ],
+                "Annotations": [
+                    {
+                        "Name": "luname",
+                        "DataType": "Text",
+                        "Collection": false,
+                        "Size": 80,
+                        "Nullable": true,
+                        "Execute": {
+                            "SQL": {
+                                "Select": "'TrnCountry'",
+                                "ImplementationType": "VARCHAR2",
+                                "Alias": "luname"
+                            }
+                        }
+                    },
+                    {
+                        "Name": "keyref",
+                        "DataType": "Text",
+                        "Collection": false,
+                        "Size": 4000,
+                        "Nullable": true,
+                        "Execute": {
+                            "SQL": {
+                                "Select": "'COUNTRY_ID='||country_id||'^'",
+                                "ImplementationType": "VARCHAR2",
+                                "Alias": "keyref"
+                            }
+                        }
+                    }
+                ],
+                "Navigation": [[#[jsoncallback:Custom_Object_Proxy_Sys.Server_Entity_Nav_Metadata:{"Projection":"EnterpriseHandling","Entity":"TrnCountry","Lu":"TrnCountry","View":"TRN_COUNTRY"}]#]
+                ],
+                "CRUD": [
+                    {
+                        "Name": "Default",
+                        "DataType": "Entity",
+                        "SubType": "TrnCountry",
+                        "Collection": false,
+                        "CollectionBound": true,
+                        "Parameters": [
+                        ],
+                        "Execute": {
+                            "SQL": {
+                                "From": "TABLE(Enterprise_Handling_SVC.CRUD_Default(:Attr, trn_country## => ''))",
+                                "Bind": [
+                                    {
+                                        "Kind": "ClientSYS.AttributeString",
+                                        "Name": "Attr",
+                                        "ImplementationType": "VARCHAR2"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "Name": "DefaultCopy",
+                        "DataType": "Entity",
+                        "SubType": "TrnCountry",
+                        "Collection": false,
+                        "CollectionBound": true,
+                        "Parameters": [
+                            {
+                                "Name": "CopyValues",
+                                "DataType": "Structure",
+                                "SubType": "TrnCountryCopyValues",
+                                "Collection": false,
+                                "Nullable": true
+                            }
+                        ],
+                        "Execute": {
+                            "PL-SQL": {
+                                "Code": [
+                                    "BEGIN",
+                                    " :Return_$ := Enterprise_Handling_SVC.CRUD_Default_Copy(:CopyValues, trn_country## => '');",
+                                    "END;"
+                                ],
+                                "Bind": [
+                                    {
+                                        "Kind": "Parameter",
+                                        "Name": "CopyValues",
+                                        "ImplementationType": "STRUCTURE",
+                                        "SubType": "ENTERPRISE_HANDLING_SVC.COPY_VALUES_REC"
+                                    },
+                                    {
+                                        "Kind": "EntityDec$",
+                                        "Name": "Return_$",
+                                        "ImplementationType": "STRUCTURE",
+                                        "SubType": "ENTERPRISE_HANDLING_SVC.ENTITY_DEC",
+                                        "Direction": "OUT"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "Name": "Create",
+                        "DataType": "Structure",
+                        "SubType": "EntityDec",
+                        "Collection": false,
+                        "Parameters": [
+                        ],
+                        "Execute": {
+                            "PL-SQL": {
+                                "Code": [
+                                    "BEGIN",
+                                    "   :Return_$ := Enterprise_Handling_SVC.CRUD_Create(:Attr, :Action$, trn_country## => '');",
+                                    "END;"
+                                ],
+                                "Bind": [
+                                    {
+                                        "Kind": "ClientSYS.AttributeString",
+                                        "Name": "Attr",
+                                        "ImplementationType": "VARCHAR2"
+                                    },
+                                    {
+                                        "Kind": "Action",
+                                        "Name": "Action$",
+                                        "ImplementationType": "VARCHAR2"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "Name": "Update",
+                        "DataType": "Structure",
+                        "SubType": "EntityDec",
+                        "Collection": false,
+                        "Parameters": [
+                        ],
+                        "Execute": {
+                            "PL-SQL": {
+                                "Code": [
+                                    "BEGIN",
+                                    "   :Return_$ := Enterprise_Handling_SVC.CRUD_Update(:ETag, :CountryId, :Attr, :Action$, trn_country## => '');",
+                                    "END;"
+                                ],
+                                "Bind": [
+                                    {
+                                        "Kind": "ETag",
+                                        "Name": "ETag",
+                                        "ImplementationType": "VARCHAR2"
+                                    },
+                                    {
+                                        "Kind": "Attribute",
+                                        "Name": "CountryId",
+                                        "ImplementationType": "VARCHAR2"
+                                    },
+                                    {
+                                        "Kind": "ClientSYS.AttributeString",
+                                        "Name": "Attr",
+                                        "ImplementationType": "VARCHAR2"
+                                    },
+                                    {
+                                        "Kind": "Action",
+                                        "Name": "Action$",
+                                        "ImplementationType": "VARCHAR2"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "Name": "Delete",
+                        "DataType": "Structure",
+                        "SubType": "EntityDec",
+                        "Collection": false,
+                        "Parameters": [
+                        ],
+                        "Execute": {
+                            "PL-SQL": {
+                                "Code": [
+                                    "BEGIN",
+                                    "   :Return_$ := Enterprise_Handling_SVC.CRUD_Delete(:ETag, :CountryId, :Action$, trn_country## => '');",
+                                    "END;"
+                                ],
+                                "Bind": [
+                                    {
+                                        "Kind": "ETag",
+                                        "Name": "ETag",
+                                        "ImplementationType": "VARCHAR2"
+                                    },
+                                    {
+                                        "Kind": "Attribute",
+                                        "Name": "CountryId",
+                                        "ImplementationType": "VARCHAR2"
+                                    },
+                                    {
+                                        "Kind": "Action",
+                                        "Name": "Action$",
+                                        "ImplementationType": "VARCHAR2"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "Actions": [
+                ],
+                "Functions": [
+                    {
+                        "Name": "DefaultCopy",
+                        "DataType": "Entity",
+                        "SubType": "TrnCountry",
+                        "Collection": false,
+                        "CrudOperation": true,
+                        "Parameters": [
+                            {
+                                "Name": "CopyValues",
+                                "DataType": "Structure",
+                                "SubType": "TrnCountryCopyValues",
+                                "Collection": false,
+                                "Nullable": true
+                            }
+                        ],
+                        "Execute": {
+                            "PL-SQL": {
+                                "Code": [
+                                    "BEGIN",
+                                    " :Return_$ := Enterprise_Handling_SVC.CRUD_Default_Copy(:ETag, :CountryId, :CopyValues, trn_country## => '');",
+                                    "END;"
+                                ],
+                                "Bind": [
+                                    {
+                                        "Kind": "ETag",
+                                        "Name": "ETag",
+                                        "ImplementationType": "VARCHAR2"
+                                    },
+                                    {
+                                        "Kind": "Attribute",
+                                        "Name": "CountryId",
+                                        "ImplementationType": "VARCHAR2"
+                                    },
+                                    {
+                                        "Kind": "Parameter",
+                                        "Name": "CopyValues",
+                                        "ImplementationType": "STRUCTURE",
+                                        "SubType": "ENTERPRISE_HANDLING_SVC.COPY_VALUES_REC"
+                                    },
+                                    {
+                                        "Kind": "EntityDec$",
+                                        "Name": "Return_$",
+                                        "ImplementationType": "STRUCTURE",
+                                        "SubType": "ENTERPRISE_HANDLING_SVC.ENTITY_DEC",
+                                        "Direction": "OUT"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }[#[jsoncallback:Custom_Object_Proxy_Sys.Server_Entity_Type_Metadata:{
+    "Projection": "EnterpriseHandling",
+    "Lu": [
+        "TrnCountry"
+    ]
+}]#]
+        ]
+    }
+}

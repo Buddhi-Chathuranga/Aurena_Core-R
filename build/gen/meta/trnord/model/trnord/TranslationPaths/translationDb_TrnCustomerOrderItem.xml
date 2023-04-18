@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TranslatableResources type="LU" module="TRNORD" version="1.0" layer="Core" xmlns="types.scan.translation.fnd.ifsworld.com">
+   <TranslatableResource type="Logical Unit" ID="TrnCustomerOrderItem" name="TrnCustomerOrderItem">
+      <Text><![CDATA[Trn Customer Order Item]]></Text>
+      <Resource subtype="View" ID="TrnCustomerOrderItem.TRN_CUSTOMER_ORDER_ITEM" control="TRN_CUSTOMER_ORDER_ITEM">
+         <Text><![CDATA[Trn Customer Order Item]]></Text>
+         <Resource subtype="Column" ID="TrnCustomerOrderItem.TRN_CUSTOMER_ORDER_ITEM.COMPANY_ID" control="COMPANY_ID">
+            <Text><![CDATA[Company ID]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCustomerOrderItem.TRN_CUSTOMER_ORDER_ITEM.BRANCH_ID" control="BRANCH_ID">
+            <Text><![CDATA[Branch ID]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCustomerOrderItem.TRN_CUSTOMER_ORDER_ITEM.ORDER_ID" control="ORDER_ID">
+            <Text><![CDATA[Order ID]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCustomerOrderItem.TRN_CUSTOMER_ORDER_ITEM.ROW_NO" control="ROW_NO">
+            <Text><![CDATA[Row No]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCustomerOrderItem.TRN_CUSTOMER_ORDER_ITEM.DESCRIPTION" control="DESCRIPTION">
+            <Text><![CDATA[Description]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCustomerOrderItem.TRN_CUSTOMER_ORDER_ITEM.PRICE" control="PRICE">
+            <Text><![CDATA[Price]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCustomerOrderItem.TRN_CUSTOMER_ORDER_ITEM.QUANTITY" control="QUANTITY">
+            <Text><![CDATA[Quantity]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCustomerOrderItem.TRN_CUSTOMER_ORDER_ITEM.AMOUNT" control="AMOUNT">
+            <Text><![CDATA[Amount]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCustomerOrderItem.TRN_CUSTOMER_ORDER_ITEM.PRODUCT_ID" control="PRODUCT_ID">
+            <Text><![CDATA[Product ID]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnCustomerOrderItem.TRN_CUSTOMER_ORDER_ITEM.STATE" control="STATE">
+            <Text><![CDATA[State]]></Text>
+         </Resource>
+      </Resource>
+      <Resource subtype="State" ID="TrnCustomerOrderItem.Unreserved" control="Unreserved">
+         <Position>1</Position>
+         <Text><![CDATA[Unreserved]]></Text>
+      </Resource>
+      <Resource subtype="State" ID="TrnCustomerOrderItem.Reserved" control="Reserved">
+         <Position>2</Position>
+         <Text><![CDATA[Reserved]]></Text>
+      </Resource>
+      <Resource subtype="State" ID="TrnCustomerOrderItem.Invoiced" control="Invoiced">
+         <Position>3</Position>
+         <Text><![CDATA[Invoiced]]></Text>
+      </Resource>
+   </TranslatableResource>
+</TranslatableResources>

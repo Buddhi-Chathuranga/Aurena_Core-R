@@ -1,0 +1,102 @@
+-----------------------------------------------------------------------------
+--
+--  Logical unit: TrnCustomerInvoice
+--  Component:    TRNORD
+--
+--  Template:     3.0
+--  Built by:     IFS Developer Studio (unit-test)
+--
+--  NOTE! Do not edit!! This file is completely generated and will be
+--        overwritten next time the corresponding model is saved.
+-----------------------------------------------------------------------------
+
+
+layer Base;
+
+-------------------- COMMON COLUMN DEFINITIONS ------------------------------
+
+COLUMN Company_Id IS
+   Flags      = 'PMI--'
+   Datatype   = 'STRING(20)'
+   Prompt     = 'Company ID';
+COLUMN Branch_Id IS
+   Flags      = 'PMI--'
+   Datatype   = 'STRING(20)'
+   Prompt     = 'Branch ID'
+   Ref        = 'TrnBranch(company_id)';
+COLUMN Invoice_Id IS
+   Flags      = 'KMI-L'
+   Datatype   = 'NUMBER'
+   Prompt     = 'Invoice ID';
+COLUMN Invoice_Date IS
+   Flags      = 'AMIUL'
+   Datatype   = 'DATE/DATE'
+   Prompt     = 'Invoice Date';
+COLUMN Due_Date IS
+   Flags      = 'A-IU-'
+   Datatype   = 'DATE/DATE'
+   Prompt     = 'Due Date';
+COLUMN Invoice_Amount IS
+   Flags      = 'AMIU-'
+   Datatype   = 'NUMBER'
+   Prompt     = 'Invoice Amount';
+COLUMN Comments IS
+   Flags      = 'A-IU-'
+   Datatype   = 'STRING(2000)'
+   Prompt     = 'Comments';
+COLUMN Unpaid IS
+   Flags      = 'AMIU-'
+   Datatype   = 'NUMBER'
+   Prompt     = 'Unpaid';
+COLUMN Payment_Terms IS
+   Flags      = 'A-IUL'
+   Datatype   = 'STRING(200)'
+   Enumeration= 'TrnInvoicePayTerms'
+   Prompt     = 'Payment Terms';
+COLUMN Payment_Terms_Db IS
+   Flags      = 'A----'
+   Datatype   = 'STRING(20)'
+   Prompt     = 'Payment Terms';
+COLUMN Customer_Id IS
+   Flags      = 'AMIU-'
+   Datatype   = 'NUMBER'
+   Prompt     = 'Customer ID'
+   Ref        = 'TrnCustomer(company_id)';
+COLUMN Order_Id IS
+   Flags      = 'AMIU-'
+   Datatype   = 'NUMBER'
+   Prompt     = 'Order ID'
+   Ref        = 'TrnCustomerOrder(company_id,branch_id)';
+COLUMN State IS
+   Flags      = 'A---L'
+   Datatype   = 'STRING(20)'
+   Prompt     = 'State';
+
+-------------------- PUBLIC VIEW DEFINITIONS --------------------------------
+
+
+-------------------- PRIVATE VIEW DEFINITIONS -------------------------------
+
+VIEW Trn_Customer_Invoice IS
+   Prompt     = 'Trn Customer Invoice'
+   Table      = 'TRN_CUSTOMER_INVOICE_TAB'
+SELECT
+       company_id                     company_id,
+       branch_id                      branch_id,
+       invoice_id                     invoice_id,
+       invoice_date                   invoice_date,
+       due_date                       due_date,
+       invoice_amount                 invoice_amount,
+       comments                       comments,
+       unpaid                         unpaid,
+       Trn_Invoice_Pay_Terms_API.Decode(payment_terms) payment_terms,
+       payment_terms                  payment_terms_db,
+       customer_id                    customer_id,
+       order_id                       order_id,
+       rowstate                       objstate,
+       Trn_Customer_Invoice_API.Finite_State_Events__(rowstate)                     objevents,
+       Trn_Customer_Invoice_API.Finite_State_Decode__(rowstate)                         state,
+       rowkey                         objkey,
+       to_char(rowversion,'YYYYMMDDHH24MISS') objversion,
+       rowid                          objid
+FROM   trn_customer_invoice_tab;

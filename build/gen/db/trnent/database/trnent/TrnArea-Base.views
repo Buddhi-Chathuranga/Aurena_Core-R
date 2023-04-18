@@ -1,0 +1,47 @@
+-----------------------------------------------------------------------------
+--
+--  Logical unit: TrnArea
+--  Component:    TRNENT
+--
+--  Template:     3.0
+--  Built by:     IFS Developer Studio (unit-test)
+--
+--  NOTE! Do not edit!! This file is completely generated and will be
+--        overwritten next time the corresponding model is saved.
+-----------------------------------------------------------------------------
+
+
+layer Base;
+
+-------------------- COMMON COLUMN DEFINITIONS ------------------------------
+
+COLUMN Country_Id IS
+   Flags      = 'PMI-L'
+   Datatype   = 'STRING(10)'
+   Prompt     = 'Country Id'
+   Ref        = 'TrnCountry';
+COLUMN Area_Id IS
+   Flags      = 'KMI-L'
+   Datatype   = 'STRING(10)'
+   Prompt     = 'Area Id';
+COLUMN Area IS
+   Flags      = 'AMIUL'
+   Datatype   = 'STRING(1000)'
+   Prompt     = 'Area';
+
+-------------------- PUBLIC VIEW DEFINITIONS --------------------------------
+
+
+-------------------- PRIVATE VIEW DEFINITIONS -------------------------------
+
+VIEW Trn_Area IS
+   Prompt     = 'Trn Area'
+   Table      = 'TRN_AREA_TAB'
+SELECT
+       country_id                     country_id,
+       area_id                        area_id,
+       area                           area,
+       rowkey                         objkey,
+       to_char(rowversion,'YYYYMMDDHH24MISS') objversion,
+       rowid                          objid
+FROM   trn_area_tab;

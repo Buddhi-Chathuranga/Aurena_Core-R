@@ -1,0 +1,51 @@
+-----------------------------------------------------------------------------
+--
+--  Logical unit: TrnCompany
+--  Component:    TRNENT
+--
+--  Template:     3.0
+--  Built by:     IFS Developer Studio (unit-test)
+--
+--  NOTE! Do not edit!! This file is completely generated and will be
+--        overwritten next time the corresponding model is saved.
+-----------------------------------------------------------------------------
+
+
+layer Base;
+
+-------------------- COMMON COLUMN DEFINITIONS ------------------------------
+
+COLUMN Company_Id IS
+   Flags      = 'KMI-L'
+   Datatype   = 'STRING(20)'
+   Prompt     = 'Company Id';
+COLUMN Name IS
+   Flags      = 'AMIUL'
+   Datatype   = 'STRING(1000)'
+   Prompt     = 'Name';
+COLUMN Comments IS
+   Flags      = 'A-IUL'
+   Datatype   = 'STRING(2000)'
+   Prompt     = 'Comments';
+COLUMN Creation_Date IS
+   Flags      = 'AMIUL'
+   Datatype   = 'DATE/DATE'
+   Prompt     = 'Creation Date';
+
+-------------------- PUBLIC VIEW DEFINITIONS --------------------------------
+
+
+-------------------- PRIVATE VIEW DEFINITIONS -------------------------------
+
+VIEW Trn_Company IS
+   Prompt     = 'Trn Company'
+   Table      = 'TRN_COMPANY_TAB'
+SELECT
+       company_id                     company_id,
+       name                           name,
+       comments                       comments,
+       creation_date                  creation_date,
+       rowkey                         objkey,
+       to_char(rowversion,'YYYYMMDDHH24MISS') objversion,
+       rowid                          objid
+FROM   trn_company_tab;

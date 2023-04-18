@@ -1,0 +1,145 @@
+-----------------------------------------------------------------------------
+--
+--  Logical unit: ManageGeographiesS4
+--  Type:         ClientMeta
+--  Component:    TRNENT
+--
+--  Template:     3.0
+--  Built by:     IFS Developer Studio
+--
+--  NOTE! Do not edit!! This file is completely generated and will be
+--        overwritten next time the corresponding model is saved.
+-----------------------------------------------------------------------------
+
+--Storing resulting json metadata in database splitted by indivudual visual objects
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   client_     VARCHAR2(250) := 'ManageGeographiesS4';
+   projection_ VARCHAR2(250) := 'EnterpriseHandlingS4';
+   header_     Model_Design_SYS.Fnd_Model_Design_Rec;
+   data_       Model_Design_SYS.Fnd_Model_Design_Data_Rec;
+   clob_       CLOB := to_clob(' ');
+   json_       VARCHAR2(32767);
+BEGIN
+   header_ := Model_Design_SYS.Prepare_Design_Data_Load('client', client_, Model_Design_SYS.CLIENT_METADATA,
+      'Client Information for Training Enterprise');
+   Model_Design_SYS.Add_Model_Design_Template(header_,
+      '{"name":"'||client_||'",'
+      ||'"component": "TRNENT",'
+      ||'"version":"[#[generate:version]#]",'
+      ||'"id":"'||Model_Design_SYS.CLIENT_METADATA||'.client:'||client_||'",'
+      ||'"projection":[#[reference:projection:'||projection_||']#],'
+      ||'"layout":{'
+         ||'[#[jsonnamedcontentbydata:]#]'
+         ||''
+      ||'}}');
+   Model_Design_SYS.Add_Model_Design_Data_Ref(header_, 'projection', projection_, Model_Design_SYS.CLIENT_METADATA);
+   json_ := '{"name": "CreateCountryAssistant","label": "[#[translatesys:Wizard Step:ManageGeographiesS4.assistant.CreateCountryAssistant.$this:$this:WEB:Ceate Country Assistant]#]","datasourceProjection": "EnterpriseHandlingS4","datasourceEntitySet": "TrnCountryVirtualSet","entity": "TrnCountryVirtual","steps": [{"label": "[#[translatesys:Wizard Step:ManageGeographiesS4.assistant.CreateCountryAssistant.assistantsteps.assistantstep.-228979787:assistantstep:WEB:Step 01]#]","name": "Step1","content": [{"elementType": "group","isReference": true,"group": "TrnCountryVirtualGroup","id": "TrnCountryVirtualGroup"}]},{"label": "[#[translatesys:Wizard Step:ManageGeographiesS4.assistant.CreateCountryAssistant.assistantsteps.assistantstep.-228979786:assistantstep:WEB:Step 02]#]","name": "Step2","content": [{"elementType": "list","isReference": true,"list": "TrnAreaVirtualList","id": "TrnAreaVirtualList","binding": {"property": "Areas"}}]}],"final": {"label": "[#[translatesys:Wizard Step:ManageGeographiesS4.assistant.CreateCountryAssistant.assistantsteps.assistantfinalstep:assistantfinalstep:WEB:Final Step]#]","content": []},"finishCommand": {"name": "finishCommand","entity": "TrnCountryVirtual","grants": {"or": [{"==": [{"var": "record.Objgrants"},null]},{"method": ["api.contains",["CreateCountriesAreas",{"var": "record.Objgrants"}]]}]},"enabled": true,"vars": {},"execute": [{"call": {"method": "action","args": {"name": "IfsApp.EnterpriseHandlingS4.TrnCountryVirtual.CreateCountriesAreas","projection": "EnterpriseHandlingS4","bound": true,"params": {}}}}]}}';
+   data_ := Model_Design_SYS.Add_Model_Design_Data_Row(header_, 'assistant', 'CreateCountryAssistant', 0, NULL, json_);
+   json_ := '{"name": "TrnCountryGroup","label": "","entity": "TrnCountry","content": [{"elementType": "field","field": {"name": "CountryId","attribute": "CountryId","control": "field","entity": "TrnCountry","label": "[#[translatesys:Data Field:ManageGeographiesS4.group.TrnCountryGroup.groupcontent.field.CountryId:CountryId:WEB:Country Id]#]","translationKey": "ManageGeographiesS4.group.TrnCountryGroup.groupcontent.field.CountryId","datatype": "Text","array": false,"maxlength": 10,"editable": {"==": [{"var": "record.etag"},null]},"required": true}},{"elementType": "field","field": {"name": "Country","attribute": "Country","control": "field","entity": "TrnCountry","label": "[#[translatesys:Data Field:ManageGeographiesS4.group.TrnCountryGroup.groupcontent.field.Country:Country:WEB:Country]#]","translationKey": "ManageGeographiesS4.group.TrnCountryGroup.groupcontent.field.Country","datatype": "Text","array": false,"maxlength": 1000,"editable": true,"required": true}}]}';
+   data_ := Model_Design_SYS.Add_Model_Design_Data_Row(header_, 'group', 'TrnCountryGroup', 1, NULL, json_);
+   json_ := '{"name": "TrnCountryVirtualGroup","label": "","entity": "TrnCountryVirtual","content": [{"elementType": "field","field": {"name": "CountryId","attribute": "CountryId","control": "field","entity": "TrnCountryVirtual","label": "[#[translatesys:Data Field:ManageGeographiesS4.group.TrnCountryVirtualGroup.groupcontent.field.CountryId:CountryId:WEB:Country Id]#]","translationKey": "ManageGeographiesS4.group.TrnCountryVirtualGroup.groupcontent.field.CountryId","datatype": "Text","array": false,"editable": true,"required": false}},{"elementType": "field","field": {"name": "Country","attribute": "Country","control": "field","entity": "TrnCountryVirtual","label": "[#[translatesys:Data Field:ManageGeographiesS4.group.TrnCountryVirtualGroup.groupcontent.field.Country:Country:WEB:Country]#]","translationKey": "ManageGeographiesS4.group.TrnCountryVirtualGroup.groupcontent.field.Country","datatype": "Text","array": false,"editable": true,"required": false}}]}';
+   data_ := Model_Design_SYS.Add_Model_Design_Data_Row(header_, 'group', 'TrnCountryVirtualGroup', 2, NULL, json_);
+   json_ := '{"name": "TrnCountryLovList","label": "","entity": "TrnCountry","content": [{"elementType": "field","field": {"name": "CountryId","attribute": "CountryId","control": "static","entity": "TrnCountry","label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnCountryLovList.listcontent.static.CountryId:CountryId:WEB:Country Id]#]","translationKey": "ManageGeographiesS4.list.TrnCountryLovList.listcontent.static.CountryId","datatype": "Text","array": false,"maxlength": 10,"editable": false,"required": false}},{"elementType": "field","field": {"name": "Country","attribute": "Country","control": "static","entity": "TrnCountry","label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnCountryLovList.listcontent.static.Country:Country:WEB:Country]#]","translationKey": "ManageGeographiesS4.list.TrnCountryLovList.listcontent.static.Country","datatype": "Text","array": false,"maxlength": 1000,"editable": false,"required": false}}]}';
+   data_ := Model_Design_SYS.Add_Model_Design_Data_Row(header_, 'list', 'TrnCountryLovList', 3, NULL, json_);
+   json_ := '{"name": "TrnAreaLovList","label": "","entity": "TrnArea","content": [{"elementType": "field","field": {"name": "CountryId","attribute": "CountryId","control": "static","entity": "TrnArea","label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnAreaLovList.listcontent.static.CountryId:CountryId:WEB:Country Id]#]","translationKey": "ManageGeographiesS4.list.TrnAreaLovList.listcontent.static.CountryId","datatype": "Text","array": false,"maxlength": 10,"editable": false,"required": false}},{"elementType": "field","field": {"name": "AreaId","attribute": "AreaId","control": "static","entity": "TrnArea","label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnAreaLovList.listcontent.static.AreaId:AreaId:WEB:Area Id]#]","translationKey": "ManageGeographiesS4.list.TrnAreaLovList.listcontent.static.AreaId","datatype": "Text","array": false,"maxlength": 10,"editable": false,"required": false}},{"elementType": "field","field": {"name": "Area","attribute": "Area","control": "static","entity": "TrnArea","label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnAreaLovList.listcontent.static.Area:Area:WEB:Area]#]","translationKey": "ManageGeographiesS4.list.TrnAreaLovList.listcontent.static.Area","datatype": "Text","array": false,"maxlength": 1000,"editable": false,"required": false}}]}';
+   data_ := Model_Design_SYS.Add_Model_Design_Data_Row(header_, 'list', 'TrnAreaLovList', 4, NULL, json_);
+   json_ := '{"name": "TrnCompanyLovList","label": "","entity": "TrnCompany","content": [{"elementType": "field","field": {"name": "CompanyId","attribute": "CompanyId","control": "static","entity": "TrnCompany","label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnCompanyLovList.listcontent.static.CompanyId:CompanyId:WEB:Company Id]#]","translationKey": "ManageGeographiesS4.list.TrnCompanyLovList.listcontent.static.CompanyId","datatype": "Text","array": false,"maxlength": 20,"editable": false,"required": false}},{"elementType": "field","field": {"name": "Name","attribute": "Name","control": "static","entity": "TrnCompany","label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnCompanyLovList.listcontent.static.Name:Name:WEB:Name]#]","translationKey": "ManageGeographiesS4.list.TrnCompanyLovList.listcontent.static.Name","datatype": "Text","array": false,"maxlength": 1000,"editable": false,"required": false}},{"elementType": "field","field": {"name": "Comments","attribute": "Comments","control": "static","entity": "TrnCompany","label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnCompanyLovList.listcontent.static.Comments:Comments:WEB:Comments]#]","translationKey": "ManageGeographiesS4.list.TrnCompanyLovList.listcontent.static.Comments","datatype": "Text","array": false,"maxlength": 2000,"editable": false,"required": false}},{"elementType": "field","field": {"name": "CreationDate","attribute": "CreationDate","control": "static","entity": "TrnCompany","label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnCompanyLovList.listcontent.static.CreationDate:CreationDate:WEB:Creation Date]#]","translationKey": "ManageGeographiesS4.list.TrnCompanyLovList.listcontent.static.CreationDate","datatype": "Date","array": false,"editable": false,"required": false}}]}';
+   data_ := Model_Design_SYS.Add_Model_Design_Data_Row(header_, 'list', 'TrnCompanyLovList', 5, NULL, json_);
+   json_ := '{"name": "TrnBranchLovList","label": "","entity": "TrnBranch","content": [{"elementType": "field","field": {"name": "CompanyId","attribute": "CompanyId","control": "static","entity": "TrnBranch","label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnBranchLovList.listcontent.static.CompanyId:CompanyId:WEB:Company Id]#]","translationKey": "ManageGeographiesS4.list.TrnBranchLovList.listcontent.static.CompanyId","datatype": "Text","array": false,"maxlength": 20,"editable": false,"required": false}},{"elementType": "field","field": {"name": "BranchId","attribute": "BranchId","control": "static","entity": "TrnBranch","label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnBranchLovList.listcontent.static.BranchId:BranchId:WEB:Branch Id]#]","translationKey": "ManageGeographiesS4.list.TrnBranchLovList.listcontent.static.BranchId","datatype": "Text","array": false,"maxlength": 20,"editable": false,"required": false}},{"elementType": "field","field": {"name": "Name","attribute": "Name","control": "static","entity": "TrnBranch","label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnBranchLovList.listcontent.static.Name:Name:WEB:Name]#]","translationKey": "ManageGeographiesS4.list.TrnBranchLovList.listcontent.static.Name","datatype": "Text","array": false,"maxlength": 1000,"editable": false,"required": false}}]}';
+   data_ := Model_Design_SYS.Add_Model_Design_Data_Row(header_, 'list', 'TrnBranchLovList', 6, NULL, json_);
+   json_ := '{"name": "TrnAreaVirtualLovList","label": "","entity": "TrnAreaVirtual","content": [{"elementType": "field","field": {"name": "Objkey","attribute": "Objkey","control": "static","label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnAreaVirtualLovList.listcontent.static.Objkey:Objkey:WEB:Objkey]#]","translationKey": "ManageGeographiesS4.list.TrnAreaVirtualLovList.listcontent.static.Objkey","datatype": "Text","array": false,"editable": false,"required": false}}]}';
+   data_ := Model_Design_SYS.Add_Model_Design_Data_Row(header_, 'list', 'TrnAreaVirtualLovList', 7, NULL, json_);
+   json_ := '{"name": "TrnCountryList","label": "[#[translatesys:Table Window:ManageGeographiesS4.list.TrnCountryList.$this:$this:WEB:Countries]#]","entity": "TrnCountry","content": [{"elementType": "field","field": {"name": "CountryId","attribute": "CountryId","control": "field","entity": "TrnCountry","label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnCountryList.listcontent.field.CountryId:CountryId:WEB:Country Id]#]","translationKey": "ManageGeographiesS4.list.TrnCountryList.listcontent.field.CountryId","datatype": "Text","array": false,"maxlength": 10,"editable": {"==": [{"var": "record.etag"},null]},"required": true}},{"elementType": "field","field": {"name": "Country","attribute": "Country","control": "field","entity": "TrnCountry","label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnCountryList.listcontent.field.Country:Country:WEB:Country Name]#]","translationKey": "ManageGeographiesS4.list.TrnCountryList.listcontent.field.Country","datatype": "Text","array": false,"maxlength": 1000,"editable": true,"required": true}}]}';
+   data_ := Model_Design_SYS.Add_Model_Design_Data_Row(header_, 'list', 'TrnCountryList', 8, NULL, json_);
+   json_ := '{"name": "TrnAreaList","selectAttributes": ["parent.Country","parent.CountryId"],"label": "[#[translatesys:Table Window:ManageGeographiesS4.list.TrnAreaList.$this:$this:WEB:Areas-${parent.CountryId}-${parent.Country}]#]","entity": "TrnArea","content": [{"elementType": "field","field": {"name": "AreaId","attribute": "AreaId","control": "field","entity": "TrnArea","label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnAreaList.listcontent.field.AreaId:AreaId:WEB:Area Id]#]","translationKey": "ManageGeographiesS4.list.TrnAreaList.listcontent.field.AreaId","datatype": "Text","array": false,"maxlength": 10,"editable": {"==": [{"var": "record.etag"},null]},"required": true}},{"elementType": "field","field": {"name": "Area","attribute": "Area","control": "field","entity": "TrnArea","label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnAreaList.listcontent.field.Area:Area:WEB:Area]#]","translationKey": "ManageGeographiesS4.list.TrnAreaList.listcontent.field.Area","datatype": "Text","array": false,"maxlength": 1000,"editable": true,"required": true}}]}';
+   data_ := Model_Design_SYS.Add_Model_Design_Data_Row(header_, 'list', 'TrnAreaList', 9, NULL, json_);
+   json_ := '{"name": "TrnAreaVirtualList","label": "[#[translatesys:Table Window:ManageGeographiesS4.list.TrnAreaVirtualList.$this:$this:WEB:Area List]#]","entity": "TrnAreaVirtual","content": [{"elementType": "field","field": {"name": "CountryId","attribute": "CountryId","control": "field","entity": "TrnAreaVirtual","label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnAreaVirtualList.listcontent.field.CountryId:CountryId:WEB:Country Id]#]","translationKey": "ManageGeographiesS4.list.TrnAreaVirtualList.listcontent.field.CountryId","datatype": "Text","array": false,"editable": true,"required": false}},{"elementType": "field","field": {"name": "AreaId","attribute": "AreaId","control": "field","entity": "TrnAreaVirtual","label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnAreaVirtualList.listcontent.field.AreaId:AreaId:WEB:Area Id]#]","translationKey": "ManageGeographiesS4.list.TrnAreaVirtualList.listcontent.field.AreaId","datatype": "Text","array": false,"editable": true,"required": false}},{"elementType": "field","field": {"name": "Area","attribute": "Area","control": "field","entity": "TrnAreaVirtual","label": "[#[translatesys:Data Field:ManageGeographiesS4.list.TrnAreaVirtualList.listcontent.field.Area:Area:WEB:Area]#]","translationKey": "ManageGeographiesS4.list.TrnAreaVirtualList.listcontent.field.Area","datatype": "Text","array": false,"editable": true,"required": false}}]}';
+   data_ := Model_Design_SYS.Add_Model_Design_Data_Row(header_, 'list', 'TrnAreaVirtualList', 10, NULL, json_);
+   json_ := '{"name": "TrnCountryOverview","label": "[#[translatesys:Form Window:ManageGeographiesS4.page.TrnCountryOverview.$this:$this:WEB:Country Overview]#]","datasourceProjection": "EnterpriseHandlingS4","datasourceEntitySet": "TrnCountrySet","entity": "TrnCountry","content": [{"elementType": "list","isReference": true,"list": "TrnCountryList","id": "TrnCountryList"}]}';
+   data_ := Model_Design_SYS.Add_Model_Design_Data_Row(header_, 'page', 'TrnCountryOverview', 11, NULL, json_);
+   json_ := '{"name": "TrnCountryDetails","label": "[#[translatesys:Form Window:ManageGeographiesS4.page.TrnCountryDetails.$this:$this:WEB:Trn Country Details]#]","datasourceProjection": "EnterpriseHandlingS4","datasourceEntitySet": "TrnCountrySet","entity": "TrnCountry","content": [{"elementType": "selector","isReference": true,"selector": "TrnCountryS4selector","id": "TrnCountryS4selector"},{"elementType": "group","isReference": true,"group": "TrnCountryGroup","id": "TrnCountryGroup","binding": {"bindname": "TrnCountryS4selector"}},{"elementType": "list","isReference": true,"list": "TrnAreaList","id": "TrnAreaList","binding": {"bindname": "TrnCountryS4selector","property": "AreaArry"},"lazyload": false}]}';
+   data_ := Model_Design_SYS.Add_Model_Design_Data_Row(header_, 'page', 'TrnCountryDetails', 12, NULL, json_);
+   json_ := '{"name": "TrnAreaDetails","label": "[#[translatesys:Form Window:ManageGeographiesS4.page.TrnAreaDetails.$this:$this:WEB:Trn Area Details]#]","datasourceProjection": "EnterpriseHandlingS4","datasourceEntitySet": "TrnAreaSet","entity": "TrnArea","content": [{"elementType": "list","isReference": true,"list": "TrnAreaList","id": "TrnAreaList","lazyload": false}]}';
+   data_ := Model_Design_SYS.Add_Model_Design_Data_Row(header_, 'page', 'TrnAreaDetails', 13, NULL, json_);
+   json_ := '{"name": "ReferenceTrnAreaSelector","label": "","entity": "TrnArea","content": [{"elementType": "field","field": {"name": "AreaId","attribute": "AreaId","control": "static","entity": "TrnArea","label": "[#[translatesys:Data Field:ManageGeographiesS4.selector.ReferenceTrnAreaSelector.selectorcontent.static.AreaId:AreaId:WEB:Area Id]#]","datatype": "Text","array": false,"maxlength": 10,"editable": false,"required": false}},{"elementType": "field","field": {"name": "Area","attribute": "Area","control": "static","entity": "TrnArea","label": "[#[translatesys:Data Field:ManageGeographiesS4.selector.ReferenceTrnAreaSelector.selectorcontent.static.Area:Area:WEB:Area]#]","datatype": "Text","array": false,"maxlength": 1000,"editable": false,"required": false}}]}';
+   data_ := Model_Design_SYS.Add_Model_Design_Data_Row(header_, 'selector', 'ReferenceTrnAreaSelector', 14, NULL, json_);
+   json_ := '{"name": "ReferenceTrnCountrySelector","label": "","entity": "TrnCountry","content": [{"elementType": "field","field": {"name": "CountryId","attribute": "CountryId","control": "static","entity": "TrnCountry","label": "[#[translatesys:Data Field:ManageGeographiesS4.selector.ReferenceTrnCountrySelector.selectorcontent.static.CountryId:CountryId:WEB:Country Id]#]","datatype": "Text","array": false,"maxlength": 10,"editable": false,"required": false}},{"elementType": "field","field": {"name": "Country","attribute": "Country","control": "static","entity": "TrnCountry","label": "[#[translatesys:Data Field:ManageGeographiesS4.selector.ReferenceTrnCountrySelector.selectorcontent.static.Country:Country:WEB:Country]#]","datatype": "Text","array": false,"maxlength": 1000,"editable": false,"required": false}}]}';
+   data_ := Model_Design_SYS.Add_Model_Design_Data_Row(header_, 'selector', 'ReferenceTrnCountrySelector', 15, NULL, json_);
+   json_ := '{"name": "ReferenceTrnCompanySelector","label": "","entity": "TrnCompany","content": [{"elementType": "field","field": {"name": "CompanyId","attribute": "CompanyId","control": "static","entity": "TrnCompany","label": "[#[translatesys:Data Field:ManageGeographiesS4.selector.ReferenceTrnCompanySelector.selectorcontent.static.CompanyId:CompanyId:WEB:Company Id]#]","datatype": "Text","array": false,"maxlength": 20,"editable": false,"required": false}},{"elementType": "field","field": {"name": "Name","attribute": "Name","control": "static","entity": "TrnCompany","label": "[#[translatesys:Data Field:ManageGeographiesS4.selector.ReferenceTrnCompanySelector.selectorcontent.static.Name:Name:WEB:Name]#]","datatype": "Text","array": false,"maxlength": 1000,"editable": false,"required": false}},{"elementType": "field","field": {"name": "Comments","attribute": "Comments","control": "static","entity": "TrnCompany","label": "[#[translatesys:Data Field:ManageGeographiesS4.selector.ReferenceTrnCompanySelector.selectorcontent.static.Comments:Comments:WEB:Comments]#]","datatype": "Text","array": false,"maxlength": 2000,"editable": false,"required": false}},{"elementType": "field","field": {"name": "CreationDate","attribute": "CreationDate","control": "static","entity": "TrnCompany","label": "[#[translatesys:Data Field:ManageGeographiesS4.selector.ReferenceTrnCompanySelector.selectorcontent.static.CreationDate:CreationDate:WEB:Creation Date]#]","datatype": "Date","array": false,"editable": false,"required": false}}]}';
+   data_ := Model_Design_SYS.Add_Model_Design_Data_Row(header_, 'selector', 'ReferenceTrnCompanySelector', 16, NULL, json_);
+   json_ := '{"name": "TrnCountryS4selector","selectAttributes": ["Country","CountryId"],"label": "${Country}-${CountryId}","entity": "TrnCountry","content": [{"elementType": "field","field": {"name": "CountryId","attribute": "CountryId","control": "static","entity": "TrnCountry","label": "[#[translatesys:Data Field:ManageGeographiesS4.selector.TrnCountryS4selector.selectorcontent.static.CountryId:CountryId:WEB:Country Id]#]","datatype": "Text","array": false,"maxlength": 10,"editable": false,"required": false}},{"elementType": "field","field": {"name": "Country","attribute": "Country","control": "static","entity": "TrnCountry","label": "[#[translatesys:Data Field:ManageGeographiesS4.selector.TrnCountryS4selector.selectorcontent.static.Country:Country:WEB:Country]#]","datatype": "Text","array": false,"maxlength": 1000,"editable": false,"required": false}}]}';
+   data_ := Model_Design_SYS.Add_Model_Design_Data_Row(header_, 'selector', 'TrnCountryS4selector', 17, NULL, json_);
+   json_ := '{"entities": [],"actions": []}';
+   data_ := Model_Design_SYS.Add_Model_Design_Data_Row(header_, 'warning', 'warningsEnabled', 18, NULL, json_);
+   COMMIT;
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+-----------------------------------------------------------------------------
+-------------------- INSERT NAVIGATION ENTRIES ------------------------------
+-----------------------------------------------------------------------------
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   client_     VARCHAR2(250) := 'ManageGeographiesS4';
+   projection_ VARCHAR2(250) := 'EnterpriseHandlingS4';
+BEGIN
+   Navigator_SYS.Clean_Navigation_For_Client(client_);
+   Navigator_SYS.Add_Page_Navigation(client_, 'GeographicDetailsNavEntry', projection_, '[#[translatesys:Menu Item:ManageGeographiesS4.menu.GeographicDetailsNavEntry.$this:$this:WEB:Geographic Details]#]', 'TrnCountryOverview');
+   Navigator_SYS.Add_Page_Navigation(client_, 'CountryOverviewNavEntry', projection_, '[#[translatesys:Menu Item:ManageGeographiesS4.menu.CountryOverviewNavEntry.$this:$this:WEB:Country Overview]#]', 'TrnCountryOverview');
+   Navigator_SYS.Add_Page_Navigation(client_, 'CountryDetailsNavEntry', projection_, '[#[translatesys:Menu Item:ManageGeographiesS4.menu.CountryDetailsNavEntry.$this:$this:WEB:Country Details]#]', 'TrnCountryDetails');
+   Navigator_SYS.Add_Page_Navigation(client_, 'AreaDetailsNavEntry', projection_, '[#[translatesys:Menu Item:ManageGeographiesS4.menu.AreaDetailsNavEntry.$this:$this:WEB:Area Details]#]', 'TrnAreaDetails');
+   Navigator_SYS.Add_Assistant_Navigation(client_, 'CreateCountryAssistanNavEntry', projection_, '[#[translatesys:Menu Item:ManageGeographiesS4.menu.CreateCountryAssistanNavEntry.$this:$this:WEB:Create Country Assistan]#]', 'CreateCountryAssistant');
+
+   Navigator_SYS.Add_Top_Menu_Item(client_, client_, 'GeographicDetailsNavEntry', 1);
+   Navigator_SYS.Add_Menu_Structure_Item(client_, 'TrnentNavigatorRoot', 'GeographicDetailsNavEntry', client_, 'CountryOverviewNavEntry', 0);
+   Navigator_SYS.Add_Menu_Structure_Item(client_, 'TrnentNavigatorRoot', 'GeographicDetailsNavEntry', client_, 'CountryDetailsNavEntry', 1);
+   Navigator_SYS.Add_Menu_Structure_Item(client_, 'TrnentNavigatorRoot', 'GeographicDetailsNavEntry', client_, 'AreaDetailsNavEntry', 2);
+   Navigator_SYS.Add_Menu_Structure_Item(client_, 'TrnentNavigatorRoot', 'GeographicDetailsNavEntry', client_, 'CreateCountryAssistanNavEntry', 3);
+   COMMIT;
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+-----------------------------------------------------------------------------
+-------------------- CALCULATE NEW RUNTIME NAVIGATOR ------------------------
+-----------------------------------------------------------------------------
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+BEGIN
+   Navigator_SYS.Insert_Navigator_Entries();
+   COMMIT;
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+-----------------------------------------------------------------------------
+-------------------- GRANT PERMISSIONS --------------------------------------
+-----------------------------------------------------------------------------
+
+-- [IFS COMPLETE BLOCK BEGINEND]
+DECLARE
+   client_     VARCHAR2(250) := 'ManageGeographiesS4';
+   projection_ VARCHAR2(250) := 'EnterpriseHandlingS4';
+BEGIN
+   Fnd_Projection_Usage_API.Clear_Client_Refs(client_);
+   Fnd_Proj_Action_Usage_API.Clear_Client_Refs(client_);
+   Fnd_Proj_Ent_Action_Usage_API.Clear_Client_Refs(client_);
+
+--Pages--
+   Fnd_Projection_Usage_API.Create_Or_Replace(projection_, client_, 'TrnCountryOverview', 'page', 'Country Overview');
+   Fnd_Projection_Usage_API.Create_Or_Replace(projection_, client_, 'TrnCountryDetails', 'page', 'Trn Country Details');
+   Fnd_Projection_Usage_API.Create_Or_Replace(projection_, client_, 'TrnAreaDetails', 'page', 'Trn Area Details');
+
+--Assistants--
+   Fnd_Projection_Usage_API.Create_Or_Replace(projection_, client_, 'CreateCountryAssistant', 'assistant', 'Ceate Country Assistant');
+
+--Actions--
+
+--Entity Actions--
+   COMMIT;
+END;
+-- [END IFS COMPLETE BLOCK]
+/

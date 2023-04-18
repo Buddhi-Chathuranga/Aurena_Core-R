@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TranslatableResources type="LU" module="TRNORD" version="1.0" layer="Core" xmlns="types.scan.translation.fnd.ifsworld.com">
+   <TranslatableResource type="Logical Unit" ID="TrnExternalCustomer" name="TrnExternalCustomer">
+      <Text><![CDATA[Trn External Customer]]></Text>
+      <Resource subtype="View" ID="TrnExternalCustomer.TRN_EXTERNAL_CUSTOMER" control="TRN_EXTERNAL_CUSTOMER">
+         <Text><![CDATA[Trn External Customer]]></Text>
+         <Resource subtype="Column" ID="TrnExternalCustomer.TRN_EXTERNAL_CUSTOMER.COMPANY_ID" control="COMPANY_ID">
+            <Text><![CDATA[Company ID]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnExternalCustomer.TRN_EXTERNAL_CUSTOMER.CUSTOMER_ID" control="CUSTOMER_ID">
+            <Text><![CDATA[Customer ID]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnExternalCustomer.TRN_EXTERNAL_CUSTOMER.NAME" control="NAME">
+            <Text><![CDATA[Name]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnExternalCustomer.TRN_EXTERNAL_CUSTOMER.CREDIT_LIMIT" control="CREDIT_LIMIT">
+            <Text><![CDATA[Credit Limit]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnExternalCustomer.TRN_EXTERNAL_CUSTOMER.DISCOUNT" control="DISCOUNT">
+            <Text><![CDATA[Discount]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnExternalCustomer.TRN_EXTERNAL_CUSTOMER.ACTIVE" control="ACTIVE">
+            <Text><![CDATA[Active]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnExternalCustomer.TRN_EXTERNAL_CUSTOMER.ACTIVE_DB" control="ACTIVE_DB">
+            <Text><![CDATA[Active]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnExternalCustomer.TRN_EXTERNAL_CUSTOMER.COMMENTS" control="COMMENTS">
+            <Text><![CDATA[Comments]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnExternalCustomer.TRN_EXTERNAL_CUSTOMER.BRANCH_ID" control="BRANCH_ID">
+            <Text><![CDATA[Branch Id]]></Text>
+         </Resource>
+         <Resource subtype="Column" ID="TrnExternalCustomer.TRN_EXTERNAL_CUSTOMER.PREFERRED_INVENTORY_ID" control="PREFERRED_INVENTORY_ID">
+            <Text><![CDATA[Preferred Inventory Id]]></Text>
+         </Resource>
+      </Resource>
+   </TranslatableResource>
+</TranslatableResources>

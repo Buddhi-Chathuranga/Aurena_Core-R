@@ -1,0 +1,63 @@
+-----------------------------------------------------------------------------
+--
+--  Logical unit: TrnBranch
+--  Component:    TRNENT
+--
+--  Template:     3.0
+--  Built by:     IFS Developer Studio (unit-test)
+--
+--  NOTE! Do not edit!! This file is completely generated and will be
+--        overwritten next time the corresponding model is saved.
+-----------------------------------------------------------------------------
+
+
+layer Base;
+
+-------------------- COMMON COLUMN DEFINITIONS ------------------------------
+
+COLUMN Company_Id IS
+   Flags      = 'PMI-L'
+   Datatype   = 'STRING(20)'
+   Prompt     = 'Company Id'
+   Ref        = 'TrnCompany';
+COLUMN Branch_Id IS
+   Flags      = 'KMI-L'
+   Datatype   = 'STRING(20)'
+   Prompt     = 'Branch Id';
+COLUMN Name IS
+   Flags      = 'AMIUL'
+   Datatype   = 'STRING(1000)'
+   Prompt     = 'Name';
+COLUMN Time_Offset IS
+   Flags      = 'AMIU-'
+   Datatype   = 'NUMBER'
+   Prompt     = 'Time Offset';
+COLUMN Country_Id IS
+   Flags      = 'A-IU-'
+   Datatype   = 'STRING(10)'
+   Prompt     = 'Country Id';
+COLUMN Area_Id IS
+   Flags      = 'A-IU-'
+   Datatype   = 'STRING(10)'
+   Prompt     = 'Area Id'
+   Ref        = 'TrnArea(country_id)';
+
+-------------------- PUBLIC VIEW DEFINITIONS --------------------------------
+
+
+-------------------- PRIVATE VIEW DEFINITIONS -------------------------------
+
+VIEW Trn_Branch IS
+   Prompt     = 'Trn Branch'
+   Table      = 'TRN_BRANCH_TAB'
+SELECT
+       company_id                     company_id,
+       branch_id                      branch_id,
+       name                           name,
+       time_offset                    time_offset,
+       country_id                     country_id,
+       area_id                        area_id,
+       rowkey                         objkey,
+       to_char(rowversion,'YYYYMMDDHH24MISS') objversion,
+       rowid                          objid
+FROM   trn_branch_tab;

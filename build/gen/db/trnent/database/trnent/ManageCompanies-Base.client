@@ -1,0 +1,171 @@
+client    EnterpriseHandlingS4;
+component TRNENT;
+layer     Base;
+
+-------------------- TRN COUNTRY --------------------------------------------
+
+
+selector TrnCountrySelector for TrnCountry {
+   label = "${CountryId}";
+   static CountryId;
+}
+
+list TrnCountryLovList for TrnCountry {
+   label = "";
+   static CountryId;
+   static Country;
+}
+-------------------- TRN AREA -----------------------------------------------
+
+
+selector TrnAreaSelector for TrnArea {
+   label = "${AreaId}";
+   static CountryId;
+   static AreaId;
+}
+
+list TrnAreaLovList for TrnArea {
+   label = "";
+   static CountryId;
+   static AreaId;
+   static Area;
+}
+-------------------- TRN COMPANY --------------------------------------------
+
+
+selector TrnCompanySelector for TrnCompany {
+   label = "${CompanyId}";
+   static CompanyId;
+}
+
+list TrnCompanyLovList for TrnCompany {
+   label = "";
+   static CompanyId;
+   static Name;
+   static Comments;
+   static CreationDate;
+}
+-------------------- TRN BRANCH ---------------------------------------------
+
+
+selector TrnBranchSelector for TrnBranch {
+   label = "${BranchId}";
+   static CompanyId;
+   static BranchId;
+}
+
+list TrnBranchLovList for TrnBranch {
+   label = "";
+   static CompanyId;
+   static BranchId;
+   static Name;
+}
+-------------------- TRN COUNTRY VIRTUAL ------------------------------------
+
+
+selector TrnCountryVirtualSelector for TrnCountryVirtual {
+   label = "${Objkey}";
+   static Objkey;
+}
+
+-------------------- TRN AREA VIRTUAL ---------------------------------------
+
+
+selector TrnAreaVirtualSelector for TrnAreaVirtual {
+   label = "${Objkey}";
+   static Objkey;
+}
+
+list TrnAreaVirtualLovList for TrnAreaVirtual {
+   label = "";
+   static Objkey;
+}
+
+-------------------- LOOKUP SUPPORT -----------------------------------------
+
+-------------------- REFERENCE SUPPORT --------------------------------------
+
+selector ReferenceTrnAreaSelector for TrnArea {
+   label = "";
+   static AreaId;
+   static Area;
+}
+
+selector ReferenceTrnCountrySelector for TrnCountry {
+   label = "";
+   static CountryId;
+   static Country;
+}
+
+selector ReferenceTrnCompanySelector for TrnCompany {
+   label = "";
+   static CompanyId;
+   static Name;
+   static Comments;
+   static CreationDate;
+}
+
+-------------------- STANDARD COMMANDS --------------------------------------
+
+@Final
+command Ok {
+   label = "OK";
+   enabled = [true];
+   execute {
+      exit OK;
+   }
+}
+
+@Final
+command Cancel {
+   label = "Cancel";
+   enabled = [true];
+   execute {
+      exit CANCEL;
+   }
+}
+
+@Final
+command Yes {
+   label = "Yes";
+   enabled = [true];
+   execute {
+      exit YES;
+   }
+}
+
+@Final
+command No {
+   label = "No";
+   enabled = [true];
+   execute {
+      exit NO;
+   }
+}
+
+@Final
+command Abort {
+   label = "Abort";
+   enabled = [true];
+   execute {
+      exit ABORT;
+   }
+}
+
+@Final
+command Ignore {
+   label = "Ignore";
+   enabled = [true];
+   execute {
+      exit IGNORE;
+   }
+}
+
+@Final
+command Retry {
+   label = "Retry";
+   enabled = [true];
+   execute {
+      exit RETRY;
+   }
+}

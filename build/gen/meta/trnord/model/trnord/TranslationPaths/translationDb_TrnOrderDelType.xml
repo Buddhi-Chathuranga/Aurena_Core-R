@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TranslatableResources type="LU" module="TRNORD" version="1.0" layer="Core" xmlns="types.scan.translation.fnd.ifsworld.com">
+   <TranslatableResource type="Logical Unit" ID="TrnOrderDelType" name="TrnOrderDelType">
+      <Text><![CDATA[Trn Order Del Type]]></Text>
+      <Resource subtype="Iid Element" ID="TrnOrderDelType.EXPRESS" control="EXPRESS">
+         <Position>1</Position>
+         <Text><![CDATA[Express]]></Text>
+      </Resource>
+      <Resource subtype="Iid Element" ID="TrnOrderDelType.MAIL" control="MAIL">
+         <Position>2</Position>
+         <Text><![CDATA[Mail]]></Text>
+      </Resource>
+      <Resource subtype="Iid Element" ID="TrnOrderDelType.OTHER" control="OTHER">
+         <Position>3</Position>
+         <Text><![CDATA[Other]]></Text>
+      </Resource>
+   </TranslatableResource>
+</TranslatableResources>
